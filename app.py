@@ -1111,55 +1111,47 @@ def render_mode_and_case():
     if "go_to_direct_input" not in st.session_state:
         st.session_state["go_to_direct_input"] = False
 
+    if "go_to_case_mode" not in st.session_state:
+        st.session_state["go_to_case_mode"] = False
+
     if "input_mode" not in st.session_state:
         st.session_state["input_mode"] = "사례 학습"
 
+    if "confirmed_case" not in st.session_state:
+        st.session_state["confirmed_case"] = None
+
+    if "selected_case" not in st.session_state:
+        case_options = get_case_names_for_selection()
+        st.session_state["selected_case"] = case_options[0] if case_options else None
+
+    # 모드 전환 플래그 처리
     if st.session_state["go_to_direct_input"]:
         st.session_state["input_mode"] = "검사 정보 직접 입력 후 자동 질환 추정 실행"
         st.session_state["go_to_direct_input"] = False
 
+    if st.session_state["go_to_case_mode"]:
+        st.session_state["input_mode"] = "사례 학습"
+        st.session_state["go_to_case_mode"] = False
+
+    mode_options = ["사례 학습", "검사 정보 직접 입력 후 자동 질환 추정 실행"]
+    current_mode = st.session_state.get("input_mode", "사례 학습")
+    current_index = mode_options.index(current_mode) if current_mode in mode_options else 0
+
     mode = st.radio(
         "학습 방식",
-        ["사례 학습", "검사 정보 직접 입력 후 자동 질환 추정 실행"],
+        mode_options,
+        index=current_index,
         horizontal=False,
-        key="input_mode",
+        key="input_mode_radio",
         help="처음에는 사례 학습을 먼저 권장합니다."
     )
 
-    case_name = None
-    confirmed_case = False
-    if mode == "사례 학습":
-        st.markdown("""
-        <div style="
-            border: 3px solid #0b5394;
-            border-radius: 14px;
-            padding: 18px;
-            background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
-            margin-top: 10px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        ">
-            <div style="font-size: 1.35rem; font-weight: 900; color: #0b5394; margin-bottom: 8px;">
-                1-1. 사례 선택
-            </div>
-            <div style="font-size: 1.0rem; color: #333; line-height: 1.5;">
-                아래에서 학습할 대표 사례를 선택한 뒤 확인을 누르세요.
-            </div>
-            <div style="
-                display: inline-block;
-                font-size: 0.9rem;
-                font-weight: 700;
-                color: #0b5394;
-                background-color: #d9ecff;
-                border-radius: 999px;
-                padding: 4px 10px;
-                margin-top: 8px;
-            ">
-                학생 추천: 사례부터 학습
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+    st.session_state["input_mode"] = mode
 
+    case_name = None
+    confirmed_case = st.session_state.get("confirmed_case")
+
+    if mode == "사례 학습":
         case_options = get_case_names_for_selection()
         default_index = 0
 
@@ -1169,49 +1161,43 @@ def render_mode_and_case():
         confirmed_case = st.session_state.get("confirmed_case")
 
         if confirmed_case is None:
-            case_name = st.radio(
-                "대표 사례 선택",
-                case_options,
-                index=default_index,
-                key="selected_case"
-            )
+            if case_options:
+                case_name = st.radio(
+                    "대표 사례 선택",
+                    case_options,
+                    index=default_index,
+                    key="selected_case_radio"
+                )
 
-            c1, c2 = st.columns([1, 1])
-            with c1:
-                if st.button("확인", use_container_width=True, key="confirm_selected_case"):
-                    st.session_state["confirmed_case"] = case_name
-                    init_case_to_session(case_name)
-                    st.rerun()
+                st.session_state["selected_case"] = case_name
 
-            with c2:
-                if st.button("다시 선택", use_container_width=True, key="reset_selected_case"):
-                    st.session_state["confirmed_case"] = None
-                    st.session_state["selected_case"] = case_options[0]
-                    st.rerun()
+                c1, c2 = st.columns([1, 1])
+
+                with c1:
+                    if st.button("확인", use_container_width=True, key="confirm_selected_case"):
+                        st.session_state["confirmed_case"] = case_name
+                        st.session_state["selected_case"] = case_name
+                        init_case_to_session(case_name)
+                        st.rerun()
+
+                with c2:
+                    if st.button("다시 선택", use_container_width=True, key="reset_selected_case"):
+                        st.session_state["confirmed_case"] = None
+                        st.session_state["selected_case"] = case_options[0] if case_options else None
+                        st.rerun()
+            else:
+                st.warning("선택 가능한 사례가 없습니다.")
 
             confirmed_case = st.session_state.get("confirmed_case")
 
         else:
             case_name = confirmed_case
-
-            st.info(f"선택된 사례: {confirmed_case}")
-
-            c1, c2 = st.columns([1, 1])
-            with c1:
-                if st.button("다른 사례 다시 선택", use_container_width=True, key="reselect_case_after_confirm"):
-                    st.session_state["confirmed_case"] = None
-                    st.rerun()
-
-            with c2:
-                if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True, key="go_direct_input_after_case"):
-                    st.session_state["go_to_direct_input"] = True
-                    st.session_state["confirmed_case"] = None
-                    st.rerun()
-
             confirmed_case = st.session_state.get("confirmed_case")
 
     else:
         st.session_state["confirmed_case"] = None
+        confirmed_case = None
+        case_name = None
 
     return mode, case_name, confirmed_case
 
@@ -1585,7 +1571,8 @@ def render_navigation_controls(mode, confirmed_case=None):
 
     with c1:
         if st.button("처음으로", use_container_width=True, key=f"go_home_{mode}_{str(confirmed_case)}"):
-            st.session_state["input_mode"] = "사례 학습"
+            st.session_state["go_to_case_mode"] = True
+            st.session_state["go_to_direct_input"] = False
             st.session_state["confirmed_case"] = None
             st.session_state["selected_case"] = get_case_names_for_selection()[0] if get_case_names_for_selection() else None
             st.rerun()
@@ -1596,9 +1583,9 @@ def render_navigation_controls(mode, confirmed_case=None):
                 if confirmed_case:
                     st.session_state["confirmed_case"] = None
                 else:
-                    st.session_state["input_mode"] = "사례 학습"
+                    st.session_state["go_to_case_mode"] = True
             else:
-                st.session_state["input_mode"] = "사례 학습"
+                st.session_state["go_to_case_mode"] = True
                 st.session_state["confirmed_case"] = None
             st.rerun()
 
