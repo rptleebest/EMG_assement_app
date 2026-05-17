@@ -830,7 +830,8 @@ def make_report_text(result):
 # ==========================================
 def init_app_state():
     defaults = {
-        "page_mode": MODE_CASE,
+        "app_mode": MODE_CASE,
+        "page_mode_radio": MODE_CASE,
         "confirmed_case": None,
         "selected_case": get_case_names_for_selection()[0] if get_case_names_for_selection() else None,
         "age": 50,
@@ -882,15 +883,18 @@ def init_case_to_session(case_name):
         st.session_state[f"right_{section}_{item}"] = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
 
 def switch_to_case_mode(reset_case_selection=False):
-    st.session_state["page_mode"] = MODE_CASE
+    st.session_state["app_mode"] = MODE_CASE
+    st.session_state["page_mode_radio"] = MODE_CASE
     st.session_state["confirmed_case"] = None
     clear_result()
+
     if reset_case_selection:
         options = get_case_names_for_selection()
         st.session_state["selected_case"] = options[0] if options else None
 
 def switch_to_direct_mode():
-    st.session_state["page_mode"] = MODE_DIRECT
+    st.session_state["app_mode"] = MODE_DIRECT
+    st.session_state["page_mode_radio"] = MODE_DIRECT
     st.session_state["confirmed_case"] = None
     clear_result()
 # ==========================================
@@ -1355,13 +1359,21 @@ def render_navigation_controls():
     c1, c2 = st.columns(2)
 
     with c1:
-        if st.button("처음으로", use_container_width=True, key=f"nav_home_{st.session_state['page_mode']}_{st.session_state.get('confirmed_case')}"):
+        if st.button(
+            "처음으로",
+            use_container_width=True,
+            key=f"nav_home_{st.session_state.get('app_mode')}_{st.session_state.get('confirmed_case')}"
+        ):
             switch_to_case_mode(reset_case_selection=True)
             st.rerun()
 
     with c2:
-        if st.button("이전으로", use_container_width=True, key=f"nav_back_{st.session_state['page_mode']}_{st.session_state.get('confirmed_case')}"):
-            if st.session_state["page_mode"] == MODE_CASE:
+        if st.button(
+            "이전으로",
+            use_container_width=True,
+            key=f"nav_back_{st.session_state.get('app_mode')}_{st.session_state.get('confirmed_case')}"
+        ):
+            if st.session_state.get("app_mode") == MODE_CASE:
                 if st.session_state.get("confirmed_case"):
                     st.session_state["confirmed_case"] = None
                     clear_result()
@@ -1374,12 +1386,22 @@ def render_navigation_controls():
 def render_mode_selector():
     render_mode_intro_box()
 
-    st.radio(
+    selected_mode = st.radio(
         "학습 방식",
         [MODE_CASE, MODE_DIRECT],
-        key="page_mode",
+        key="page_mode_radio",
         help="사례를 먼저 학습한 뒤 직접 입력으로 넘어가는 교육 흐름을 권장합니다."
     )
+
+    if st.session_state.get("app_mode") != selected_mode:
+        st.session_state["app_mode"] = selected_mode
+
+        if selected_mode == MODE_CASE:
+            st.session_state["confirmed_case"] = None
+            clear_result()
+        else:
+            st.session_state["confirmed_case"] = None
+            clear_result()
 
 def render_case_selector():
     case_options = get_case_names_for_selection()
@@ -1616,7 +1638,7 @@ render_mode_selector()
 # ------------------------------------------
 # 사례 학습 모드
 # ------------------------------------------
-if st.session_state["page_mode"] == MODE_CASE:
+if st.session_state["app_mode"] == MODE_CASE:
     confirmed_case = st.session_state.get("confirmed_case")
 
     if confirmed_case:
@@ -1630,7 +1652,7 @@ if st.session_state["page_mode"] == MODE_CASE:
 # ------------------------------------------
 # 직접 입력 모드
 # ------------------------------------------
-elif st.session_state["page_mode"] == MODE_DIRECT:
+elif st.session_state["app_mode"] == MODE_DIRECT:
     st.session_state["confirmed_case"] = None
 
     rows = render_input_sections()
