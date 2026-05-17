@@ -1065,9 +1065,9 @@ def render_header():
 def render_guide():
     st.markdown('<div class="warn-card">', unsafe_allow_html=True)
     st.markdown("### 사용 방법")
-    st.write("1. 입력 모드를 선택합니다. 기본은 체크형 입력입니다.")
-    st.write("2. 사례 학습에서는 내장 사례를 선택해 자동 입력할 수 있습니다.")
-    st.write("3. 팔/다리 감각, 운동, 침근전도, 눈깜빡반사 항목 중 필요한 것만 체크합니다.")
+    st.write("1. 먼저 학습 방식을 선택합니다.")
+    st.write("2. 사례 학습에서는 대표적 사례 예시 중 하나를 선택하면 관련 검사 정보가 자동으로 입력됩니다.")
+    st.write("3. 직접 입력 학습에서는 팔/다리 감각, 운동, 침근전도, 눈깜빡반사 항목 중 필요한 것만 입력합니다.")
     st.write("4. 분석 실행을 누르면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
     st.write("5. 모바일에서는 탭을 하나씩 열어 입력하면 가장 편합니다.")
     st.markdown("</div>", unsafe_allow_html=True)
