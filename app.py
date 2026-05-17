@@ -13,6 +13,34 @@ st.set_page_config(
 )
 
 # ==========================================
+# 상수
+# ==========================================
+MODE_CASE = "사례 학습"
+MODE_DIRECT = "검사 정보 직접 입력 후 자동 질환 추정 실행"
+
+CHECK_OPTIONS = [
+    "미선택",
+    "정상 (Normal)",
+    "감소 (Reduced)",
+    "진폭 감소 (Reduced Amplitude)",
+    "잠복기 지연 (Delayed Latency)",
+    "무반응 (No Response)",
+    "비정상 자발전위 출현 (Abnormal Spontaneous Activity)",
+    "지연 (Delayed)",
+    "소실 또는 지연 (Absent/Delayed)",
+    "지연 또는 소실 (Delayed/Absent)",
+    "양측 지연 또는 소실 (Bilateral Delayed/Absent)"
+]
+
+INPUT_MODES = [
+    "체크형 입력 (Checklist Mode)",
+    "수치형 입력 (Numeric Mode)"
+]
+
+SEX_OPTIONS = ["미선택", "남", "여"]
+SIDE_OPTIONS = ["미선택", "좌", "우", "양측"]
+
+# ==========================================
 # 스타일
 # ==========================================
 st.markdown("""
@@ -54,16 +82,6 @@ st.markdown("""
     border-radius: 14px;
     padding: 14px;
     margin-bottom: 12px;
-}
-.metric-card {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 12px;
-    padding: 12px;
-}
-.small-text {
-    font-size: 0.85rem;
-    color: #555;
 }
 .input-row {
     background: #ffffff;
@@ -114,13 +132,6 @@ hr {
     border-radius: 10px;
     margin-bottom: 10px;
 }
-.expander-box {
-    border: 1px solid #dbe4ea;
-    border-radius: 12px;
-    padding: 6px 10px;
-    background: #ffffff;
-    margin-bottom: 10px;
-}
 .case-symptom-box {
     background: #fffdf5;
     border: 1px solid #f5d78e;
@@ -135,30 +146,54 @@ hr {
     padding: 12px 14px;
     margin-bottom: 12px;
 }
+.mode-box-green {
+    border: 2px solid #d9ead3;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background-color: #f6fff2;
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+.mode-box-blue {
+    border: 2px solid #cfe2f3;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background-color: #f8fbff;
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+.mode-box-gray {
+    border: 3px solid #b7b7b7;
+    border-radius: 14px;
+    padding: 18px;
+    background: linear-gradient(180deg, #f8f8f8 0%, #f1f1f1 100%);
+    margin-top: 10px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.mode-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+.mode-title-green {
+    color: #38761d;
+}
+.mode-title-blue {
+    color: #0b5394;
+}
+.mode-title-gray {
+    color: #666666;
+    font-weight: 900;
+    font-size: 1.25rem;
+}
+.mode-desc {
+    font-size: 0.96rem;
+    color: #444;
+    line-height: 1.5;
+}
 </style>
 """, unsafe_allow_html=True)
-
-# ==========================================
-# 공통 선택지
-# ==========================================
-CHECK_OPTIONS = [
-    "미선택",
-    "정상 (Normal)",
-    "감소 (Reduced)",
-    "진폭 감소 (Reduced Amplitude)",
-    "잠복기 지연 (Delayed Latency)",
-    "무반응 (No Response)",
-    "비정상 자발전위 출현 (Abnormal Spontaneous Activity)",
-    "지연 (Delayed)",
-    "소실 또는 지연 (Absent/Delayed)",
-    "지연 또는 소실 (Delayed/Absent)",
-    "양측 지연 또는 소실 (Bilateral Delayed/Absent)"
-]
-
-INPUT_MODES = [
-    "체크형 입력 (Checklist Mode)",
-    "수치형 입력 (Numeric Mode)"
-]
 
 # ==========================================
 # 항목 정의
@@ -220,7 +255,6 @@ SECTIONS = {
         "좌측 자극 R2"
     ]
 }
-
 ANATOMY = {
     "정중신경 감각신경활동전위 (Median SNAP)": {"nerve": "정중신경 (Median nerve)", "level": "손목/아래팔, C6-T1", "domain": "sensory", "region": "arm"},
     "자신경 감각신경활동전위 (Ulnar SNAP)": {"nerve": "자신경 (Ulnar nerve)", "level": "손목/팔꿉, C8-T1", "domain": "sensory", "region": "arm"},
@@ -277,7 +311,7 @@ ANATOMY = {
 CASE_LIBRARY = {
     "사례 선택 안 함": {},
 
-    "1. 목 C5 신경뿌리병증 (Cervical Radiculopathy): 통증/방사통(pain/radiating pain) 중심형": {
+    "1. 목 C5 신경뿌리병증 (Cervical Radiculopathy): 통증/방사통 중심형": {
         "patient": {
             "age": 49,
             "sex": "여",
@@ -299,7 +333,7 @@ CASE_LIBRARY = {
             "C5 분절의 방사통은 목에서 어깨 바깥쪽과 위팔 가쪽으로 퍼지는 통증으로 나타날 수 있습니다.",
             "근력저하가 뚜렷하지 않은 초기 또는 경미한 경우에는 근전도가 정상일 수 있습니다.",
             "감각신경전도는 대개 보존되므로 말초신경병증과 구분하는 데 도움이 됩니다.",
-            "추후 목 MRI를 통해 추간판 탈출증(HNP)이나 협착증(stenosis) 여부를 평가할 수 있습니다."
+            "추후 목 MRI를 통해 추간판 탈출증이나 협착증 여부를 평가할 수 있습니다."
         ]
     },
 
@@ -357,7 +391,7 @@ CASE_LIBRARY = {
             "sex": "남",
             "side": "우",
             "symptoms": [
-                "위팔뼈 골절 이후 오른손목이 떨어지는 손목처짐(wrist drop)이 생김",
+                "위팔뼈 골절 이후 오른손목이 떨어지는 손목처짐이 생김",
                 "손목과 손가락을 뒤로 젖히기 어렵고 손등 저림이 있음"
             ]
         },
@@ -367,12 +401,11 @@ CASE_LIBRARY = {
             "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
         },
         "teaching": [
-            "외상 후 손목처짐(wrist drop)은 노신경마비를 먼저 생각해야 합니다.",
+            "외상 후 손목처짐은 노신경마비를 먼저 생각해야 합니다.",
             "노신경 분포 감각이상과 손목 폄 약화가 함께 있으면 말초신경 병변에 더 잘 맞습니다.",
             "경추 신경뿌리병증과 감별할 때 감각신경전도 이상이 도움이 됩니다."
         ]
     },
-
     "5. 자신경병증: 팔꿈치 부위 자신경 포착 (Ulnar Neuropathy at Elbow)": {
         "patient": {
             "age": 42,
@@ -392,7 +425,7 @@ CASE_LIBRARY = {
         "teaching": [
             "넷째, 다섯째 손가락 저림과 팔꿈치 굽힘 시 악화는 팔꿈치 자신경 포착을 시사합니다.",
             "하나의 말초신경 분포에 국한된 이상인지 확인하는 것이 중요합니다.",
-            "손의 자체기원근육(intrinsic muscle) 침범은 자신경병증 진단에 도움이 됩니다."
+            "손의 자체기원근육 침범은 자신경병증 진단에 도움이 됩니다."
         ]
     },
 
@@ -417,7 +450,7 @@ CASE_LIBRARY = {
         "teaching": [
             "여러 말초신경 분포가 함께 침범되면 신경얼기병증을 생각합니다.",
             "감각신경전도 이상이 동반되면 신경뿌리병증보다 신경얼기병증에 더 잘 맞습니다.",
-            "척추주위근 이상이 뚜렷하지 않으면 신경뿌리병변(root lesion)보다 신경얼기병변(plexus lesion) 가능성이 높습니다."
+            "척추주위근 이상이 뚜렷하지 않으면 신경뿌리병변보다 신경얼기병변 가능성이 높습니다."
         ]
     },
 
@@ -441,7 +474,7 @@ CASE_LIBRARY = {
         "teaching": [
             "S1 분포에 가까운 방사통이 전형적이면 신경뿌리병증을 생각할 수 있습니다.",
             "근력저하가 뚜렷하지 않은 초기 또는 경미한 경우에는 근전도가 정상일 수 있습니다.",
-            "이 경우에는 임상 증상과 영상검사(MRI)가 진단에 더 중요하며, 추간판 탈출증(HNP)이나 협착증(stenosis) 평가가 필요할 수 있습니다."
+            "이 경우에는 임상 증상과 영상검사가 진단에 더 중요할 수 있습니다."
         ]
     },
 
@@ -452,7 +485,7 @@ CASE_LIBRARY = {
             "side": "우",
             "symptoms": [
                 "허리에서 오른쪽 엉치와 다리 바깥쪽, 발등 쪽으로 뻗치는 통증이 있음",
-                "오른쪽 발목과 엄지발가락을 들어 올리기 어려워 발처짐(foot drop) 양상이 의심됨",
+                "오른쪽 발목과 엄지발가락을 들어 올리기 어려워 발처짐 양상이 의심됨",
                 "오래 앉아 있으면 증상이 악화됨"
             ]
         },
@@ -467,7 +500,7 @@ CASE_LIBRARY = {
             "운동증상이 동반되면 침근전도에서 이상이 더 잘 드러납니다.",
             "감각신경전도는 보존되는 경우가 많아 말초신경병증과 구분하는 데 도움이 됩니다.",
             "척추주위근 이상은 신경뿌리 병변을 지지합니다.",
-            "발처짐(foot drop)만으로는 종아리신경병증과 감별이 필요하므로, 척추주위근 이상과 감각신경 보존을 함께 봐야 합니다."
+            "발처짐만으로는 종아리신경병증과 감별이 필요합니다."
         ]
     },
 
@@ -477,7 +510,7 @@ CASE_LIBRARY = {
             "sex": "남",
             "side": "우",
             "symptoms": [
-                "다리를 꼬고 앉는 습관 후 오른쪽 발처짐(foot drop)이 생김",
+                "다리를 꼬고 앉는 습관 후 오른쪽 발처짐이 생김",
                 "종아리 바깥쪽과 발등 감각 저하가 있음",
                 "발등을 들어 올리기 어렵고 걸을 때 발끝이 끌림"
             ]
@@ -489,9 +522,9 @@ CASE_LIBRARY = {
             "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
         },
         "teaching": [
-            "종아리뼈머리 부위 온종아리신경(common peroneal nerve) 포착은 발처짐(foot drop)의 흔한 원인입니다.",
-            "발등 감각저하와 말초신경전도 이상이 동반되면 L5 신경뿌리병증보다 말초신경병증(peripheral neuropathy)에 더 잘 맞습니다.",
-            "L5 신경뿌리병증과의 감별이 교육적으로 중요하며, 임상 양상과 허리 MRI를 함께 해석해야 합니다."
+            "종아리뼈머리 부위 포착은 발처짐의 흔한 원인입니다.",
+            "발등 감각저하와 말초신경전도 이상이 동반되면 L5 신경뿌리병증보다 말초신경병증에 더 잘 맞습니다.",
+            "교육적으로 L5 신경뿌리병증과의 감별이 중요합니다."
         ]
     },
 
@@ -512,9 +545,8 @@ CASE_LIBRARY = {
             "첫째 발가락사이 감각 (First Dorsal Web Space Sensation)": ("감소 (Reduced)", "정상 (Normal)")
         },
         "teaching": [
-            "깊은종아리신경병증(deep peroneal nerve neuropathy)은 첫째 발가락사이 감각저하와 발가락 폄 약화가 특징적입니다.",
-            "온종아리신경병증이(common peroneal nerve neuropathy)나 L5 신경뿌리병증(radiculopathy)보다 더 국소적인 병변 위치를 생각하게 합니다.",
-            "병변 위치를 말초신경 해부학적으로 구분하는 데 도움이 되는 사례입니다."
+            "깊은종아리신경병증은 첫째 발가락사이 감각저하와 발가락 폄 약화가 특징적입니다.",
+            "보다 국소적인 말초신경 병변 위치를 생각하게 하는 교육 사례입니다."
         ]
     },
 
@@ -538,8 +570,7 @@ CASE_LIBRARY = {
         },
         "teaching": [
             "여러 말초신경 분포와 감각신경 이상이 함께 나타나면 신경얼기병증을 고려합니다.",
-            "신경뿌리병증(radiculopahty)과 달리 감각신경전도 이상이 더 분명할 수 있습니다.",
-            "한 개의 신경뿌리병변(root lesion)이나 단일 신경 손상병변(single nerve lesion)으로 설명되지 않는 패턴이 핵심입니다."
+            "한 개의 신경뿌리병변이나 단일 신경 손상으로 설명되지 않는 패턴이 핵심입니다."
         ]
     },
 
@@ -562,8 +593,7 @@ CASE_LIBRARY = {
         },
         "teaching": [
             "여러 신경에서 진폭 감소가 우세하면 축삭성 다발신경병증을 생각합니다.",
-            "좌우 대칭이며, 긴 신경이 가는 먼 부위부터 증상이 시작되는 것이 중요한 단서입니다(glove-stocking type).",
-            "국소 포착병증(local entrapment neuropathy)이나 신경뿌리병증(radiculopathy)과 달리 다발성으로 나타납니다."
+            "좌우 대칭이며 먼 부위부터 진행하는 양상이 중요한 단서입니다."
         ]
     },
 
@@ -585,13 +615,11 @@ CASE_LIBRARY = {
             "자신경 복합근육활동전위 (Ulnar CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)")
         },
         "teaching": [
-            "잠복기 지연이 여러 신경에서 반복되면 말이집탈락성 병변(demyelinating lesion) 가능성이 높습니다.",
-            "진폭 감소보다 전도 지연이 두드러진다는 점이 축삭성 병변(axonopathy)과의 차이입니다.",
-            "대칭성 다발신경병증의 대표적 전기진단 패턴으로 교육하기 좋습니다."
+            "잠복기 지연이 여러 신경에서 반복되면 말이집탈락성 병변 가능성이 높습니다.",
+            "진폭 감소보다 전도 지연이 더 두드러지는 점이 특징입니다."
         ]
     },
-
-    "14. 운동신경세포질환 (Motor Neuron Disease)": {
+        "14. 운동신경세포질환 (Motor Neuron Disease)": {
         "patient": {
             "age": 63,
             "sex": "남",
@@ -599,7 +627,7 @@ CASE_LIBRARY = {
             "symptoms": [
                 "양손과 양다리의 근력 저하가 서서히 진행함",
                 "감각 증상은 뚜렷하지 않음",
-                "근육다발수축(fasciculation potential)이 관찰될 수 있음"
+                "근육다발수축이 관찰될 수 있음"
             ]
         },
         "findings": {
@@ -611,9 +639,8 @@ CASE_LIBRARY = {
             "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "감각신경은 비교적 보존되면서 여러 분절의 근육에서 비정상 자발활동전위(abnormal spontaneous activity)가 보입니다.",
-            "이 패턴은 운동신경세포질환(neuronopathy)을 의심하게 합니다.",
-            "다발신경병증과 달리 감각신경전도가 비교적 정상이라는 점이 중요합니다."
+            "감각신경은 비교적 보존되면서 여러 분절의 근육에서 비정상 자발활동전위가 보입니다.",
+            "운동신경세포질환을 의심하게 하는 전형적 교육 패턴입니다."
         ]
     },
 
@@ -633,12 +660,11 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("정상 (Normal)", "")
         },
         "teaching": [
-            "정상 눈 깜빡 반사(blink reflex)는 삼차신경(trigeminal nerve)-뇌줄기(brain stem)-얼굴신경(facial nerve) 반사 경로가 보존됨을 시사합니다.",
             "R1과 R2가 모두 정상이고 좌우 대칭이면 반사 회로의 큰 이상 가능성은 낮습니다."
         ]
     },
 
-    "16. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향(afferent) 병변 의심": {
+    "16. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향 병변 의심": {
         "patient": {
             "age": 56,
             "sex": "남",
@@ -656,8 +682,7 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("정상 (Normal)", "")
         },
         "teaching": [
-            "오른쪽 자극에서만 R1과 R2가 비정상이면 오른쪽 삼차신경 들방향(afferent) 병변을 의심할 수 있습니다.",
-            "반대쪽 자극에서 정상 반응이 나오면 출력 경로보다는 입력 경로 이상에 더 잘 맞습니다."
+            "오른쪽 자극에서만 R1과 R2가 비정상이면 오른쪽 삼차신경 들방향 병변을 의심할 수 있습니다."
         ]
     },
 
@@ -667,7 +692,7 @@ CASE_LIBRARY = {
             "sex": "여",
             "side": "우",
             "symptoms": [
-                "얼굴 감각은 비교적 보존되어 있으나 복시(diplopia)와 어지럼이 동반됨",
+                "얼굴 감각은 비교적 보존되어 있으나 복시와 어지럼이 동반됨",
                 "신경학적 검사에서 뇌줄기 병변이 의심됨"
             ]
         },
@@ -678,12 +703,11 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("지연 (Delayed)", "")
         },
         "teaching": [
-            "양측 자극에서 반사 경로 이상이 반복되면 말초 삼차신경 단독 병변보다 뇌줄기 병변(brain stem lesion)을 생각해야 합니다.",
-            "눈 깜빡 반사(blink reflex)는 삼차신경, 얼굴신경, 그리고 뇌줄기 연결 회로를 함께 평가하는 검사입니다."
+            "양측 자극에서 반사 경로 이상이 반복되면 말초 단독 병변보다 뇌줄기 병변을 생각해야 합니다."
         ]
     },
 
-    "18. 지속적 눈꺼풀 떨림: 눈 깜박 반사(blink reflex) 정상인 비신경병변": {
+    "18. 지속적 눈꺼풀 떨림: blink reflex 정상인 비신경병변": {
         "patient": {
             "age": 38,
             "sex": "여",
@@ -701,9 +725,8 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("정상 (Normal)", "")
         },
         "teaching": [
-            "눈꺼풀 떨림이 지속되더라도 눈깜박 반사(blink reflex)가 정상이면 삼차신경-뇌줄기-얼굴신경 반사 경로의 중대한 이상 가능성은 낮습니다.",
-            "수면 부족, 피로, 스트레스, 카페인 과다와 관련된 양성 눈꺼풀근육잔떨림(eyelid myokymia)을 먼저 생각할 수 있습니다.",
-            "다만 얼굴 전체로 퍼지는 경련, 얼굴마비, 감각이상, 다른 뇌신경 증상이 동반되면 추가 평가가 필요합니다."
+            "blink reflex가 정상이면 반사 경로의 중대한 이상 가능성은 낮습니다.",
+            "수면 부족, 피로, 스트레스와 관련된 양성 눈꺼풀 떨림을 먼저 생각할 수 있습니다."
         ]
     },
 }
@@ -758,6 +781,118 @@ def find_section_for_item(item_name):
 def get_current_case_data(case_name):
     return CASE_LIBRARY.get(case_name, {}) if case_name else {}
 
+def safe_index(options, value, default=0):
+    return options.index(value) if value in options else default
+
+def make_report_text(result):
+    lines = []
+    lines.append("교육용 근전도/신경전도 판독 보조 결과")
+    lines.append("=" * 50)
+    lines.append(f"생성 시각: {result.get('created_at', '')}")
+    lines.append(f"최종 유력 진단: {result.get('final_dx', '')}")
+    lines.append(f"손상 의심 신경: {result.get('involved_nerves', '')}")
+    lines.append(f"신경학적 레벨/분절: {result.get('involved_levels', '')}")
+    lines.append(f"중증도: {result.get('severity', '')}")
+    lines.append("")
+
+    lines.append("[Top 3 감별진단]")
+    for i, (dx, score) in enumerate(result.get("top3", []), 1):
+        lines.append(f"{i}. {dx} (점수: {score})")
+    lines.append("")
+
+    lines.append("[병변 태그]")
+    for tag in result.get("lesion_tags", []):
+        lines.append(f"- {tag}")
+    lines.append("")
+
+    lines.append("[판단 근거]")
+    for reason in result.get("reasons", []):
+        lines.append(f"- {reason}")
+    lines.append("")
+
+    lines.append("[추가 검사 권고]")
+    for suggestion in result.get("suggestions", []):
+        lines.append(f"- {suggestion}")
+    lines.append("")
+
+    lines.append("[이상 항목 요약]")
+    for item in result.get("abnormal_items", []):
+        lines.append(
+            f"- {item['항목']} | 신경: {item['신경']} | 레벨: {item['레벨']} | {item['결과']}"
+        )
+    lines.append("")
+    lines.append("※ 본 결과는 학생 교육용 참고 자료이며 실제 임상 진단을 대체하지 않습니다.")
+
+    return "\n".join(lines)
+
+# ==========================================
+# 상태 관리
+# ==========================================
+def init_app_state():
+    defaults = {
+        "page_mode": MODE_CASE,
+        "confirmed_case": None,
+        "selected_case": get_case_names_for_selection()[0] if get_case_names_for_selection() else None,
+        "age": 50,
+        "sex": "미선택",
+        "side": "미선택",
+        "detail_input_mode": INPUT_MODES[0],
+        "last_result": None,
+    }
+    for k, v in defaults.items():
+        if k not in st.session_state:
+            st.session_state[k] = v
+
+def reset_all_inputs():
+    for section, items in SECTIONS.items():
+        for item in items:
+            st.session_state[f"check_{section}_{item}"] = False
+            st.session_state[f"left_{section}_{item}"] = "정상 (Normal)"
+            st.session_state[f"right_{section}_{item}"] = "정상 (Normal)"
+            st.session_state[f"num_check_{section}_{item}"] = False
+            st.session_state[f"na_{section}_{item}"] = 10.0
+            st.session_state[f"nl_{section}_{item}"] = 3.0
+            st.session_state[f"la_{section}_{item}"] = 10.0
+            st.session_state[f"ll_{section}_{item}"] = 3.0
+            st.session_state[f"mns_{section}_{item}"] = False
+            st.session_state[f"mls_{section}_{item}"] = False
+            st.session_state[f"nr_{section}_{item}"] = "정상 (Normal)"
+
+def clear_result():
+    st.session_state["last_result"] = None
+
+def init_case_to_session(case_name):
+    reset_all_inputs()
+    clear_result()
+
+    case_data = CASE_LIBRARY.get(case_name, {})
+    patient = case_data.get("patient", {})
+    findings = case_data.get("findings", {})
+
+    st.session_state["age"] = patient.get("age", 50)
+    st.session_state["sex"] = patient.get("sex", "미선택")
+    st.session_state["side"] = patient.get("side", "미선택")
+
+    for item, vals in findings.items():
+        section = find_section_for_item(item)
+        if not section:
+            continue
+        st.session_state[f"check_{section}_{item}"] = True
+        st.session_state[f"left_{section}_{item}"] = vals[0] if len(vals) > 0 and vals[0] != "" else "정상 (Normal)"
+        st.session_state[f"right_{section}_{item}"] = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
+
+def switch_to_case_mode(reset_case_selection=False):
+    st.session_state["page_mode"] = MODE_CASE
+    st.session_state["confirmed_case"] = None
+    clear_result()
+    if reset_case_selection:
+        options = get_case_names_for_selection()
+        st.session_state["selected_case"] = options[0] if options else None
+
+def switch_to_direct_mode():
+    st.session_state["page_mode"] = MODE_DIRECT
+    st.session_state["confirmed_case"] = None
+    clear_result()
 # ==========================================
 # 규칙 엔진
 # ==========================================
@@ -972,7 +1107,7 @@ def analyze_case(age, sex, side, selected_rows):
         scores["근육병증 (Myopathy)"] += 8
         lesion_tags.add("근육 수준 (Muscle level)")
         reasons.append("신경전도 이상 없이 여러 근육의 침근전도 이상이 보여 근육병증 가능성이 있습니다.")
-        suggestions.add("크레아틴인산활성효소(CK), 근육 MRI, 근염 관련 항체, 필요 시 근생검을 고려하세요.")
+        suggestions.add("CK, 근육 MRI, 근염 관련 항체, 필요 시 근생검을 고려하세요.")
 
     # 운동신경세포질환
     if muscle_abnormal >= 4 and sensory_abnormal == 0 and spontaneous_count >= 2:
@@ -981,7 +1116,7 @@ def analyze_case(age, sex, side, selected_rows):
         reasons.append("감각신경은 보존되면서 여러 분절 근육에 이상 전위가 보여 운동신경세포질환 가능성을 고려할 수 있습니다.")
         suggestions.add("추가 분절 및 벌바 영역 침근전도검사를 고려하세요.")
 
-    # blink reflex
+    # Blink reflex
     if reflex_abnormal >= 2:
         scores["뇌신경 반사경로 이상 가능성 (Blink Reflex Pathway Abnormality)"] += 7
         lesion_tags.add("뇌신경 반사경로 수준 (Cranial reflex pathway)")
@@ -989,14 +1124,14 @@ def analyze_case(age, sex, side, selected_rows):
 
     if blink_right_stim_abnormal >= 1 and blink_left_stim_abnormal == 0:
         scores["삼차신경 들방향(afferent) 병변 가능성 (Trigeminal Afferent Lesion)"] += 8
-        reasons.append("우측 자극에서만 눈깜빡반사 이상이 보여 우측 삼차신경 들방향(afferent) 병변 가능성을 시사합니다.")
+        reasons.append("우측 자극에서만 눈깜빡반사 이상이 보여 우측 삼차신경 들방향 병변 가능성을 시사합니다.")
 
     if blink_right_stim_abnormal >= 1 and blink_left_stim_abnormal >= 1 and (blink_r1_abnormal + blink_r2_abnormal) >= 2:
         scores["뇌줄기 반사경로 병변 가능성 (Brainstem Reflex Pathway Lesion)"] += 8
         reasons.append("양측 자극에서 반복적인 눈깜빡반사 이상이 보여 뇌줄기 반사경로 병변 가능성을 시사합니다.")
         suggestions.add("뇌 MRI 및 뇌신경 평가를 고려하세요.")
 
-    # 신경근이음부질환
+    # 일반검사 정상
     if total_abnormal == 0:
         scores["신경근이음부질환 가능성 포함 (Neuromuscular Junction Disorder)"] += 2
         reasons.append("현재 일반 검사에서 뚜렷한 이상이 없으면 신경근이음부질환은 반복자극검사 등 특수검사가 필요할 수 있습니다.")
@@ -1026,296 +1161,15 @@ def analyze_case(age, sex, side, selected_rows):
         "lesion_tags": sorted(lesion_tags),
         "reasons": reasons,
         "suggestions": sorted(suggestions),
-        "involved_nerves": ", ".join(sorted(involved_nerves)) if involved_nerves else "특정 어려움",
-        "involved_levels": ", ".join(sorted(involved_levels)) if involved_levels else "특정 어려움",
+        "involved_nerves": ", ".join(sorted(involved_nerves)) if involved_nerves else "특이 소견 없음",
+        "involved_levels": ", ".join(sorted(involved_levels)) if involved_levels else "특이 소견 없음",
         "abnormal_items": abnormal_items,
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
 # ==========================================
-# UI 함수
+# 입력 수집 함수
 # ==========================================
-def init_case_to_session(case_name):
-    case_data = CASE_LIBRARY.get(case_name, {})
-    patient = case_data.get("patient", {})
-    findings = case_data.get("findings", {})
-
-    st.session_state["age"] = patient.get("age", 50)
-    st.session_state["sex"] = patient.get("sex", "미선택")
-    st.session_state["side"] = patient.get("side", "미선택")
-
-    for section, items in SECTIONS.items():
-        for item in items:
-            st.session_state[f"check_{section}_{item}"] = False
-            st.session_state[f"left_{section}_{item}"] = "정상 (Normal)"
-            st.session_state[f"right_{section}_{item}"] = "정상 (Normal)"
-            st.session_state[f"num_check_{section}_{item}"] = False
-
-    for item, vals in findings.items():
-        section = find_section_for_item(item)
-        if section:
-            st.session_state[f"check_{section}_{item}"] = True
-            st.session_state[f"left_{section}_{item}"] = vals[0] if len(vals) > 0 and vals[0] != "" else "정상 (Normal)"
-            st.session_state[f"right_{section}_{item}"] = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
-
-def render_header():
-    st.markdown('<div class="main-title">교육용 근전도/신경전도 판독 보조 웹앱</div>', unsafe_allow_html=True)
-    st.markdown('<div class="subtle">학생 교육용 규칙 기반 도구입니다. 실제 임상 진단을 대체하지 않습니다.</div>', unsafe_allow_html=True)
-
-def render_guide():
-    st.markdown('<div class="warn-card">', unsafe_allow_html=True)
-    st.markdown("### 사용 방법")
-    st.write("1. 먼저 학습 방식을 선택합니다.")
-    st.write("2. 사례 학습에서는 대표적 사례 예시 중 하나를 선택하면 관련 검사 정보가 자동으로 입력됩니다.")
-    st.write("3. 직접 입력 학습에서는 팔/다리 감각, 운동, 침근전도, 눈깜빡반사 항목 중 필요한 것만 입력합니다.")
-    st.write("4. 분석 실행을 누르면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
-    st.write("5. 모바일에서는 탭을 하나씩 열어 입력하면 가장 편합니다.")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-def render_basic_info(disabled=False, title="기본 정보 입력"):
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.subheader(title)
-    c1, c2, c3 = st.columns(3)
-    age = c1.number_input(
-        "나이",
-        min_value=0,
-        max_value=120,
-        value=st.session_state.get("age", 50),
-        step=1,
-        key="age",
-        disabled=disabled
-    )
-    sex_options = ["미선택", "남", "여"]
-    side_options = ["미선택", "좌", "우", "양측"]
-
-    sex = c2.selectbox(
-        "성별",
-        sex_options,
-        index=sex_options.index(st.session_state.get("sex", "미선택"))
-        if st.session_state.get("sex", "미선택") in sex_options else 0,
-        key="sex",
-        disabled=disabled
-    )
-    side = c3.selectbox(
-        "병변쪽/증상측",
-        side_options,
-        index=side_options.index(st.session_state.get("side", "미선택"))
-        if st.session_state.get("side", "미선택") in side_options else 0,
-        key="side",
-        disabled=disabled
-    )
-    st.markdown("</div>", unsafe_allow_html=True)
-    return age, sex, side
-
-def render_mode_and_case():
-    if "go_to_direct_input" not in st.session_state:
-        st.session_state["go_to_direct_input"] = False
-
-    if "go_to_case_mode" not in st.session_state:
-        st.session_state["go_to_case_mode"] = False
-
-    if "input_mode" not in st.session_state:
-        st.session_state["input_mode"] = "사례 학습"
-
-    if "confirmed_case" not in st.session_state:
-        st.session_state["confirmed_case"] = None
-
-    if "selected_case" not in st.session_state:
-        case_options = get_case_names_for_selection()
-        st.session_state["selected_case"] = case_options[0] if case_options else None
-
-    # 모드 전환 플래그 처리
-    if st.session_state["go_to_direct_input"]:
-        st.session_state["input_mode"] = "검사 정보 직접 입력 후 자동 질환 추정 실행"
-        st.session_state["go_to_direct_input"] = False
-
-    if st.session_state["go_to_case_mode"]:
-        st.session_state["input_mode"] = "사례 학습"
-        st.session_state["go_to_case_mode"] = False
-
-    mode_options = ["사례 학습", "검사 정보 직접 입력 후 자동 질환 추정 실행"]
-    current_mode = st.session_state.get("input_mode", "사례 학습")
-    current_index = mode_options.index(current_mode) if current_mode in mode_options else 0
-
-    mode = st.radio(
-        "학습 방식",
-        mode_options,
-        index=current_index,
-        horizontal=False,
-        key="input_mode_radio",
-        help="처음에는 사례 학습을 먼저 권장합니다."
-    )
-
-    st.session_state["input_mode"] = mode
-
-    case_name = None
-    confirmed_case = st.session_state.get("confirmed_case")
-
-    if mode == "사례 학습":
-        case_options = get_case_names_for_selection()
-        default_index = 0
-
-        if st.session_state.get("selected_case") in case_options:
-            default_index = case_options.index(st.session_state.get("selected_case"))
-
-        confirmed_case = st.session_state.get("confirmed_case")
-
-        if confirmed_case is None:
-            if case_options:
-                case_name = st.radio(
-                    "대표 사례 선택",
-                    case_options,
-                    index=default_index,
-                    key="selected_case_radio"
-                )
-
-                st.session_state["selected_case"] = case_name
-
-                c1, c2 = st.columns([1, 1])
-
-                with c1:
-                    if st.button("확인", use_container_width=True, key="confirm_selected_case"):
-                        st.session_state["confirmed_case"] = case_name
-                        st.session_state["selected_case"] = case_name
-                        init_case_to_session(case_name)
-                        st.rerun()
-
-                with c2:
-                    if st.button("다시 선택", use_container_width=True, key="reset_selected_case"):
-                        st.session_state["confirmed_case"] = None
-                        st.session_state["selected_case"] = case_options[0] if case_options else None
-                        st.rerun()
-            else:
-                st.warning("선택 가능한 사례가 없습니다.")
-
-            confirmed_case = st.session_state.get("confirmed_case")
-
-        else:
-            case_name = confirmed_case
-            confirmed_case = st.session_state.get("confirmed_case")
-
-    else:
-        st.session_state["confirmed_case"] = None
-        confirmed_case = None
-        case_name = None
-
-    return mode, case_name, confirmed_case
-
-def render_case_learning_info(case_name):
-    case_data = get_current_case_data(case_name)
-    patient = case_data.get("patient", {})
-    findings = case_data.get("findings", {})
-    teaching = case_data.get("teaching", [])
-
-    symptoms = patient.get("symptoms", [])
-
-    if symptoms:
-        st.markdown('<div class="case-symptom-box">', unsafe_allow_html=True)
-        st.markdown("### 사례 증상 요약")
-        for s in symptoms:
-            st.write(f"- {s}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    ncs_items = []
-    needle_items = []
-    other_items = []
-
-    for item, vals in findings.items():
-        anatomy = ANATOMY.get(item, {})
-        domain = anatomy.get("domain", "")
-
-        if domain in ["sensory", "motor", "reflex"]:
-            ncs_items.append((item, vals))
-        elif domain == "muscle":
-            needle_items.append((item, vals))
-        else:
-            other_items.append((item, vals))
-
-    if ncs_items:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.markdown("### 신경전도검사 예시")
-        for item, vals in ncs_items:
-            left_val = vals[0] if len(vals) > 0 else ""
-            right_val = vals[1] if len(vals) > 1 else ""
-            if str(right_val).strip() == "":
-                st.write(f"- **{item}**: {left_val}")
-            else:
-                st.write(f"- **{item}**")
-                st.write(f"  - 좌/정상측: {left_val}")
-                st.write(f"  - 우/병변측: {right_val}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    if needle_items:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.markdown("### 침근전도검사 예시")
-        for item, vals in needle_items:
-            left_val = vals[0] if len(vals) > 0 else ""
-            right_val = vals[1] if len(vals) > 1 else ""
-            if str(right_val).strip() == "":
-                st.write(f"- **{item}**: {left_val}")
-            else:
-                st.write(f"- **{item}**")
-                st.write(f"  - 좌/정상측: {left_val}")
-                st.write(f"  - 우/병변측: {right_val}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    if other_items:
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.markdown("### 기타 예시")
-        for item, vals in other_items:
-            left_val = vals[0] if len(vals) > 0 else ""
-            right_val = vals[1] if len(vals) > 1 else ""
-            if str(right_val).strip() == "":
-                st.write(f"- **{item}**: {left_val}")
-            else:
-                st.write(f"- **{item}**")
-                st.write(f"  - 좌/정상측: {left_val}")
-                st.write(f"  - 우/병변측: {right_val}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    if teaching:
-        st.markdown('<div class="case-teaching-box">', unsafe_allow_html=True)
-        st.markdown("### 학습 포인트")
-        for t in teaching:
-            st.write(f"- {t}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-def render_check_input_section():
-    st.markdown("""
-    <div style="
-        border: 2px solid #3d85c6;
-        border-radius: 12px;
-        padding: 16px;
-        background-color: #eef6ff;
-        margin-bottom: 14px;
-    ">
-        <div style="font-size: 1.2rem; font-weight: 800; color: #0b5394;">
-            체크형 입력
-        </div>
-        <div style="font-size: 0.97rem; color: #333; margin-top: 6px;">
-            각 검사 항목을 정상/이상처럼 쉽게 선택할 수 있습니다.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-def render_numeric_input_section():
-    st.markdown("""
-    <div style="
-        border: 2px solid #b45f06;
-        border-radius: 12px;
-        padding: 16px;
-        background-color: #fff7ec;
-        margin-bottom: 14px;
-    ">
-        <div style="font-size: 1.2rem; font-weight: 800; color: #7f6000;">
-            수치 입력형
-        </div>
-        <div style="font-size: 0.97rem; color: #333; margin-top: 6px;">
-            잠복기, 진폭, 전도 여부 등 기초 수치를 직접 입력할 수 있습니다.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
 def render_check_item(section, item, disabled=False):
     a = ANATOMY[item]
 
@@ -1327,8 +1181,8 @@ def render_check_item(section, item, disabled=False):
     )
 
     use_item = st.checkbox("이 항목 입력하기", key=f"check_{section}_{item}", disabled=disabled)
-
     row = None
+
     if use_item:
         if a["domain"] == "reflex":
             left = st.selectbox("결과", CHECK_OPTIONS, key=f"left_{section}_{item}", disabled=disabled)
@@ -1363,7 +1217,10 @@ def render_numeric_item(section, item, disabled=False):
 
     if use_item:
         if a["domain"] in ["sensory", "motor"]:
-            st.markdown('<div class="section-help">정상쪽과 병변쪽 수치를 입력하면 교육용 단순 기준으로 자동 해석합니다.</div>', unsafe_allow_html=True)
+            st.markdown(
+                '<div class="section-help">정상쪽과 병변쪽 수치를 입력하면 교육용 단순 기준으로 자동 해석합니다.</div>',
+                unsafe_allow_html=True
+            )
 
             c1, c2 = st.columns(2)
             with c1:
@@ -1396,7 +1253,10 @@ def render_numeric_item(section, item, disabled=False):
             }
 
         elif a["domain"] == "muscle":
-            st.markdown('<div class="section-help">근육 항목은 비정상 자발전위 출현 여부를 체크합니다.</div>', unsafe_allow_html=True)
+            st.markdown(
+                '<div class="section-help">근육 항목은 비정상 자발전위 출현 여부를 체크합니다.</div>',
+                unsafe_allow_html=True
+            )
 
             c1, c2 = st.columns(2)
             with c1:
@@ -1428,12 +1288,225 @@ def render_numeric_item(section, item, disabled=False):
 
     st.markdown('</div>', unsafe_allow_html=True)
     return row
+# ==========================================
+# UI 렌더링 함수
+# ==========================================
+def render_header():
+    st.markdown('<div class="main-title">교육용 근전도/신경전도 판독 보조 웹앱</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="subtle">학생 교육용 규칙 기반 도구입니다. 실제 임상 진단을 대체하지 않습니다.</div>',
+        unsafe_allow_html=True
+    )
 
-def render_inputs(mode):
+def render_guide():
+    st.markdown('<div class="warn-card">', unsafe_allow_html=True)
+    st.markdown("### 사용 방법")
+    st.write("1. 먼저 학습 방식을 선택합니다.")
+    st.write("2. 사례 학습에서는 대표적 사례 예시를 선택하고, 증상·검사·학습 포인트를 확인합니다.")
+    st.write("3. 직접 입력 학습에서는 필요한 검사 항목만 선택적으로 입력합니다.")
+    st.write("4. 체크형 입력 또는 수치형 입력을 선택할 수 있습니다.")
+    st.write("5. 분석 실행을 누르면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
+    st.write("6. 한 모드를 선택하면 다른 모드의 상세 화면은 보이지 않도록 구성되어 시각적 혼란을 줄입니다.")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+def render_mode_intro_box():
+    st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-blue">학습 모드 선택</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">사례 학습 또는 검사 정보 직접 입력 중 한 가지를 선택하세요. 선택하지 않은 다른 모드의 화면은 숨겨집니다.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+def render_basic_info(disabled=False, title="기본 정보 입력"):
+    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.subheader(title)
+
+    c1, c2, c3 = st.columns(3)
+    age = c1.number_input(
+        "나이",
+        min_value=0,
+        max_value=120,
+        value=st.session_state.get("age", 50),
+        step=1,
+        key="age",
+        disabled=disabled
+    )
+    sex = c2.selectbox(
+        "성별",
+        SEX_OPTIONS,
+        index=safe_index(SEX_OPTIONS, st.session_state.get("sex", "미선택")),
+        key="sex",
+        disabled=disabled
+    )
+    side = c3.selectbox(
+        "병변쪽/증상측",
+        SIDE_OPTIONS,
+        index=safe_index(SIDE_OPTIONS, st.session_state.get("side", "미선택")),
+        key="side",
+        disabled=disabled
+    )
+
+    st.markdown("</div>", unsafe_allow_html=True)
+    return age, sex, side
+
+def render_navigation_controls():
+    st.markdown("### 이동")
+    c1, c2 = st.columns(2)
+
+    with c1:
+        if st.button("처음으로", use_container_width=True, key=f"nav_home_{st.session_state['page_mode']}_{st.session_state.get('confirmed_case')}"):
+            switch_to_case_mode(reset_case_selection=True)
+            st.rerun()
+
+    with c2:
+        if st.button("이전으로", use_container_width=True, key=f"nav_back_{st.session_state['page_mode']}_{st.session_state.get('confirmed_case')}"):
+            if st.session_state["page_mode"] == MODE_CASE:
+                if st.session_state.get("confirmed_case"):
+                    st.session_state["confirmed_case"] = None
+                    clear_result()
+                else:
+                    switch_to_case_mode(reset_case_selection=True)
+            else:
+                switch_to_case_mode(reset_case_selection=False)
+            st.rerun()
+
+def render_mode_selector():
+    render_mode_intro_box()
+
+    st.radio(
+        "학습 방식",
+        [MODE_CASE, MODE_DIRECT],
+        key="page_mode",
+        help="사례를 먼저 학습한 뒤 직접 입력으로 넘어가는 교육 흐름을 권장합니다."
+    )
+
+def render_case_selector():
+    case_options = get_case_names_for_selection()
+
+    st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-green">1. 사례 선택</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">대표 사례를 하나 선택하고 확인 버튼을 누르세요. 사례가 확정되면 다른 입력 화면은 보이지 않습니다.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    case_name = st.radio(
+        "대표 사례 선택",
+        case_options,
+        index=safe_index(case_options, st.session_state.get("selected_case", case_options[0] if case_options else None)),
+        key="selected_case"
+    )
+
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("확인", use_container_width=True, key="confirm_case_btn"):
+            st.session_state["confirmed_case"] = case_name
+            init_case_to_session(case_name)
+            st.rerun()
+    with c2:
+        if st.button("다시 선택", use_container_width=True, key="reset_case_btn"):
+            st.session_state["confirmed_case"] = None
+            clear_result()
+            st.rerun()
+
+def render_case_learning_info(case_name):
+    case_data = get_current_case_data(case_name)
+    patient = case_data.get("patient", {})
+    findings = case_data.get("findings", {})
+    teaching = case_data.get("teaching", [])
+    symptoms = patient.get("symptoms", [])
+
+    st.success(f"선택한 사례를 불러왔습니다: {case_name}")
+
+    render_basic_info(disabled=True, title="사례 기본 정보")
+
+    if symptoms:
+        st.markdown('<div class="case-symptom-box">', unsafe_allow_html=True)
+        st.markdown("### 사례 증상 요약")
+        for s in symptoms:
+            st.write(f"- {s}")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    ncs_items, needle_items, other_items = [], [], []
+    for item, vals in findings.items():
+        domain = ANATOMY.get(item, {}).get("domain", "")
+        if domain in ["sensory", "motor", "reflex"]:
+            ncs_items.append((item, vals))
+        elif domain == "muscle":
+            needle_items.append((item, vals))
+        else:
+            other_items.append((item, vals))
+
+    for title, grouped_items in [
+        ("신경전도검사 예시", ncs_items),
+        ("침근전도검사 예시", needle_items),
+        ("기타 예시", other_items),
+    ]:
+        if grouped_items:
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            st.markdown(f"### {title}")
+            for item, vals in grouped_items:
+                left_val = vals[0] if len(vals) > 0 else ""
+                right_val = vals[1] if len(vals) > 1 else ""
+                if str(right_val).strip() == "":
+                    st.write(f"- **{item}**: {left_val}")
+                else:
+                    st.write(f"- **{item}**")
+                    st.write(f"  - 정상쪽/비병변측: {left_val}")
+                    st.write(f"  - 병변쪽/증상측: {right_val}")
+            st.markdown("</div>", unsafe_allow_html=True)
+
+    if teaching:
+        st.markdown('<div class="case-teaching-box">', unsafe_allow_html=True)
+        st.markdown("### 학습 포인트")
+        for t in teaching:
+            st.write(f"- {t}")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+def render_case_next_actions():
+    st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-blue">다음 단계 선택</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">사례 학습을 마쳤다면 다른 사례를 다시 선택하거나 직접 입력 모드로 이동할 수 있습니다. 사례 학습 중에는 직접 입력 화면이 아래에 나타나지 않습니다.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("다른 사례 다시 선택", use_container_width=True, key="choose_another_case_btn"):
+            st.session_state["confirmed_case"] = None
+            clear_result()
+            st.rerun()
+    with c2:
+        if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True, key="go_direct_input_btn"):
+            switch_to_direct_mode()
+            st.rerun()
+
+def render_input_mode_box():
+    st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-green">1. 입력 방식</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요. 선택한 방식의 UI만 보입니다.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+def render_direct_input_basic_info_box():
+    st.markdown('<div class="mode-box-gray">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-gray">2. 기본 정보 입력</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">나이, 성별, 병변쪽/증상측을 입력하세요.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+def render_input_sections():
     rows = []
 
-    if mode != "검사 정보 직접 입력 후 자동 질환 추정 실행":
-        return rows
+    render_input_mode_box()
 
     detail_mode = st.radio(
         "입력 방식",
@@ -1443,192 +1516,61 @@ def render_inputs(mode):
         help="체크형 또는 수치형 입력 방식을 선택합니다."
     )
 
-    if "체크형" in detail_mode:
-        render_check_input_section()
-    else:
-        render_numeric_input_section()
+    tabs = st.tabs(["팔 감각/운동", "팔 침근전도", "다리 감각/운동", "다리 침근전도", "눈깜빡반사"])
 
-    st.markdown(
-        '<div class="section-hint">'
-        '아래의 검사 부위(팔 감각/운동, 팔 침근전도, 다리 감각/운동, 다리 침근전도, 눈깜빡반사)를 먼저 눌러 펼친 뒤, '
-        '그 아래에 나타나는 세부 항목을 선택하여 입력하세요.'
-        '</div>',
-        unsafe_allow_html=True
-    )
+    section_groups = [
+        ["팔 감각신경전도검사 (Arm Sensory NCS)", "팔 운동신경전도검사 (Arm Motor NCS)"],
+        ["팔 침근전도검사 근육 (Arm Needle EMG Muscles)"],
+        ["다리 감각신경전도검사 (Leg Sensory NCS)", "다리 운동신경전도검사 (Leg Motor NCS)"],
+        ["다리 침근전도검사 근육 (Leg Needle EMG Muscles)"],
+        ["눈깜빡반사검사 (Blink Reflex)"]
+    ]
 
-    tabs = st.tabs([
-        "팔 감각/운동",
-        "팔 침근전도",
-        "다리 감각/운동",
-        "다리 침근전도",
-        "눈깜빡반사"
-    ])
-
-    with tabs[0]:
-        st.markdown('<div class="big-section-title">팔 감각신경전도검사 / 팔 운동신경전도검사</div>', unsafe_allow_html=True)
-        st.caption("먼저 아래 큰 항목을 눌러 세부 항목을 펼친 뒤 체크하세요.")
-
-        for sec in ["팔 감각신경전도검사 (Arm Sensory NCS)", "팔 운동신경전도검사 (Arm Motor NCS)"]:
-            with st.expander(f"▶ {sec}", expanded=False):
-                st.markdown(
-                    '<div class="section-hint">'
-                    '이 항목을 펼친 후, 세부 검사 항목을 선택하세요. 필요한 항목만 체크하면 됩니다.'
-                    '</div>',
-                    unsafe_allow_html=True
-                )
-                for item in SECTIONS[sec]:
-                    row = render_check_item(sec, item) if "체크형" in detail_mode else render_numeric_item(sec, item)
-                    if row:
-                        rows.append(row)
-
-    with tabs[1]:
-        st.markdown('<div class="big-section-title">팔 침근전도검사 근육</div>', unsafe_allow_html=True)
-        st.caption("팔 근육 세부 항목을 선택하려면 아래 박스를 눌러 펼치세요.")
-
-        sec = "팔 침근전도검사 근육 (Arm Needle EMG Muscles)"
-        with st.expander(f"▶ {sec}", expanded=False):
-            st.markdown(
-                '<div class="section-hint">'
-                '세부 근육 항목이 아래에 나타납니다. 이 항목들을 하나씩 체크하여 입력하세요.'
-                '</div>',
-                unsafe_allow_html=True
-            )
-            for item in SECTIONS[sec]:
-                row = render_check_item(sec, item) if "체크형" in detail_mode else render_numeric_item(sec, item)
-                if row:
-                    rows.append(row)
-
-    with tabs[2]:
-        st.markdown('<div class="big-section-title">다리 감각신경전도검사 / 다리 운동신경전도검사</div>', unsafe_allow_html=True)
-        st.caption("다리 검사 부위를 누르면 세부 항목이 펼쳐집니다.")
-
-        for sec in ["다리 감각신경전도검사 (Leg Sensory NCS)", "다리 운동신경전도검사 (Leg Motor NCS)"]:
-            with st.expander(f"▶ {sec}", expanded=False):
-                st.markdown(
-                    '<div class="section-hint">'
-                    '아래에서 세부 항목을 확인하고 필요한 검사만 선택하세요.'
-                    '</div>',
-                    unsafe_allow_html=True
-                )
-                for item in SECTIONS[sec]:
-                    row = render_check_item(sec, item) if "체크형" in detail_mode else render_numeric_item(sec, item)
-                    if row:
-                        rows.append(row)
-
-    with tabs[3]:
-        st.markdown('<div class="big-section-title">다리 침근전도검사 근육</div>', unsafe_allow_html=True)
-        st.caption("다리 근육 세부 항목을 눌러 체크하세요.")
-
-        sec = "다리 침근전도검사 근육 (Leg Needle EMG Muscles)"
-        with st.expander(f"▶ {sec}", expanded=False):
-            st.markdown(
-                '<div class="section-hint">'
-                '세부 근육 항목이 아래에 표시됩니다. 사용할 항목만 체크하여 입력하세요.'
-                '</div>',
-                unsafe_allow_html=True
-            )
-            for item in SECTIONS[sec]:
-                row = render_check_item(sec, item) if "체크형" in detail_mode else render_numeric_item(sec, item)
-                if row:
-                    rows.append(row)
-
-    with tabs[4]:
-        st.markdown('<div class="big-section-title">눈깜빡반사검사 (Blink Reflex)</div>', unsafe_allow_html=True)
-        st.caption("눈 깜빡 반사 항목을 눌러 선택하세요.")
-
-        sec = "눈깜빡반사검사 (Blink Reflex)"
-        with st.expander(f"▶ {sec}", expanded=False):
-            st.markdown(
-                '<div class="section-hint">'
-                'R1, R2 항목을 선택하여 입력하세요.'
-                '</div>',
-                unsafe_allow_html=True
-            )
-            for item in SECTIONS[sec]:
-                row = render_check_item(sec, item) if "체크형" in detail_mode else render_numeric_item(sec, item)
-                if row:
-                    rows.append(row)
+    for tab, sections in zip(tabs, section_groups):
+        with tab:
+            for sec in sections:
+                with st.expander(sec, expanded=False):
+                    for item in SECTIONS[sec]:
+                        if "체크형" in detail_mode:
+                            row = render_check_item(sec, item)
+                        else:
+                            row = render_numeric_item(sec, item)
+                        if row:
+                            rows.append(row)
 
     return rows
 
-def render_navigation_controls(mode, confirmed_case=None):
-    st.markdown("""
-    <div style="
-        border: 1px solid #dbe4ea;
-        border-radius: 12px;
-        padding: 10px 12px;
-        background: #ffffff;
-        margin-top: 8px;
-        margin-bottom: 14px;
-    ">
-        <div style="font-size: 0.95rem; font-weight: 700; color: #374151;">
-            이동
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    c1, c2 = st.columns(2)
-
-    with c1:
-        if st.button("처음으로", use_container_width=True, key=f"go_home_{mode}_{str(confirmed_case)}"):
-            st.session_state["go_to_case_mode"] = True
-            st.session_state["go_to_direct_input"] = False
-            st.session_state["confirmed_case"] = None
-            st.session_state["selected_case"] = get_case_names_for_selection()[0] if get_case_names_for_selection() else None
-            st.rerun()
-
-    with c2:
-        if st.button("이전으로", use_container_width=True, key=f"go_back_{mode}_{str(confirmed_case)}"):
-            if mode == "사례 학습":
-                if confirmed_case:
-                    st.session_state["confirmed_case"] = None
-                else:
-                    st.session_state["go_to_case_mode"] = True
-            else:
-                st.session_state["go_to_case_mode"] = True
-                st.session_state["confirmed_case"] = None
-            st.rerun()
-
 def render_result(result):
     st.markdown("---")
+
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
     st.subheader("최종 분석 결과")
     st.success(f"최종 유력 진단: {result['final_dx']}")
     st.write(f"**손상 의심 신경:** {result['involved_nerves']}")
     st.write(f"**신경학적 레벨/분절:** {result['involved_levels']}")
     st.write(f"**중증도:** {result['severity']}")
+    if result["lesion_tags"]:
+        st.write(f"**병변 해석 태그:** {', '.join(result['lesion_tags'])}")
     st.markdown("</div>", unsafe_allow_html=True)
 
     c1, c2 = st.columns(2)
 
     with c1:
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.subheader("Top 3 감별진단")
+        st.markdown("### Top 3 감별진단")
         for i, (dx, score) in enumerate(result["top3"], 1):
             st.write(f"{i}. {dx} — 점수 {score}")
         st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.subheader("병변 수준/패턴")
-        if result["lesion_tags"]:
-            for tag in result["lesion_tags"]:
-                st.write(f"- {tag}")
-        else:
-            st.write("- 특이 패턴 없음")
+        st.markdown("### 판단 근거")
+        for reason in result["reasons"]:
+            st.write(f"- {reason}")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with c2:
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.subheader("판단 근거")
-        if result["reasons"]:
-            for r in result["reasons"]:
-                st.write(f"- {r}")
-        else:
-            st.write("- 판단 근거 없음")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-        st.markdown('<div class="section-card">', unsafe_allow_html=True)
-        st.subheader("추가 검사 권고")
+        st.markdown("### 추가 검사 권고")
         if result["suggestions"]:
             for s in result["suggestions"]:
                 st.write(f"- {s}")
@@ -1636,210 +1578,87 @@ def render_result(result):
             st.write("- 추가 권고 없음")
         st.markdown("</div>", unsafe_allow_html=True)
 
+        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        st.markdown("### 이상 항목 요약")
+        if result["abnormal_items"]:
+            for item in result["abnormal_items"]:
+                st.write(f"- **{item['항목']}**")
+                st.write(f"  - 신경: {item['신경']}")
+                st.write(f"  - 레벨: {item['레벨']}")
+                st.write(f"  - {item['결과']}")
+        else:
+            st.write("- 입력 항목 중 뚜렷한 이상으로 분류된 항목이 없습니다.")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+def render_download_section(result):
+    report_text = make_report_text(result)
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.subheader("이상 항목 상세")
-    if result["abnormal_items"]:
-        for item in result["abnormal_items"]:
-            st.write(f"- **{item['항목']}**")
-            st.write(f"  - 신경: {item['신경']}")
-            st.write(f"  - 레벨: {item['레벨']}")
-            st.write(f"  - 결과: {item['결과']}")
-    else:
-        st.write("- 이상 항목 없음")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    report_lines = [
-        "=== 교육용 근전도/신경전도 판독 결과 ===",
-        f"생성 시각: {result['created_at']}",
-        f"나이: {result['age']}",
-        f"성별: {result['sex']}",
-        f"병변쪽/증상측: {result['side']}",
-        "",
-        f"최종 유력 진단: {result['final_dx']}",
-        f"손상 의심 신경: {result['involved_nerves']}",
-        f"신경학적 레벨/분절: {result['involved_levels']}",
-        f"중증도: {result['severity']}",
-        "",
-        "Top 3 감별진단"
-    ]
-    for i, (dx, score) in enumerate(result["top3"], 1):
-        report_lines.append(f"{i}. {dx} — 점수 {score}")
-
-    report_lines.extend(["", "병변 수준/패턴"])
-    for tag in result["lesion_tags"]:
-        report_lines.append(f"- {tag}")
-
-    report_lines.extend(["", "판단 근거"])
-    for r in result["reasons"]:
-        report_lines.append(f"- {r}")
-
-    report_lines.extend(["", "추가 검사 권고"])
-    for s in result["suggestions"]:
-        report_lines.append(f"- {s}")
-
-    report_lines.extend(["", "이상 항목 상세"])
-    for item in result["abnormal_items"]:
-        report_lines.append(f"- {item['항목']}")
-        report_lines.append(f"  신경: {item['신경']}")
-        report_lines.append(f"  레벨: {item['레벨']}")
-        report_lines.append(f"  결과: {item['결과']}")
-
-    report_text = "\n".join(report_lines)
-
+    st.markdown("### 결과 다운로드")
     st.download_button(
-        "결과 보고서 다운로드 (.txt)",
-        data=report_text,
-        file_name="emg_edu_report.txt",
-        mime="text/plain"
+        label="텍스트 보고서 다운로드 (.txt)",
+        data=report_text.encode("utf-8"),
+        file_name=f"emg_edu_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
+        mime="text/plain",
+        use_container_width=True
     )
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # ==========================================
 # 메인 실행
 # ==========================================
+init_app_state()
+
 render_header()
 render_guide()
+render_navigation_controls()
+render_mode_selector()
 
-mode, case_name, confirmed_case = render_mode_and_case()
-
-if mode == "사례 학습":
-    render_navigation_controls(mode, confirmed_case)
+# ------------------------------------------
+# 사례 학습 모드
+# ------------------------------------------
+if st.session_state["page_mode"] == MODE_CASE:
+    confirmed_case = st.session_state.get("confirmed_case")
 
     if confirmed_case:
-        st.success(f"선택한 사례를 불러왔습니다: {confirmed_case}")
         render_case_learning_info(confirmed_case)
-
-        st.markdown("""
-        <div style="
-            border: 2px dashed #9fc5e8;
-            border-radius: 12px;
-            padding: 14px 16px;
-            background-color: #f8fbff;
-            margin-top: 14px;
-            margin-bottom: 14px;
-        ">
-            <div style="font-size: 1.08rem; font-weight: 800; color: #0b5394; margin-bottom: 4px;">
-                다음 단계 선택
-            </div>
-            <div style="font-size: 0.95rem; color: #444; line-height: 1.5;">
-                위 사례 내용을 충분히 확인한 뒤, 아래에서 입력을 계속하거나 다른 사례 또는 다른 학습 방식으로 이동할 수 있습니다.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        b1, b2 = st.columns(2)
-        with b1:
-            if st.button("다른 사례 다시 선택", use_container_width=True, key="choose_another_case"):
-                st.session_state["confirmed_case"] = None
-                st.rerun()
-        with b2:
-            if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True):
-                st.session_state["go_to_direct_input"] = True
-                st.rerun()
-
-        st.markdown("""
-        <div style="
-            border: 2px solid #d9ead3;
-            border-radius: 12px;
-            padding: 14px 16px;
-            background-color: #f6fff2;
-            margin-top: 10px;
-            margin-bottom: 14px;
-        ">
-            <div style="font-size: 1.22rem; font-weight: 800; color: #38761d; margin-bottom: 4px;">
-                2. 입력 방식
-            </div>
-            <div style="font-size: 0.96rem; color: #444; line-height: 1.5;">
-                아래에서 체크형 입력 또는 수치형 입력을 선택하여 직접 학습을 이어갈 수 있습니다.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        rows = render_inputs(mode)
-
-        st.markdown("""
-        <div style="
-            border: 2px solid #cfe2f3;
-            border-radius: 12px;
-            padding: 14px 16px;
-            background-color: #f8fbff;
-            margin-top: 10px;
-            margin-bottom: 14px;
-        ">
-            <div style="font-size: 1.22rem; font-weight: 800; color: #0b5394; margin-bottom: 4px;">
-                3. 기본 설정
-            </div>
-            <div style="font-size: 0.96rem; color: #444; line-height: 1.5;">
-                사례 학습에서는 선택한 사례의 기본 정보가 자동 입력되며, 아래 항목은 확인용으로 표시됩니다.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        age, sex, side = render_basic_info(disabled=True, title="기본 설정")
-
+        render_case_next_actions()
+        st.info("현재는 사례 학습 화면입니다. 직접 입력 섹션은 숨겨져 있습니다.")
     else:
-        st.info("대표 사례를 선택한 뒤 확인 버튼을 눌러 학습 내용을 불러오세요.")
-        rows = []
-        age = st.session_state.get("age", 50)
-        sex = st.session_state.get("sex", "미선택")
-        side = st.session_state.get("side", "미선택")
+        render_case_selector()
+        st.info("대표 사례를 선택한 뒤 확인 버튼을 누르면 사례 학습 내용이 표시됩니다.")
 
-else:
-    render_navigation_controls(mode, confirmed_case=None)
+# ------------------------------------------
+# 직접 입력 모드
+# ------------------------------------------
+elif st.session_state["page_mode"] == MODE_DIRECT:
+    st.session_state["confirmed_case"] = None
 
-    st.markdown("""
-    <div style="
-        border: 2px solid #d9ead3;
-        border-radius: 12px;
-        padding: 14px 16px;
-        background-color: #f6fff2;
-        margin-top: 10px;
-        margin-bottom: 14px;
-    ">
-        <div style="font-size: 1.22rem; font-weight: 800; color: #38761d; margin-bottom: 4px;">
-            1. 입력 방식
-        </div>
-        <div style="font-size: 0.96rem; color: #444; line-height: 1.5;">
-            체크형 입력 또는 수치형 입력을 선택하세요.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    rows = render_input_sections()
 
-    rows = render_inputs(mode)
-
-    st.markdown("""
-    <div style="
-        border: 3px solid #b7b7b7;
-        border-radius: 14px;
-        padding: 18px;
-        background: linear-gradient(180deg, #f8f8f8 0%, #f1f1f1 100%);
-        margin-top: 10px;
-        margin-bottom: 16px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    ">
-        <div style="font-size: 1.25rem; font-weight: 900; color: #666666; margin-bottom: 8px;">
-            2. 기본 정보 입력
-        </div>
-        <div style="font-size: 0.98rem; color: #555; line-height: 1.55;">
-            나이, 성별, 병변쪽/증상측을 입력하세요.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
+    render_direct_input_basic_info_box()
     age, sex, side = render_basic_info(disabled=False, title="기본 정보 입력")
 
-if mode == "사례 학습":
-    st.info("사례 학습에서는 대표 사례 내용을 확인하고 입력 예시를 학습하는 방식입니다. 별도의 분석 실행 버튼은 사용하지 않습니다.")
-
-else:
     c1, c2 = st.columns(2)
     with c1:
-        analyze_btn = st.button("분석 실행", type="primary", use_container_width=True)
+        analyze_btn = st.button("분석 실행", type="primary", use_container_width=True, key="analyze_btn")
     with c2:
-        st.info("기본 정보와 검사 정보를 입력한 뒤 분석을 실행하세요.")
+        clear_btn = st.button("입력 초기화", use_container_width=True, key="clear_inputs_btn")
+
+    if clear_btn:
+        reset_all_inputs()
+        clear_result()
+        st.rerun()
 
     if analyze_btn:
         if not rows:
             st.warning("최소 1개 이상의 항목을 선택하거나 수치를 입력하세요.")
         else:
             result = analyze_case(age, sex, side, rows)
-            render_result(result)
+            st.session_state["last_result"] = result
+
+    if st.session_state.get("last_result"):
+        render_result(st.session_state["last_result"])
+        render_download_section(st.session_state["last_result"])
+
+else:
+    st.error("알 수 없는 모드입니다. 처음으로 버튼을 눌러 다시 시작하세요.")    
