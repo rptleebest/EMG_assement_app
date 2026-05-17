@@ -831,7 +831,6 @@ def make_report_text(result):
 def init_app_state():
     defaults = {
         "app_mode": MODE_CASE,
-        "page_mode_radio": MODE_CASE,
         "confirmed_case": None,
         "selected_case": get_case_names_for_selection()[0] if get_case_names_for_selection() else None,
         "age": 50,
@@ -884,7 +883,6 @@ def init_case_to_session(case_name):
 
 def switch_to_case_mode(reset_case_selection=False):
     st.session_state["app_mode"] = MODE_CASE
-    st.session_state["page_mode_radio"] = MODE_CASE
     st.session_state["confirmed_case"] = None
     clear_result()
 
@@ -894,7 +892,6 @@ def switch_to_case_mode(reset_case_selection=False):
 
 def switch_to_direct_mode():
     st.session_state["app_mode"] = MODE_DIRECT
-    st.session_state["page_mode_radio"] = MODE_DIRECT
     st.session_state["confirmed_case"] = None
     clear_result()
 # ==========================================
@@ -1386,22 +1383,22 @@ def render_navigation_controls():
 def render_mode_selector():
     render_mode_intro_box()
 
+    current_mode = st.session_state.get("app_mode", MODE_CASE)
+    mode_options = [MODE_CASE, MODE_DIRECT]
+    default_index = mode_options.index(current_mode) if current_mode in mode_options else 0
+
     selected_mode = st.radio(
         "학습 방식",
-        [MODE_CASE, MODE_DIRECT],
-        key="page_mode_radio",
+        mode_options,
+        index=default_index,
         help="사례를 먼저 학습한 뒤 직접 입력으로 넘어가는 교육 흐름을 권장합니다."
     )
 
-    if st.session_state.get("app_mode") != selected_mode:
+    if selected_mode != st.session_state.get("app_mode"):
         st.session_state["app_mode"] = selected_mode
-
-        if selected_mode == MODE_CASE:
-            st.session_state["confirmed_case"] = None
-            clear_result()
-        else:
-            st.session_state["confirmed_case"] = None
-            clear_result()
+        st.session_state["confirmed_case"] = None
+        clear_result()
+        st.rerun()
 
 def render_case_selector():
     case_options = get_case_names_for_selection()
@@ -1502,6 +1499,7 @@ def render_case_next_actions():
             st.session_state["confirmed_case"] = None
             clear_result()
             st.rerun()
+
     with c2:
         if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True, key="go_direct_input_btn"):
             switch_to_direct_mode()
