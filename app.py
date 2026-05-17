@@ -1108,7 +1108,15 @@ def render_basic_info(disabled=False, title="기본 정보 입력"):
     return age, sex, side
 
 def render_mode_and_case():
+    if "go_to_direct_input" not in st.session_state:
+        st.session_state["go_to_direct_input"] = False
 
+    if "input_mode" not in st.session_state:
+        st.session_state["input_mode"] = "사례 학습"
+
+    if st.session_state["go_to_direct_input"]:
+        st.session_state["input_mode"] = "검사 정보 직접 입력 후 자동 질환 추정 실행"
+        st.session_state["go_to_direct_input"] = False
 
     mode = st.radio(
         "학습 방식",
@@ -1120,7 +1128,6 @@ def render_mode_and_case():
 
     case_name = None
     confirmed_case = False
-
     if mode == "사례 학습":
         st.markdown("""
         <div style="
@@ -1159,23 +1166,49 @@ def render_mode_and_case():
         if st.session_state.get("selected_case") in case_options:
             default_index = case_options.index(st.session_state.get("selected_case"))
 
-        case_name = st.radio(
-            "대표 사례 선택",
-            case_options,
-            index=default_index,
-            key="selected_case"
-        )
-
-        c1, c2 = st.columns([1, 1])
-        with c1:
-            if st.button("확인", use_container_width=True, key="confirm_selected_case"):
-                st.session_state["confirmed_case"] = case_name
-                init_case_to_session(case_name)
-        with c2:
-            if st.button("다시 선택", use_container_width=True, key="reset_selected_case"):
-                st.session_state["confirmed_case"] = None
-
         confirmed_case = st.session_state.get("confirmed_case")
+
+        if confirmed_case is None:
+            case_name = st.radio(
+                "대표 사례 선택",
+                case_options,
+                index=default_index,
+                key="selected_case"
+            )
+
+            c1, c2 = st.columns([1, 1])
+            with c1:
+                if st.button("확인", use_container_width=True, key="confirm_selected_case"):
+                    st.session_state["confirmed_case"] = case_name
+                    init_case_to_session(case_name)
+                    st.rerun()
+
+            with c2:
+                if st.button("다시 선택", use_container_width=True, key="reset_selected_case"):
+                    st.session_state["confirmed_case"] = None
+                    st.session_state["selected_case"] = case_options[0]
+                    st.rerun()
+
+            confirmed_case = st.session_state.get("confirmed_case")
+
+        else:
+            case_name = confirmed_case
+
+            st.info(f"선택된 사례: {confirmed_case}")
+
+            c1, c2 = st.columns([1, 1])
+            with c1:
+                if st.button("다른 사례 다시 선택", use_container_width=True, key="reselect_case_after_confirm"):
+                    st.session_state["confirmed_case"] = None
+                    st.rerun()
+
+            with c2:
+                if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True, key="go_direct_input_after_case"):
+                    st.session_state["go_to_direct_input"] = True
+                    st.session_state["confirmed_case"] = None
+                    st.rerun()
+
+            confirmed_case = st.session_state.get("confirmed_case")
 
     else:
         st.session_state["confirmed_case"] = None
@@ -1412,6 +1445,9 @@ def render_numeric_item(section, item, disabled=False):
 
 def render_inputs(mode):
     rows = []
+
+    if mode != "검사 정보 직접 입력 후 자동 질환 추정 실행":
+        return rows
 
     detail_mode = st.radio(
         "입력 방식",
@@ -1709,9 +1745,8 @@ if mode == "사례 학습":
                 st.session_state["confirmed_case"] = None
                 st.rerun()
         with b2:
-            if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True, key="go_direct_input"):
-                st.session_state["input_mode"] = "검사 정보 직접 입력 후 자동 질환 추정 실행"
-                st.session_state["confirmed_case"] = None
+            if st.button("검사 정보 직접 입력 모드로 이동", use_container_width=True):
+                st.session_state["go_to_direct_input"] = True
                 st.rerun()
 
         st.markdown("""
