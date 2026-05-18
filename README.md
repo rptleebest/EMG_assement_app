@@ -44,18 +44,24 @@
 
 ---
 
-## 내장 증례 10개
+## 사례 16개
 
-1. 목 신경뿌리병증
-2. 허리 신경뿌리병증
-3. 팔신경얼기병증
-4. 허리엉치신경얼기병증
-5. 정중신경 포착신경병증
-6. 자신경 포착신경병증
-7. 종아리신경병증
-8. 축삭성 다발신경병증
-9. 말이집탈락성 다발신경병증
-10. 운동신경세포질환
+1. 뒷목 통증/어깨 및 팔 방사통 중심형: C5 신경뿌리병증 (Cervical Radiculopathy)
+2. 어깨 또는 팔 통증 및 근력저하/마비형: C6 신경뿌리병증 (Cervical Radiculopathy)
+3. 손목굴증후군: 손목굴 정중신경 포착 (Carpal Tunnel Syndrome)
+4. 노신경마비: 노신경 손상(Radial Nerve Palsy)으로 인한 손목처짐(wrist drop)
+5. 자신경병증: 팔꿈치 부위 자신경 포착 (Ulnar Neuropathy at Elbow)
+6. 위팔 신경얼기병증: 위팔 신경얼기 병변 (Brachial Plexopathy)
+7. 허리 S1 신경뿌리병증 (Lumbar Radiculopathy): 통증/방사통 중심형
+8. 허리 L5 신경뿌리병증 (Lumbar Radiculopathy): 운동침범형
+9. 종아리신경병증: 종아리뼈머리 부위 온종아리신경 포착 (Peroneal Neuropathy at Fibular Head)
+10. 깊은종아리신경병증: 발목 앞쪽 깊은종아리신경 손상 (Deep Peroneal Neuropathy)
+11. 허리엉치신경얼기병증: 허리엉치신경얼기 병변 (Lumbosacral Plexopathy)
+12. 축삭성 다발신경병증 (Axonal Polyneuropathy)
+13. 말이집탈락성 다발신경병증 (Demyelinating Polyneuropathy)
+14. 운동신경세포질환 (Motor Neuron Disease)
+15. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향 병변 의심
+16. 눈 깜빡 반사 (Blink Reflex): 뇌줄기 핵/중간연결 병변 의심
 
 ---
 
