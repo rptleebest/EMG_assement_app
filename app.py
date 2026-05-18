@@ -1788,11 +1788,11 @@ def render_case_next_actions():
             switch_to_direct_mode()
             st.rerun()
 
-def render_input_mode_box():
-    st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
-    st.markdown('<div class="mode-title mode-title-green">1. 입력 방식 선택</div>', unsafe_allow_html=True)
+def render_direct_input_basic_info_box():
+    st.markdown('<div class="mode-box-gray">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-gray">2. 기본 정보 입력</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요.</div>',
+        '<div class="mode-desc">나이, 성별, 병변쪽/증상측을 입력하세요.</div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1956,7 +1956,7 @@ elif st.session_state["app_mode"] == MODE_DIRECT:
             st.session_state["last_result"] = None
             st.rerun()
     else:
-        rows = render_input_sections()
+        render_input_sections()
 
         c1, c2 = st.columns(2)
         with c1:
