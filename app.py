@@ -354,7 +354,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "2. 어깨 또는 팔 통증 및 근력저하/마비형: C6 신경뿌리병증 (Cervical Radiculopathy)": {
+    "2. 뒷목 어깨/팔 통증 및 근력 저하/마비형: C6 신경뿌리병증 (Cervical Radiculopathy)": {
         "patient": {
             "age": 57,
             "sex": "남",
@@ -553,7 +553,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "7. 허리 S1 신경뿌리병증 (Lumbar Radiculopathy): 통증/방사통 중심형": {
+    "7. 허리 통증/엉치 및 다리 방사통 중심형: S1 신경뿌리병증 (Lumbar Radiculopathy)": {
         "patient": {
             "age": 52,
             "sex": "남",
@@ -589,7 +589,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "8. 허리 L5 신경뿌리병증 (Lumbar Radiculopathy): 운동침범형": {
+    "8. 허리 엉치/다리 통증 및 다리 근력 저하/마비형: L5 신경뿌리병증 (Lumbar Radiculopathy)": {
         "patient": {
             "age": 61,
             "sex": "여",
