@@ -205,6 +205,7 @@ SECTIONS = {
         "정중신경 감각신경활동전위 (Median SNAP)",
         "자신경 감각신경활동전위 (Ulnar SNAP)",
         "노신경 감각신경활동전위 (Radial SNAP)",
+        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)",
         "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)"
     ],
     "팔 운동신경전도검사 (Arm Motor NCS)": [
@@ -220,8 +221,12 @@ SECTIONS = {
         "새끼벌림근 (Abductor Digiti Minimi, ADM)",
         "집게폄근 (Extensor Indicis Proprius, EIP)",
         "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)",
+        "가시아래근 (Infraspinatus)",
         "삼각근 (Deltoid)",
         "위팔두갈래근 (Biceps Brachii)",
+        "위팔노근 (Brachioradialis)",
+        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)",
+        "원엎침근 (Pronator Teres)",
         "위팔세갈래근 (Triceps Brachii)",
         "목 척추주위근 (Cervical Paraspinal)"
     ],
@@ -240,6 +245,8 @@ SECTIONS = {
     "다리 침근전도검사 근육 (Leg Needle EMG Muscles)": [
         "앞정강근 (Tibialis Anterior, TA)",
         "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)",
+        "짧은발가락벌림근 (Abductor Digiti Minimi pedis)",
+        "긴엄지폄근 (Extensor Hallucis Longus, EHL)",
         "긴종아리근 (Peroneus Longus)",
         "장딴지근 (Gastrocnemius)",
         "가자미근 (Soleus)",
@@ -258,12 +265,11 @@ SECTIONS = {
     ]
 }
 
-# Part 2
-
 ANATOMY = {
     "정중신경 감각신경활동전위 (Median SNAP)": {"nerve": "정중신경 (Median nerve)", "level": "손목/아래팔, C6-T1", "domain": "sensory", "region": "arm"},
     "자신경 감각신경활동전위 (Ulnar SNAP)": {"nerve": "자신경 (Ulnar nerve)", "level": "손목/팔꿉, C8-T1", "domain": "sensory", "region": "arm"},
     "노신경 감각신경활동전위 (Radial SNAP)": {"nerve": "노신경 (Radial nerve)", "level": "아래팔, C5-C8", "domain": "sensory", "region": "arm"},
+    "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": {"nerve": "노신경 표재감각분지 (Superficial radial sensory branch)", "level": "아래팔/손등, C6-C8", "domain": "sensory", "region": "arm"},
     "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": {"nerve": "가쪽아래팔피부신경 (Lateral antebrachial cutaneous nerve)", "level": "팔신경얼기/근피신경, C5-C6", "domain": "sensory", "region": "arm"},
 
     "정중신경 복합근육활동전위 (Median CMAP)": {"nerve": "정중신경 (Median nerve)", "level": "손목/아래팔, C8-T1", "domain": "motor", "region": "arm"},
@@ -277,8 +283,12 @@ ANATOMY = {
     "새끼벌림근 (Abductor Digiti Minimi, ADM)": {"nerve": "자신경 (Ulnar nerve)", "level": "C8-T1", "domain": "muscle", "region": "arm"},
     "집게폄근 (Extensor Indicis Proprius, EIP)": {"nerve": "뒤뼈사이신경/노신경 (Posterior interosseous/Radial nerve)", "level": "C7-C8", "domain": "muscle", "region": "arm"},
     "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C8", "domain": "muscle", "region": "arm"},
+    "가시아래근 (Infraspinatus)": {"nerve": "어깨위신경 (Suprascapular nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
     "삼각근 (Deltoid)": {"nerve": "겨드랑신경 (Axillary nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
     "위팔두갈래근 (Biceps Brachii)": {"nerve": "근피신경 (Musculocutaneous nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
+    "위팔노근 (Brachioradialis)": {"nerve": "노신경 (Radial nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
+    "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C7", "domain": "muscle", "region": "arm"},
+    "원엎침근 (Pronator Teres)": {"nerve": "정중신경 (Median nerve)", "level": "C6-C7", "domain": "muscle", "region": "arm"},
     "위팔세갈래근 (Triceps Brachii)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C8", "domain": "muscle", "region": "arm"},
     "목 척추주위근 (Cervical Paraspinal)": {"nerve": "척수뒤가지 (Posterior primary ramus)", "level": "목 신경뿌리 수준 (Cervical root level)", "domain": "muscle", "region": "arm"},
 
@@ -294,6 +304,8 @@ ANATOMY = {
 
     "앞정강근 (Tibialis Anterior, TA)": {"nerve": "깊은종아리신경 (Deep peroneal nerve)", "level": "L4-L5", "domain": "muscle", "region": "leg"},
     "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": {"nerve": "깊은종아리신경 (Deep peroneal nerve)", "level": "L5-S1", "domain": "muscle", "region": "leg"},
+    "짧은발가락벌림근 (Abductor Digiti Minimi pedis)": {"nerve": "가쪽발바닥신경 (Lateral plantar nerve)", "level": "S1-S2", "domain": "muscle", "region": "leg"},
+    "긴엄지폄근 (Extensor Hallucis Longus, EHL)": {"nerve": "깊은종아리신경 (Deep peroneal nerve)", "level": "L5", "domain": "muscle", "region": "leg"},
     "긴종아리근 (Peroneus Longus)": {"nerve": "얕은종아리신경 (Superficial peroneal nerve)", "level": "L5-S1", "domain": "muscle", "region": "leg"},
     "장딴지근 (Gastrocnemius)": {"nerve": "정강신경 (Tibial nerve)", "level": "S1-S2", "domain": "muscle", "region": "leg"},
     "가자미근 (Soleus)": {"nerve": "정강신경 (Tibial nerve)", "level": "S1-S2", "domain": "muscle", "region": "leg"},
@@ -309,6 +321,9 @@ ANATOMY = {
     "좌측 자극 R1": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
     "좌측 자극 R2": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
 }
+
+# Part 2
+
 
 # ==========================================
 # 사례 라이브러리
@@ -552,7 +567,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형": {
+    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형: ": {
         "patient": {
             "age": 52,
             "sex": "남",
@@ -1667,6 +1682,7 @@ def render_case_learning_info(case_name):
     findings = case_data.get("findings", {})
     teaching = case_data.get("teaching", [])
     symptoms = patient.get("symptoms", [])
+    physical_exam = patient.get("physical_exam", {})
 
     st.success(f"선택한 사례를 불러왔습니다: {case_name}")
 
@@ -1678,6 +1694,20 @@ def render_case_learning_info(case_name):
         for s in symptoms:
             st.write(f"- {s}")
         st.markdown("</div>", unsafe_allow_html=True)
+
+     if physical_exam:
+        st.markdown('<div class="section-card">', unsafe_allow_html=True)
+        st.markdown("### 이학적 검사 요약")
+
+        for exam_title, exam_items in physical_exam.items():
+            st.markdown(f"**{exam_title}**")
+            if isinstance(exam_items, list):
+                for exam_item in exam_items:
+                    st.write(f"- {exam_item}")
+            else:
+                st.write(f"- {exam_items}")
+
+        st.markdown("</div>", unsafe_allow_html=True)  
 
     ncs_items, needle_items, other_items = [], [], []
     for item, vals in findings.items():
@@ -1700,6 +1730,7 @@ def render_case_learning_info(case_name):
             for item, vals in grouped_items:
                 left_val = vals[0] if len(vals) > 0 else ""
                 right_val = vals[1] if len(vals) > 1 else ""
+
                 if str(right_val).strip() == "":
                     st.write(f"- **{item}**: {left_val}")
                 else:
@@ -1722,42 +1753,6 @@ def render_case_learning_info(case_name):
         st.write("아래 항목은 현재 직접 입력 섹션의 표준 목록에는 포함되어 있지 않아 사례 설명에만 표시됩니다.")
         for item in unmapped_items:
             st.write(f"- {item}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    ncs_items, needle_items, other_items = [], [], []
-    for item, vals in findings.items():
-        domain = ANATOMY.get(item, {}).get("domain", "")
-        if domain in ["sensory", "motor", "reflex"]:
-            ncs_items.append((item, vals))
-        elif domain == "muscle":
-            needle_items.append((item, vals))
-        else:
-            other_items.append((item, vals))
-
-    for title, grouped_items in [
-        ("신경전도검사 예시", ncs_items),
-        ("침근전도검사 예시", needle_items),
-        ("기타 예시", other_items),
-    ]:
-        if grouped_items:
-            st.markdown('<div class="section-card">', unsafe_allow_html=True)
-            st.markdown(f"### {title}")
-            for item, vals in grouped_items:
-                left_val = vals[0] if len(vals) > 0 else ""
-                right_val = vals[1] if len(vals) > 1 else ""
-                if str(right_val).strip() == "":
-                    st.write(f"- **{item}**: {left_val}")
-                else:
-                    st.write(f"- **{item}**")
-                    st.write(f"  - 정상쪽/비병변측: {left_val}")
-                    st.write(f"  - 병변쪽/증상측: {right_val}")
-            st.markdown("</div>", unsafe_allow_html=True)
-
-    if teaching:
-        st.markdown('<div class="case-teaching-box">', unsafe_allow_html=True)
-        st.markdown("### 학습 포인트")
-        for t in teaching:
-            st.write(f"- {t}")
         st.markdown("</div>", unsafe_allow_html=True)
 
 def render_case_next_actions():
