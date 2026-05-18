@@ -1795,7 +1795,7 @@ def render_input_mode_box():
         '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요.</div>',
         unsafe_allow_html=True
     )
-    st.markdown("</div>", unsafe_allow_html=True))
+    st.markdown("</div>", unsafe_allow_html=True)
 
 def render_input_sections():
     rows = []
@@ -1838,7 +1838,10 @@ def render_input_sections():
 
     for tab, sections in zip(tabs, section_groups):
         with tab:
-            st.markdown('<div class="section-hint">이 탭에서 필요한 검사 항목만 선택하여 입력하세요.</div>', unsafe_allow_html=True)
+            st.markdown(
+                '<div class="section-hint">이 탭에서 필요한 검사 항목만 선택하여 입력하세요.</div>',
+                unsafe_allow_html=True
+            )
             for sec in sections:
                 with st.expander(sec, expanded=False):
                     for item in SECTIONS[sec]:
@@ -1850,6 +1853,7 @@ def render_input_sections():
                             rows.append(row)
 
     return rows
+
 def render_result(result):
     st.markdown("---")
 
