@@ -557,8 +557,8 @@ CASE_LIBRARY = {
             "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "겨드랑신경 복합근육활동전위 (Axillary CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "근피신경 복합근육활동전위 (Musculocutaneous CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "삼각근 (Deltoid)": ("비정상 자발전위 출현 ("정상 (Normal)", "Abnormal Spontaneous Activity)"),
-            "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 ("정상 (Normal)", "Abnormal Spontaneous Activity)")
+            "삼각근 (Deltoid)": ("정상 (Normal)", ""비정상 자발전위 출현(Abnormal Spontaneous Activity)"),
+            "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", ""비정상 자발전위 출현(Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "여러 말초신경 분포가 함께 침범되면 신경얼기병증을 생각합니다.",
