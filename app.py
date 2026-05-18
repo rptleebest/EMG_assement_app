@@ -1096,7 +1096,7 @@ def switch_to_direct_mode():
     st.session_state["confirmed_case"] = None
     clear_result()
 
-# Part 5
+# Part 3
 
 # ==========================================
 # 규칙 엔진
@@ -1494,7 +1494,7 @@ def render_numeric_item(section, item, disabled=False):
     st.markdown('</div>', unsafe_allow_html=True)
     return row
 
-# Part 6
+# Part 4
 
 # ==========================================
 # UI 렌더링 함수
@@ -1669,7 +1669,7 @@ def render_case_learning_info(case_name):
 
     render_basic_info(disabled=True, title="사례 기본 정보")
 
-       if symptoms:
+    if symptoms:
         st.markdown('<div class="case-symptom-box">', unsafe_allow_html=True)
         st.markdown("### 사례 증상 요약")
         for s in symptoms:
