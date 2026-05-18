@@ -1695,7 +1695,7 @@ def render_case_learning_info(case_name):
             st.write(f"- {s}")
         st.markdown("</div>", unsafe_allow_html=True)
 
-     if physical_exam:
+    if physical_exam:
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
         st.markdown("### 이학적 검사 요약")
 
@@ -1707,9 +1707,12 @@ def render_case_learning_info(case_name):
             else:
                 st.write(f"- {exam_items}")
 
-        st.markdown("</div>", unsafe_allow_html=True)  
+        st.markdown("</div>", unsafe_allow_html=True)
 
-    ncs_items, needle_items, other_items = [], [], []
+    ncs_items = []
+    needle_items = []
+    other_items = []
+
     for item, vals in findings.items():
         domain = ANATOMY.get(item, {}).get("domain", "")
         if domain in ["sensory", "motor", "reflex"]:
@@ -1727,6 +1730,7 @@ def render_case_learning_info(case_name):
         if grouped_items:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown(f"### {title}")
+
             for item, vals in grouped_items:
                 left_val = vals[0] if len(vals) > 0 else ""
                 right_val = vals[1] if len(vals) > 1 else ""
@@ -1737,6 +1741,7 @@ def render_case_learning_info(case_name):
                     st.write(f"- **{item}**")
                     st.write(f"  - 정상쪽/비병변측: {left_val}")
                     st.write(f"  - 병변쪽/증상측: {right_val}")
+
             st.markdown("</div>", unsafe_allow_html=True)
 
     if teaching:
