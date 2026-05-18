@@ -552,7 +552,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형: ": {
+    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형": {
         "patient": {
             "age": 52,
             "sex": "남",
