@@ -1052,25 +1052,16 @@ def init_app_state():
         "side": "미선택",
         "detail_input_mode": INPUT_MODES[0],
         "last_result": None,
+        "direct_input_started": False,
+        "input_reset_version": 0,
     }
     for k, v in defaults.items():
         if k not in st.session_state:
             st.session_state[k] = v
 
 def reset_all_inputs():
-    for section, items in SECTIONS.items():
-        for item in items:
-            st.session_state[f"check_{section}_{item}"] = False
-            st.session_state[f"left_{section}_{item}"] = "정상 (Normal)"
-            st.session_state[f"right_{section}_{item}"] = "정상 (Normal)"
-            st.session_state[f"num_check_{section}_{item}"] = False
-            st.session_state[f"na_{section}_{item}"] = 10.0
-            st.session_state[f"nl_{section}_{item}"] = 3.0
-            st.session_state[f"la_{section}_{item}"] = 10.0
-            st.session_state[f"ll_{section}_{item}"] = 3.0
-            st.session_state[f"mns_{section}_{item}"] = False
-            st.session_state[f"mls_{section}_{item}"] = False
-            st.session_state[f"nr_{section}_{item}"] = "정상 (Normal)"
+    st.session_state["input_reset_version"] = st.session_state.get("input_reset_version", 0) + 1
+    st.session_state["last_result"] = None
 
 def clear_result():
     st.session_state["last_result"] = None
@@ -1104,6 +1095,7 @@ def init_case_to_session(case_name):
 def switch_to_case_mode(reset_case_selection=False):
     st.session_state["app_mode"] = MODE_CASE
     st.session_state["confirmed_case"] = None
+    st.session_state["direct_input_started"] = False
     clear_result()
 
     if reset_case_selection:
@@ -1113,6 +1105,7 @@ def switch_to_case_mode(reset_case_selection=False):
 def switch_to_direct_mode():
     st.session_state["app_mode"] = MODE_DIRECT
     st.session_state["confirmed_case"] = None
+    st.session_state["direct_input_started"] = False
     clear_result()
 
 # Part 3
@@ -1396,6 +1389,11 @@ def analyze_case(age, sex, side, selected_rows):
 # ==========================================
 def render_check_item(section, item, disabled=False):
     a = ANATOMY[item]
+    rv = st.session_state.get("input_reset_version", 0)
+
+    check_key = f"check_{rv}_{section}_{item}"
+    left_key = f"left_{rv}_{section}_{item}"
+    right_key = f"right_{rv}_{section}_{item}"
 
     st.markdown('<div class="input-row">', unsafe_allow_html=True)
     st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
@@ -1404,17 +1402,17 @@ def render_check_item(section, item, disabled=False):
         unsafe_allow_html=True
     )
 
-    use_item = st.checkbox("이 항목 입력하기", key=f"check_{section}_{item}", disabled=disabled)
+    use_item = st.checkbox("이 항목 입력하기", key=check_key, disabled=disabled)
     row = None
 
     if use_item:
         if a["domain"] == "reflex":
-            left = st.selectbox("결과", CHECK_OPTIONS, key=f"left_{section}_{item}", disabled=disabled)
+            left = st.selectbox("결과", CHECK_OPTIONS, key=left_key, disabled=disabled)
             right = ""
         else:
             c1, c2 = st.columns(2)
-            left = c1.selectbox("정상쪽 결과", CHECK_OPTIONS, key=f"left_{section}_{item}", disabled=disabled)
-            right = c2.selectbox("병변쪽 결과", CHECK_OPTIONS, key=f"right_{section}_{item}", disabled=disabled)
+            left = c1.selectbox("정상쪽 결과", CHECK_OPTIONS, key=left_key, disabled=disabled)
+            right = c2.selectbox("병변쪽 결과", CHECK_OPTIONS, key=right_key, disabled=disabled)
 
         row = {
             "section": section,
@@ -1428,6 +1426,16 @@ def render_check_item(section, item, disabled=False):
 
 def render_numeric_item(section, item, disabled=False):
     a = ANATOMY[item]
+    rv = st.session_state.get("input_reset_version", 0)
+
+    use_key = f"num_check_{rv}_{section}_{item}"
+    na_key = f"na_{rv}_{section}_{item}"
+    nl_key = f"nl_{rv}_{section}_{item}"
+    la_key = f"la_{rv}_{section}_{item}"
+    ll_key = f"ll_{rv}_{section}_{item}"
+    mns_key = f"mns_{rv}_{section}_{item}"
+    mls_key = f"mls_{rv}_{section}_{item}"
+    nr_key = f"nr_{rv}_{section}_{item}"
 
     st.markdown('<div class="input-row">', unsafe_allow_html=True)
     st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
@@ -1436,7 +1444,7 @@ def render_numeric_item(section, item, disabled=False):
         unsafe_allow_html=True
     )
 
-    use_item = st.checkbox("이 항목 입력하기", key=f"num_check_{section}_{item}", disabled=disabled)
+    use_item = st.checkbox("이 항목 입력하기", key=use_key, disabled=disabled)
     row = None
 
     if use_item:
@@ -1449,13 +1457,13 @@ def render_numeric_item(section, item, disabled=False):
             c1, c2 = st.columns(2)
             with c1:
                 st.markdown("**정상쪽 수치**")
-                normal_amp = st.number_input("정상쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=f"na_{section}_{item}", disabled=disabled)
-                normal_latency = st.number_input("정상쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=f"nl_{section}_{item}", disabled=disabled)
+                normal_amp = st.number_input("정상쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=na_key, disabled=disabled)
+                normal_latency = st.number_input("정상쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=nl_key, disabled=disabled)
 
             with c2:
                 st.markdown("**병변쪽 수치**")
-                lesion_amp = st.number_input("병변쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=f"la_{section}_{item}", disabled=disabled)
-                lesion_latency = st.number_input("병변쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=f"ll_{section}_{item}", disabled=disabled)
+                lesion_amp = st.number_input("병변쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=la_key, disabled=disabled)
+                lesion_latency = st.number_input("병변쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=ll_key, disabled=disabled)
 
             normal_status = "정상 (Normal)"
             lesion_status = infer_numeric_status(
@@ -1484,9 +1492,9 @@ def render_numeric_item(section, item, disabled=False):
 
             c1, c2 = st.columns(2)
             with c1:
-                normal_spont = st.checkbox("정상쪽 비정상 자발전위 있음", key=f"mns_{section}_{item}", disabled=disabled)
+                normal_spont = st.checkbox("정상쪽 비정상 자발전위 있음", key=mns_key, disabled=disabled)
             with c2:
-                lesion_spont = st.checkbox("병변쪽 비정상 자발전위 있음", key=f"mls_{section}_{item}", disabled=disabled)
+                lesion_spont = st.checkbox("병변쪽 비정상 자발전위 있음", key=mls_key, disabled=disabled)
 
             left_status = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if normal_spont else "정상 (Normal)"
             right_status = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if lesion_spont else "정상 (Normal)"
@@ -1501,7 +1509,7 @@ def render_numeric_item(section, item, disabled=False):
             }
 
         elif a["domain"] == "reflex":
-            reflex_status = st.selectbox("결과", CHECK_OPTIONS, key=f"nr_{section}_{item}", disabled=disabled)
+            reflex_status = st.selectbox("결과", CHECK_OPTIONS, key=nr_key, disabled=disabled)
             st.info(f"자동 해석 결과 → {reflex_status}")
             row = {
                 "section": section,
@@ -1512,7 +1520,6 @@ def render_numeric_item(section, item, disabled=False):
 
     st.markdown('</div>', unsafe_allow_html=True)
     return row
-
 # Part 4
 
 # ==========================================
@@ -1532,7 +1539,7 @@ def render_guide():
     st.write("2. 사례 학습에서는 대표적 사례 예시를 선택하고, 증상·검사·학습 포인트를 확인합니다.")
     st.write("3. 직접 입력 학습에서는 필요한 검사 항목만 선택적으로 입력합니다.")
     st.write("4. 체크형 입력 또는 수치형 입력을 선택할 수 있습니다.")
-    st.write("5. 분석 실행을 누르면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
+    st.write("5. 수치형 입력에서 검사 정보입력을 눌러 정보를 입력하면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 def render_mode_intro_box():
@@ -1929,32 +1936,37 @@ if st.session_state["app_mode"] == MODE_CASE:
 elif st.session_state["app_mode"] == MODE_DIRECT:
     st.session_state["confirmed_case"] = None
 
-    rows = render_input_sections()
-
     render_direct_input_basic_info_box()
     age, sex, side = render_basic_info(disabled=False, title="기본 정보 입력")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        analyze_btn = st.button("분석 실행", type="primary", use_container_width=True, key="analyze_btn")
-    with c2:
-        clear_btn = st.button("입력 초기화", use_container_width=True, key="clear_inputs_btn")
+    if not st.session_state.get("direct_input_started", False):
+        if st.button("검사정보 입력", type="primary", use_container_width=True, key="start_direct_input_btn"):
+            st.session_state["direct_input_started"] = True
+            st.session_state["last_result"] = None
+            st.rerun()
+    else:
+        rows = render_input_sections()
 
-    if clear_btn:
-        reset_all_inputs()
-        clear_result()
-        st.rerun()
+        c1, c2 = st.columns(2)
+        with c1:
+            analyze_btn = st.button("분석 실행", type="primary", use_container_width=True, key="analyze_btn")
+        with c2:
+            clear_btn = st.button("입력 초기화", use_container_width=True, key="clear_inputs_btn")
 
-    if analyze_btn:
-        if not rows:
-            st.warning("최소 1개 이상의 항목을 선택하거나 수치를 입력하세요.")
-        else:
-            result = analyze_case(age, sex, side, rows)
-            st.session_state["last_result"] = result
+        if clear_btn:
+            reset_all_inputs()
+            st.rerun()
 
-    if st.session_state.get("last_result"):
-        render_result(st.session_state["last_result"])
-        render_download_section(st.session_state["last_result"])
+        if analyze_btn:
+            if not rows:
+                st.warning("최소 1개 이상의 항목을 선택하거나 수치를 입력하세요.")
+            else:
+                result = analyze_case(age, sex, side, rows)
+                st.session_state["last_result"] = result
+
+        if st.session_state.get("last_result"):
+            render_result(st.session_state["last_result"])
+            render_download_section(st.session_state["last_result"])
 
 else:
     st.error("알 수 없는 모드입니다. 처음으로 버튼을 눌러 다시 시작하세요.")
