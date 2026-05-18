@@ -855,7 +855,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "16. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향 병변 의심": {
+    "15. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향 병변 의심": {
         "patient": {
             "age": 56,
             "sex": "남",
@@ -889,7 +889,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "17. 눈 깜빡 반사 (Blink Reflex): 뇌줄기 핵/중간연결 병변 의심": {
+    "16. 눈 깜빡 반사 (Blink Reflex): 뇌줄기 핵/중간연결 병변 의심": {
         "patient": {
             "age": 62,
             "sex": "여",
@@ -981,7 +981,7 @@ def safe_index(options, value, default=0):
 
 def make_report_text(result):
     lines = []
-    lines.append("교육용 근전도/신경전도 판독 보조 결과")
+    lines.append("교육용 근전도 판독 보조 결과")
     lines.append("=" * 50)
     lines.append(f"생성 시각: {result.get('created_at', '')}")
     lines.append(f"최종 유력 진단: {result.get('final_dx', '')}")
@@ -1500,7 +1500,7 @@ def render_numeric_item(section, item, disabled=False):
 # UI 렌더링 함수
 # ==========================================
 def render_header():
-    st.markdown('<div class="main-title">교육용 근전도/신경전도 판독 보조 웹앱</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-title">교육용 근전도 판독 보조 앱</div>', unsafe_allow_html=True)
     st.markdown(
         '<div class="subtle">학생 교육용 규칙 기반 도구입니다. 실제 임상 진단을 대체하지 않습니다.</div>',
         unsafe_allow_html=True
@@ -1514,14 +1514,13 @@ def render_guide():
     st.write("3. 직접 입력 학습에서는 필요한 검사 항목만 선택적으로 입력합니다.")
     st.write("4. 체크형 입력 또는 수치형 입력을 선택할 수 있습니다.")
     st.write("5. 분석 실행을 누르면 최종 진단, 손상 신경, 신경학적 레벨, 감별진단, 추가 검사 권고가 출력됩니다.")
-    st.write("6. 한 모드를 선택하면 다른 모드의 상세 화면은 보이지 않도록 구성되어 시각적 혼란을 줄입니다.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 def render_mode_intro_box():
     st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-blue">학습 모드 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">사례 학습 또는 검사 정보 직접 입력 중 한 가지를 선택하세요. 선택하지 않은 다른 모드의 화면은 숨겨집니다.</div>',
+        '<div class="mode-desc">사례 학습 또는 검사 정보 직접 입력 중 한 가지를 선택하세요. </div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1625,7 +1624,7 @@ def render_case_selector():
     st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-green">1. 사례 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">대표 사례를 하나 선택하고 확인 버튼을 누르세요. 사례가 확정되면 다른 입력 화면은 보이지 않습니다.</div>',
+        '<div class="mode-desc">대표 사례를 하나 선택하고 확인 버튼을 누르세요. </div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1761,7 +1760,7 @@ def render_case_next_actions():
     st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-blue">다음 단계 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">사례 학습을 마쳤다면 다른 사례를 다시 선택하거나 직접 입력 모드로 이동할 수 있습니다. 사례 학습 중에는 직접 입력 화면이 아래에 나타나지 않습니다.</div>',
+        '<div class="mode-desc">사례 학습을 마쳤다면 다른 사례를 다시 선택하거나 직접 입력 모드로 이동할 수 있습니다. </div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1915,7 +1914,7 @@ if st.session_state["app_mode"] == MODE_CASE:
     if confirmed_case:
         render_case_learning_info(confirmed_case)
         render_case_next_actions()
-        st.info("현재는 사례 학습 화면입니다. 직접 입력 섹션은 숨겨져 있습니다.")
+        st.info("현재는 사례 학습 화면입니다. ")
     else:
         render_case_selector()
         st.info("대표 사례를 선택한 뒤 확인 버튼을 누르면 사례 학습 내용이 표시됩니다.")
