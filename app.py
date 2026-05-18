@@ -399,7 +399,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "3. 손목굴증후군(Carpal Tunnel Syndrome): 정중신경 포착병증(median nerve entrapment neuropathy) ": {
+    "3. 손목굴증후군(Carpal Tunnel Syndrome): 정중신경 포착병증(Median Nerve Entrapment Neuropathy) ": {
         "patient": {
             "age": 46,
             "sex": "여",
