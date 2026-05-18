@@ -395,11 +395,11 @@ CASE_LIBRARY = {
         }
     },
     "findings": {
-        "목 척추주위근 (Cervical Paraspinal)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-        "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-        "위팔노근 (Brachioradialis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-        "원엎침근 (Pronator Teres)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "목 척추주위근 (Cervical Paraspinal)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "위팔노근 (Brachioradialis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "원엎침근 (Pronator Teres)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
         "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "정상 (Normal)"),
         "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)"),
         "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": ("정상 (Normal)", "정상 (Normal)")
@@ -440,9 +440,9 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "정중신경 감각신경활동전위 (Median SNAP)": ("잠복기 지연 (Delayed Latency)", "정상 (Normal)"),
-            "정중신경 복합근육활동전위 (Median CMAP)": ("잠복기 지연 (Delayed Latency)", "정상 (Normal)"),
-            "짧은엄지벌림근 (Abductor Pollicis Brevis, APB)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
+            "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "잠복기 지연 (Delayed Latency)"),
+            "정중신경 복합근육활동전위 (Median CMAP)": ("정상 (Normal)", "잠복기 지연 (Delayed Latency)"),
+            "짧은엄지벌림근 (Abductor Pollicis Brevis, APB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "엄지, 검지, 중지 저림과 야간 악화는 손목굴증후군의 전형적인 증상입니다.",
@@ -476,9 +476,9 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "노신경 감각신경활동전위 (Radial SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "노신경 복합근육활동전위 (Radial CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
+            "노신경 감각신경활동전위 (Radial SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "노신경 복합근육활동전위 (Radial CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "외상 후 손목처짐은 노신경마비를 먼저 생각해야 합니다.",
@@ -516,14 +516,14 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "자신경 감각신경활동전위 (Ulnar SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "자신경 복합근육활동전위 (Ulnar CMAP)": ("잠복기 지연 (Delayed Latency)", "정상 (Normal)"),
-            "첫째등쪽뼈사이근 (First Dorsal Interosseous, FDI)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "새끼벌림근 (Abductor Digiti Minimi, ADM)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
+            "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "자신경 복합근육활동전위 (Ulnar CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "첫째등쪽뼈사이근 (First Dorsal Interosseous, FDI)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "새끼벌림근 (Abductor Digiti Minimi, ADM)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "넷째, 다섯째 손가락 저림과 팔꿈치 굽힘 시 악화는 자신경 포착의 전형적인 증상입니다.",
-            "하나의 말초신경 분포에 국한된 감각저하와 손 intrinsic 근육 약화가 핵심입니다.",
+            "하나의 말초신경 분포에 국한된 감각저하와 손 자체기원근육(intrinsic) 약화가 핵심입니다.",
             "자신경 감각신경활동전위(Ulnar SNAP) 이상은 신경뿌리병증보다 말초 자신경병증에 더 잘 맞습니다."
         ]
     },
@@ -554,11 +554,11 @@ CASE_LIBRARY = {
         },
         "findings": {
             "목 척추주위근 (Cervical Paraspinal)": ("정상 (Normal)", "정상 (Normal)"),
-            "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "겨드랑신경 복합근육활동전위 (Axillary CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "근피신경 복합근육활동전위 (Musculocutaneous CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "삼각근 (Deltoid)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
+            "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "겨드랑신경 복합근육활동전위 (Axillary CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "근피신경 복합근육활동전위 (Musculocutaneous CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "삼각근 (Deltoid)": ("비정상 자발전위 출현 ("정상 (Normal)", "Abnormal Spontaneous Activity)"),
+            "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 ("정상 (Normal)", "Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "여러 말초신경 분포가 함께 침범되면 신경얼기병증을 생각합니다.",
@@ -629,10 +629,10 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "허리 척추주위근 (Lumbar Paraspinal)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "긴엄지폄근 (Extensor Hallucis Longus, EHL)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "중간볼기근 (Gluteus Medius)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+            "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "긴엄지폄근 (Extensor Hallucis Longus, EHL)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "중간볼기근 (Gluteus Medius)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
             "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)"),
             "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
@@ -670,10 +670,10 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("무반응 (No Response)", "정상 (Normal)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "무반응 (No Response)"),
+            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)":  ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
@@ -709,10 +709,10 @@ CASE_LIBRARY = {
             }
         },
         "findings": {
-            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
@@ -747,11 +747,11 @@ CASE_LIBRARY = {
         },
         "findings": {
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)"),
-            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "정강신경 복합근육활동전위 (Tibial CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "장딴지근 (Gastrocnemius)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)")
+            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "장딴지근 (Gastrocnemius)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
             "여러 말초신경 분포와 감각신경 이상이 함께 나타나면 허리엉치신경얼기병증을 고려합니다.",
