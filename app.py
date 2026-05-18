@@ -316,7 +316,7 @@ ANATOMY = {
 CASE_LIBRARY = {
     "사례 선택 안 함": {},
 
-    "1. 뒷목 통증/어깨 및 팔 방사통 중심형: C5 신경뿌리병증 (Cervical Radiculopathy)": {
+    "1. C5 신경뿌리병증 (Cervical Radiculopathy): 뒷목-어깨-위팔 방사통 중심형": {
         "patient": {
             "age": 49,
             "sex": "여",
@@ -348,56 +348,55 @@ CASE_LIBRARY = {
         },
         "teaching": [
             "C5 신경뿌리병증에서는 목에서 어깨 바깥쪽과 위팔 가쪽으로 퍼지는 통증이 흔합니다.",
-            "초기 또는 경미한 신경뿌리병증에서는 침근전도와 신경전도검사가 모두 정상일 수 있습니다.",
-            "감각신경전도는 대개 정상으로 남아 말초신경병증이나 신경얼기병증과 구분하는 데 도움이 됩니다.",
+            "초기 또는 경미한 신경뿌리병증(radiculopathy)에서는 침근전도와 신경전도검사가 모두 정상일 수 있습니다.",
+            "감각신경전도는 대개 정상으로 남아 말초신경병증(peripheral neuropathy)이나 신경얼기병증(plexopathy)과 구분하는 데 도움이 됩니다.",
             "이 경우에는 증상 분포, 자세에 따른 통증 변화, MRI 같은 영상검사가 중요합니다."
         ]
     },
 
-    "2. 뒷목 어깨/팔 통증 및 근력 저하/마비형: C6 신경뿌리병증 (Cervical Radiculopathy)": {
-        "patient": {
-            "age": 57,
-            "sex": "남",
-            "side": "우",
-            "symptoms": [
-                "뒷목에서 오른쪽 어깨와 팔 바깥쪽, 전완의 노쪽(radial side), 엄지 쪽으로 뻗치는 통증과 저림이 있음",
-                "오른팔을 들어 올리거나 팔꿈치를 굽히는 힘이 빠짐",
-                "오른쪽 손목을 뒤로 젖히는 힘이 약해 물건을 들거나 컵을 잡을 때 불편함",
-                "팔 전체가 무겁게 느껴지고 물건 들기가 불편함"
+"2. C6 신경뿌리병증 (Cervical Radiculopathy): 뒷목-어깨-팔 통증 및 근력저하형": {
+    "patient": {
+        "age": 57,
+        "sex": "남",
+        "side": "우",
+        "symptoms": [
+            "뒷목에서 오른쪽 어깨와 팔 바깥쪽, 아래팔의 노쪽(radial side), 엄지 쪽으로 뻗치는 통증과 저림이 있음",
+            "오른쪽 팔꿈치를 굽히거나 손목을 뒤로 젖히는 힘이 약해짐",
+            "팔 전체가 무겁게 느껴지고 물건 들기가 불편함"
+        ],
+        "physical_exam": {
+            "근력검사": [
+                "팔꿈치 굽힘(위팔두갈래근) 약화",
+                "손목 폄(긴노쪽손목폄근/짧은노쪽손목폄근) 약화",
+                "어깨 벌림은 경미 약화되거나 비교적 보존될 수 있음"
             ],
-            "physical_exam": {
-                "근력검사": [
-                    "팔꿈치 굽힘(위팔두갈래근) 약화",
-                    "손목 폄(긴노쪽손목폄근/짧은노쪽손목폄근) 약화",
-                    "어깨 벌림은 경미 약화되거나 비교적 보존될 수 있음"
-                ],
-                "감각검사": [
-                    "전완 노쪽과 엄지 쪽 감각저하 또는 저림"
-                ],
-                "반사검사": [
-                    "위팔두갈래근 반사(biceps reflex) 감소 가능",
-                    "위팔노근 반사(brachioradialis reflex) 감소"
-                ]
-            }
-        },
-        "findings": {
-            "목 척추주위근 (Cervical Paraspinal)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "삼각근 (Deltoid)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "위팔노근 (Brachioradialis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "원엎침근 (Pronator Teres)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "정상 (Normal)"),
-            "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)"),
-            "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": ("정상 (Normal)", "정상 (Normal)")
-        },
-        "teaching": [
-            "C6 신경뿌리병증에서는 어깨 바깥쪽, 전완 노쪽, 엄지 쪽으로 이어지는 통증과 저림이 나타날 수 있습니다.",
-            "팔꿈치 굽힘과 손목 폄 약화가 함께 있으면 C6 분절 침범을 더 의심할 수 있습니다.",
-            "척추 주변근육과 C6 관련 근육에서 침근전도 이상이 함께 보이면 신경뿌리병증을 강하게 시사합니다.",
-            "감각신경전도는 보존되는 경우가 많아 말초신경병증이나 신경얼기병증과 구분하는 데 도움이 됩니다."
-        ]
+            "감각검사": [
+                "아래팔 노쪽과 엄지 쪽 감각저하 또는 저림"
+            ],
+            "반사검사": [
+                "위팔두갈래근 반사(biceps reflex) 감소 가능",
+                "위팔노근 반사(brachioradialis reflex) 감소"
+            ]
+        }
     },
+    "findings": {
+        "목 척추주위근 (Cervical Paraspinal)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "위팔두갈래근 (Biceps Brachii)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "위팔노근 (Brachioradialis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "원엎침근 (Pronator Teres)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
+        "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+        "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": ("정상 (Normal)", "정상 (Normal)")
+    },
+    "teaching": [
+        "C6 신경뿌리병증(radiculopathy)에서는 어깨 바깥쪽, 아래팔 노쪽, 엄지 쪽으로 이어지는 통증과 저림이 나타날 수 있습니다.",
+        "팔꿈치 굽힘과 손목 폄 약화가 함께 있으면 C6 분절 침범을 더 의심할 수 있습니다.",
+        "척추 주변근육과 C6 관련 근육에서 침근전도 이상이 함께 보이면 신경뿌리병증을 강하게 시사합니다.",
+        "감각신경전도는 보존되는 경우가 많아 말초신경병증(peripheral neuropathy)이나 신경얼기병증(plexopathy)과 구분하는 데 도움이 됩니다.",
+        "노신경병증과 달리 척추주위근 이상이 동반되고 감각신경전도가 보존되면 신경뿌리병증 해석에 도움이 됩니다."
+    ]
+},
 
     "3. 손목굴증후군(Carpal Tunnel Syndrome): 정중신경 포착병증(Median Nerve Entrapment Neuropathy) ": {
         "patient": {
@@ -433,7 +432,7 @@ CASE_LIBRARY = {
         "teaching": [
             "엄지, 검지, 중지 저림과 야간 악화는 손목굴증후군의 전형적인 증상입니다.",
             "정중신경 감각 및 운동 잠복기 지연은 손목굴 부위 포착을 시사합니다.",
-            "엄지벌림 약화나 APB 침근전도 이상이 있으면 더 진행된 병변을 생각할 수 있습니다.",
+            "엄지벌림 약화나 짧은엄지벌림근(APB) 침근전도 이상이 있으면 더 진행된 병변을 생각할 수 있습니다.",
             "목에서 내려오는 통증이 주된 경우에는 신경뿌리병증과 감별해야 합니다."
         ]
     },
@@ -493,11 +492,11 @@ CASE_LIBRARY = {
                     "넷째와 다섯째 손가락, 손의 자쪽 감각저하"
                 ],
                 "반사검사": [
-                    "심부건반사는 대개 정상"
+                    "깊은힘줄반사(DTR)는 대개 정상"
                 ],
                 "유발검사": [
                     "팔꿈치 굴곡 유지 시 증상 악화 가능",
-                    "팔꿈치 안쪽 Tinel 징후 양성 가능"
+                    "팔꿈치 안쪽 티넬(Tinel) 징후 양성 가능"
                 ]
             }
         },
@@ -510,7 +509,7 @@ CASE_LIBRARY = {
         "teaching": [
             "넷째, 다섯째 손가락 저림과 팔꿈치 굽힘 시 악화는 자신경 포착의 전형적인 증상입니다.",
             "하나의 말초신경 분포에 국한된 감각저하와 손 intrinsic 근육 약화가 핵심입니다.",
-            "Ulnar SNAP 이상은 신경뿌리병증보다 말초 자신경병증에 더 잘 맞습니다."
+            "자신경 감각신경활동전위(Ulnar SNAP) 이상은 신경뿌리병증보다 말초 자신경병증에 더 잘 맞습니다."
         ]
     },
 
@@ -553,7 +552,7 @@ CASE_LIBRARY = {
         ]
     },
 
-    "7. 허리 통증/엉치 및 다리 방사통 중심형: S1 신경뿌리병증 (Lumbar Radiculopathy)": {
+    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형: ": {
         "patient": {
             "age": 52,
             "sex": "남",
@@ -584,12 +583,12 @@ CASE_LIBRARY = {
         "teaching": [
             "S1 신경뿌리병증에서는 엉치, 종아리 뒤쪽, 발 바깥쪽으로 이어지는 방사통이 흔합니다.",
             "초기 또는 경미한 경우에는 침근전도와 신경전도검사가 정상일 수 있습니다.",
-            "Sural SNAP가 정상인 점은 말초 감각신경병증보다 신경뿌리병증 쪽에 더 맞습니다.",
+            "장딴지신경 감각신경활동전위(Sural SNAP)이 정상인 점은 말초 감각신경병증보다 신경뿌리병증 쪽에 더 맞습니다.",
             "증상이 전형적인데 검사 결과가 정상이라면 임상 증상과 MRI를 함께 봐야 합니다."
         ]
     },
 
-    "8. 허리 엉치/다리 통증 및 다리 근력 저하/마비형: L5 신경뿌리병증 (Lumbar Radiculopathy)": {
+    "8. L5 신경뿌리병증 (Lumbar Radiculopathy): 발처짐 및 발목·엄지발가락 들기 약화형": {
         "patient": {
             "age": 61,
             "sex": "여",
@@ -609,8 +608,8 @@ CASE_LIBRARY = {
                     "다리 바깥쪽과 발등 감각저하 가능"
                 ],
                 "반사검사": [
-                    "심부건반사는 뚜렷하지 않을 수 있음",
-                    "안쪽햄스트링 반사 감소 가능"
+                    "깊은힘줄반사(deep tendon reflex)는 뚜렷하지 않을 수 있음",
+                    "안쪽 무릎굽힘근(hamstring) 반사 감소 가능"
                 ]
             }
         },
@@ -663,44 +662,49 @@ CASE_LIBRARY = {
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "다리를 꼬고 앉은 뒤 생긴 발처짐은 종아리뼈머리 부위 종아리신경 포착을 시사합니다.",
+            "다리를 꼬고 앉은 뒤 생긴 발처짐은 종아리뼈머리 부위 종아리신경 포착을 의미합니다.",
             "발등 감각저하와 얕은종아리신경 SNAP 감소는 L5 신경뿌리병증보다 말초신경병증에 더 잘 맞습니다.",
             "발안쪽번짐이 비교적 보존되고 척추 주변근육이 정상이면 종아리신경병증 가능성이 더 높습니다."
         ]
     },
 
-    "10. 깊은종아리신경병증: 발목 앞쪽 깊은종아리신경 손상 (Deep Peroneal Neuropathy)": {
+       "10. 온종아리신경병증 (Common Peroneal Neuropathy): 종아리뼈머리 부위 외상 후 발처짐형": {
         "patient": {
             "age": 31,
             "sex": "남",
             "side": "좌",
             "symptoms": [
-                "좌측 발등 앞쪽 통증과 함께 발가락을 들어 올리기 어려움이 생김",
-                "첫째와 둘째 발가락 사이 감각이 둔함",
-                "발목 전체보다 발가락 폄 동작이 더 불편함"
+                "왼쪽 종아리뼈 또는 정강뼈 주변 외상 이후 왼쪽 발처짐(foot drop)이 생김",
+                "걸을 때 발끝이 끌리고 발목을 들어 올리기 어려움",
+                "왼쪽 종아리 바깥쪽과 발등 감각이 둔해짐"
             ],
             "physical_exam": {
                 "근력검사": [
+                    "발목 등굽힘 약화",
                     "발가락 폄 약화",
-                    "발목 등굽힘은 경미 약화되거나 비교적 보존될 수 있음"
+                    "발바깥번짐(eversion) 약화",
+                    "발안쪽번짐(inversion)은 비교적 보존됨"
                 ],
                 "감각검사": [
-                    "첫째와 둘째 발가락 사이(first dorsal web space) 감각저하"
+                    "종아리 바깥쪽과 발등 감각저하"
                 ],
                 "반사검사": [
-                    "심부건반사는 대개 정상"
+                    "깊은힘줄반사(deep tendon reflex)는 대개 정상"
                 ]
             }
         },
         "findings": {
-            "깊은종아리신경 복합근육활동전위 (Deep Peroneal CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
+            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("감소 (Reduced)", "정상 (Normal)"),
+            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("감소 (Reduced)", "정상 (Normal)"),
+            "앞정강근 (Tibialis Anterior, TA)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
             "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("비정상 자발전위 출현 (Abnormal Spontaneous Activity)", "정상 (Normal)"),
-            "첫째 발가락사이 감각 (First Dorsal Web Space Sensation)": ("감소 (Reduced)", "정상 (Normal)")
+            "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "깊은종아리신경병증은 첫째 발가락사이 감각저하와 발가락 폄 약화가 특징적입니다.",
-            "발목 전체 약화보다 발가락 폄 약화가 더 두드러지면 보다 국소적인 병변을 생각할 수 있습니다.",
-            "L5 신경뿌리병증이나 종아리신경병증보다 더 국소적인 말초신경 병변 예시입니다."
+            "온종아리신경병증은 종아리뼈머리 부위 압박이나 외상 이후 발처짐으로 나타나는 대표적 말초신경병증입니다.",
+            "발목 등굽힘 약화와 발바깥번짐 약화가 함께 보이면 온종아리신경 병변을 더 의미합니다.",
+            "발안쪽번짐이 비교적 보존되고 허리 척추주위근이 정상이면 L5 신경뿌리병증보다 말초신경 병변 가능성이 높습니다.",
+            "얕은종아리 감각신경활동전위(SNAP) 감소는 보다 국소적인 종아리신경 병변을 지지하는 중요한 단서입니다."
         ]
     },
 
@@ -772,8 +776,8 @@ CASE_LIBRARY = {
         },
         "teaching": [
             "여러 신경에서 진폭 감소가 우세하면 축삭성 다발신경병증을 생각합니다.",
-            "증상이 발끝부터 시작해 양측 대칭적으로 올라오는 길이의존성 양상이 중요합니다.",
-            "반사저하, 특히 아킬레스건 반사 저하는 흔한 이학적 단서입니다."
+            "증상이 발끝부터 시작해 양측 대칭적으로 올라오는 길이의존성 양상(glove-stocking)이 중요합니다.",
+            "반사저하, 특히 아킬레스힘줄 반사 저하는 흔한 이학적 단서입니다."
         ]
     },
 
@@ -796,7 +800,7 @@ CASE_LIBRARY = {
                     "깊은감각 저하로 인해 보행 불안정 가능"
                 ],
                 "반사검사": [
-                    "전반적 심부건반사 감소 또는 소실"
+                    "전반적 깊은힘줄반사(DTR) 감소 또는 소실"
                 ]
             }
         },
@@ -851,7 +855,7 @@ CASE_LIBRARY = {
         "teaching": [
             "감각 증상은 거의 없는데 여러 분절과 여러 사지 근육에서 침근전도 이상이 보이면 운동신경세포질환을 생각할 수 있습니다.",
             "감각신경전도가 비교적 보존된다는 점이 중요한 단서입니다.",
-            "상위운동신경원 징후(반사 항진)와 하위운동신경원 징후(근위축, 근육다발수축)가 함께 보일 수 있습니다."
+            "위운동신경세포 징후(반사 항진)와 아래운동신경세포 징후(근위축, 근육다발수축)가 함께 보일 수 있습니다."
         ]
     },
 
@@ -1321,7 +1325,7 @@ def analyze_case(age, sex, side, selected_rows):
         reasons.append("감각신경은 보존되면서 여러 분절 근육에 이상 전위가 보여 운동신경세포질환 가능성을 고려할 수 있습니다.")
         suggestions.add("추가 분절 및 벌바 영역 침근전도검사를 고려하세요.")
 
-    # Blink reflex
+    # 눈 깜박 반사(Blink reflex)
     if reflex_abnormal >= 2:
         scores["뇌신경 반사경로 이상 가능성 (Blink Reflex Pathway Abnormality)"] += 7
         lesion_tags.add("뇌신경 반사경로 수준 (Cranial reflex pathway)")
