@@ -1078,6 +1078,7 @@ def init_case_to_session(case_name):
     st.session_state["sex"] = patient.get("sex", "미선택")
     st.session_state["side"] = patient.get("side", "미선택")
 
+    rv = st.session_state.get("input_reset_version", 0)
     unmapped_items = []
 
     for item, vals in findings.items():
@@ -1086,9 +1087,19 @@ def init_case_to_session(case_name):
             unmapped_items.append(item)
             continue
 
-        st.session_state[f"check_{section}_{item}"] = True
-        st.session_state[f"left_{section}_{item}"] = vals[0] if len(vals) > 0 and vals[0] != "" else "정상 (Normal)"
-        st.session_state[f"right_{section}_{item}"] = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
+        domain = ANATOMY.get(item, {}).get("domain", "")
+
+        if domain in ["sensory", "motor", "muscle", "reflex"]:
+            st.session_state[f"check_{rv}_{section}_{item}"] = True
+
+        left_val = vals[0] if len(vals) > 0 and vals[0] != "" else "정상 (Normal)"
+        right_val = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
+
+        if domain == "reflex":
+            st.session_state[f"left_{rv}_{section}_{item}"] = left_val
+        else:
+            st.session_state[f"left_{rv}_{section}_{item}"] = left_val
+            st.session_state[f"right_{rv}_{section}_{item}"] = right_val
 
     st.session_state["last_unmapped_case_items"] = unmapped_items
 
@@ -1797,6 +1808,15 @@ def render_direct_input_basic_info_box():
     )
     st.markdown("</div>", unsafe_allow_html=True)
 
+def render_input_mode_box():
+    st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-green">3. 입력 방식 선택</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+
 def render_input_sections():
     rows = []
 
@@ -1811,7 +1831,7 @@ def render_input_sections():
     )
 
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 2. 검사 항목 선택 및 입력")
+    st.markdown("### 4. 검사 항목 선택 및 입력")
     st.write("아래 탭에서 필요한 검사 영역을 선택한 뒤, 해당 항목만 골라 입력하세요.")
     st.write("- 팔 감각/운동")
     st.write("- 팔 침근전도")
@@ -1956,7 +1976,7 @@ elif st.session_state["app_mode"] == MODE_DIRECT:
             st.session_state["last_result"] = None
             st.rerun()
     else:
-        render_input_sections()
+        rows = render_input_sections()
 
         c1, c2 = st.columns(2)
         with c1:
