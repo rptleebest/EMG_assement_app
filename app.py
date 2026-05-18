@@ -1790,21 +1790,12 @@ def render_case_next_actions():
 
 def render_input_mode_box():
     st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
-    st.markdown('<div class="mode-title mode-title-green">1. 입력 방식</div>', unsafe_allow_html=True)
+    st.markdown('<div class="mode-title mode-title-green">1. 입력 방식 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요. 선택한 방식의 UI만 보입니다.</div>',
+        '<div class="mode-desc">체크형 입력 또는 수치형 입력 중 하나를 선택하세요.</div>',
         unsafe_allow_html=True
     )
-    st.markdown("</div>", unsafe_allow_html=True)
-
-def render_direct_input_basic_info_box():
-    st.markdown('<div class="mode-box-gray">', unsafe_allow_html=True)
-    st.markdown('<div class="mode-title mode-title-gray">2. 기본 정보 입력</div>', unsafe_allow_html=True)
-    st.markdown(
-        '<div class="mode-desc">나이, 성별, 병변쪽/증상측을 입력하세요.</div>',
-        unsafe_allow_html=True
-    )
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True))
 
 def render_input_sections():
     rows = []
@@ -1816,10 +1807,26 @@ def render_input_sections():
         INPUT_MODES,
         horizontal=True,
         key="detail_input_mode",
-        help="체크형 또는 수치형 입력 방식을 선택합니다."
+        help="검사 결과를 체크형 또는 수치형으로 입력할 수 있습니다."
     )
 
-    tabs = st.tabs(["팔 감각/운동", "팔 침근전도", "다리 감각/운동", "다리 침근전도", "눈깜빡반사"])
+    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.markdown("### 2. 검사 항목 선택 및 입력")
+    st.write("아래 탭에서 필요한 검사 영역을 선택한 뒤, 해당 항목만 골라 입력하세요.")
+    st.write("- 팔 감각/운동")
+    st.write("- 팔 침근전도")
+    st.write("- 다리 감각/운동")
+    st.write("- 다리 침근전도")
+    st.write("- 눈깜빡반사")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+    tabs = st.tabs([
+        "팔 감각/운동",
+        "팔 침근전도",
+        "다리 감각/운동",
+        "다리 침근전도",
+        "눈깜빡반사"
+    ])
 
     section_groups = [
         ["팔 감각신경전도검사 (Arm Sensory NCS)", "팔 운동신경전도검사 (Arm Motor NCS)"],
@@ -1831,6 +1838,7 @@ def render_input_sections():
 
     for tab, sections in zip(tabs, section_groups):
         with tab:
+            st.markdown('<div class="section-hint">이 탭에서 필요한 검사 항목만 선택하여 입력하세요.</div>', unsafe_allow_html=True)
             for sec in sections:
                 with st.expander(sec, expanded=False):
                     for item in SECTIONS[sec]:
@@ -1842,7 +1850,6 @@ def render_input_sections():
                             rows.append(row)
 
     return rows
-
 def render_result(result):
     st.markdown("---")
 
