@@ -323,15 +323,18 @@ ANATOMY = {
 }
 
 # Part 2
-
-
+# Part 2
 # ==========================================
 # 사례 라이브러리
+# 교육용 원칙:
+# 1) 제목은 모바일에서 짧게 보이도록 '주요 증상명 중심'
+# 2) 진단명은 괄호 안에 병기하여 학습 연결 유지
+# 3) teaching은 물리치료학과 학생이 임상 추론하기 쉽게 정리
 # ==========================================
 CASE_LIBRARY = {
     "사례 선택 안 함": {},
 
-    "1. C5 신경뿌리병증 (Cervical Radiculopathy): 뒷목-어깨-위팔 방사통 중심형": {
+    "1. 뒷목-어깨-위팔 방사통 (C5 신경뿌리병증)": {
         "patient": {
             "age": 49,
             "sex": "여",
@@ -362,58 +365,57 @@ CASE_LIBRARY = {
             "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "C5 신경뿌리병증에서는 목에서 어깨 바깥쪽과 위팔 가쪽으로 퍼지는 통증이 흔합니다.",
-            "초기 또는 경미한 신경뿌리병증(radiculopathy)에서는 침근전도와 신경전도검사가 모두 정상일 수 있습니다.",
-            "감각신경전도는 대개 정상으로 남아 말초신경병증(peripheral neuropathy)이나 신경얼기병증(plexopathy)과 구분하는 데 도움이 됩니다.",
-            "이 경우에는 증상 분포, 자세에 따른 통증 변화, MRI 같은 영상검사가 중요합니다."
+            "이 사례의 핵심은 진단명보다 '목에서 어깨와 위팔로 퍼지는 방사통(radiating pain)'이라는 증상 패턴입니다.",
+            "C5 신경뿌리병증 초기에는 침근전도와 신경전도검사가 모두 정상일 수 있습니다.",
+            "감각신경전도가 정상으로 남는 점은 말초신경병증(peripheral neuropathy)이나 신경얼기병증(plexopathy)과 감별하는 데 도움이 됩니다.",
+            "검사가 정상이더라도 증상 분포, 자세에 따른 통증 변화, 영상학적 검사(MRI 등)를 함께 해석해야 합니다."
         ]
     },
 
-"2. C6 신경뿌리병증 (Cervical Radiculopathy): 뒷목-어깨-팔 통증 및 근력저하형": {
-    "patient": {
-        "age": 57,
-        "sex": "남",
-        "side": "우",
-        "symptoms": [
-            "뒷목에서 오른쪽 어깨와 팔 바깥쪽, 아래팔의 노쪽(radial side), 엄지 쪽으로 뻗치는 통증과 저림이 있음",
-            "오른쪽 팔꿈치를 굽히거나 손목을 뒤로 젖히는 힘이 약해짐",
-            "팔 전체가 무겁게 느껴지고 물건 들기가 불편함"
-        ],
-        "physical_exam": {
-            "근력검사": [
-                "팔꿈치 굽힘(위팔두갈래근) 약화",
-                "손목 폄(긴노쪽손목폄근/짧은노쪽손목폄근) 약화",
-                "어깨 벌림은 경미 약화되거나 비교적 보존될 수 있음"
+    "2. 뒷목-어깨-팔 통증과 팔 힘 약화 (C6 신경뿌리병증)": {
+        "patient": {
+            "age": 57,
+            "sex": "남",
+            "side": "우",
+            "symptoms": [
+                "뒷목에서 오른쪽 어깨와 팔 바깥쪽, 아래팔의 노쪽(radial side), 엄지 쪽으로 뻗치는 통증과 저림이 있음",
+                "오른쪽 팔꿈치를 굽히거나 손목을 뒤로 젖히는 힘이 약해짐",
+                "팔 전체가 무겁게 느껴지고 물건 들기가 불편함"
             ],
-            "감각검사": [
-                "아래팔 노쪽과 엄지 쪽 감각저하 또는 저림"
-            ],
-            "반사검사": [
-                "위팔두갈래근 반사(biceps reflex) 감소 가능",
-                "위팔노근 반사(brachioradialis reflex) 감소"
-            ]
-        }
+            "physical_exam": {
+                "근력검사": [
+                    "팔꿈치 굽힘(위팔두갈래근) 약화",
+                    "손목 폄(긴노쪽손목폄근/짧은노쪽손목폄근) 약화",
+                    "어깨 벌림은 경미 약화되거나 비교적 보존될 수 있음"
+                ],
+                "감각검사": [
+                    "아래팔 노쪽과 엄지 쪽 감각저하 또는 저림"
+                ],
+                "반사검사": [
+                    "위팔두갈래근 반사(biceps reflex) 감소 가능",
+                    "위팔노근 반사(brachioradialis reflex) 감소"
+                ]
+            }
+        },
+        "findings": {
+            "목 척추주위근 (Cervical Paraspinal)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "위팔노근 (Brachioradialis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "원엎침근 (Pronator Teres)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": ("정상 (Normal)", "정상 (Normal)")
+        },
+        "teaching": [
+            "어깨 바깥쪽에서 엄지 쪽으로 이어지는 통증·저림과 팔꿈치 굽힘/손목 폄 약화는 C6 분절을 떠올리게 합니다.",
+            "척추주위근과 C6 관련 근육에서 침근전도 이상이 함께 보이면 신경뿌리병증 해석에 힘이 실립니다.",
+            "감각신경전도가 보존되면 말초신경병증(peripheral neuropathy)보다 신경뿌리병증(radiculopathy) 가능성이 더 높습니다.",
+            "노신경병증(radial nerve lesion)과 감별할 때는 척추주위근 이상 유무가 중요한 단서입니다."
+        ]
     },
-    "findings": {
-        "목 척추주위근 (Cervical Paraspinal)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-        "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-        "위팔노근 (Brachioradialis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-        "원엎침근 (Pronator Teres)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-        "정중신경 감각신경활동전위 (Median SNAP)": ("정상 (Normal)", "정상 (Normal)"),
-        "자신경 감각신경활동전위 (Ulnar SNAP)": ("정상 (Normal)", "정상 (Normal)"),
-        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": ("정상 (Normal)", "정상 (Normal)")
-    },
-    "teaching": [
-        "C6 신경뿌리병증(radiculopathy)에서는 어깨 바깥쪽, 아래팔 노쪽, 엄지 쪽으로 이어지는 통증과 저림이 나타날 수 있습니다.",
-        "팔꿈치 굽힘과 손목 폄 약화가 함께 있으면 C6 분절 침범을 더 의심할 수 있습니다.",
-        "척추 주변근육과 C6 관련 근육에서 침근전도 이상이 함께 보이면 신경뿌리병증을 강하게 시사합니다.",
-        "감각신경전도는 보존되는 경우가 많아 말초신경병증(peripheral neuropathy)이나 신경얼기병증(plexopathy)과 구분하는 데 도움이 됩니다.",
-        "노신경병증과 달리 척추주위근 이상이 동반되고 감각신경전도가 보존되면 신경뿌리병증 해석에 도움이 됩니다."
-    ]
-},
 
-    "3. 손목굴증후군(Carpal Tunnel Syndrome): 정중신경 포착병증(Median Nerve Entrapment Neuropathy) ": {
+    "3. 엄지-검지-중지 저림, 야간 악화 (손목굴증후군)": {
         "patient": {
             "age": 46,
             "sex": "여",
@@ -431,10 +433,10 @@ CASE_LIBRARY = {
                     "엄지, 검지, 중지 및 넷째 손가락 노쪽 절반 감각저하"
                 ],
                 "반사검사": [
-                    "심부건반사는 대개 정상"
+                    "깊은힘줄반사(DTR)는 대개 정상"
                 ],
                 "유발검사": [
-                    "Phalen 검사 양성 가능",
+                    "Phalen Test 양성 가능",
                     "Tinel 징후 양성 가능"
                 ]
             }
@@ -445,14 +447,14 @@ CASE_LIBRARY = {
             "짧은엄지벌림근 (Abductor Pollicis Brevis, APB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
-            "엄지, 검지, 중지 저림과 야간 악화는 손목굴증후군의 전형적인 증상입니다.",
-            "정중신경 감각 및 운동 잠복기 지연은 손목굴 부위 포착을 시사합니다.",
-            "엄지벌림 약화나 짧은엄지벌림근(APB) 침근전도 이상이 있으면 더 진행된 병변을 생각할 수 있습니다.",
-            "목에서 내려오는 통증이 주된 경우에는 신경뿌리병증과 감별해야 합니다."
+            "엄지, 검지, 중지 저림과 야간 악화는 손목굴증후군(carpal tunnel syndrome)의 대표적인 증상 조합입니다.",
+            "정중신경 감각 및 운동 잠복기 지연은 손목굴 부위 포착(entrapment)을 시사합니다.",
+            "엄지벌림 약화나 짧은엄지벌림근(APB)의 침근전도 이상이 있으면 더 진행된 병변을 생각할 수 있습니다.",
+            "목에서 시작되는 방사통(radiating pain)이 주되면 목 부위의 신경뿌리병증과 감별해야 합니다."
         ]
     },
 
-    "4. 노신경마비: 노신경 손상(Radial Nerve Palsy)으로 인한 손목처짐(wrist drop)": {
+    "4. 손목처짐과 손등 저림 (노신경마비)": {
         "patient": {
             "age": 34,
             "sex": "남",
@@ -481,14 +483,14 @@ CASE_LIBRARY = {
             "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
-            "외상 후 손목처짐은 노신경마비를 먼저 생각해야 합니다.",
+            "외상 후 손목처짐(wrist drop)은 노신경마비(radial nerve palsy)를 우선 생각해야 합니다.",
             "손목과 손가락 폄 약화, 손등 감각저하가 함께 있으면 말초 노신경 병변에 잘 맞습니다.",
-            "노신경 감각신경전도 이상은 경추 신경뿌리병증보다 말초신경병증을 더 시사합니다.",
+            "감각신경전도 이상이 동반되면 경추 신경뿌리병증보다 말초신경병증 가능성이 높습니다.",
             "병변 위치에 따라 위팔세갈래근 보존 여부가 달라질 수 있습니다."
         ]
     },
 
-    "5. 자신경병증: 팔꿈치 부위 자신경 포착 (Ulnar Neuropathy at Elbow)": {
+    "5. 넷째-다섯째 손가락 저림 (팔꿈치 자신경병증)": {
         "patient": {
             "age": 42,
             "sex": "남",
@@ -510,7 +512,7 @@ CASE_LIBRARY = {
                     "깊은힘줄반사(DTR)는 대개 정상"
                 ],
                 "유발검사": [
-                    "팔꿈치 굴곡 유지 시 증상 악화 가능",
+                    "팔꿈치 굽힘 유지 시 증상 악화 가능",
                     "팔꿈치 안쪽 티넬(Tinel) 징후 양성 가능"
                 ]
             }
@@ -522,13 +524,13 @@ CASE_LIBRARY = {
             "새끼벌림근 (Abductor Digiti Minimi, ADM)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
-            "넷째, 다섯째 손가락 저림과 팔꿈치 굽힘 시 악화는 자신경 포착의 전형적인 증상입니다.",
-            "하나의 말초신경 분포에 국한된 감각저하와 손 자체기원근육(intrinsic) 약화가 핵심입니다.",
+            "넷째, 다섯째 손가락 저림과 팔꿈치 굽힘 시 악화는 자신경 포착(ulnar nerve entrapment)의 전형적인 패턴입니다.",
+            "하나의 말초신경 분포에 국한된 감각저하와 자체기원근육(intrinsic hand muscle) 약화가 핵심입니다.",
             "자신경 감각신경활동전위(Ulnar SNAP) 이상은 신경뿌리병증보다 말초 자신경병증에 더 잘 맞습니다."
         ]
     },
 
-    "6. 위팔 신경얼기병증: 위팔 신경얼기 병변 (Brachial Plexopathy)": {
+    "6. 어깨 통증 후 팔의 여러 근육 약화 (위팔신경얼기병증)": {
         "patient": {
             "age": 36,
             "sex": "남",
@@ -557,17 +559,17 @@ CASE_LIBRARY = {
             "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "겨드랑신경 복합근육활동전위 (Axillary CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "근피신경 복합근육활동전위 (Musculocutaneous CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "삼각근 (Deltoid)": ("정상 (Normal)", "비정상 자발전위 출현(Abnormal Spontaneous Activity)"),
-            "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", "비정상 자발전위 출현(Abnormal Spontaneous Activity)")
+            "삼각근 (Deltoid)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "위팔두갈래근 (Biceps Brachii)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
-            "여러 말초신경 분포가 함께 침범되면 신경얼기병증을 생각합니다.",
+            "여러 말초신경 분포가 함께 침범되면 신경얼기병증(plexopathy)을 생각합니다.",
             "감각신경전도 이상이 동반되면 신경뿌리병증보다 신경얼기병증에 더 잘 맞습니다.",
-            "척추 주변근육이 정상이면 신경뿌리병증보다 신경얼기병증 가능성이 높아집니다."
+            "척추주위근이 정상이면 신경뿌리병증보다 신경얼기병증 가능성이 높아집니다."
         ]
     },
 
-    "7. S1 신경뿌리병증 (Lumbar Radiculopathy): 허리-엉치-종아리 뒤쪽 방사통 중심형: ": {
+    "7. 허리-엉치-종아리 뒤쪽 방사통 (S1 신경뿌리병증)": {
         "patient": {
             "age": 52,
             "sex": "남",
@@ -585,7 +587,7 @@ CASE_LIBRARY = {
                     "종아리 뒤쪽과 발 바깥쪽 감각저하 또는 저림 가능"
                 ],
                 "반사검사": [
-                    "아킬레스건 반사(Achilles reflex)는 정상 또는 경미 저하 가능"
+                    "아킬레스힘줄 반사(Achilles reflex)는 정상 또는 경미 저하 가능"
                 ]
             }
         },
@@ -596,14 +598,14 @@ CASE_LIBRARY = {
             "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "S1 신경뿌리병증에서는 엉치, 종아리 뒤쪽, 발 바깥쪽으로 이어지는 방사통이 흔합니다.",
+            "엉치에서 종아리 뒤쪽, 발 바깥쪽으로 이어지는 방사통(radiating pain)은 S1 분절을 떠올리게 합니다.",
             "초기 또는 경미한 경우에는 침근전도와 신경전도검사가 정상일 수 있습니다.",
-            "장딴지신경 감각신경활동전위(Sural SNAP)이 정상인 점은 말초 감각신경병증보다 신경뿌리병증 쪽에 더 맞습니다.",
-            "증상이 전형적인데 검사 결과가 정상이라면 임상 증상과 MRI를 함께 봐야 합니다."
+            "장딴지 신경 감각신경활동전위(Sural SNAP)가 정상인 점은 말초 감각신경병증보다 신경뿌리병증 쪽에 더 맞습니다.",
+            "증상이 전형적인데 검사 결과가 정상이라면 임상 소견과 MRI를 함께 봐야 합니다."
         ]
     },
 
-    "8. L5 신경뿌리병증 (Lumbar Radiculopathy): 발처짐 및 발목·엄지발가락 들기 약화형": {
+    "8. 발처짐과 엄지발가락 들기 약화 (L5 신경뿌리병증)": {
         "patient": {
             "age": 61,
             "sex": "여",
@@ -637,14 +639,14 @@ CASE_LIBRARY = {
             "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "발등 쪽 방사통과 발목/엄지발가락 들기 약화는 L5 신경뿌리병증을 의심하게 합니다.",
-            "척추 주변근육과 L5 관련 근육에서 침근전도 이상이 보이면 신경뿌리병증을 지지합니다.",
-            "감각신경전도는 보존되는 경우가 많아 종아리신경병증과 감별하는 데 도움이 됩니다.",
-            "발처짐이 있으면 종아리신경병증과 반드시 감별해야 합니다."
+            "발처짐(foot drop)과 엄지발가락 들기 약화는 L5 신경뿌리병증에서 흔히 보는 중요한 단서입니다.",
+            "척추주위근과 L5 관련 근육에서 침근전도 이상이 보이면 신경뿌리병증을 지지합니다.",
+            "감각신경전도가 보존되면 종아리신경병증과 감별하는 데 도움이 됩니다.",
+            "발처짐이 있으면 반드시 종아리신경병증과 비교해 생각해야 합니다."
         ]
     },
 
-    "9. 종아리신경병증: 종아리뼈머리 부위 온종아리신경 포착 (Peroneal Neuropathy at Fibular Head)": {
+    "9. 다리 꼬기 후 발처짐 (종아리신경병증)": {
         "patient": {
             "age": 29,
             "sex": "남",
@@ -665,7 +667,7 @@ CASE_LIBRARY = {
                     "종아리 바깥쪽과 발등 감각저하"
                 ],
                 "반사검사": [
-                    "아킬레스건 반사는 대개 정상"
+                    "아킬레스힘줄 반사는 대개 정상"
                 ]
             }
         },
@@ -673,17 +675,17 @@ CASE_LIBRARY = {
             "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "무반응 (No Response)"),
             "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)":  ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "다리를 꼬고 앉은 뒤 생긴 발처짐은 종아리뼈머리 부위 종아리신경 포착을 의미합니다.",
-            "발등 감각저하와 얕은종아리신경 SNAP 감소는 L5 신경뿌리병증보다 말초신경병증에 더 잘 맞습니다.",
-            "발안쪽번짐이 비교적 보존되고 척추 주변근육이 정상이면 종아리신경병증 가능성이 더 높습니다."
+            "다리를 꼬고 앉은 뒤 생긴 발처짐은 종아리뼈머리 부위 온종아리신경 포착(common peroneal nerve entrapment)을 시사합니다.",
+            "발등 감각저하와 얕은종아리신경 감각신경활동전위(SNAP) 감소는 L5 신경뿌리병증보다 말초신경병증(peripheral nerve entrapment)에 더 잘 맞습니다.",
+            "발안쪽번짐(ankle inversion)이 비교적 보존되고 척추주위근이 정상이면 종아리신경병증(peroneal neuropathy) 가능성이 더 높습니다."
         ]
     },
 
-       "10. 온종아리신경병증 (Common Peroneal Neuropathy): 종아리뼈머리 부위 외상 후 발처짐형": {
+    "10. 외상 후 발처짐 (온종아리신경병증)": {
         "patient": {
             "age": 31,
             "sex": "남",
@@ -716,14 +718,14 @@ CASE_LIBRARY = {
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "온종아리신경병증은 종아리뼈머리 부위 압박이나 외상 이후 발처짐으로 나타나는 대표적 말초신경병증입니다.",
-            "발목 등굽힘 약화와 발바깥번짐 약화가 함께 보이면 온종아리신경 병변을 더 의미합니다.",
-            "발안쪽번짐이 비교적 보존되고 허리 척추주위근이 정상이면 L5 신경뿌리병증보다 말초신경 병변 가능성이 높습니다.",
-            "얕은종아리 감각신경활동전위(SNAP) 감소는 보다 국소적인 종아리신경 병변을 지지하는 중요한 단서입니다."
+            "외상 후 발처짐은 온종아리신경병증의 대표적인 임상 상황입니다.",
+            "발목 등굽힘 약화와 발바깥번짐 약화가 함께 보이면 온종아리신경 병변(common peroneal lesion)을 더 시사합니다.",
+            "발안쪽번짐(ankle inversion)이 비교적 보존되고 허리 척추주위근이 정상이면 L5 신경뿌리병증보다 말초신경 병변(peripheral neuropathy) 가능성이 높습니다.",
+            "얕은종아리신경 감각신경활동전위(SNAP) 감소는 국소 종아리신경 병변을 지지하는 중요한 단서입니다."
         ]
     },
 
-    "11. 허리엉치신경얼기병증: 허리엉치신경얼기 병변 (Lumbosacral Plexopathy)": {
+    "11. 골반-다리 통증 후 넓은 범위 약화 (허리엉치신경얼기병증)": {
         "patient": {
             "age": 58,
             "sex": "여",
@@ -741,7 +743,7 @@ CASE_LIBRARY = {
                     "허벅지, 종아리, 발 등 여러 부위에 걸친 감각저하"
                 ],
                 "반사검사": [
-                    "무릎반사 또는 아킬레스건 반사 감소 가능"
+                    "무릎반사 또는 아킬레스힘줄 반사 감소 가능"
                 ]
             }
         },
@@ -754,13 +756,13 @@ CASE_LIBRARY = {
             "장딴지근 (Gastrocnemius)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)")
         },
         "teaching": [
-            "여러 말초신경 분포와 감각신경 이상이 함께 나타나면 허리엉치신경얼기병증을 고려합니다.",
-            "척추 주변근육이 정상이면 신경뿌리병증보다 신경얼기병증 쪽에 더 무게가 실립니다.",
+            "여러 말초신경 분포와 감각신경 이상이 함께 나타나면 허리엉치신경얼기병증(lumbosacral plexopathy)을 고려합니다.",
+            "척추주위근이 정상이면 신경뿌리병증보다 신경얼기병증 쪽에 더 무게가 실립니다.",
             "한 개의 신경뿌리병변이나 단일 신경 손상으로 설명되지 않는 점이 핵심입니다."
         ]
     },
 
-    "12. 축삭성 다발신경병증 (Axonal Polyneuropathy)": {
+    "12. 양측 발끝 저림이 올라오는 양상 (축삭성 다발신경병증)": {
         "patient": {
             "age": 67,
             "sex": "남",
@@ -775,11 +777,11 @@ CASE_LIBRARY = {
                     "원위부, 특히 발목과 발가락 움직임의 약화 가능"
                 ],
                 "감각검사": [
-                    "양측 발끝에서 시작하는 길이의존성 감각저하",
+                    "양측 발끝에서 시작하는 길이의존성(축삭 길이가 가장 긴 신경의 끝부분에서 시작: stocking distribution) 감각저하",
                     "진동감각 저하 가능"
                 ],
                 "반사검사": [
-                    "아킬레스건 반사 감소 또는 소실"
+                    "아킬레스힘줄 반사 감소 또는 소실"
                 ]
             }
         },
@@ -790,13 +792,13 @@ CASE_LIBRARY = {
             "정강신경 복합근육활동전위 (Tibial CMAP)": ("감소 (Reduced)", "감소 (Reduced)")
         },
         "teaching": [
-            "여러 신경에서 진폭 감소가 우세하면 축삭성 다발신경병증을 생각합니다.",
-            "증상이 발끝부터 시작해 양측 대칭적으로 올라오는 길이의존성 양상(glove-stocking)이 중요합니다.",
-            "반사저하, 특히 아킬레스힘줄 반사 저하는 흔한 이학적 단서입니다."
+            "발끝부터 시작해 양측 대칭적으로 올라오는 양상은 다발신경병증(polyneuropathy)의 중요한 임상 패턴입니다.",
+            "여러 신경에서 진폭 감소가 우세하면 축삭성 병변(axonal neuropathy)을 생각합니다.",
+            "아킬레스힘줄 반사 저하는 흔한 이학적 단서입니다."
         ]
     },
 
-    "13. 말이집탈락성 다발신경병증 (Demyelinating Polyneuropathy)": {
+    "13. 양손·양발 저림과 대칭성 약화 (말이집탈락성 다발신경병증)": {
         "patient": {
             "age": 55,
             "sex": "여",
@@ -808,7 +810,7 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "근력검사": [
-                    "상지와 하지의 대칭적 약화 가능"
+                    "팔다리의 대칭적 약화 가능"
                 ],
                 "감각검사": [
                     "양손과 양발의 감각저하",
@@ -826,13 +828,13 @@ CASE_LIBRARY = {
             "자신경 복합근육활동전위 (Ulnar CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)")
         },
         "teaching": [
-            "여러 신경에서 잠복기 지연이 반복되면 말이집탈락성 병변을 의심합니다.",
+            "여러 신경에서 잠복기 지연이 반복되면 말이집탈락성 병변(demyelinating neuropathy)을 의심합니다.",
             "진폭 감소보다 전도 지연이 더 두드러지는 점이 핵심입니다.",
-            "대칭적 약화와 반사저하는 다발신경병증의 중요한 이학적 소견입니다."
+            "대칭적 약화와 반사저하는 다발신경병증(poly neuropathy)의 중요한 이학적 소견입니다."
         ]
     },
 
-    "14. 운동신경세포질환 (Motor Neuron Disease)": {
+    "14. 감각은 비교적 정상, 진행성 사지 약화 (운동신경세포질환)": {
         "patient": {
             "age": 63,
             "sex": "남",
@@ -844,13 +846,13 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "근력검사": [
-                    "상지와 하지 여러 근육군의 진행성 약화"
+                    "팔과 다리 여러 근육군의 진행성 약화"
                 ],
                 "감각검사": [
                     "감각은 대체로 정상"
                 ],
                 "반사검사": [
-                    "심부건반사 항진 가능",
+                    "깊은힘줄반사(DTR) 항진 가능",
                     "병적 반사(Babinski sign) 가능"
                 ],
                 "기타": [
@@ -868,13 +870,13 @@ CASE_LIBRARY = {
             "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)")
         },
         "teaching": [
-            "감각 증상은 거의 없는데 여러 분절과 여러 사지 근육에서 침근전도 이상이 보이면 운동신경세포질환을 생각할 수 있습니다.",
+            "감각 증상은 거의 없는데 여러 분절과 여러 팔다리 근육에서 침근전도 이상이 보이면 운동신경세포질환을 생각할 수 있습니다.",
             "감각신경전도가 비교적 보존된다는 점이 중요한 단서입니다.",
-            "위운동신경세포 징후(반사 항진)와 아래운동신경세포 징후(근위축, 근육다발수축)가 함께 보일 수 있습니다."
+            "위운동신경세포 징후와 아래운동신경세포 징후가 함께 보일 수 있습니다."
         ]
     },
 
-    "15. 눈 깜빡 반사 (Blink Reflex): 삼차신경 들방향 병변 의심": {
+    "15. 얼굴 감각저하와 눈깜빡반사 이상 (삼차신경 들방향 병변)": {
         "patient": {
             "age": 56,
             "sex": "남",
@@ -903,19 +905,19 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("정상 (Normal)", "")
         },
         "teaching": [
-            "오른쪽 자극에서만 R1과 R2가 비정상이면 오른쪽 삼차신경 들방향 병변을 의심할 수 있습니다.",
-            "얼굴 감각저하가 함께 있으면 삼차신경 병변 해석이 더 쉬워집니다."
+            "한쪽 자극에서만 R1과 R2가 비정상이면 같은 쪽 삼차신경 들방향 병변(afferent lesion)을 의심할 수 있습니다.",
+            "얼굴 감각저하가 함께 있으면 해석이 더 쉬워집니다."
         ]
     },
 
-    "16. 눈 깜빡 반사 (Blink Reflex): 뇌줄기 핵/중간연결 병변 의심": {
+    "16. 복시·어지럼과 눈깜빡반사 이상 (뇌줄기 병변)": {
         "patient": {
             "age": 62,
             "sex": "여",
             "side": "우",
             "symptoms": [
                 "얼굴 감각은 비교적 보존되어 있으나 복시와 어지럼이 동반됨",
-                "신경학적 검사에서 뇌줄기 병변이 의심됨"
+                "신경학적 검사에서 뇌줄기 병변(brain stem lesion)이 의심됨"
             ],
             "physical_exam": {
                 "감각검사": [
@@ -939,8 +941,119 @@ CASE_LIBRARY = {
             "좌측 자극 R2": ("지연 (Delayed)", "")
         },
         "teaching": [
-            "양측 자극에서 반사 경로 이상이 반복되면 말초 단독 병변보다 뇌줄기 병변을 생각해야 합니다.",
+            "양측 자극에서 반사 경로 이상이 반복되면 말초 단독 병변보다 뇌줄기 병변(brain stem lesion)을 생각해야 합니다.",
             "복시, 어지럼 같은 뇌줄기 증상이 함께 있으면 해석이 더 쉬워집니다."
+        ]
+    },
+
+    "17. F-wave 지연, 근위부 전도 이상 의심": {
+        "patient": {
+            "age": 64,
+            "sex": "남",
+            "side": "양측",
+            "symptoms": [
+                "양쪽 다리 힘이 전반적으로 떨어지고 보행이 느려짐",
+                "다리의 아래쪽 부위(distal part)에 저림이 동반될 수 있음"
+            ],
+            "physical_exam": {
+                "근력검사": [
+                    "원위부 근력 저하가 경미하게 관찰될 수 있음"
+                ],
+                "감각검사": [
+                    "양측 발끝 감각저하 가능"
+                ],
+                "반사검사": [
+                    "깊은힘줄반사 감소 가능"
+                ]
+            }
+        },
+        "findings": {
+            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "정상 (Normal)")
+        },
+        "teaching": [
+            "F-wave는 근위부 전도 이상을 시사하는 데 도움이 됩니다.",
+            "축삭말단(distal part) 복합근활동전위(CMAP: M파)가 비교적 보존되어도 F-wave 지연이 있으면 운동신경세포체 근처부위(proximal part) 병변을 의심할 수 있습니다.",
+            "다발신경병증이나 신경뿌리병증 평가에 보조적으로 사용됩니다."
+        ]
+    },
+
+    "18. H 반사 지연/소실과 발뒤꿈치 반사 저하 (S1 신경뿌리병증)": {
+        "patient": {
+            "age": 51,
+            "sex": "여",
+            "side": "좌",
+            "symptoms": [
+                "허리에서 왼쪽 엉치와 종아리 뒤쪽으로 내려가는 통증이 있음",
+                "발바닥 굽힘은 비교적 유지됨"
+            ],
+            "physical_exam": {
+                "근력검사": [
+                    "큰 근력저하는 뚜렷하지 않을 수 있음"
+                ],
+                "감각검사": [
+                    "종아리 뒤쪽 감각저하 가능"
+                ],
+                "반사검사": [
+                    "아킬레스힘줄 반사 감소 가능"
+                ]
+            }
+        },
+        "findings": {
+            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "H 반사 (좌)": ("지연 또는 소실 (Delayed/Absent)", ""),
+            "H 반사 (우)": ("정상 (Normal)", "")
+        },
+        "teaching": [
+            "H 반사는 S1 신경뿌리 기능 평가에 유용합니다.",
+            "아킬레스힘줄 반사 저하와 함께 H 반사 지연 또는 소실이 있으면 S1 신경뿌리병증을 시사할 수 있습니다.",
+            "축삭말단(distal part) 운동·감각신경전도가 비교적 정상이어도 H 반사 이상이 보일 수 있습니다.",
+            "말초신경병증과의 감별에 보조적으로 사용됩니다."
+        ]
+    },
+
+    "19. H 반사 항진과 경직 보행 (뇌졸중 후 spasticity)": {
+        "patient": {
+            "age": 68,
+            "sex": "남",
+            "side": "우",
+            "symptoms": [
+                "좌측 뇌졸중 이후 오른쪽 다리가 뻣뻣해지고 보행이 불편함",
+                "보행 시 무릎이 잘 굽혀지지 않고 발이 끌리는 느낌이 있음",
+                "빠르게 움직이거나 긴장하면 다리의 뻣뻣함이 더 심해짐"
+            ],
+            "physical_exam": {
+                "근력검사": [
+                    "선택적 움직임 저하",
+                    "기능적 근력저하와 함께 비정상적 공동운동 양상 가능"
+                ],
+                "감각검사": [
+                    "감각은 비교적 보존되거나 경미 저하 가능"
+                ],
+                "반사검사": [
+                    "깊은힘줄반사 항진",
+                    "클로누스 가능",
+                    "병적 반사(Babinski sign) 가능"
+                ],
+                "근긴장검사": [
+                    "속도 의존적 근긴장 증가",
+                    "발목 저측굴곡근의 경직 증가 가능"
+                ]
+            }
+        },
+        "findings": {
+            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)"),
+            "H 반사 (우)": ("항진 또는 역치 감소 (Hyperactive / Lower Threshold)", ""),
+            "H/M 비율": ("증가 가능 (may be Increased)", ""),
+            "좌우 비교": ("병변측 H 반사 흥분성 증가 가능", "")
+        },
+        "teaching": [
+            "H 반사는 말초신경병증뿐 아니라 중추신경계 병변 이후 척수 반사 흥분성 변화를 보는 데도 도움이 됩니다.",
+            "뇌졸중 후 경직(spasticity)에서는 H 반사 항진, 낮아진 역치, 증가된 H/M 비율이 관찰될 수 있습니다.",
+            "이 소견은 발목 굽힘근 경직(ankle flexor spasticity), 발목간대경련(ankle clonus), 과활성 반사와 함께 해석해야 합니다.",
+            "물리치료 평가에서는 보행, 근긴장, 기능적 움직임과 전기생리학적 소견을 함께 연결하는 것이 중요합니다."
         ]
     }
 }
@@ -956,9 +1069,11 @@ def is_abnormal(value):
         return False
     return value != "정상 (Normal)"
 
-def summarize_status(left, right):
+def summarize_status(left, right, side="미선택"):
     if str(right).strip() == "":
         return f"결과: {left}"
+    if side == "양측":
+        return f"좌측: {left} / 우측: {right}"
     return f"정상쪽: {left} / 병변쪽: {right}"
 
 def severity_text(total_abnormal, no_response_count):
@@ -1243,7 +1358,7 @@ def analyze_case(age, sex, side, selected_rows):
             "항목": item,
             "신경": a["nerve"],
             "레벨": a["level"],
-            "결과": summarize_status(left, right)
+            "결과": summarize_status(left, right, side)
         })
 
     total_abnormal = sensory_abnormal + motor_abnormal + muscle_abnormal + reflex_abnormal
@@ -1398,6 +1513,17 @@ def analyze_case(age, sex, side, selected_rows):
 # ==========================================
 # 입력 수집 함수
 # ==========================================
+def render_item_card_header(item, a):
+    st.markdown('<div class="input-row">', unsafe_allow_html=True)
+    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="input-meta">신경: {a["nerve"]} | 레벨: {a["level"]}</div>',
+        unsafe_allow_html=True
+    )
+
+def render_item_card_footer():
+    st.markdown('</div>', unsafe_allow_html=True)
+
 def render_check_item(section, item, disabled=False):
     a = ANATOMY[item]
     rv = st.session_state.get("input_reset_version", 0)
@@ -1406,14 +1532,9 @@ def render_check_item(section, item, disabled=False):
     left_key = f"left_{rv}_{section}_{item}"
     right_key = f"right_{rv}_{section}_{item}"
 
-    st.markdown('<div class="input-row">', unsafe_allow_html=True)
-    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
-    st.markdown(
-        f'<div class="input-meta">신경: {a["nerve"]} &nbsp;&nbsp;|&nbsp;&nbsp; 레벨: {a["level"]}</div>',
-        unsafe_allow_html=True
-    )
+    render_item_card_header(item, a)
 
-    use_item = st.checkbox("이 항목 입력하기", key=check_key, disabled=disabled)
+    use_item = st.checkbox("이 항목 입력", key=check_key, disabled=disabled)
     row = None
 
     if use_item:
@@ -1422,17 +1543,12 @@ def render_check_item(section, item, disabled=False):
             right = ""
         else:
             c1, c2 = st.columns(2)
-            left = c1.selectbox("정상쪽 결과", CHECK_OPTIONS, key=left_key, disabled=disabled)
-            right = c2.selectbox("병변쪽 결과", CHECK_OPTIONS, key=right_key, disabled=disabled)
+            left = c1.selectbox("좌/정상쪽", CHECK_OPTIONS, key=left_key, disabled=disabled)
+            right = c2.selectbox("우/병변쪽", CHECK_OPTIONS, key=right_key, disabled=disabled)
 
-        row = {
-            "section": section,
-            "item": item,
-            "left": left,
-            "right": right
-        }
+        row = {"section": section, "item": item, "left": left, "right": right}
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    render_item_card_footer()
     return row
 
 def render_numeric_item(section, item, disabled=False):
@@ -1448,91 +1564,49 @@ def render_numeric_item(section, item, disabled=False):
     mls_key = f"mls_{rv}_{section}_{item}"
     nr_key = f"nr_{rv}_{section}_{item}"
 
-    st.markdown('<div class="input-row">', unsafe_allow_html=True)
-    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
-    st.markdown(
-        f'<div class="input-meta">신경: {a["nerve"]} &nbsp;&nbsp;|&nbsp;&nbsp; 레벨: {a["level"]}</div>',
-        unsafe_allow_html=True
-    )
+    render_item_card_header(item, a)
 
-    use_item = st.checkbox("이 항목 입력하기", key=use_key, disabled=disabled)
+    use_item = st.checkbox("이 항목 입력", key=use_key, disabled=disabled)
     row = None
 
     if use_item:
         if a["domain"] in ["sensory", "motor"]:
-            st.markdown(
-                '<div class="section-help">정상쪽과 병변쪽 수치를 입력하면 교육용 단순 기준으로 자동 해석합니다.</div>',
-                unsafe_allow_html=True
-            )
-
             c1, c2 = st.columns(2)
             with c1:
-                st.markdown("**정상쪽 수치**")
-                normal_amp = st.number_input("정상쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=na_key, disabled=disabled)
-                normal_latency = st.number_input("정상쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=nl_key, disabled=disabled)
-
+                st.markdown("**좌/정상쪽**")
+                normal_amp = st.number_input("진폭", min_value=0.0, value=10.0, step=0.1, key=na_key, disabled=disabled)
+                normal_latency = st.number_input("잠복기", min_value=0.0, value=3.0, step=0.1, key=nl_key, disabled=disabled)
             with c2:
-                st.markdown("**병변쪽 수치**")
-                lesion_amp = st.number_input("병변쪽 진폭", min_value=0.0, value=10.0, step=0.1, key=la_key, disabled=disabled)
-                lesion_latency = st.number_input("병변쪽 잠복기", min_value=0.0, value=3.0, step=0.1, key=ll_key, disabled=disabled)
+                st.markdown("**우/병변쪽**")
+                lesion_amp = st.number_input("진폭", min_value=0.0, value=10.0, step=0.1, key=la_key, disabled=disabled)
+                lesion_latency = st.number_input("잠복기", min_value=0.0, value=3.0, step=0.1, key=ll_key, disabled=disabled)
 
-            normal_status = "정상 (Normal)"
-            lesion_status = infer_numeric_status(
-                a["domain"],
-                normal_amp,
-                lesion_amp,
-                normal_latency,
-                lesion_latency,
-                spontaneous=False
-            )
-
-            st.info(f"자동 해석 결과 → 정상쪽: {normal_status} / 병변쪽: {lesion_status}")
-
-            row = {
-                "section": section,
-                "item": item,
-                "left": normal_status,
-                "right": lesion_status
-            }
+            left = "정상 (Normal)"
+            right = infer_numeric_status(a["domain"], normal_amp, lesion_amp, normal_latency, lesion_latency, spontaneous=False)
+            st.info(f"자동 해석 → 좌/정상쪽: {left} / 우/병변쪽: {right}")
+            row = {"section": section, "item": item, "left": left, "right": right}
 
         elif a["domain"] == "muscle":
-            st.markdown(
-                '<div class="section-help">근육 항목은 비정상 자발전위 출현 여부를 체크합니다.</div>',
-                unsafe_allow_html=True
-            )
-
             c1, c2 = st.columns(2)
             with c1:
-                normal_spont = st.checkbox("정상쪽 비정상 자발전위 있음", key=mns_key, disabled=disabled)
+                normal_spont = st.checkbox("좌/정상쪽 비정상 자발전위", key=mns_key, disabled=disabled)
             with c2:
-                lesion_spont = st.checkbox("병변쪽 비정상 자발전위 있음", key=mls_key, disabled=disabled)
+                lesion_spont = st.checkbox("우/병변쪽 비정상 자발전위", key=mls_key, disabled=disabled)
 
-            left_status = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if normal_spont else "정상 (Normal)"
-            right_status = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if lesion_spont else "정상 (Normal)"
-
-            st.info(f"자동 해석 결과 → 정상쪽: {left_status} / 병변쪽: {right_status}")
-
-            row = {
-                "section": section,
-                "item": item,
-                "left": left_status,
-                "right": right_status
-            }
+            left = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if normal_spont else "정상 (Normal)"
+            right = "비정상 자발전위 출현 (Abnormal Spontaneous Activity)" if lesion_spont else "정상 (Normal)"
+            st.info(f"자동 해석 → 좌/정상쪽: {left} / 우/병변쪽: {right}")
+            row = {"section": section, "item": item, "left": left, "right": right}
 
         elif a["domain"] == "reflex":
             reflex_status = st.selectbox("결과", CHECK_OPTIONS, key=nr_key, disabled=disabled)
-            st.info(f"자동 해석 결과 → {reflex_status}")
-            row = {
-                "section": section,
-                "item": item,
-                "left": reflex_status,
-                "right": ""
-            }
+            st.info(f"자동 해석 → {reflex_status}")
+            row = {"section": section, "item": item, "left": reflex_status, "right": ""}
 
-    st.markdown('</div>', unsafe_allow_html=True)
+    render_item_card_footer()
     return row
-# Part 4
 
+# Part 4
 # ==========================================
 # UI 렌더링 함수
 # ==========================================
@@ -1557,7 +1631,7 @@ def render_mode_intro_box():
     st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-blue">학습 모드 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">사례 학습 또는 검사 정보 직접 입력 중 한 가지를 선택하세요. </div>',
+        '<div class="mode-desc">사례 학습 또는 검사 정보 직접 입력 중 한 가지를 선택하세요.</div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1599,7 +1673,6 @@ def render_navigation_controls():
     confirmed_case = st.session_state.get("confirmed_case")
     is_first_case_screen = (app_mode == MODE_CASE and not confirmed_case)
 
-    # 첫 화면(사례 선택 화면)에서는 버튼을 숨김
     if is_first_case_screen:
         return
 
@@ -1616,9 +1689,6 @@ def render_navigation_controls():
             st.rerun()
 
     with c2:
-        # 이전 버튼 동작 정의
-        # 1) 사례 상세 화면 -> 사례 선택 화면으로
-        # 2) 직접 입력 모드 -> 직전 학습 흐름상 첫 화면(사례 선택 화면)으로
         if st.button(
             "이전으로",
             use_container_width=True,
@@ -1628,9 +1698,6 @@ def render_navigation_controls():
                 if confirmed_case:
                     st.session_state["confirmed_case"] = None
                     clear_result()
-                else:
-                    # 첫 화면이면 이전 동작 없음
-                    pass
             elif app_mode == MODE_DIRECT:
                 switch_to_case_mode(reset_case_selection=False)
             st.rerun()
@@ -1661,7 +1728,7 @@ def render_case_selector():
     st.markdown('<div class="mode-box-green">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-green">1. 사례 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">대표 사례를 하나 선택하고 확인 버튼을 누르세요. </div>',
+        '<div class="mode-desc">대표 사례를 하나 선택하고 확인 버튼을 누르세요.</div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1782,7 +1849,7 @@ def render_case_next_actions():
     st.markdown('<div class="mode-box-blue">', unsafe_allow_html=True)
     st.markdown('<div class="mode-title mode-title-blue">다음 단계 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mode-desc">사례 학습을 마쳤다면 다른 사례를 다시 선택하거나 직접 입력 모드로 이동할 수 있습니다. </div>',
+        '<div class="mode-desc">사례 학습을 마쳤다면 다른 사례를 다시 선택하거나 직접 입력 모드로 이동할 수 있습니다.</div>',
         unsafe_allow_html=True
     )
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1874,17 +1941,25 @@ def render_input_sections():
 
     return rows
 
+def summarize_status(left, right, side="미선택"):
+    if str(right).strip() == "":
+        return f"결과: {left}"
+    if side == "양측":
+        return f"좌측: {left} / 우측: {right}"
+    return f"정상쪽: {left} / 병변쪽: {right}"
+
 def render_result(result):
     st.markdown("---")
-
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
     st.subheader("최종 분석 결과")
     st.success(f"최종 유력 진단: {result['final_dx']}")
     st.write(f"**손상 의심 신경:** {result['involved_nerves']}")
     st.write(f"**신경학적 레벨/분절:** {result['involved_levels']}")
     st.write(f"**중증도:** {result['severity']}")
+
     if result["lesion_tags"]:
-        st.write(f"**병변 해석 태그:** {', '.join(result['lesion_tags'])}")
+        st.write("**병변 해석 태그:** " + ", ".join(result["lesion_tags"]))
+
     st.markdown("</div>", unsafe_allow_html=True)
 
     c1, c2 = st.columns(2)
@@ -1947,16 +2022,18 @@ render_guide()
 render_navigation_controls()
 render_mode_selector()
 
+app_mode = st.session_state.get("app_mode", MODE_CASE)
+
 # ------------------------------------------
 # 사례 학습 모드
 # ------------------------------------------
-if st.session_state["app_mode"] == MODE_CASE:
+if app_mode == MODE_CASE:
     confirmed_case = st.session_state.get("confirmed_case")
 
     if confirmed_case:
         render_case_learning_info(confirmed_case)
         render_case_next_actions()
-        st.info("현재는 사례 학습 화면입니다. ")
+        st.info("현재는 사례 학습 화면입니다.")
     else:
         render_case_selector()
         st.info("대표 사례를 선택한 뒤 확인 버튼을 누르면 사례 학습 내용이 표시됩니다.")
@@ -1964,7 +2041,7 @@ if st.session_state["app_mode"] == MODE_CASE:
 # ------------------------------------------
 # 직접 입력 모드
 # ------------------------------------------
-elif st.session_state["app_mode"] == MODE_DIRECT:
+elif app_mode == MODE_DIRECT:
     st.session_state["confirmed_case"] = None
 
     render_direct_input_basic_info_box()
@@ -1999,5 +2076,8 @@ elif st.session_state["app_mode"] == MODE_DIRECT:
             render_result(st.session_state["last_result"])
             render_download_section(st.session_state["last_result"])
 
+# ------------------------------------------
+# 예외 처리
+# ------------------------------------------
 else:
     st.error("알 수 없는 모드입니다. 처음으로 버튼을 눌러 다시 시작하세요.")
