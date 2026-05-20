@@ -1070,10 +1070,11 @@ CASE_LIBRARY = {
         ]
     }
 
+}
+
 # ==========================================
 # 보조 함수
-# ==========================================
-def is_abnormal(value):
+# ==========================================def is_abnormal(value):
     if value is None:
         return False
     value = str(value).strip()
