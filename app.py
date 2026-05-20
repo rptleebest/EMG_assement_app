@@ -207,7 +207,7 @@ SECTIONS = {
         "정중신경 감각신경활동전위 (Median SNAP)",
         "자신경 감각신경활동전위 (Ulnar SNAP)",
         "노신경 감각신경활동전위 (Radial SNAP)",
-        "노신경 표재감각신경활동전위 (Superficial radial SNAP)",
+        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)",
         "가쪽아래팔피부신경 감각신경활동전위 (Lateral antebrachial cutaneous SNAP)"
     ],
     "팔 운동신경전도검사 (arm motor NCS)": [
@@ -658,84 +658,85 @@ CASE_LIBRARY = {
         ]
     },
 
-    "9. 다리 꼬기 후 발처짐 (종아리신경병증)": {
-        "patient": {
-            "age": 29,
-            "sex": "남",
-            "side": "우",
-            "symptoms": [
-                "다리를 꼬고 앉는 습관 후 오른쪽 발처짐이 생김",
-                "종아리 바깥쪽과 발등 감각 저하가 있음",
-                "발등을 들어 올리기 어렵고 걸을 때 발끝이 끌림"
+"9. 허리 디스크 수술 후 새로 생긴 발목 처짐(수술 후 종아리신경병증 의심)": {
+    "patient": {
+        "age": 45,
+        "sex": "남",
+        "side": "우",
+        "symptoms": [
+            "허리 디스크 수술 후 오른쪽 발목 처짐이 새로 생김",
+            "발등을 들어 올리기 어렵고 걸을 때 발끝이 끌림",
+            "오른쪽 종아리 바깥쪽과 발등 감각 저하가 동반됨"
+        ],
+        "physical_exam": {
+            "근력검사": [
+                "발목 등굽힘 약화",
+                "발가락 폄 약화",
+                "발바깥번짐(eversion) 약화",
+                "발안쪽번짐(inversion)은 비교적 보존됨"
             ],
-            "physical_exam": {
-                "근력검사": [
-                    "발목 등굽힘 약화",
-                    "발가락 폄 약화",
-                    "발바깥번짐(eversion) 약화",
-                    "발안쪽번짐(inversion)은 비교적 보존됨"
-                ],
-                "감각검사": [
-                    "종아리 바깥쪽과 발등 감각저하"
-                ],
-                "반사검사": [
-                    "아킬레스힘줄 반사는 대개 정상"
-                ]
-            }
-        },
-        "findings": {
-            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "무반응 (No Response)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-            "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
-        },
-        "teaching": [
-            "다리를 꼬고 앉은 뒤 생긴 발처짐은 종아리뼈머리 부위 온종아리신경 포착(common peroneal nerve entrapment)을 시사합니다.",
-            "발등 감각저하와 얕은종아리신경 감각신경활동전위(SNAP) 감소는 L5 신경뿌리병증보다 말초신경병증(peripheral nerve entrapment)에 더 잘 맞습니다.",
-            "발안쪽번짐(ankle inversion)이 비교적 보존되고 척추주위근이 정상이면 종아리신경병증(peroneal neuropathy) 가능성이 더 높습니다."
-        ]
+            "감각검사": [
+                "종아리 바깥쪽과 발등 감각저하"
+            ],
+            "반사검사": [
+                "아킬레스힘줄 반사는 대개 정상"
+            ]
+        }
     },
+    "findings": {
+        "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+        "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "무반응 (No Response)"),
+        "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
+    },
+    "teaching": [
+        "허리 디스크 수술 후 새로 발생한 발목 처짐은 기존 신경뿌리병증의 지속만이 아니라 수술 후 자세, 압박, 견인과 관련된 종아리신경 손상 가능성도 함께 고려해야 합니다.",
+        "발등 감각저하와 얕은종아리신경 감각신경활동전위 감소는 L5 신경뿌리병증보다 말초신경병증에 더 잘 맞습니다.",
+        "발안쪽번짐이 비교적 보존되고 허리 척추주위근이 정상이면 종아리신경병증 가능성이 더 높습니다.",
+        "수술 전후 증상 분포를 비교하여 새로 발생한 말초신경 손상인지 해석하는 것이 중요합니다."
+    ]
+},
 
-    "10. 외상 후 발처짐 (온종아리신경병증)": {
-        "patient": {
-            "age": 31,
-            "sex": "남",
-            "side": "좌",
-            "symptoms": [
-                "왼쪽 종아리뼈 또는 정강뼈 주변 외상 이후 왼쪽 발처짐(foot drop)이 생김",
-                "걸을 때 발끝이 끌리고 발목을 들어 올리기 어려움",
-                "왼쪽 종아리 바깥쪽과 발등 감각이 둔해짐"
+"10. 정강뼈 골절로 인한 발처짐 (온종아리신경병증)": {
+    "patient": {
+        "age": 31,
+        "sex": "남",
+        "side": "좌",
+        "symptoms": [
+            "왼쪽 정강뼈 또는 종아리뼈 골절로 인한 석고붕대(cast) 치료 후 발처짐이 생김",
+            "걸을 때 발끝이 끌리고 발목을 들어 올리기 어려움",
+            "왼쪽 종아리 바깥쪽과 발등 감각이 둔해짐"
+        ],
+        "physical_exam": {
+            "근력검사": [
+                "발목 등굽힘 약화",
+                "발가락 폄 약화",
+                "발바깥번짐(eversion) 약화",
+                "발안쪽번짐(inversion)은 비교적 보존됨"
             ],
-            "physical_exam": {
-                "근력검사": [
-                    "발목 등굽힘 약화",
-                    "발가락 폄 약화",
-                    "발바깥번짐(eversion) 약화",
-                    "발안쪽번짐(inversion)은 비교적 보존됨"
-                ],
-                "감각검사": [
-                    "종아리 바깥쪽과 발등 감각저하"
-                ],
-                "반사검사": [
-                    "깊은힘줄반사(deep tendon reflex)는 대개 정상"
-                ]
-            }
-        },
-        "findings": {
-            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-            "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
-            "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
-        },
-        "teaching": [
-            "외상 후 발처짐은 온종아리신경병증의 대표적인 임상 상황입니다.",
-            "발목 등굽힘 약화와 발바깥번짐 약화가 함께 보이면 온종아리신경 병변(common peroneal lesion)을 더 시사합니다.",
-            "발안쪽번짐(ankle inversion)이 비교적 보존되고 허리 척추주위근이 정상이면 L5 신경뿌리병증보다 말초신경 병변(peripheral neuropathy) 가능성이 높습니다.",
-            "얕은종아리신경 감각신경활동전위(SNAP) 감소는 국소 종아리신경 병변을 지지하는 중요한 단서입니다."
-        ]
+            "감각검사": [
+                "종아리 바깥쪽과 발등 감각저하"
+            ],
+            "반사검사": [
+                "깊은힘줄반사(deep tendon reflex)는 대개 정상"
+            ]
+        }
     },
+    "findings": {
+        "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
+        "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+        "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": ("정상 (Normal)", "비정상 자발전위 출현 (Abnormal Spontaneous Activity)"),
+        "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)")
+    },
+    "teaching": [
+        "정강뼈/종아리뼈 골절 후 깁스나 압박으로 인한 발처짐은 온종아리신경병증의 전형적인 임상 상황입니다.",
+        "발목 등굽힘 약화와 발바깥번짐 약화가 함께 보이면 온종아리신경 병변을 더 시사합니다.",
+        "발안쪽번짐이 비교적 보존되고 허리 척추주위근이 정상이면 L5 신경뿌리병증보다 말초신경 병변 가능성이 높습니다.",
+        "얕은종아리신경 감각신경활동전위 감소는 국소 종아리신경 병변을 지지하는 중요한 단서입니다."
+    ]
+},
 
     "11. 골반-다리 통증 후 넓은 범위 약화 (허리엉치신경얼기병증)": {
         "patient": {
@@ -774,77 +775,79 @@ CASE_LIBRARY = {
         ]
     },
 
-    "12. 양측 발끝 저림이 올라오는 양상 (축삭성 다발신경병증)": {
-        "patient": {
-            "age": 67,
-            "sex": "남",
-            "side": "양측",
-            "symptoms": [
-                "양쪽 발끝부터 시작된 저림이 점차 위로 올라옴",
-                "양쪽 발목의 힘이 약해지는 느낌이 있음",
-                "증상이 양측 대칭적으로 진행함"
+"12. 양측 발끝 저림이 올라오는 양상 (축삭성 다발신경병증)": {
+    "patient": {
+        "age": 67,
+        "sex": "남",
+        "side": "양측",
+        "symptoms": [
+            "양쪽 발끝부터 시작된 저림이 점차 위로 올라옴",
+            "양쪽 발목의 힘이 약해지는 느낌이 있음",
+            "증상이 양측 대칭적으로 진행함"
+        ],
+        "physical_exam": {
+            "근력검사": [
+                "원위부, 특히 발목과 발가락 움직임의 약화 가능"
             ],
-            "physical_exam": {
-                "근력검사": [
-                    "원위부, 특히 발목과 발가락 움직임의 약화 가능"
-                ],
-                "감각검사": [
-                    "양측 발끝에서 시작하는 길이의존성(축삭 길이가 가장 긴 신경의 끝부분에서 시작: stocking distribution) 감각저하",
-                    "진동감각 저하 가능"
-                ],
-                "반사검사": [
-                    "아킬레스힘줄 반사 감소 또는 소실"
-                ]
-            }
-        },
-        "findings": {
-            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("감소 (Reduced)", "감소 (Reduced)"),
-            "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("감소 (Reduced)", "감소 (Reduced)"),
-            "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("감소 (Reduced)", "감소 (Reduced)"),
-            "정강신경 복합근육활동전위 (Tibial CMAP)": ("감소 (Reduced)", "감소 (Reduced)")
-        },
-        "teaching": [
-            "발끝부터 시작해 양측 대칭적으로 올라오는 양상은 다발신경병증(polyneuropathy)의 중요한 임상 패턴입니다.",
-            "여러 신경에서 진폭 감소가 우세하면 축삭성 병변(axonal neuropathy)을 생각합니다.",
-            "아킬레스힘줄 반사 저하는 흔한 이학적 단서입니다."
-        ]
+            "감각검사": [
+                "양측 발끝에서 시작하는 길이의존성 감각저하",
+                "진동감각 저하 가능"
+            ],
+            "반사검사": [
+                "아킬레스힘줄 반사 감소 또는 소실"
+            ]
+        }
     },
+    "findings": {
+        "장딴지신경 감각신경활동전위 (Sural SNAP)": ("감소 (Reduced)", "감소 (Reduced)"),
+        "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": ("감소 (Reduced)", "감소 (Reduced)"),
+        "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("감소 (Reduced)", "감소 (Reduced)"),
+        "정강신경 복합근육활동전위 (Tibial CMAP)": ("감소 (Reduced)", "감소 (Reduced)")
+    },
+    "teaching": [
+        "발끝부터 시작해 양측 대칭적으로 올라오는 양상은 다발신경병증의 중요한 임상 패턴입니다.",
+        "여러 신경에서 양측성 진폭 감소가 우세하면 축삭성 병변을 생각합니다.",
+        "이 경우 정상쪽/병변쪽보다 좌우 대칭 소견으로 해석하는 것이 적절합니다.",
+        "아킬레스힘줄 반사 저하는 흔한 이학적 단서입니다."
+    ]
+},
 
-    "13. 양손·양발 저림과 대칭성 약화 (말이집탈락성 다발신경병증)": {
-        "patient": {
-            "age": 55,
-            "sex": "여",
-            "side": "양측",
-            "symptoms": [
-                "양손과 양발이 모두 저리고 최근 보행이 불안정해짐",
-                "증상이 비교적 대칭적으로 진행함",
-                "손과 발의 힘이 전반적으로 떨어진 느낌이 있음"
+"13. 양손·양발 저림과 대칭성 약화 (말이집탈락성 다발신경병증)": {
+    "patient": {
+        "age": 55,
+        "sex": "여",
+        "side": "양측",
+        "symptoms": [
+            "양손과 양발이 모두 저리고 최근 보행이 불안정해짐",
+            "증상이 비교적 대칭적으로 진행함",
+            "손과 발의 힘이 전반적으로 떨어진 느낌이 있음"
+        ],
+        "physical_exam": {
+            "근력검사": [
+                "팔다리의 대칭적 약화 가능"
             ],
-            "physical_exam": {
-                "근력검사": [
-                    "팔다리의 대칭적 약화 가능"
-                ],
-                "감각검사": [
-                    "양손과 양발의 감각저하",
-                    "깊은감각 저하로 인해 보행 불안정 가능"
-                ],
-                "반사검사": [
-                    "전반적 깊은힘줄반사(DTR) 감소 또는 소실"
-                ]
-            }
-        },
-        "findings": {
-            "정중신경 감각신경활동전위 (Median SNAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
-            "자신경 감각신경활동전위 (Ulnar SNAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
-            "정중신경 복합근육활동전위 (Median CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
-            "자신경 복합근육활동전위 (Ulnar CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)")
-        },
-        "teaching": [
-            "여러 신경에서 잠복기 지연이 반복되면 말이집탈락성 병변(demyelinating neuropathy)을 의심합니다.",
-            "진폭 감소보다 전도 지연이 더 두드러지는 점이 핵심입니다.",
-            "대칭적 약화와 반사저하는 다발신경병증(poly neuropathy)의 중요한 이학적 소견입니다."
-        ]
+            "감각검사": [
+                "양손과 양발의 감각저하",
+                "깊은감각 저하로 인해 보행 불안정 가능"
+            ],
+            "반사검사": [
+                "전반적 깊은힘줄반사(DTR) 감소 또는 소실"
+            ]
+        }
     },
+    "findings": {
+        "정중신경 감각신경활동전위 (Median SNAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
+        "자신경 감각신경활동전위 (Ulnar SNAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
+        "정중신경 복합근육활동전위 (Median CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)"),
+        "자신경 복합근육활동전위 (Ulnar CMAP)": ("잠복기 지연 (Delayed Latency)", "잠복기 지연 (Delayed Latency)")
+    },
+    "teaching": [
+        "여러 신경에서 양측성 잠복기 지연이 반복되면 말이집탈락성 병변을 의심합니다.",
+        "진폭 감소보다 전도 지연이 더 두드러지는 점이 핵심입니다.",
+        "이 경우 정상쪽/병변쪽보다 좌우 대칭 소견으로 해석하는 것이 적절합니다.",
+        "대칭적 약화와 반사저하는 다발신경병증의 중요한 이학적 소견입니다."
+    ]
+},
 
     "14. 감각은 비교적 정상, 진행성 사지 약화 (운동신경세포질환)": {
         "patient": {
@@ -888,75 +891,79 @@ CASE_LIBRARY = {
         ]
     },
 
-    "15. 얼굴 감각저하와 눈깜빡반사 이상 (삼차신경 들방향 병변)": {
-        "patient": {
-            "age": 56,
-            "sex": "남",
-            "side": "우",
-            "symptoms": [
-                "오른쪽 이마와 눈 주위의 감각이 둔함",
-                "오른쪽 얼굴 통증 또는 저림을 호소함",
-                "얼굴마비는 없음"
+"15. 얼굴 통증·감각이상과 눈꺼풀 떨림 (삼차신경 들방향 병변 의심)": {
+    "patient": {
+        "age": 56,
+        "sex": "남",
+        "side": "우",
+        "symptoms": [
+            "오른쪽 이마와 눈 주위의 감각이 둔함",
+            "오른쪽 얼굴 통증 또는 저림을 호소함",
+            "눈꺼풀 떨림이 2주 이상 지속되어 추가 평가를 시행함",
+            "얼굴마비는 없음"
+        ],
+        "physical_exam": {
+            "감각검사": [
+                "오른쪽 이마와 눈 주위의 얼굴 감각저하"
             ],
-            "physical_exam": {
-                "감각검사": [
-                    "오른쪽 이마와 눈 주위의 얼굴 감각저하"
-                ],
-                "운동검사": [
-                    "안면근력은 대체로 정상"
-                ],
-                "반사검사": [
-                    "각막반사(corneal reflex) 이상 가능"
-                ]
-            }
-        },
-        "findings": {
-            "우측 자극 R1": ("지연 또는 소실 (Delayed/Absent)", ""),
-            "우측 자극 R2": ("양측 지연 또는 소실 (Bilateral Delayed/Absent)", ""),
-            "좌측 자극 R1": ("정상 (Normal)", ""),
-            "좌측 자극 R2": ("정상 (Normal)", "")
-        },
-        "teaching": [
-            "한쪽 자극에서만 R1과 R2가 비정상이면 같은 쪽 삼차신경 들방향 병변(afferent lesion)을 의심할 수 있습니다.",
-            "얼굴 감각저하가 함께 있으면 해석이 더 쉬워집니다."
-        ]
+            "운동검사": [
+                "안면근력은 대체로 정상"
+            ],
+            "반사검사": [
+                "각막반사 이상 가능"
+            ]
+        }
     },
+    "findings": {
+        "우측 자극 R1": ("지연 또는 소실 (Delayed/Absent)", ""),
+        "우측 자극 R2": ("양측 지연 또는 소실 (Bilateral Delayed/Absent)", ""),
+        "좌측 자극 R1": ("정상 (Normal)", ""),
+        "좌측 자극 R2": ("정상 (Normal)", "")
+    },
+    "teaching": [
+        "얼굴 통증, 감각이상, 오래 지속되는 눈꺼풀 떨림이 함께 있으면 삼차신경-뇌줄기 반사경로 평가를 고려할 수 있습니다.",
+        "한쪽 자극에서만 R1과 R2가 비정상이면 같은 쪽 삼차신경 들방향 병변을 의심할 수 있습니다.",
+        "얼굴 감각저하가 함께 있으면 해석이 더 쉬워집니다."
+    ]
+},
 
-    "16. 복시·어지럼과 눈깜빡반사 이상 (뇌줄기 병변)": {
-        "patient": {
-            "age": 62,
-            "sex": "여",
-            "side": "우",
-            "symptoms": [
-                "얼굴 감각은 비교적 보존되어 있으나 복시와 어지럼이 동반됨",
-                "신경학적 검사에서 뇌줄기 병변(brain stem lesion)이 의심됨"
+"16. 복시·어지럼과 눈꺼풀 떨림 (뇌줄기 병변 의심)": {
+    "patient": {
+        "age": 62,
+        "sex": "여",
+        "side": "우",
+        "symptoms": [
+            "얼굴 감각은 비교적 보존되어 있으나 복시와 어지럼이 동반됨",
+            "눈꺼풀 떨림이 2주 이상 지속되어 신경학적 평가를 진행함",
+            "신경학적 검사에서 뇌줄기 병변이 의심됨"
+        ],
+        "physical_exam": {
+            "감각검사": [
+                "얼굴 감각은 비교적 보존됨"
             ],
-            "physical_exam": {
-                "감각검사": [
-                    "얼굴 감각은 비교적 보존됨"
-                ],
-                "운동검사": [
-                    "눈운동 이상 가능",
-                    "안면근력은 정상일 수도 있고 동반 이상이 있을 수도 있음"
-                ],
-                "기타": [
-                    "복시",
-                    "어지럼",
-                    "뇌줄기 기능 이상을 시사하는 다른 신경학적 징후 가능"
-                ]
-            }
-        },
-        "findings": {
-            "우측 자극 R1": ("지연 (Delayed)", ""),
-            "우측 자극 R2": ("지연 (Delayed)", ""),
-            "좌측 자극 R1": ("지연 (Delayed)", ""),
-            "좌측 자극 R2": ("지연 (Delayed)", "")
-        },
-        "teaching": [
-            "양측 자극에서 반사 경로 이상이 반복되면 말초 단독 병변보다 뇌줄기 병변(brain stem lesion)을 생각해야 합니다.",
-            "복시, 어지럼 같은 뇌줄기 증상이 함께 있으면 해석이 더 쉬워집니다."
-        ]
+            "운동검사": [
+                "눈운동 이상 가능",
+                "안면근력은 정상일 수도 있고 동반 이상이 있을 수도 있음"
+            ],
+            "기타": [
+                "복시",
+                "어지럼",
+                "뇌줄기 기능 이상을 시사하는 다른 신경학적 징후 가능"
+            ]
+        }
     },
+    "findings": {
+        "우측 자극 R1": ("지연 (Delayed)", ""),
+        "우측 자극 R2": ("지연 (Delayed)", ""),
+        "좌측 자극 R1": ("지연 (Delayed)", ""),
+        "좌측 자극 R2": ("지연 (Delayed)", "")
+    },
+    "teaching": [
+        "복시, 어지럼, 오래 지속되는 눈꺼풀 떨림이 함께 있으면 뇌줄기 반사경로 이상을 평가할 수 있습니다.",
+        "양측 자극에서 반사 경로 이상이 반복되면 말초 단독 병변보다 뇌줄기 병변을 생각해야 합니다.",
+        "동반되는 뇌신경 증상이 있으면 해석이 더 쉬워집니다."
+    ]
+},
 
     "17. F-wave 지연, 근위부 전도 이상 의심": {
         "patient": {
@@ -1025,14 +1032,14 @@ CASE_LIBRARY = {
         ]
     },
 
-        "19. 뇌졸중 환자의 경직 정도 평가 (h/m ratio 활용)": {
+        "19. 뇌졸중 환자의 발목 발바닥 굽힘근 경직 정도 평가 (H 반사 검사)": {
         "patient": {
             "age": 68,
             "sex": "남",
             "side": "우",
             "symptoms": [
                 "좌측 뇌졸중 이후 오른쪽 발목 발바닥굽힘근(장딴지근-가자미근 복합체)의 경직(spasticity)이 증가하여 보행이 불편함",
-                "보행 시 무릎 굽힘이 감소하고 발목은 발바닥 굽힘과 안쪽번짐(ankle inversion) 자세를 보여 발끝 끌림(drag gait)이 나타남",
+                "보행 시 무릎 굽힘이 감소하고 발목은 발바닥 굽힘과 안쪽번짐(ankle inversion) 자세를 보여 발끝 끌림이 나타남",
                 "빠르게 움직이거나 긴장하면 다리의 뻣뻣함이 더 심해짐",
                 "발목 발바닥굽힘근의 경직 정도를 평가하고 치료 후 재평가를 위해 H 반사 검사에서 Hmax amplitude/Mmax amplitude 비율(H/M ratio)을 확인함"
             ],
@@ -1078,10 +1085,10 @@ CASE_LIBRARY = {
 def is_abnormal(value):
     if value is None:
         return False
-    value = str(value).strip()
+    value = str(value).strip().lower()
     if value == "" or value == "미선택":
         return False
-    return value != "정상 (Normal)"
+    return value not in ["정상 (normal)", "normal", "정상"]
 
 def summarize_status(left, right, side="미선택"):
     if str(right).strip() == "":
@@ -1859,51 +1866,14 @@ def render_case_learning_info(case_name):
         else:
             other_items.append((item, vals))
 
-    for title, grouped_items in [
+    grouped_sections = [
         ("신경전도검사 예시", ncs_items),
         ("침근전도검사 예시", needle_items),
         ("반사검사 예시", reflex_items),
         ("기타 예시", other_items),
-    ]:
-        if grouped_items:
-            st.markdown('<div class="section-card">', unsafe_allow_html=True)
-            st.markdown(f"### {title}")
-            for item, vals in grouped_items:
-                left_val = vals[0] if len(vals) > 0 else ""
-                right_val = vals[1] if len(vals) > 1 else ""
-                if str(right_val).strip() == "":
-                    st.markdown(f"**{item}**  \n- {left_val}")
-                else:
-                    st.markdown(
-                        f"**{item}**  \n- 정상쪽/비병변측: {left_val}  \n- 병변쪽/증상측: {right_val}"
-                    )
-            st.markdown("</div>", unsafe_allow_html=True)
+    ]
 
-    if teaching:
-        st.markdown('<div class="case-teaching-box">', unsafe_allow_html=True)
-        st.markdown("### 학습 포인트")
-        for t in teaching:
-            st.write(f"- {t}")
-        st.markdown("</div>", unsafe_allow_html=True)
-
-    ncs_items = []
-    needle_items = []
-    other_items = []
-
-    for item, vals in findings.items():
-        domain = ANATOMY.get(item, {}).get("domain", "")
-        if domain in ["sensory", "motor", "reflex"]:
-            ncs_items.append((item, vals))
-        elif domain == "muscle":
-            needle_items.append((item, vals))
-        else:
-            other_items.append((item, vals))
-
-    for title, grouped_items in [
-        ("신경전도검사 예시", ncs_items),
-        ("침근전도검사 예시", needle_items),
-        ("기타 예시", other_items),
-    ]:
+    for title, grouped_items in grouped_sections:
         if grouped_items:
             st.markdown('<div class="section-card">', unsafe_allow_html=True)
             st.markdown(f"### {title}")
@@ -1912,12 +1882,19 @@ def render_case_learning_info(case_name):
                 left_val = vals[0] if len(vals) > 0 else ""
                 right_val = vals[1] if len(vals) > 1 else ""
 
+                st.markdown(f"**{item}**")
+
                 if str(right_val).strip() == "":
-                    st.write(f"- **{item}**: {left_val}")
+                    st.markdown(f"&nbsp;&nbsp;&nbsp;• 결과: {left_val}", unsafe_allow_html=True)
                 else:
-                    st.write(f"- **{item}**")
-                    st.write(f"  - 정상쪽/비병변측: {left_val}")
-                    st.write(f"  - 병변쪽/증상측: {right_val}")
+                    if patient.get("side") == "양측":
+                        st.markdown(f"&nbsp;&nbsp;&nbsp;• 좌측: {left_val}", unsafe_allow_html=True)
+                        st.markdown(f"&nbsp;&nbsp;&nbsp;• 우측: {right_val}", unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"&nbsp;&nbsp;&nbsp;• 정상쪽/비병변측: {left_val}", unsafe_allow_html=True)
+                        st.markdown(f"&nbsp;&nbsp;&nbsp;• 병변쪽/증상측: {right_val}", unsafe_allow_html=True)
+
+                st.markdown("<div style='margin-bottom:8px;'></div>", unsafe_allow_html=True)
 
             st.markdown("</div>", unsafe_allow_html=True)
 
@@ -2033,13 +2010,6 @@ def render_input_sections():
                             rows.append(row)
 
     return rows
-
-def summarize_status(left, right, side="미선택"):
-    if str(right).strip() == "":
-        return f"결과: {left}"
-    if side == "양측":
-        return f"좌측: {left} / 우측: {right}"
-    return f"정상쪽: {left} / 병변쪽: {right}"
 
 def render_result(result):
     st.markdown("---")
