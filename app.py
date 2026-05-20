@@ -22,16 +22,18 @@ MODE_DIRECT = "검사 정보 직접 입력 후 자동 질환 추정 실행"
 
 CHECK_OPTIONS = [
     "미선택",
-    "정상 (Normal)",
-    "감소 (Reduced)",
-    "진폭 감소 (Reduced Amplitude)",
-    "잠복기 지연 (Delayed Latency)",
-    "무반응 (No Response)",
-    "비정상 자발전위 출현 (Abnormal Spontaneous Activity)",
-    "지연 (Delayed)",
-    "소실 또는 지연 (Absent/Delayed)",
-    "지연 또는 소실 (Delayed/Absent)",
-    "양측 지연 또는 소실 (Bilateral Delayed/Absent)"
+    "정상 (normal)",
+    "감소 (reduced)",
+    "진폭 감소 (reduced amplitude)",
+    "잠복기 지연 (delayed latency)",
+    "무반응 (no response)",
+    "비정상 자발전위 출현 (abnormal spontaneous activity)",
+    "지연 (delayed)",
+    "소실 또는 지연 (absent/delayed)",
+    "지연 또는 소실 (delayed/absent)",
+    "양측 지연 또는 소실 (bilateral delayed/absent)",
+    "항진 또는 역치 감소 (hyperactive / lower threshold)",
+    "증가 가능 (may be increased)"
 ]
 
 INPUT_MODES = [
@@ -201,21 +203,21 @@ hr {
 # 항목 정의
 # ==========================================
 SECTIONS = {
-    "팔 감각신경전도검사 (Arm Sensory NCS)": [
+    "팔 감각신경전도검사 (arm sensory NCS)": [
         "정중신경 감각신경활동전위 (Median SNAP)",
         "자신경 감각신경활동전위 (Ulnar SNAP)",
         "노신경 감각신경활동전위 (Radial SNAP)",
-        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)",
-        "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)"
+        "노신경 표재감각신경활동전위 (Superficial radial SNAP)",
+        "가쪽아래팔피부신경 감각신경활동전위 (Lateral antebrachial cutaneous SNAP)"
     ],
-    "팔 운동신경전도검사 (Arm Motor NCS)": [
+    "팔 운동신경전도검사 (arm motor NCS)": [
         "정중신경 복합근육활동전위 (Median CMAP)",
         "자신경 복합근육활동전위 (Ulnar CMAP)",
         "노신경 복합근육활동전위 (Radial CMAP)",
         "겨드랑신경 복합근육활동전위 (Axillary CMAP)",
         "근피신경 복합근육활동전위 (Musculocutaneous CMAP)"
     ],
-    "팔 침근전도검사 근육 (Arm Needle EMG Muscles)": [
+    "팔 침근전도검사 근육 (arm needle EMG muscles)": [
         "짧은엄지벌림근 (Abductor Pollicis Brevis, APB)",
         "첫째등쪽뼈사이근 (First Dorsal Interosseous, FDI)",
         "새끼벌림근 (Abductor Digiti Minimi, ADM)",
@@ -230,19 +232,19 @@ SECTIONS = {
         "위팔세갈래근 (Triceps Brachii)",
         "목 척추주위근 (Cervical Paraspinal)"
     ],
-    "다리 감각신경전도검사 (Leg Sensory NCS)": [
+    "다리 감각신경전도검사 (leg sensory NCS)": [
         "장딴지신경 감각신경활동전위 (Sural SNAP)",
         "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)",
         "두렁신경 감각신경활동전위 (Saphenous SNAP)",
         "첫째 발가락사이 감각 (First Dorsal Web Space Sensation)"
     ],
-    "다리 운동신경전도검사 (Leg Motor NCS)": [
+    "다리 운동신경전도검사 (leg motor NCS)": [
         "종아리신경 복합근육활동전위 (Peroneal CMAP)",
         "깊은종아리신경 복합근육활동전위 (Deep Peroneal CMAP)",
         "정강신경 복합근육활동전위 (Tibial CMAP)",
         "넙다리신경 복합근육활동전위 (Femoral CMAP)"
     ],
-    "다리 침근전도검사 근육 (Leg Needle EMG Muscles)": [
+    "다리 침근전도검사 근육 (leg needle EMG muscles)": [
         "앞정강근 (Tibialis Anterior, TA)",
         "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)",
         "짧은발가락벌림근 (Abductor Digiti Minimi pedis)",
@@ -257,7 +259,13 @@ SECTIONS = {
         "뒤넙다리근 (Biceps Femoris)",
         "허리 척추주위근 (Lumbar Paraspinal)"
     ],
-    "눈깜빡반사검사 (Blink Reflex)": [
+    "후기반사검사 (Late Responses / H Reflex)": [
+        "H 반사 (좌)",
+        "H 반사 (우)",
+        "H/M 비율",
+        "좌우 비교"
+    ],
+    "눈깜빡반사검사 (blink reflex)": [
         "우측 자극 R1",
         "우측 자극 R2",
         "좌측 자극 R1",
@@ -316,10 +324,14 @@ ANATOMY = {
     "뒤넙다리근 (Biceps Femoris)": {"nerve": "궁둥신경 분포 (Sciatic division)", "level": "L5-S2", "domain": "muscle", "region": "leg"},
     "허리 척추주위근 (Lumbar Paraspinal)": {"nerve": "척수뒤가지 (Posterior primary ramus)", "level": "허리 신경뿌리 수준 (Lumbar root level)", "domain": "muscle", "region": "leg"},
 
-    "우측 자극 R1": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
-    "우측 자극 R2": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
-    "좌측 자극 R1": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
-    "좌측 자극 R2": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "Blink reflex", "domain": "reflex", "region": "face"},
+    "H 반사 (좌)": {"nerve": "정강신경-경골신경 경로 / S1 반사고리", "level": "late response / H reflex, S1", "domain": "reflex", "region": "leg"},
+    "H 반사 (우)": {"nerve": "정강신경-경골신경 경로 / S1 반사고리", "level": "late response / H reflex, S1", "domain": "reflex", "region": "leg"},
+    "H/M 비율": {"nerve": "척수 반사 흥분성 평가", "level": "late response / H reflex excitability", "domain": "reflex", "region": "leg"},
+    "좌우 비교": {"nerve": "좌우 H 반사 비교", "level": "late response / side-to-side comparison", "domain": "reflex", "region": "leg"},
+    "우측 자극 R1": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "blink reflex", "domain": "reflex", "region": "face"},
+    "우측 자극 R2": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "blink reflex", "domain": "reflex", "region": "face"},
+    "좌측 자극 R1": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "blink reflex", "domain": "reflex", "region": "face"},
+    "좌측 자극 R2": {"nerve": "삼차신경-뇌줄기-얼굴신경 반사경로", "level": "blink reflex", "domain": "reflex", "region": "face"},
 }
 
 # Part 2
@@ -1013,50 +1025,50 @@ CASE_LIBRARY = {
         ]
     },
 
-    "19. H 반사 항진과 경직 보행 (뇌졸중 후 spasticity)": {
+        "19. 뇌졸중 환자의 경직 정도 평가 (h/m ratio 활용)": {
         "patient": {
             "age": 68,
             "sex": "남",
             "side": "우",
             "symptoms": [
-                "좌측 뇌졸중 이후 오른쪽 다리가 뻣뻣해지고 보행이 불편함",
-                "보행 시 무릎이 잘 굽혀지지 않고 발이 끌리는 느낌이 있음",
-                "빠르게 움직이거나 긴장하면 다리의 뻣뻣함이 더 심해짐"
+                "좌측 뇌졸중 이후 오른쪽 발목 발바닥굽힘근(장딴지근-가자미근 복합체)의 경직(spasticity)이 증가하여 보행이 불편함",
+                "보행 시 무릎 굽힘이 감소하고 발목은 발바닥 굽힘과 안쪽번짐(ankle inversion) 자세를 보여 발끝 끌림(drag gait)이 나타남",
+                "빠르게 움직이거나 긴장하면 다리의 뻣뻣함이 더 심해짐",
+                "발목 발바닥굽힘근의 경직 정도를 평가하고 치료 후 재평가를 위해 H 반사 검사에서 Hmax amplitude/Mmax amplitude 비율(H/M ratio)을 확인함"
             ],
             "physical_exam": {
                 "근력검사": [
-                    "선택적 움직임 저하",
-                    "기능적 근력저하와 함께 비정상적 공동운동 양상 가능"
+                    "발목 폄근의 기능적 근력저하와 함께 하지 전체의 비정상적 공동운동 양상이 동반될 수 있음"
                 ],
                 "감각검사": [
-                    "감각은 비교적 보존되거나 경미 저하 가능"
+                    "감각은 비교적 보존되거나 경미하게 저하 가능"
                 ],
                 "반사검사": [
-                    "깊은힘줄반사 항진",
-                    "클로누스 가능",
-                    "병적 반사(Babinski sign) 가능"
+                    "깊은힘줄반사 항진(DTR 3+ 이상)",
+                    "발목간대경련 (ankle clonus)이 관찰됨",
+                    "병적 반사 검사에서 바빈스키 징후 (Babinski sign) 양성 반응(positive sign)"
                 ],
                 "근긴장검사": [
-                    "속도 의존적 근긴장 증가",
-                    "발목 저측굴곡근의 경직 증가 가능"
+                    "수정된 애쉬워스(Modified Ashworth Scale, MAS) 1등급 이상 관찰",
+                    "장딴지근 신장 시 속도 의존적 근긴장 증가",
+                    "발목 발바닥 굽힘근의 경직 (spasticity) 증가"
                 ]
             }
         },
         "findings": {
-            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (Normal)", "정상 (Normal)"),
-            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "정상 (Normal)"),
-            "H 반사 (우)": ("항진 또는 역치 감소 (Hyperactive / Lower Threshold)", ""),
-            "H/M 비율": ("증가 가능 (may be Increased)", ""),
+            "정강신경 복합근육활동전위 (Tibial CMAP)": ("정상 (normal)", "정상 (normal)"),
+            "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (normal)", "정상 (normal)"),
+            "H 반사 (우)": ("항진 또는 역치 감소 (hyperactive / lower threshold)", ""),
+            "H/M 비율": ("증가 가능 (may be increased)", ""),
             "좌우 비교": ("병변측 H 반사 흥분성 증가 가능", "")
         },
         "teaching": [
-            "H 반사는 말초신경병증뿐 아니라 중추신경계 병변 이후 척수 반사 흥분성 변화를 보는 데도 도움이 됩니다.",
-            "뇌졸중 후 경직(spasticity)에서는 H 반사 항진, 낮아진 역치, 증가된 H/M 비율이 관찰될 수 있습니다.",
-            "이 소견은 발목 굽힘근 경직(ankle flexor spasticity), 발목간대경련(ankle clonus), 과활성 반사와 함께 해석해야 합니다.",
+            "H 반사는 중추신경계 병변 이후 척수 반사 흥분성 변화를 보는 데 도움이 됩니다.",
+            "뇌졸중 후 경직 (spasticity)에서는 H 반사 항진, 낮아진 역치, 증가된 H/M 비율이 관찰될 수 있습니다.",
+            "이 소견은 발목 굽힘근 경직, 발목간대경련, 과활성 반사와 함께 해석해야 합니다.",
             "물리치료 평가에서는 보행, 근긴장, 기능적 움직임과 전기생리학적 소견을 함께 연결하는 것이 중요합니다."
         ]
     }
-}
 
 # ==========================================
 # 보조 함수
@@ -1210,11 +1222,8 @@ def init_case_to_session(case_name):
         left_val = vals[0] if len(vals) > 0 and vals[0] != "" else "정상 (Normal)"
         right_val = vals[1] if len(vals) > 1 and vals[1] != "" else "정상 (Normal)"
 
-        if domain == "reflex":
-            st.session_state[f"left_{rv}_{section}_{item}"] = left_val
-        else:
-            st.session_state[f"left_{rv}_{section}_{item}"] = left_val
-            st.session_state[f"right_{rv}_{section}_{item}"] = right_val
+        st.session_state[f"left_{rv}_{section}_{item}"] = left_val
+        st.session_state[f"right_{rv}_{section}_{item}"] = right_val
 
     st.session_state["last_unmapped_case_items"] = unmapped_items
 
@@ -1458,6 +1467,46 @@ def analyze_case(age, sex, side, selected_rows):
         lesion_tags.add("운동신경세포 수준 (Motor neuron level)")
         reasons.append("감각신경은 보존되면서 여러 분절 근육에 이상 전위가 보여 운동신경세포질환 가능성을 고려할 수 있습니다.")
         suggestions.add("추가 분절 및 벌바 영역 침근전도검사를 고려하세요.")
+
+    # H 반사 / 후기반사
+    h_reflex_abnormal = 0
+    h_reflex_delay_or_absent = 0
+    h_reflex_hyperactive = 0
+    hm_ratio_increased = 0
+
+    for row in selected_rows:
+        item = row["item"]
+        left = row["left"]
+        right = row["right"]
+
+        if item not in ["H 반사 (좌)", "H 반사 (우)", "H/M 비율", "좌우 비교"]:
+            continue
+
+        vals = [str(left), str(right)]
+        if any("지연" in v or "소실" in v or "absent" in v.lower() for v in vals):
+            h_reflex_delay_or_absent += 1
+            h_reflex_abnormal += 1
+        if any("항진" in v or "hyperactive" in v.lower() or "역치 감소" in v for v in vals):
+            h_reflex_hyperactive += 1
+            h_reflex_abnormal += 1
+        if any("증가" in v or "increased" in v.lower() for v in vals):
+            hm_ratio_increased += 1
+            h_reflex_abnormal += 1
+
+    if h_reflex_delay_or_absent >= 1 and tibial_related >= 1:
+        scores["S1 신경뿌리병증 (S1 radiculopathy)"] += 8
+        lesion_tags.add("H 반사 이상")
+        reasons.append("H 반사 지연 또는 소실이 보여 S1 신경뿌리병증 가능성을 고려합니다.")
+        suggestions.add("아킬레스힘줄 반사와 함께 해석하고 허리 MRI를 고려하세요.")
+
+    if h_reflex_hyperactive >= 1 or hm_ratio_increased >= 1:
+        scores["뇌졸중 후 경직 (post-stroke spasticity)"] += 8
+        lesion_tags.add("척수 반사 흥분성 증가")
+        reasons.append("H 반사 항진 또는 H/M 비율 증가가 보여 중추신경계 병변 후 반사 흥분성 증가를 생각할 수 있습니다.")
+        suggestions.add("근긴장도 평가(MAS 등), 클로누스, 병적 반사, 보행 분석을 함께 확인하세요.")
+
+    if h_reflex_abnormal >= 1 and total_abnormal == 0:
+        reasons.append("다른 말초신경 검사 이상이 거의 없더라도 H 반사 이상만으로 S1 신경뿌리병증 또는 중추성 경직을 보조적으로 시사할 수 있습니다.")
 
     # 눈 깜박 반사(Blink reflex)
     if reflex_abnormal >= 2:
@@ -1783,15 +1832,56 @@ def render_case_learning_info(case_name):
     if physical_exam:
         st.markdown('<div class="section-card">', unsafe_allow_html=True)
         st.markdown("### 이학적 검사 요약")
-
         for exam_title, exam_items in physical_exam.items():
-            st.markdown(f"**{exam_title}**")
+            st.markdown(f'<div class="big-section-title">{exam_title}</div>', unsafe_allow_html=True)
             if isinstance(exam_items, list):
                 for exam_item in exam_items:
-                    st.write(f"- {exam_item}")
+                    st.markdown(f'<div class="section-hint">{exam_item}</div>', unsafe_allow_html=True)
             else:
-                st.write(f"- {exam_items}")
+                st.markdown(f'<div class="section-hint">{exam_items}</div>', unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
+    ncs_items = []
+    needle_items = []
+    reflex_items = []
+    other_items = []
+
+    for item, vals in findings.items():
+        domain = ANATOMY.get(item, {}).get("domain", "")
+        if domain in ["sensory", "motor"]:
+            ncs_items.append((item, vals))
+        elif domain == "muscle":
+            needle_items.append((item, vals))
+        elif domain == "reflex":
+            reflex_items.append((item, vals))
+        else:
+            other_items.append((item, vals))
+
+    for title, grouped_items in [
+        ("신경전도검사 예시", ncs_items),
+        ("침근전도검사 예시", needle_items),
+        ("반사검사 예시", reflex_items),
+        ("기타 예시", other_items),
+    ]:
+        if grouped_items:
+            st.markdown('<div class="section-card">', unsafe_allow_html=True)
+            st.markdown(f"### {title}")
+            for item, vals in grouped_items:
+                left_val = vals[0] if len(vals) > 0 else ""
+                right_val = vals[1] if len(vals) > 1 else ""
+                if str(right_val).strip() == "":
+                    st.markdown(f"**{item}**  \n- {left_val}")
+                else:
+                    st.markdown(
+                        f"**{item}**  \n- 정상쪽/비병변측: {left_val}  \n- 병변쪽/증상측: {right_val}"
+                    )
+            st.markdown("</div>", unsafe_allow_html=True)
+
+    if teaching:
+        st.markdown('<div class="case-teaching-box">', unsafe_allow_html=True)
+        st.markdown("### 학습 포인트")
+        for t in teaching:
+            st.write(f"- {t}")
         st.markdown("</div>", unsafe_allow_html=True)
 
     ncs_items = []
@@ -1904,23 +1994,24 @@ def render_input_sections():
     st.write("- 팔 침근전도")
     st.write("- 다리 감각/운동")
     st.write("- 다리 침근전도")
+    st.write("- H 반사/후기반사")
     st.write("- 눈깜빡반사")
-    st.markdown("</div>", unsafe_allow_html=True)
-
     tabs = st.tabs([
         "팔 감각/운동",
         "팔 침근전도",
         "다리 감각/운동",
         "다리 침근전도",
+        "h 반사/후기반사",
         "눈깜빡반사"
     ])
 
     section_groups = [
-        ["팔 감각신경전도검사 (Arm Sensory NCS)", "팔 운동신경전도검사 (Arm Motor NCS)"],
-        ["팔 침근전도검사 근육 (Arm Needle EMG Muscles)"],
-        ["다리 감각신경전도검사 (Leg Sensory NCS)", "다리 운동신경전도검사 (Leg Motor NCS)"],
-        ["다리 침근전도검사 근육 (Leg Needle EMG Muscles)"],
-        ["눈깜빡반사검사 (Blink Reflex)"]
+        ["팔 감각신경전도검사 (arm sensory NCS)", "팔 운동신경전도검사 (arm motor NCS)"],
+        ["팔 침근전도검사 근육 (arm needle EMG muscles)"],
+        ["다리 감각신경전도검사 (leg sensory NCS)", "다리 운동신경전도검사 (leg motor NCS)"],
+        ["다리 침근전도검사 근육 (leg needle EMG muscles)"],
+        ["후기반사검사 (late responses / H reflex)"],
+        ["눈깜빡반사검사 (blink reflex)"]
     ]
 
     for tab, sections in zip(tabs, section_groups):
