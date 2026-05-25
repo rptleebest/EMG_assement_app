@@ -586,7 +586,7 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "엄지 벌림 약화: 관련근육=짧은엄지벌림근(abductor pollicis brevis), 관련신경=정중신경(median nerve), C8-T1",
+                    "엄지 벌림 약화: 짧은엄지벌림근(abductor pollicis brevis), 정중신경(median nerve), C8-T1",
                     "엄지·검지·중지 및 반지손가락 노측 절반의 손바닥 쪽 감각저하: 정중신경 감각영역",
                     "팔렌검사(Phalen test): 양성반응(positive sign), 손목 티넬징후(Tinel sign): 양성반응(positive sign)"
                 ]
@@ -636,8 +636,8 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "손목 폄 약화: 관련근육=손목폄근군(extensor carpi radialis / extensor digitorum), 관련신경=노신경(radial nerve), C6-C7",
-                    "손가락 폄 약화: 관련근육=손가락폄근군(finger extensors), 관련신경= 노신경(radial nerve), C7-C8",
+                    "손목 폄 약화: 손목폄근군(extensor carpi radialis / extensor digitorum), 노신경(radial nerve), C6-C7",
+                    "손가락 폄 약화: 손가락폄근군(finger extensors), 노신경(radial nerve), C7-C8",
                     "손등 노측 감각저하: 노신경 표재감각분지(superficial radial sensory branch) 영역과 연관"
                 ]
             }
@@ -688,8 +688,8 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "새끼손가락 벌림 약화: 관련근육=새끼벌림근(abductor digiti minimi), 관련신경=자신경(ulnar nerve), C8-T1",
-                    "손가락 벌림 약화: 관련근육=첫째등쪽뼈사이근(first dorsal interosseous), 관련신경=자신경(ulnar nerve), C8-T1",
+                    "새끼손가락 벌림 약화: 새끼벌림근(abductor digiti minimi), 자신경(ulnar nerve), C8-T1",
+                    "손가락 벌림 약화: 첫째등쪽뼈사이근(first dorsal interosseous), 자신경(ulnar nerve), C8-T1",
                     "4번째, 5번째 손가락 및 손 자측 감각저하: 자신경(ulnar nerve) 감각영역",
                     "팔꿉관절 굽힘 검사(elbow flexion test): 양성반응(positive sign)"
                 ]
@@ -740,8 +740,8 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "발목 등굽힘(ankle dorsiflexion) 약화: 관련근육=앞정강근(tibialis anterior), 관련신경=깊은종아리신경(deep peroneal nerve), 주로 L4-L5",
-                    "엄지발가락 폄(great toe extension) 약화: 관련근육=긴엄지폄근(extensor hallucis longus),  관련신경=깊은종아리신경, 주로 L5",
+                    "발목 등굽힘(ankle dorsiflexion) 약화: 앞정강근(tibialis anterior), 깊은종아리신경(deep peroneal nerve), 주로 L4-L5",
+                    "엄지발가락 폄(great toe extension) 약화: 긴엄지폄근(extensor hallucis longus),  깊은종아리신경(deep peroneal nerve), 주로 L5",
                     "종아리 가쪽과 발등 감각저하: 주로 L5 피부분절(dermatome)과 연관"
                 ]
             }
@@ -793,9 +793,9 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "발목 등굽힘(ankle dorsiflexion) 약화: 관련근육=앞정강근(tibialis anterior), 관련신경=깊은종아리신경(deep peroneal nerve), L4-L5",
-                    "엄지발가락 폄(great toe extension) 약화: 관련근육=긴엄지폄근(extensor hallucis longus), 관련신경=깊은종아리신경, L5",
-                    "발가쪽번짐(ankle eversion) 약화: 관련근육=긴종아리근(peroneus longus), 관련신경=얕은종아리신경(superficial peroneal nerve), L5-S1",
+                    "발목 등굽힘(ankle dorsiflexion) 약화: 앞정강근(tibialis anterior), 깊은종아리신경(deep peroneal nerve), L4-L5",
+                    "엄지발가락 폄(great toe extension) 약화: 긴엄지폄근(extensor hallucis longus),깊은종아리신경(deep peroneal nerve), L5",
+                    "발가쪽번짐(ankle eversion) 약화: 긴종아리근(peroneus longus), 얕은종아리신경(superficial peroneal nerve), L5-S1",
                     "종아리 가쪽과 발등 감각저하: 얕은종아리신경(superficial peroneal nerve) 감각영역과 연관"
                 ]
             }
@@ -840,8 +840,8 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "무릎 폄(knee extension) 약화: 관련근육=가쪽넓은근(vastus lateralis), 관련신경=넓적다리신경(femoral nerve), L2-L4",
-                    "발목 등굽힘(ankle dorsiflexion) 약화: 관련근육=앞정강근(tibialis anterior), 관련신경=깊은종아리신경(deep peroneal nerve), L4-L5",
+                    "무릎 폄(knee extension) 약화: 가쪽넓은근(vastus lateralis), 넓적다리신경(femoral nerve), L2-L4",
+                    "발목 등굽힘(ankle dorsiflexion) 약화: 관련근육=앞정강근(tibialis anterior), 깊은종아리신경(deep peroneal nerve), L4-L5",
                     "허벅지와 종아리의 넓은 범위 감각저하: 여러 말초신경 분포가 함께 침범된 양상"
                 ]
             }
@@ -893,7 +893,7 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "발가락 움직임 약화: 관련근육=발가락 폄/굽힘 관련 근육 및 발 자체기원근육(intrinsic muscle), 관련신경=종아리신경(peroneal nerve)/정강신경(tibial nerve), 주로 L5-S1",
+                    "발가락 움직임 약화: 발가락 폄/굽힘 관련 근육 및 발 자체기원근육(intrinsic muscle), 종아리신경(peroneal nerve)/정강신경(tibial nerve), 주로 L5-S1",
                     "양측 발끝부터 시작되는 감각저하: 길이의존성(length-dependent) 말초신경 침범 양상",
                     "아킬레스힘줄반사(Achilles tendon reflex) 양측 감소 또는 소실"
                 ]
@@ -2107,7 +2107,7 @@ def render_direct_entry_start():
     st.markdown('<div class="case-bullet">• 현재 앱은 학생 교육용이므로 이해하기 쉬운 대표 해석 중심으로 결과를 제공합니다.</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    if st.button("입력 화면으로 이동", type="primary", use_container_width=True):
+    if st.button("세부 입력 화면으로 이동", type="primary", use_container_width=True):
         if sex == "미선택" or side == "미선택":
             st.warning("성별과 병변측을 선택하세요.")
         else:
