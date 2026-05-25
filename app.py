@@ -15,312 +15,287 @@ st.set_page_config(
 st.markdown("""
 <style>
 .block-container {
-    padding-top: 4.2rem;
-    padding-bottom: 1.8rem;
-    max-width: 1180px;
+    padding-top: 3.0rem;
+    padding-bottom: 0.85rem;
+    max-width: 960px;
 }
 
 .main-title {
-    font-size: 2.1rem;
-    font-weight: 900;
-    margin-top: 0.5rem;
-    margin-bottom: 0.45rem;
-    line-height: 1.34;
+    font-size: 1.32rem;
+    font-weight: 650;
+    margin-top: 0.2rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
     color: #0f172a;
+    letter-spacing: -0.01em;
     word-break: keep-all;
 }
 
 .subtle {
     color: #475569;
-    font-size: 0.98rem;
-    margin-bottom: 1.05rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.45;
 }
 
-.section-card {
+.section-card,
+.result-card,
+.warn-card {
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 16px 16px 18px 16px;
-    margin-bottom: 14px;
+    border-radius: 10px;
+    padding: 8px 8px 10px 8px;
+    margin-bottom: 9px;
 }
 
 .result-card {
     background: #f8fffb;
     border: 1px solid #d1fae5;
-    border-radius: 16px;
-    padding: 16px 16px 18px 16px;
-    margin-bottom: 14px;
 }
 
 .warn-card {
     background: #fffaf3;
     border: 1px solid #fed7aa;
-    border-radius: 16px;
-    padding: 16px 16px 18px 16px;
-    margin-bottom: 14px;
 }
 
 .input-row {
-    padding: 10px 0 4px 0;
+    padding: 0;
     margin-bottom: 0;
 }
 
 .input-title {
-    font-weight: 800;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1px;
     color: #0f172a;
-    line-height: 1.5;
+    line-height: 1.3;
+    word-break: keep-all;
 }
 
 .input-meta {
-    font-size: 0.89rem;
-    color: #475569;
-    margin-bottom: 10px;
-    line-height: 1.55;
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 4px;
+    line-height: 1.33;
 }
 
 .big-section-title {
-    font-size: 1.05rem;
-    font-weight: 900;
+    font-size: 0.92rem;
+    font-weight: 600;
     color: #0f172a;
-    background: linear-gradient(90deg, #eff6ff 0%, #f8fafc 100%);
+    background: #f8fafc;
     border: 1px solid #dbeafe;
-    border-left: 5px solid #3b82f6;
-    border-radius: 12px;
-    padding: 10px 12px;
-    margin-top: 16px;
-    margin-bottom: 12px;
-    line-height: 1.48;
+    border-left: 3px solid #3b82f6;
+    border-radius: 8px;
+    padding: 7px 8px;
+    margin-top: 8px;
+    margin-bottom: 6px;
+    line-height: 1.28;
 }
 
 .section-hint {
-    font-size: 0.95rem;
+    font-size: 0.86rem;
     color: #334155;
     background: #f8fafc;
-    border-left: 4px solid #22c55e;
-    padding: 12px 14px;
-    border-radius: 12px;
-    margin-top: 8px;
-    margin-bottom: 14px;
-    line-height: 1.62;
+    border-left: 3px solid #22c55e;
+    padding: 7px 8px;
+    border-radius: 8px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    line-height: 1.42;
 }
 
 .item-divider {
     border: none;
-    border-top: 1px solid #e5e7eb;
-    margin: 14px 0 16px 0;
+    border-top: 1px solid #eef2f7;
+    margin: 4px 0 6px 0;
 }
 
 .section-divider {
     border: none;
-    border-top: 1px solid #cbd5e1;
-    margin: 18px 0 20px 0;
+    border-top: 1px solid #e2e8f0;
+    margin: 7px 0 9px 0;
 }
 
 .soft-divider {
     border: none;
-    border-top: 1px solid #eef2f7;
-    margin: 10px 0 12px 0;
+    border-top: 1px solid #f1f5f9;
+    margin: 4px 0 6px 0;
 }
 
 .strong-divider {
     border: none;
-    border-top: 1.5px solid #cbd5e1;
-    margin: 18px 0 20px 0;
-}
-
-.top-bottom-nav-space {
-    margin-top: 8px;
-    margin-bottom: 6px;
+    border-top: 1px solid #cbd5e1;
+    margin: 10px 0 12px 0;
 }
 
 .case-title-mobile {
-    font-size: 1.38rem;
-    font-weight: 900;
-    line-height: 1.42;
+    font-size: 0.98rem;
+    font-weight: 650;
+    line-height: 1.22;
     color: #0f172a;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     word-break: keep-all;
 }
 
 .case-subtitle-mobile {
-    font-size: 0.96rem;
+    font-size: 0.83rem;
     color: #475569;
-    margin-bottom: 14px;
-    line-height: 1.52;
+    margin-bottom: 6px;
+    line-height: 1.38;
 }
 
 .case-section-label {
-    font-size: 1.06rem;
-    font-weight: 900;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #0f172a;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-left: 5px solid #60a5fa;
-    border-radius: 12px;
-    padding: 10px 12px;
-    margin-top: 18px;
-    margin-bottom: 14px;
-    line-height: 1.48;
-}
-
-.case-block {
-    margin-top: 6px;
-    margin-bottom: 14px;
-    padding: 2px 2px 2px 2px;
-}
-
-.case-subheading {
-    font-size: 0.98rem;
-    font-weight: 850;
-    color: #0f172a;
-    margin-top: 18px;
-    margin-bottom: 10px;
-    line-height: 1.5;
+    border-left: 3px solid #60a5fa;
+    border-radius: 8px;
+    padding: 6px 8px;
+    margin-top: 9px;
+    margin-bottom: 7px;
+    line-height: 1.28;
 }
 
 .case-bullet {
-    font-size: 0.97rem;
-    line-height: 1.7;
+    font-size: 0.86rem;
+    line-height: 1.44;
     color: #1f2937;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
 }
 
 .case-text-block {
     background: #fcfcfd;
-    border-left: 4px solid #e2e8f0;
-    border-radius: 10px;
-    padding: 10px 12px;
-    margin-top: 8px;
-    margin-bottom: 14px;
-}
-
-.finding-item-title {
-    font-size: 1rem;
-    font-weight: 850;
-    color: #0f172a;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    line-height: 1.5;
-}
-
-.finding-subtext {
-    font-size: 0.94rem;
-    color: #334155;
-    line-height: 1.62;
-    margin-bottom: 4px;
-}
-
-.mobile-note {
-    font-size: 0.93rem;
-    color: #475569;
-    line-height: 1.6;
-}
-
-.result-title {
-    font-size: 1.14rem;
-    font-weight: 900;
-    color: #065f46;
-    line-height: 1.45;
-    margin-bottom: 8px;
-}
-
-.result-label {
-    font-size: 1rem;
-    font-weight: 900;
-    color: #0f172a;
-    background: #f8fafc;
-    border-left: 4px solid #86efac;
-    border-radius: 10px;
-    padding: 8px 10px;
-    margin-top: 18px;
-    margin-bottom: 12px;
-    line-height: 1.48;
-}
-
-.result-text {
-    font-size: 0.96rem;
-    color: #1f2937;
-    line-height: 1.62;
+    border-left: 3px solid #e2e8f0;
+    border-radius: 7px;
+    padding: 4px 7px;
+    margin-top: 0;
     margin-bottom: 5px;
 }
 
-.result-small {
-    font-size: 0.91rem;
+.finding-item-title {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 0;
+    margin-bottom: 1px;
+    line-height: 1.28;
+}
+
+.finding-subtext {
+    font-size: 0.83rem;
+    color: #334155;
+    line-height: 1.38;
+    margin-bottom: 1px;
+}
+
+.mobile-note {
+    font-size: 0.84rem;
     color: #475569;
-    line-height: 1.58;
+    line-height: 1.42;
+}
+
+.result-title {
+    font-size: 0.95rem;
+    font-weight: 650;
+    color: #065f46;
+    line-height: 1.28;
+    margin-bottom: 4px;
+}
+
+.result-label {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #0f172a;
+    background: #f8fafc;
+    border-left: 3px solid #86efac;
+    border-radius: 7px;
+    padding: 6px 7px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    line-height: 1.28;
+}
+
+.result-text {
+    font-size: 0.85rem;
+    color: #1f2937;
+    line-height: 1.42;
+    margin-bottom: 2px;
+}
+
+.result-small {
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.38;
 }
 
 .group-check-box {
-    padding: 8px 10px;
+    padding: 4px 6px;
     border: 1px solid #e5e7eb;
-    border-radius: 10px;
+    border-radius: 7px;
     background: #fafafa;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
-div[role="radiogroup"] label p {
-    font-size: 1.08rem !important;
-    font-weight: 700 !important;
+div[role="radiogroup"] label p,
+div[data-testid="stRadio"] label p,
+div[data-testid="stCheckbox"] label p {
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    line-height: 1.28 !important;
     color: #0f172a !important;
-    line-height: 1.48 !important;
-}
-
-div[data-testid="stRadio"] label p {
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    line-height: 1.48 !important;
     word-break: keep-all !important;
-    color: #0f172a !important;
+}
+
+label[data-testid="stWidgetLabel"] p {
+    font-size: 0.84rem !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
+}
+
+div[data-testid="stButton"] button {
+    font-weight: 600 !important;
+    border-radius: 8px !important;
 }
 
 @media (max-width: 768px) {
     .block-container {
-        padding-top: 3.7rem;
-        padding-bottom: 1.2rem;
+        padding-top: 2.7rem;
+        padding-bottom: 0.75rem;
     }
 
     .main-title {
-        font-size: 1.72rem;
-        line-height: 1.3;
-        margin-bottom: 0.45rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.18;
+        margin-bottom: 0.18rem;
     }
 
-    .section-card, .result-card, .warn-card {
-        padding: 12px 12px 14px 12px;
-        border-radius: 14px;
+    .section-card,
+    .result-card,
+    .warn-card {
+        padding: 7px 7px 8px 7px;
+        border-radius: 9px;
     }
 
     .case-title-mobile {
-        font-size: 1.14rem;
-        margin-bottom: 8px;
+        font-size: 0.92rem;
+        margin-bottom: 4px;
     }
 
     .case-subtitle-mobile {
-        font-size: 0.91rem;
-        margin-bottom: 12px;
+        font-size: 0.8rem;
+        margin-bottom: 5px;
     }
 
-    .case-section-label {
-        font-size: 1rem;
-        padding: 9px 10px;
-        margin-top: 16px;
-        margin-bottom: 12px;
-    }
-
+    .case-section-label,
     .big-section-title {
-        font-size: 1rem;
-        padding: 9px 10px;
-        margin-top: 14px;
-        margin-bottom: 10px;
-    }
-
-    .case-subheading {
-        font-size: 0.95rem;
-        margin-top: 16px;
-        margin-bottom: 8px;
+        font-size: 0.86rem;
+        padding: 6px 7px;
+        margin-top: 8px;
+        margin-bottom: 6px;
     }
 
     .case-bullet,
@@ -328,33 +303,32 @@ div[data-testid="stRadio"] label p {
     .mobile-note,
     .result-text,
     .result-small {
-        font-size: 0.91rem;
-        line-height: 1.66;
+        font-size: 0.81rem;
+        line-height: 1.38;
     }
 
     .finding-item-title {
-        font-size: 0.96rem;
-        margin-bottom: 6px;
-    }
-
-    .section-divider {
-        margin: 16px 0 18px 0;
+        font-size: 0.84rem;
     }
 
     .item-divider {
-        margin: 12px 0 14px 0;
+        margin: 4px 0 5px 0;
+    }
+
+    .section-divider {
+        margin: 6px 0 8px 0;
     }
 
     .case-text-block {
-        padding: 9px 10px;
-        margin-bottom: 12px;
+        padding: 4px 6px;
+        margin-bottom: 4px;
     }
 
-    .result-label {
-        font-size: 0.96rem;
-        padding: 7px 9px;
-        margin-top: 16px;
-        margin-bottom: 10px;
+    div[role="radiogroup"] label p,
+    div[data-testid="stRadio"] label p,
+    div[data-testid="stCheckbox"] label p {
+        font-size: 0.85rem !important;
+        font-weight: 500 !important;
     }
 }
 </style>
@@ -1282,6 +1256,221 @@ def get_motor_stimulation_labels(item):
         "proximal": "근위부 (proximal site)"
     })
 
+def get_compact_item_label(item):
+    compact_map = {
+        "정중신경 감각신경활동전위 (Median SNAP)": "정중신경 (Median)",
+        "자신경 감각신경활동전위 (Ulnar SNAP)": "자신경 (Ulnar)",
+        "노신경 감각신경활동전위 (Radial SNAP)": "노신경 (Radial)",
+        "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": "표재노신경 (Superficial Radial)",
+        "가쪽아래팔피부신경 감각신경활동전위 (Lateral antebrachial cutaneous SNAP)": "가쪽아래팔피부신경 (Lateral antebrachial cutaneous)",
+
+        "정중신경 복합근육활동전위 (Median CMAP)": "정중신경 (Median)",
+        "자신경 복합근육활동전위 (Ulnar CMAP)": "자신경 (Ulnar)",
+        "노신경 복합근육활동전위 (Radial CMAP)": "노신경 (Radial)",
+        "겨드랑신경 복합근육활동전위 (Axillary CMAP)": "겨드랑신경 (Axillary)",
+        "근피신경 복합근육활동전위 (Musculocutaneous CMAP)": "근피신경 (Musculocutaneous)",
+
+        "장딴지신경 감각신경활동전위 (Sural SNAP)": "장딴지신경 (Sural)",
+        "얕은종아리신경 감각신경활동전위 (Superficial Peroneal SNAP)": "얕은종아리신경 (Superficial Peroneal)",
+        "두렁신경 감각신경활동전위 (Saphenous SNAP)": "두렁신경 (Saphenous)",
+        "첫째 발가락사이 감각 (First Dorsal Web Space Sensation)": "첫째 발가락사이 감각 (First Dorsal Web Space)",
+
+        "종아리신경 복합근육활동전위 (Peroneal CMAP)": "종아리신경 (Peroneal)",
+        "깊은종아리신경 복합근육활동전위 (Deep Peroneal CMAP)": "깊은종아리신경 (Deep Peroneal)",
+        "정강신경 복합근육활동전위 (Tibial CMAP)": "정강신경 (Tibial)",
+        "넓적다리신경 복합근육활동전위 (Femoral CMAP)": "넓적다리신경 (Femoral)",
+
+        "짧은엄지벌림근 (Abductor Pollicis Brevis, APB)": "짧은엄지벌림근 (Abductor Pollicis Brevis)",
+        "첫째등쪽뼈사이근 (First Dorsal Interosseous, FDI)": "첫째등쪽뼈사이근 (First Dorsal Interosseous)",
+        "새끼벌림근 (Abductor Digiti Minimi, ADM)": "새끼벌림근 (Abductor Digiti Minimi)",
+        "집게폄근 (Extensor Indicis Proprius, EIP)": "집게폄근 (Extensor Indicis Proprius)",
+        "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)": "손목폄근 (Extensor Carpi Radialis / Extensor Digitorum)",
+        "가시아래근 (Infraspinatus)": "가시아래근 (Infraspinatus)",
+        "삼각근 (Deltoid)": "삼각근 (Deltoid)",
+        "위팔두갈래근 (Biceps Brachii)": "위팔두갈래근 (Biceps Brachii)",
+        "위팔노근 (Brachioradialis)": "위팔노근 (Brachioradialis)",
+        "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)",
+        "원엎침근 (Pronator Teres)": "원엎침근 (Pronator Teres)",
+        "위팔세갈래근 (Triceps Brachii)": "위팔세갈래근 (Triceps Brachii)",
+        "목 척추주위근 (Cervical Paraspinal)": "목 척추주위근 (Cervical Paraspinal)",
+
+        "앞정강근 (Tibialis Anterior, TA)": "앞정강근 (Tibialis Anterior)",
+        "짧은발가락폄근 (Extensor Digitorum Brevis, EDB)": "짧은발가락폄근 (Extensor Digitorum Brevis)",
+        "짧은발가락벌림근 (Abductor Digiti Minimi pedis)": "짧은발가락벌림근 (Abductor Digiti Minimi pedis)",
+        "긴엄지폄근 (Extensor Hallucis Longus, EHL)": "긴엄지폄근 (Extensor Hallucis Longus)",
+        "긴종아리근 (Peroneus Longus)": "긴종아리근 (Peroneus Longus)",
+        "장딴지근 (Gastrocnemius)": "장딴지근 (Gastrocnemius)",
+        "가자미근 (Soleus)": "가자미근 (Soleus)",
+        "가쪽넓은근 (Vastus Lateralis)": "가쪽넓은근 (Vastus Lateralis)",
+        "엉덩허리근 (Iliopsoas)": "엉덩허리근 (Iliopsoas)",
+        "큰볼기근 (Gluteus Maximus)": "큰볼기근 (Gluteus Maximus)",
+        "중간볼기근 (Gluteus Medius)": "중간볼기근 (Gluteus Medius)",
+        "뒤넓적다리근 (Biceps Femoris)": "뒤넓적다리근 (Biceps Femoris)",
+        "허리 척추주위근 (Lumbar Paraspinal)": "허리 척추주위근 (Lumbar Paraspinal)",
+
+        "H 반사 (좌)": "H 반사 (좌)",
+        "H 반사 (우)": "H 반사 (우)",
+        "H/M 비율": "H/M 비율",
+
+        "정중신경 F파 (Median F-wave)": "정중신경 (Median)",
+        "자신경 F파 (Ulnar F-wave)": "자신경 (Ulnar)",
+        "정강신경 F파 (Tibial F-wave)": "정강신경 (Tibial)",
+        "종아리신경 F파 (Peroneal F-wave)": "종아리신경 (Peroneal)",
+
+        "우측 자극-우측 R1": "우측 자극-우측 R1",
+        "우측 자극-우측 R2": "우측 자극-우측 R2",
+        "우측 자극-좌측 R2": "우측 자극-좌측 R2",
+        "좌측 자극-좌측 R1": "좌측 자극-좌측 R1",
+        "좌측 자극-좌측 R2": "좌측 자극-좌측 R2",
+        "좌측 자극-우측 R2": "좌측 자극-우측 R2",
+    }
+    return compact_map.get(item, item)
+
+def render_selected_item_detail_input(section, item, side, disabled=False):
+    a = ANATOMY.get(item)
+    if not a:
+        return None
+
+    rv = st.session_state.get("input_reset_version", 0)
+
+    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="input-meta">관련 신경: {a["nerve"]} | 관련 레벨: {simplify_level_text(a["level"])}</div>',
+        unsafe_allow_html=True
+    )
+
+    row = None
+
+    if a["domain"] == "h_reflex":
+        c1, c2 = st.columns(2)
+        hmax = c1.number_input("Hmax (mV)", min_value=0.0, value=0.0, step=0.1, key=f"hmax_{rv}_{item}", disabled=disabled)
+        mmax = c2.number_input("Mmax (mV)", min_value=0.0, value=0.0, step=0.1, key=f"mmax_{rv}_{item}", disabled=disabled)
+
+        ratio, ratio_text = compute_hm_ratio_text(hmax, mmax)
+        hm_info = interpret_hm_ratio(ratio)
+
+        st.markdown(f"<div class='mobile-note'>H/M 비율: {ratio_text}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='mobile-note'>{hm_info['label']} - {hm_info['detail']}</div>", unsafe_allow_html=True)
+
+        if ratio is None:
+            hm_interpret = "정상 (Normal)"
+            h_status = "정상 (Normal)"
+        else:
+            if ratio > 0.60:
+                hm_interpret = "증가 가능 (May be increased)"
+                h_status = "항진 또는 문턱값 감소 (Hyperactive / lower threshold)"
+            else:
+                hm_interpret = "정상 (Normal)"
+                h_status = "정상 (Normal)"
+
+        row = {"section": section, "item": item, "left": h_status, "right": ""}
+        hm_row = {"section": section, "item": "H/M 비율", "left": f"{hm_interpret} | 자동계산값: {ratio_text}", "right": ""}
+        st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+        return [row, hm_row]
+
+    if a["domain"] == "h_ratio":
+        return None
+
+    if a["domain"] == "f_wave":
+        c1, c2 = st.columns(2)
+        latency_status = c1.selectbox(
+            "잠복기",
+            ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+            key=f"fw_lat_{rv}_{item}",
+            disabled=disabled
+        )
+        response_status = c2.selectbox(
+            "반응",
+            ["출현 (Present)", "소실 (Absent)"],
+            key=f"fw_resp_{rv}_{item}",
+            disabled=disabled
+        )
+        lesion_res = compose_fwave_result(latency_status, response_status)
+
+        if side == "양측":
+            row = {"section": section, "item": item, "left": lesion_res, "right": lesion_res}
+        elif side == "좌":
+            row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
+        else:
+            row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
+
+    elif a["domain"] == "blink":
+        res = st.selectbox("반응 결과", get_domain_options(a["domain"], item), key=f"blink_{rv}_{item}", disabled=disabled)
+        row = {"section": section, "item": item, "left": res, "right": ""}
+
+    elif a["domain"] == "reflex":
+        res = st.selectbox("검사 결과", get_domain_options(a["domain"], item), key=f"res_{rv}_{item}", disabled=disabled)
+        row = {"section": section, "item": item, "left": res, "right": ""}
+
+    elif a["domain"] == "sensory":
+        if side == "양측":
+            st.markdown("**좌측**")
+            c1, c2 = st.columns(2)
+            left_amp = c1.selectbox("진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"sens_l_amp_{rv}_{item}", disabled=disabled)
+            left_lat = c2.selectbox("잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"sens_l_lat_{rv}_{item}", disabled=disabled)
+
+            st.markdown("**우측**")
+            c3, c4 = st.columns(2)
+            right_amp = c3.selectbox("진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"sens_r_amp_{rv}_{item}", disabled=disabled)
+            right_lat = c4.selectbox("잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"sens_r_lat_{rv}_{item}", disabled=disabled)
+
+            row = {
+                "section": section,
+                "item": item,
+                "left": compose_ncs_result(left_amp, left_lat),
+                "right": compose_ncs_result(right_amp, right_lat)
+            }
+        else:
+            c1, c2 = st.columns(2)
+            lesion_amp = c1.selectbox("진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"sens_amp_{rv}_{item}", disabled=disabled)
+            lesion_lat = c2.selectbox("잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"sens_lat_{rv}_{item}", disabled=disabled)
+            lesion_res = compose_ncs_result(lesion_amp, lesion_lat)
+
+            if side == "좌":
+                row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
+            else:
+                row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
+
+    elif a["domain"] == "motor":
+        labels = get_motor_stimulation_labels(item)
+
+        if side == "양측":
+            c1, c2 = st.columns(2)
+            left = c1.selectbox("좌측 결과", get_domain_options(a["domain"], item), key=f"ml_{rv}_{item}", disabled=disabled)
+            right = c2.selectbox("우측 결과", get_domain_options(a["domain"], item), key=f"mr_{rv}_{item}", disabled=disabled)
+            row = {"section": section, "item": item, "left": left, "right": right}
+        else:
+            c1, c2 = st.columns(2)
+            distal_amp = c1.selectbox(f'{labels["distal"]} 진폭', ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"da_{rv}_{item}", disabled=disabled)
+            distal_lat = c2.selectbox(f'{labels["distal"]} 잠복기', ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"dl_{rv}_{item}", disabled=disabled)
+
+            c3, c4 = st.columns(2)
+            proximal_amp = c3.selectbox(f'{labels["proximal"]} 진폭', ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"pa_{rv}_{item}", disabled=disabled)
+            proximal_lat = c4.selectbox(f'{labels["proximal"]} 잠복기', ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"pl_{rv}_{item}", disabled=disabled)
+
+            lesion_res = compose_ncs_result(distal_amp, distal_lat, proximal_amp, proximal_lat)
+
+            if side == "좌":
+                row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
+            else:
+                row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
+
+    elif a["domain"] == "muscle":
+        if side == "양측":
+            c1, c2 = st.columns(2)
+            left = c1.selectbox("좌측 소견", get_domain_options(a["domain"], item), key=f"emg_l_{rv}_{item}", disabled=disabled)
+            right = c2.selectbox("우측 소견", get_domain_options(a["domain"], item), key=f"emg_r_{rv}_{item}", disabled=disabled)
+            row = {"section": section, "item": item, "left": left, "right": right}
+        else:
+            lesion_res = st.selectbox("침근전도 소견", get_domain_options(a["domain"], item), key=f"emg_{rv}_{item}", disabled=disabled)
+            if side == "좌":
+                row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
+            else:
+                row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
+
+    st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+    return row
+
 # ==========================================
 # 3. 보조 함수
 # ==========================================
@@ -1835,7 +2024,7 @@ def render_home_screen():
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 진행할 학습 모드를 선택하세요")
+    st.markdown("### 진행할 학습 모드 선택")
     selected_mode = st.radio(
         "진행할 학습 모드를 선택하세요",
         [MODE_CASE, MODE_DIRECT],
@@ -1846,17 +2035,14 @@ def render_home_screen():
         st.markdown("""
         <div class="section-hint">
         <b>사례 학습</b><br>
-        대표 증상, 이학적 검사결과, 신경전도검사, 침근전도검사 소견을 연결하여
-        <b>왜 해당 질환을 생각하는지</b>와 <b>어떤 질환과 감별해야 하는지</b>를 학습하는 모드입니다.
-        <br>물리치료학과 학생이 병변 위치와 전기진단학적 해석 흐름을 익히는 데 적합합니다.
+        증상과 근전도 소견을 바탕으로 진단과 감별 포인트를 익히는 모드입니다.
         </div>
         """, unsafe_allow_html=True)
     else:
         st.markdown("""
         <div class="section-hint">
         <b>검사 정보 입력 학습</b><br>
-        판독지의 이상 소견을 직접 선택하고 자동 분석과 비교하면서,
-        <b>병변 위치 추론</b>, <b>말초신경병증·신경뿌리병증·신경얼기병증 감별</b>을 훈련하는 모드입니다.
+        판독지의 결과를 입력하면, 진단명과 병변 위치 및 감별진단이 자동으로 출력되어 학습하는 모드입니다.
         </div>
         """, unsafe_allow_html=True)
 
@@ -1870,21 +2056,24 @@ def render_home_screen():
 
 def render_case_selector_only():
     case_options = get_case_names_for_selection()
+
     st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 📖 대표 사례 선택")
+    st.markdown('<div class="case-section-label">📖 대표 사례 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mobile-note">증상 분포, 근력 약화 양상, 감각저하 위치를 먼저 보고 병변이 신경뿌리인지 말초신경인지 먼저 추론해 보세요.</div>',
+        '<div class="mobile-note">증상 분포와 근력 약화를 보고 병변이 신경뿌리인지 말초신경인지 먼저 추론해 보세요.</div>',
         unsafe_allow_html=True
-    )    
-    case_name = st.radio("사례 목록", case_options, label_visibility="collapsed")
+    )
+
+    selected_case = st.radio(
+        "대표 사례 선택",
+        case_options,
+        label_visibility="collapsed"
+    )
 
     if st.button("사례 학습 시작", type="primary", use_container_width=True):
-        st.session_state["confirmed_case"] = case_name
+        st.session_state["confirmed_case"] = selected_case
         st.session_state["current_screen"] = "case_detail"
-        patient = CASE_LIBRARY[case_name].get("patient", {})
-        st.session_state["age"] = patient.get("age", 50)
-        st.session_state["sex"] = patient.get("sex", "미선택")
-        st.session_state["side"] = patient.get("side", "미선택")
+        clear_result()
         st.rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
@@ -1950,30 +2139,30 @@ def render_case_learning_info(case_name):
 
     st.markdown("""
     <div class="warn-card">
-    <div class="finding-item-title">학생용 사고 프레임</div>
-    <div class="case-bullet">• 증상이 피부분절(dermatome) 분포인지, 말초신경(peripheral nerve) 분포인지 먼저 구분합니다.</div>
-    <div class="case-bullet">• 감각신경전도검사(SNAP)가 보존되는지 감소하는지에 따라 신경뿌리병증(radiculopathy)과 말초신경병증(neuropathy)의 가능성이 달라집니다.</div>
-    <div class="case-bullet">• 침근전도검사에서 어느 근육이 침범되었는지 보면 병변 수준(localization) 추론에 도움이 됩니다.</div>
-    <div class="case-bullet">• 척추주위근(paraspinal muscle) 침범 여부는 신경뿌리병증 감별에 중요합니다.</div>
+        <div class="finding-item-title">학생용 사고 프레임</div>
+        <div class="case-bullet">• 증상이 피부분절(dermatome) 분포인지, 말초신경(peripheral nerve) 분포인지 먼저 구분합니다.</div>
+        <div class="case-bullet">• 감각신경전도검사(SNAP)가 보존되는지 감소하는지에 따라 신경뿌리병증(radiculopathy)과 말초신경병증(neuropathy)의 가능성이 달라집니다.</div>
+        <div class="case-bullet">• 침근전도검사에서 어느 근육이 침범되었는지 보면 병변 수준(localization) 추론에 도움이 됩니다.</div>
+        <div class="case-bullet">• 척추주위근(paraspinal muscle) 침범 여부는 신경뿌리병증 감별에 중요합니다.</div>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown('<hr class="strong-divider">', unsafe_allow_html=True)
+
     st.markdown('<div class="case-section-label">🗣️ 주요 증상</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-block">', unsafe_allow_html=True)
-    for s in patient.get("symptoms", []):
-        st.markdown(f'<div class="case-bullet">• {s}</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+    symptoms_html = "".join(
+        [f'<div class="case-bullet">• {s}</div>' for s in patient.get("symptoms", [])]
+    )
+    st.markdown(f'<div class="case-block compact-block">{symptoms_html}</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🧪 이학적 검사결과</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-block">', unsafe_allow_html=True)
+
+    exam_blocks = []
     for _, exam_items in physical_exam.items():
-        st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-        for item in exam_items:
-            st.markdown(f'<div class="case-bullet">- {item}</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+        items_html = "".join([f'<div class="case-bullet">- {item}</div>' for item in exam_items])
+        exam_blocks.append(f'<div class="case-text-block compact-block">{items_html}</div>')
+    st.markdown(f'<div class="case-block compact-block">{"".join(exam_blocks)}</div>', unsafe_allow_html=True)
 
     sensory_ncs_items, motor_ncs_items, needle_items, reflex_items = [], [], [], []
     for item_name, values in findings.items():
@@ -1992,41 +2181,45 @@ def render_case_learning_info(case_name):
     def render_finding_block(title, items):
         if not items:
             return
+
         st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
         st.markdown(f'<div class="case-section-label">{title}</div>', unsafe_allow_html=True)
-        st.markdown('<div class="case-block">', unsafe_allow_html=True)
 
+        block_parts = []
         for idx, (item_name, values) in enumerate(items):
             left_val = values[0] if len(values) > 0 else ""
             right_val = values[1] if len(values) > 1 else ""
 
-            st.markdown(f'<div class="finding-item-title">{item_name}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
+            lines = [f'<div class="finding-item-title">{item_name}</div>']
 
             if patient.get("side") == "양측":
-                st.markdown(f'<div class="finding-subtext">좌측: {normalize_result_text(left_val)}</div>', unsafe_allow_html=True)
+                lines.append(f'<div class="finding-subtext">좌측: {normalize_result_text(left_val)}</div>')
                 if str(right_val).strip() != "":
-                    st.markdown(f'<div class="finding-subtext">우측: {normalize_result_text(right_val)}</div>', unsafe_allow_html=True)
+                    lines.append(f'<div class="finding-subtext">우측: {normalize_result_text(right_val)}</div>')
             elif str(right_val).strip() != "":
                 side = patient.get("side", "병변")
                 if side == "우":
-                    st.markdown(f'<div class="finding-subtext">좌측(정상측): {normalize_result_text(left_val)}</div>', unsafe_allow_html=True)
-                    st.markdown(f'<div class="finding-subtext">우측(병변측): {normalize_result_text(right_val)}</div>', unsafe_allow_html=True)
+                    lines.append(f'<div class="finding-subtext">좌측(정상측): {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">우측(병변측): {normalize_result_text(right_val)}</div>')
                 elif side == "좌":
-                    st.markdown(f'<div class="finding-subtext">좌측(병변측): {normalize_result_text(left_val)}</div>', unsafe_allow_html=True)
-                    st.markdown(f'<div class="finding-subtext">우측(정상측): {normalize_result_text(right_val)}</div>', unsafe_allow_html=True)
+                    lines.append(f'<div class="finding-subtext">좌측(병변측): {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">우측(정상측): {normalize_result_text(right_val)}</div>')
                 else:
-                    st.markdown(f'<div class="finding-subtext">반대측: {normalize_result_text(left_val)}</div>', unsafe_allow_html=True)
-                    st.markdown(f'<div class="finding-subtext">병변측: {normalize_result_text(right_val)}</div>', unsafe_allow_html=True)
+                    lines.append(f'<div class="finding-subtext">반대측: {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">병변측: {normalize_result_text(right_val)}</div>')
             else:
-                st.markdown(f'<div class="finding-subtext">결과: {normalize_result_text(left_val)}</div>', unsafe_allow_html=True)
+                lines.append(f'<div class="finding-subtext">결과: {normalize_result_text(left_val)}</div>')
 
-            st.markdown('</div>', unsafe_allow_html=True)
+            item_html = f'<div class="compact-item">{"".join(lines)}</div>'
+            block_parts.append(item_html)
 
             if idx < len(items) - 1:
-                st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+                block_parts.append('<hr class="item-divider compact-divider">')
 
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="case-block compact-block">{"".join(block_parts)}</div>',
+            unsafe_allow_html=True
+        )
 
     render_finding_block("⚡ 감각신경전도검사 소견", sensory_ncs_items)
     render_finding_block("⚡ 운동신경전도검사 소견", motor_ncs_items)
@@ -2040,65 +2233,51 @@ def render_case_learning_info(case_name):
     st.markdown('<div class="case-section-label">💡 왜 이 질환을 진단하는가?</div>', unsafe_allow_html=True)
 
     if teaching_dx:
-        st.markdown('<div class="case-block">', unsafe_allow_html=True)
+        teaching_parts = []
 
         if teaching_dx.get("summary"):
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            st.markdown(f'<div class="case-bullet">• {teaching_dx["summary"]}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+            teaching_parts.append(
+                f'<div class="case-text-block compact-block"><div class="case-bullet">• {teaching_dx["summary"]}</div></div>'
+            )
 
         if teaching_dx.get("ncs_reason"):
-            st.markdown('<div class="case-subheading">신경전도검사 해석</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            for line in teaching_dx["ncs_reason"]:
-                st.markdown(f'<div class="case-bullet">- {line}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+            ncs_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["ncs_reason"]])
+            teaching_parts.append(
+                f'<div class="case-subheading">신경전도검사 해석</div><div class="case-text-block compact-block">{ncs_html}</div>'
+            )
 
         if teaching_dx.get("emg_reason"):
-            st.markdown('<div class="case-subheading">침근전도검사 해석</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            for line in teaching_dx["emg_reason"]:
-                st.markdown(f'<div class="case-bullet">- {line}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+            emg_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["emg_reason"]])
+            teaching_parts.append(
+                f'<div class="case-subheading">침근전도검사 해석</div><div class="case-text-block compact-block">{emg_html}</div>'
+            )
 
         if teaching_dx.get("integration"):
-            st.markdown('<div class="case-subheading">종합 해석</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            for line in teaching_dx["integration"]:
-                st.markdown(f'<div class="case-bullet">- {line}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+            integration_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["integration"]])
+            teaching_parts.append(
+                f'<div class="case-subheading">종합 해석</div><div class="case-text-block compact-block">{integration_html}</div>'
+            )
 
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="case-block compact-block">{"".join(teaching_parts)}</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🔍 감별진단은 무엇과 어떻게 하는가?</div>', unsafe_allow_html=True)
 
     if diff_dx:
-        st.markdown('<div class="case-block">', unsafe_allow_html=True)
+        diff_parts = []
         for idx, dx_item in enumerate(diff_dx, 1):
-            st.markdown(f'<div class="finding-item-title">{idx}. {dx_item.get("name", "")}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
+            inner = [f'<div class="finding-item-title">{idx}. {dx_item.get("name", "")}</div>']
             if dx_item.get("why_consider"):
-                st.markdown(f'<div class="finding-subtext"><b>왜 감별이 필요한가:</b> {dx_item["why_consider"]}</div>', unsafe_allow_html=True)
+                inner.append(f'<div class="finding-subtext"><b>왜 감별이 필요한가:</b> {dx_item["why_consider"]}</div>')
             if dx_item.get("how_to_differentiate"):
-                st.markdown(f'<div class="finding-subtext"><b>구체적 감별 포인트:</b> {dx_item["how_to_differentiate"]}</div>', unsafe_allow_html=True)
+                inner.append(f'<div class="finding-subtext"><b>구체적 감별 포인트:</b> {dx_item["how_to_differentiate"]}</div>')
             if dx_item.get("practical_tip"):
-                st.markdown(f'<div class="finding-subtext"><b>학생용 팁:</b> {dx_item["practical_tip"]}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+                inner.append(f'<div class="finding-subtext"><b>학생용 팁:</b> {dx_item["practical_tip"]}</div>')
+            diff_parts.append(f'<div class="compact-item">{"".join(inner)}</div>')
             if idx < len(diff_dx):
-                st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+                diff_parts.append('<hr class="item-divider compact-divider">')
 
-    st.markdown("</div>", unsafe_allow_html=True)
-
-    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<div class="case-section-label">✅ 자기점검</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-    st.markdown('<div class="case-bullet">• 이 사례에서 병변 위치를 신경뿌리, 말초신경, 신경얼기 중 어디로 설명할 수 있는가?</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-bullet">• 감각신경전도검사 결과가 왜 중요한가?</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-bullet">• 침근전도검사에서 어떤 근육이 침범되었고, 그것이 병변 위치 추론에 어떤 도움을 주는가?</div>', unsafe_allow_html=True)
-    st.markdown('<div class="case-bullet">• 가장 중요한 감별진단 1~2개를 말하고, 어떤 검사 소견으로 구분할 수 있는가?</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="case-block compact-block">{"".join(diff_parts)}</div>', unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -2132,289 +2311,304 @@ def render_check_item(section, item, side, disabled=False):
         return None
 
     rv = st.session_state.get("input_reset_version", 0)
+
+    card_key = f"card_{rv}_{section}_{item}"
     check_key = f"chk_{rv}_{section}_{item}"
 
-    render_item_card_header(item, a)
+    st.markdown('<div class="input-row">', unsafe_allow_html=True)
+    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
 
     use_item = st.checkbox("이 항목 입력", key=check_key, disabled=disabled)
+
+    if not use_item:
+        st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+        return None
+
+    st.markdown(
+        f'<div class="input-meta">관련 신경: {a["nerve"]} | 관련 레벨: {simplify_level_text(a["level"])}</div>',
+        unsafe_allow_html=True
+    )
+
     row = None
 
-    if use_item:
-        options = get_domain_options(a["domain"], item)
+    # 1) H 반사
+    if a["domain"] == "h_reflex":
+        if side in ["좌", "우"]:
+            lesion_side_text = "좌측 병변측" if side == "좌" else "우측 병변측"
+            st.caption(f"H반사는 {lesion_side_text}의 Hmax와 Mmax만 입력합니다. 반대측은 정상으로 간주합니다.")
+        else:
+            st.caption("H반사는 각 측의 Hmax와 Mmax를 입력하면 H/M 비율이 자동 계산됩니다.")
 
-        # 1) H 반사
-        if a["domain"] == "h_reflex":
-            if side in ["좌", "우"]:
-                lesion_side_text = "좌측 병변측" if side == "좌" else "우측 병변측"
-                st.caption(f"H반사는 {lesion_side_text}의 Hmax와 Mmax만 입력합니다. 반대측은 정상으로 간주합니다.")
+        c1, c2 = st.columns(2)
+        hmax = c1.number_input(
+            "H파 최대 진폭 Hmax (mV)",
+            min_value=0.0,
+            value=0.0,
+            step=0.1,
+            key=f"hmax_{rv}_{item}",
+            disabled=disabled
+        )
+        mmax = c2.number_input(
+            "M파 최대 진폭 Mmax (mV)",
+            min_value=0.0,
+            value=0.0,
+            step=0.1,
+            key=f"mmax_{rv}_{item}",
+            disabled=disabled
+        )
+
+        ratio, ratio_text = compute_hm_ratio_text(hmax, mmax)
+        hm_info = interpret_hm_ratio(ratio)
+
+        st.markdown(f"**자동 계산된 H/M 비율:** {ratio_text}")
+        st.markdown(f"**교육용 해석:** {hm_info['label']}")
+        st.markdown(f"<div class='mobile-note'>{hm_info['detail']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='mobile-note'>{hm_info['warning']}</div>", unsafe_allow_html=True)
+
+        if ratio is None:
+            hm_interpret = "정상 (Normal)"
+            h_status = "정상 (Normal)"
+        else:
+            if ratio > 0.60:
+                hm_interpret = "증가 가능 (May be increased)"
+                h_status = "항진 또는 문턱값 감소 (Hyperactive / lower threshold)"
             else:
-                st.caption("H반사는 각 측의 Hmax와 Mmax를 입력하면 H/M 비율이 자동 계산됩니다.")
-
-            c1, c2 = st.columns(2)
-            hmax = c1.number_input(
-                "H파 최대 진폭 Hmax (mV)",
-                min_value=0.0,
-                value=0.0,
-                step=0.1,
-                key=f"hmax_{rv}_{item}",
-                disabled=disabled
-            )
-            mmax = c2.number_input(
-                "M파 최대 진폭 Mmax (mV)",
-                min_value=0.0,
-                value=0.0,
-                step=0.1,
-                key=f"mmax_{rv}_{item}",
-                disabled=disabled
-            )
-
-            ratio, ratio_text = compute_hm_ratio_text(hmax, mmax)
-            hm_info = interpret_hm_ratio(ratio)
-
-            st.markdown(f"**자동 계산된 H/M 비율:** {ratio_text}")
-            st.markdown(f"**교육용 해석:** {hm_info['label']}")
-            st.markdown(f"<div class='mobile-note'>{hm_info['detail']}</div>", unsafe_allow_html=True)
-            st.markdown(f"<div class='mobile-note'>{hm_info['warning']}</div>", unsafe_allow_html=True)
-
-            if ratio is None:
                 hm_interpret = "정상 (Normal)"
                 h_status = "정상 (Normal)"
-            else:
-                if ratio > 0.60:
-                    hm_interpret = "증가 가능 (May be increased)"
-                    h_status = "항진 또는 문턱값 감소 (Hyperactive / lower threshold)"
-                else:
-                    hm_interpret = "정상 (Normal)"
-                    h_status = "정상 (Normal)"
 
-            row = {"section": section, "item": item, "left": h_status, "right": ""}
+        row = {"section": section, "item": item, "left": h_status, "right": ""}
+        hm_row = {
+            "section": section,
+            "item": "H/M 비율",
+            "left": f"{hm_interpret} | 자동계산값: {ratio_text}",
+            "right": ""
+        }
 
-            hm_row = {
-                "section": section,
-                "item": "H/M 비율",
-                "left": f"{hm_interpret} | 자동계산값: {ratio_text}",
-                "right": ""
-            }
+        st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+        return [row, hm_row]
 
-            return [row, hm_row]
+    # 2) H/M 비율 수동 입력 제거
+    elif a["domain"] == "h_ratio":
+        st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
+        return None
 
-        # 2) H/M 비율 항목은 개별 수동 입력 제거
-        elif a["domain"] == "h_ratio":
-            return None
+    # 3) F파
+    elif a["domain"] == "f_wave":
+        st.caption("F파는 병변측 기준으로 잠복기 지연 여부와 반응 소실 여부를 입력합니다.")
 
-        # 3) F파
-        elif a["domain"] == "f_wave":
-            st.caption("F파는 병변측 기준으로 잠복기 지연 여부와 반응 소실 여부를 입력합니다.")
+        c1, c2 = st.columns(2)
+        latency_status = c1.selectbox(
+            "병변측 잠복기",
+            ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+            key=f"fw_lat_{rv}_{item}",
+            disabled=disabled
+        )
+        response_status = c2.selectbox(
+            "병변측 반응",
+            ["출현 (Present)", "소실 (Absent)"],
+            key=f"fw_resp_{rv}_{item}",
+            disabled=disabled
+        )
 
+        lesion_res = compose_fwave_result(latency_status, response_status)
+
+        if side == "양측":
+            row = {"section": section, "item": item, "left": lesion_res, "right": lesion_res}
+        elif side == "좌":
+            row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
+        else:
+            row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
+
+    # 4) blink
+    elif a["domain"] == "blink":
+        st.caption("눈깜빡반사는 자극 방향과 반응 측을 구분하여 입력합니다.")
+        res = st.selectbox(
+            "반응 결과",
+            get_domain_options(a["domain"], item),
+            key=f"blink_{rv}_{item}",
+            disabled=disabled
+        )
+        row = {"section": section, "item": item, "left": res, "right": ""}
+
+    # 5) reflex
+    elif a["domain"] == "reflex":
+        st.caption("반사검사는 해당 항목의 결과만 선택합니다.")
+        res = st.selectbox(
+            "검사 결과",
+            get_domain_options(a["domain"], item),
+            key=f"res_{rv}_{item}",
+            disabled=disabled
+        )
+        row = {"section": section, "item": item, "left": res, "right": ""}
+
+    # 6) sensory
+    elif a["domain"] == "sensory":
+        st.caption("감각신경전도는 진폭과 잠복기를 선택합니다.")
+
+        if side == "양측":
+            st.markdown("**좌측 결과**")
             c1, c2 = st.columns(2)
-            latency_status = c1.selectbox(
+            left_amp = c1.selectbox(
+                "좌측 진폭",
+                ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
+                key=f"sens_l_amp_{rv}_{item}",
+                disabled=disabled
+            )
+            left_lat = c2.selectbox(
+                "좌측 잠복기",
+                ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+                key=f"sens_l_lat_{rv}_{item}",
+                disabled=disabled
+            )
+
+            st.markdown("**우측 결과**")
+            c3, c4 = st.columns(2)
+            right_amp = c3.selectbox(
+                "우측 진폭",
+                ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
+                key=f"sens_r_amp_{rv}_{item}",
+                disabled=disabled
+            )
+            right_lat = c4.selectbox(
+                "우측 잠복기",
+                ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+                key=f"sens_r_lat_{rv}_{item}",
+                disabled=disabled
+            )
+
+            left_res = compose_ncs_result(left_amp, left_lat)
+            right_res = compose_ncs_result(right_amp, right_lat)
+            row = {"section": section, "item": item, "left": left_res, "right": right_res}
+
+        else:
+            c1, c2 = st.columns(2)
+            lesion_amp = c1.selectbox(
+                "병변측 진폭",
+                ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
+                key=f"sens_amp_{rv}_{item}",
+                disabled=disabled
+            )
+            lesion_lat = c2.selectbox(
                 "병변측 잠복기",
                 ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                key=f"fw_lat_{rv}_{item}",
-                disabled=disabled
-            )
-            response_status = c2.selectbox(
-                "병변측 반응",
-                ["출현 (Present)", "소실 (Absent)"],
-                key=f"fw_resp_{rv}_{item}",
+                key=f"sens_lat_{rv}_{item}",
                 disabled=disabled
             )
 
-            lesion_res = compose_fwave_result(latency_status, response_status)
+            lesion_res = compose_ncs_result(lesion_amp, lesion_lat)
 
-            if side == "양측":
-                st.info("현재 교육용 앱에서는 F파 양측 상세 입력을 단순화했습니다. 선택한 결과를 대표 이상으로 반영합니다.")
-                row = {"section": section, "item": item, "left": lesion_res, "right": lesion_res}
-            elif side == "좌":
+            if side == "좌":
                 row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
             else:
                 row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
 
-        # 4) 기존 reflex (blink reflex 등)
-        elif a["domain"] == "blink":
-            st.caption("눈깜빡반사는 자극 방향과 반응 측을 구분하여 입력합니다.")
-            res = st.selectbox("반응 결과", options, key=f"blink_{rv}_{item}", disabled=disabled)
-            row = {"section": section, "item": item, "left": res, "right": ""}
-        elif a["domain"] == "reflex":
-            st.caption("반사검사는 해당 항목의 결과만 선택합니다.")
-            res = st.selectbox("검사 결과", options, key=f"res_{rv}_{item}", disabled=disabled)
-            row = {"section": section, "item": item, "left": res, "right": ""}
+    # 7) motor
+    elif a["domain"] == "motor":
+        labels = get_motor_stimulation_labels(item)
+        st.caption("운동신경전도는 원위부/근위부 진폭과 잠복기를 입력합니다.")
 
-        # 5) sensory
-        elif a["domain"] == "sensory":
-            st.caption("감각신경전도는 진폭(amplitude)과 잠복기(latency)를 각각 입력합니다.")
+        if side == "양측":
+            c1, c2 = st.columns(2)
+            left = c1.selectbox(
+                "좌측 대표 결과",
+                get_domain_options(a["domain"], item),
+                key=f"ml_{rv}_{item}",
+                disabled=disabled
+            )
+            right = c2.selectbox(
+                "우측 대표 결과",
+                get_domain_options(a["domain"], item),
+                key=f"mr_{rv}_{item}",
+                disabled=disabled
+            )
+            row = {"section": section, "item": item, "left": left, "right": right}
+        else:
+            c1, c2 = st.columns(2)
+            distal_amp = c1.selectbox(
+                f'{labels["distal"]} 진폭',
+                ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
+                key=f"da_{rv}_{item}",
+                disabled=disabled
+            )
+            distal_lat = c2.selectbox(
+                f'{labels["distal"]} 잠복기',
+                ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+                key=f"dl_{rv}_{item}",
+                disabled=disabled
+            )
 
-            if side == "양측":
-                st.markdown("**좌측 결과**")
-                c1, c2 = st.columns(2)
-                left_amp = c1.selectbox(
-                    "좌측 진폭",
-                    ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
-                    key=f"sens_l_amp_{rv}_{item}",
-                    disabled=disabled
-                )
-                left_lat = c2.selectbox(
-                    "좌측 잠복기",
-                    ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                    key=f"sens_l_lat_{rv}_{item}",
-                    disabled=disabled
-                )
+            c3, c4 = st.columns(2)
+            proximal_amp = c3.selectbox(
+                f'{labels["proximal"]} 진폭',
+                ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
+                key=f"pa_{rv}_{item}",
+                disabled=disabled
+            )
+            proximal_lat = c4.selectbox(
+                f'{labels["proximal"]} 잠복기',
+                ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
+                key=f"pl_{rv}_{item}",
+                disabled=disabled
+            )
 
-                st.markdown("**우측 결과**")
-                c3, c4 = st.columns(2)
-                right_amp = c3.selectbox(
-                    "우측 진폭",
-                    ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
-                    key=f"sens_r_amp_{rv}_{item}",
-                    disabled=disabled
-                )
-                right_lat = c4.selectbox(
-                    "우측 잠복기",
-                    ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                    key=f"sens_r_lat_{rv}_{item}",
-                    disabled=disabled
-                )
+            lesion_res = compose_ncs_result(distal_amp, distal_lat, proximal_amp, proximal_lat)
 
-                left_res = compose_ncs_result(left_amp, left_lat)
-                right_res = compose_ncs_result(right_amp, right_lat)
-                row = {"section": section, "item": item, "left": left_res, "right": right_res}
-
+            if side == "좌":
+                row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
             else:
-                st.caption("병변측 결과를 입력하면 반대측은 정상으로 자동 반영됩니다.")
-                c1, c2 = st.columns(2)
-                lesion_amp = c1.selectbox(
-                    "병변측 진폭",
-                    ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
-                    key=f"sens_amp_{rv}_{item}",
-                    disabled=disabled
-                )
-                lesion_lat = c2.selectbox(
-                    "병변측 잠복기",
-                    ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                    key=f"sens_lat_{rv}_{item}",
-                    disabled=disabled
-                )
+                row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
 
-                lesion_res = compose_ncs_result(lesion_amp, lesion_lat)
+    # 8) muscle
+    elif a["domain"] == "muscle":
+        st.caption("침근전도는 해당 근육의 이상 여부만 선택합니다.")
 
-                if side == "좌":
-                    row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
-                else:
-                    row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
-
-        # 6) motor
-        elif a["domain"] == "motor":
-            labels = get_motor_stimulation_labels(item)
-            st.caption("운동신경전도는 원위부(distal)와 근위부(proximal) 자극 위치에서 진폭과 잠복기를 각각 입력합니다.")
-
-            if side == "양측":
-                st.info("현재 교육용 앱에서는 양측 운동신경전도 상세 입력은 단순화했습니다. 한쪽씩 대표 결과를 입력하세요.")
-                c1, c2 = st.columns(2)
-                left = c1.selectbox("좌측 대표 결과", options, key=f"ml_{rv}_{item}", disabled=disabled)
-                right = c2.selectbox("우측 대표 결과", options, key=f"mr_{rv}_{item}", disabled=disabled)
-                row = {"section": section, "item": item, "left": left, "right": right}
+        if side == "양측":
+            c1, c2 = st.columns(2)
+            left = c1.selectbox(
+                "좌측 소견",
+                get_domain_options(a["domain"], item),
+                key=f"emg_l_{rv}_{item}",
+                disabled=disabled
+            )
+            right = c2.selectbox(
+                "우측 소견",
+                get_domain_options(a["domain"], item),
+                key=f"emg_r_{rv}_{item}",
+                disabled=disabled
+            )
+            row = {"section": section, "item": item, "left": left, "right": right}
+        else:
+            lesion_res = st.selectbox(
+                "침근전도 소견",
+                get_domain_options(a["domain"], item),
+                key=f"emg_{rv}_{item}",
+                disabled=disabled
+            )
+            if side == "좌":
+                row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
             else:
-                st.markdown("**병변측 운동신경전도 입력**")
+                row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
 
-                c1, c2 = st.columns(2)
-                distal_amp = c1.selectbox(
-                    f'{labels["distal"]} 진폭',
-                    ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
-                    key=f"da_{rv}_{item}",
-                    disabled=disabled
-                )
-                distal_lat = c2.selectbox(
-                    f'{labels["distal"]} 잠복기',
-                    ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                    key=f"dl_{rv}_{item}",
-                    disabled=disabled
-                )
-
-                c3, c4 = st.columns(2)
-                proximal_amp = c3.selectbox(
-                    f'{labels["proximal"]} 진폭',
-                    ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"],
-                    key=f"pa_{rv}_{item}",
-                    disabled=disabled
-                )
-                proximal_lat = c4.selectbox(
-                    f'{labels["proximal"]} 잠복기',
-                    ["정상 (Normal)", "잠복기 지연 (Delayed latency)"],
-                    key=f"pl_{rv}_{item}",
-                    disabled=disabled
-                )
-
-                lesion_res = compose_ncs_result(distal_amp, distal_lat, proximal_amp, proximal_lat)
-
-                if side == "좌":
-                    row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
-                else:
-                    row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
-
-        # 7) muscle
-        elif a["domain"] == "muscle":
-            st.caption("침근전도에서는 비정상 자발전위 출현 여부를 중심으로 선택하세요.")
-            lesion_res = st.selectbox("침근전도 소견", options, key=f"emg_{rv}_{item}", disabled=disabled)
-
-            if side == "양측":
-                c1, c2 = st.columns(2)
-                left = c1.selectbox("좌측 소견", options, key=f"emg_l_{rv}_{item}", disabled=disabled)
-                right = c2.selectbox("우측 소견", options, key=f"emg_r_{rv}_{item}", disabled=disabled)
-                row = {"section": section, "item": item, "left": left, "right": right}
-            else:
-                if side == "좌":
-                    row = {"section": section, "item": item, "left": lesion_res, "right": "정상 (Normal)"}
-                else:
-                    row = {"section": section, "item": item, "left": "정상 (Normal)", "right": lesion_res}
-
-    st.markdown("</div>", unsafe_allow_html=True)
     st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
     return row
 
 def render_input_sections_for_side(side):
     rows = []
 
-    with st.expander("💡 [필독] 입력 가이드", expanded=True):
-        st.markdown("""
-**1. 감각/운동 신경전도검사**
-- **정상:** 이상 소견이 없으면 체크하지 않아도 됩니다.
-- **진폭 감소:** 정상측 대비 대략 20~30% 이상 감소 시 선택
-- **잠복기 지연:** 정상측 대비 대략 10~20% 이상 늦어지면 선택
-- **무반응:** 반응이 기록되지 않는 경우입니다.
-
-**2. 침근전도검사**
-- **비정상 자발전위 출현:** 휴식 시 섬유자발전위(fibrillation), 양성예파(positive sharp wave) 등이 보이는 경우
-- **전기적 침묵:** 반응이 거의 없는 경우(no response)
-
-**3. H반사 / 경직 평가**
-- H반사 상태를 선택할 수 있습니다.
-- H파 최대 진폭(Hmax)과 M파 최대 진폭(Mmax)을 입력하면 H/M 비율이 자동 계산됩니다.
-- 치료 전후 경직 변화를 정량적으로 비교하는 교육용 지표로 활용할 수 있습니다.
-
-**4. F파 검사**
-- 병변측 기준으로 F파 잠복기 지연 여부와 반응 소실 여부를 입력합니다.
-- 교육용 앱에서는 F파 진폭보다 잠복기와 출현 여부를 우선 학습 포인트로 사용합니다.
-
-**중요**
-- 체크하지 않은 항목은 모두 정상으로 처리됩니다.
-- 현재 앱은 학생 교육용이므로, 입력한 항목 범위 안에서 이해하기 쉬운 설명을 제공합니다.
-        """)
-
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 📋 검사 그룹 선택")
-    st.markdown('<div class="mobile-note">먼저 입력할 검사 그룹을 체크하세요. 선택한 그룹만 아래에 펼쳐집니다.</div>', unsafe_allow_html=True)
-    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-
     group_map = {
-        "팔 감각/운동 신경전도검사": [
-            "팔 감각신경전도검사 (arm sensory NCS)",
+        "팔 감각신경전도검사": [
+            "팔 감각신경전도검사 (arm sensory NCS)"
+        ],
+        "팔 운동신경전도검사": [
             "팔 운동신경전도검사 (arm motor NCS)"
         ],
         "팔 침근전도검사": [
             "팔 침근전도검사 근육 (arm needle EMG muscles)"
         ],
-        "다리 감각/운동 신경전도검사": [
-            "다리 감각신경전도검사 (leg sensory NCS)",
+        "다리 감각신경전도검사": [
+            "다리 감각신경전도검사 (leg sensory NCS)"
+        ],
+        "다리 운동신경전도검사": [
             "다리 운동신경전도검사 (leg motor NCS)"
         ],
         "다리 침근전도검사": [
@@ -2431,20 +2625,30 @@ def render_input_sections_for_side(side):
         ]
     }
 
+    st.markdown('<div class="section-card">', unsafe_allow_html=True)
+    st.markdown("### 📋 검사 종류 선택")
+    st.markdown(
+        '<div class="mobile-note">검사 종류를 선택한 뒤, 해당 박스 안에서 필요한 항목만 체크하면 바로 아래에 입력창이 나타납니다.</div>',
+        unsafe_allow_html=True
+    )
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+
     selected_groups = []
     for group_title in group_map.keys():
-        checked = st.checkbox(group_title, key=f"group_{group_title}")
-        if checked:
+        if st.checkbox(group_title, key=f"group_{group_title}"):
             selected_groups.append(group_title)
 
     if not selected_groups:
-        st.info("입력할 검사 그룹을 하나 이상 체크하세요.")
+        st.info("입력할 검사 종류를 하나 이상 선택하세요.")
         st.markdown("</div>", unsafe_allow_html=True)
         return rows
 
+    rv = st.session_state.get("input_reset_version", 0)
+
     for group_title in selected_groups:
-        st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
         st.markdown(f'<div class="big-section-title">{group_title}</div>', unsafe_allow_html=True)
+
+        selected_items = []
 
         for sec in group_map[group_title]:
             items = SECTIONS.get(sec, [])
@@ -2456,21 +2660,76 @@ def render_input_sections_for_side(side):
                     items = ["H 반사 (우)"]
                 elif side == "좌":
                     items = ["H 반사 (좌)"]
-                elif side == "양측":
-                    items = ["H 반사 (좌)", "H 반사 (우)"]
                 else:
                     items = ["H 반사 (좌)", "H 반사 (우)"]
 
-            st.markdown(f"**{sec}**")
-            st.markdown('<hr class="soft-divider">', unsafe_allow_html=True)
-
             for item in items:
-                row = render_check_item(sec, item, side)
+                compact_label = get_compact_item_label(item)
+                checked = st.checkbox(
+                    compact_label,
+                    key=f"pick_{rv}_{group_title}_{sec}_{item}"
+                )
+                if checked:
+                    selected_items.append((sec, item))
+
+        if selected_items:
+            st.markdown('<hr class="soft-divider">', unsafe_allow_html=True)
+            for sec, item in selected_items:
+                row = render_selected_item_detail_input(sec, item, side)
                 if row:
                     if isinstance(row, list):
                         rows.extend(row)
                     else:
                         rows.append(row)
+
+        st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+    return rows
+
+    rv = st.session_state.get("input_reset_version", 0)
+
+    for group_title in selected_groups:
+        st.markdown(f'<div class="big-section-title">{group_title}</div>', unsafe_allow_html=True)
+
+        selected_items = []
+
+        for sec in group_map[group_title]:
+            items = SECTIONS.get(sec, [])
+            if not items:
+                continue
+
+            st.markdown(f'<div class="mobile-note"><b>{sec}</b></div>', unsafe_allow_html=True)
+
+            # H 반사는 단일 항목만 보이도록
+            if sec == "H반사 / 경직 평가 (H-reflex / Spasticity evaluation)":
+                if side == "우":
+                    items = ["H 반사 (우)"]
+                elif side == "좌":
+                    items = ["H 반사 (좌)"]
+                else:
+                    items = ["H 반사 (좌)", "H 반사 (우)"]
+
+            for item in items:
+                compact_label = get_compact_item_label(item)
+                if st.checkbox(compact_label, key=f"pick_{rv}_{group_title}_{sec}_{item}"):
+                    selected_items.append((sec, item))
+
+            st.markdown('<hr class="soft-divider">', unsafe_allow_html=True)
+
+        if selected_items:
+            if st.button(f"{group_title} 선택 항목 입력 보기", key=f"show_inputs_{rv}_{group_title}", use_container_width=True):
+                st.session_state[f"open_inputs_{rv}_{group_title}"] = True
+
+            if st.session_state.get(f"open_inputs_{rv}_{group_title}", False):
+                st.markdown(f'<div class="case-section-label">{group_title} 입력</div>', unsafe_allow_html=True)
+                for sec, item in selected_items:
+                    row = render_selected_item_detail_input(sec, item, side)
+                    if row:
+                        if isinstance(row, list):
+                            rows.extend(row)
+                        else:
+                            rows.append(row)
 
     st.markdown("</div>", unsafe_allow_html=True)
     return rows
@@ -2479,14 +2738,15 @@ def render_result_view(result):
     st.markdown('<div class="result-card">', unsafe_allow_html=True)
     st.markdown('<div class="case-title-mobile">📊 자동 분석 결과</div>', unsafe_allow_html=True)
 
-    st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-    st.markdown(f'<div class="result-text"><b>최종 유력 진단:</b> {result["final_dx"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="result-text"><b>손상 의심 신경:</b> {result["involved_nerves"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="result-text"><b>신경학적 레벨/분절:</b> {result["involved_levels"]}</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="result-text"><b>중증도:</b> {result["severity"]}</div>', unsafe_allow_html=True)
+    summary_top = [
+        f'<div class="result-text"><b>최종 유력 진단:</b> {result["final_dx"]}</div>',
+        f'<div class="result-text"><b>손상 의심 신경:</b> {result["involved_nerves"]}</div>',
+        f'<div class="result-text"><b>신경학적 레벨/분절:</b> {result["involved_levels"]}</div>',
+        f'<div class="result-text"><b>중증도:</b> {result["severity"]}</div>',
+    ]
     if result.get("lesion_tags"):
-        st.markdown(f'<div class="result-text"><b>병변 해석 태그:</b> {", ".join(result["lesion_tags"])}</div>', unsafe_allow_html=True)
-    st.markdown('</div>', unsafe_allow_html=True)
+        summary_top.append(f'<div class="result-text"><b>병변 해석 태그:</b> {", ".join(result["lesion_tags"])}</div>')
+    st.markdown(f'<div class="case-text-block compact-block">{"".join(summary_top)}</div>', unsafe_allow_html=True)
 
     summary_line = ""
     if result["final_dx"] == "목 신경뿌리병증 (Cervical Radiculopathy)":
@@ -2508,67 +2768,63 @@ def render_result_view(result):
 
     if summary_line:
         st.markdown('<div class="case-section-label">🧭 학생용 해석 요약</div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-hint">', unsafe_allow_html=True)
-        st.markdown(f'{summary_line}', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="section-hint compact-block">{summary_line}</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">📌 입력된 이상 소견</div>', unsafe_allow_html=True)
 
     if result.get("abnormal_items"):
-        st.markdown('<div class="case-block">', unsafe_allow_html=True)
+        parts = []
         for idx, item in enumerate(result["abnormal_items"]):
-            st.markdown(f'<div class="finding-item-title">{item["항목"]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            st.markdown(f'<div class="finding-subtext"><b>결과:</b> {item["결과"]}</div>', unsafe_allow_html=True)
+            inner = [
+                f'<div class="finding-item-title">{item["항목"]}</div>',
+                f'<div class="finding-subtext"><b>결과:</b> {item["결과"]}</div>'
+            ]
             if item.get("신경"):
-                st.markdown(f'<div class="finding-subtext"><b>관련 신경:</b> {item["신경"]}</div>', unsafe_allow_html=True)
+                inner.append(f'<div class="finding-subtext"><b>관련 신경:</b> {item["신경"]}</div>')
             if item.get("레벨"):
-                st.markdown(f'<div class="finding-subtext"><b>관련 레벨:</b> {item["레벨"]}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+                inner.append(f'<div class="finding-subtext"><b>관련 레벨:</b> {item["레벨"]}</div>')
+            parts.append(f'<div class="compact-item">{"".join(inner)}</div>')
             if idx < len(result["abnormal_items"]) - 1:
-                st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+                parts.append('<hr class="item-divider compact-divider">')
+        st.markdown(f'<div class="case-block compact-block">{"".join(parts)}</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div class="case-text-block"><div class="result-small">입력된 이상 소견 없음</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="case-text-block compact-block"><div class="result-small">입력된 이상 소견 없음</div></div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🧠 판단 근거</div>', unsafe_allow_html=True)
 
     if result.get("reasons"):
-        st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-        for reason in result.get("reasons", []):
-            st.markdown(f'<div class="case-bullet">• {reason}</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        reasons_html = "".join([f'<div class="case-bullet">• {reason}</div>' for reason in result.get("reasons", [])])
+        st.markdown(f'<div class="case-text-block compact-block">{reasons_html}</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div class="case-text-block"><div class="result-small">제시할 판단 근거 없음</div></div>', unsafe_allow_html=True)
+        st.markdown('<div class="case-text-block compact-block"><div class="result-small">제시할 판단 근거 없음</div></div>', unsafe_allow_html=True)
 
     if result.get("suggestions"):
         st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
         st.markdown('<div class="case-section-label">🧭 추가로 함께 생각할 점</div>', unsafe_allow_html=True)
-        st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-        for s in result["suggestions"]:
-            st.markdown(f'<div class="case-bullet">• {s}</div>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        suggestions_html = "".join([f'<div class="case-bullet">• {s}</div>' for s in result["suggestions"]])
+        st.markdown(f'<div class="case-text-block compact-block">{suggestions_html}</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🔍 Top 3 감별진단</div>', unsafe_allow_html=True)
 
     if result.get("top3_details"):
-        st.markdown('<div class="case-block">', unsafe_allow_html=True)
+        parts = []
         for idx, item in enumerate(result.get("top3_details", []), 1):
             title = "최종 유력진단" if idx == 1 else f"감별진단 {idx-1}"
-            st.markdown(f'<div class="finding-item-title">{title}: {item["name"]}</div>', unsafe_allow_html=True)
-            st.markdown('<div class="case-text-block">', unsafe_allow_html=True)
-            st.markdown(f'<div class="finding-subtext"><b>감별 포인트:</b> {item["how_to_differentiate"]}</div>', unsafe_allow_html=True)
-            st.markdown('</div>', unsafe_allow_html=True)
+            inner = [
+                f'<div class="finding-item-title">{title}: {item["name"]}</div>',
+                f'<div class="finding-subtext"><b>감별 포인트:</b> {item["how_to_differentiate"]}</div>'
+            ]
+            parts.append(f'<div class="compact-item">{"".join(inner)}</div>')
             if idx < len(result["top3_details"]):
-                st.markdown('<hr class="item-divider">', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+                parts.append('<hr class="item-divider compact-divider">')
+        st.markdown(f'<div class="case-block compact-block">{"".join(parts)}</div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown(
-        '<div class="case-text-block"><div class="result-small">현재 입력된 결과를 바탕으로 한 학생 교육용 자동 해석이며, 실제 임상 진단을 대체하지 않습니다.</div></div>',
+        '<div class="case-text-block compact-block"><div class="result-small">현재 입력된 결과를 바탕으로 한 학생 교육용 자동 해석이며, 실제 임상 진단을 대체하지 않습니다.</div></div>',
         unsafe_allow_html=True
     )
 
