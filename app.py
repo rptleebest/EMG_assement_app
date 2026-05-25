@@ -15,17 +15,17 @@ st.set_page_config(
 st.markdown("""
 <style>
 .block-container {
-    padding-top: 3.0rem;
-    padding-bottom: 0.85rem;
+    padding-top: 2.8rem;
+    padding-bottom: 1.0rem;
     max-width: 960px;
 }
 
 .main-title {
-    font-size: 1.32rem;
-    font-weight: 650;
+    font-size: 1.34rem;
+    font-weight: 700;
     margin-top: 0.2rem;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
+    margin-bottom: 0.35rem;
+    line-height: 1.28;
     color: #0f172a;
     letter-spacing: -0.01em;
     word-break: keep-all;
@@ -33,9 +33,9 @@ st.markdown("""
 
 .subtle {
     color: #475569;
-    font-size: 0.9rem;
-    margin-bottom: 0.65rem;
-    line-height: 1.45;
+    font-size: 0.95rem;
+    margin-bottom: 0.9rem;
+    line-height: 1.62;
 }
 
 .section-card,
@@ -43,9 +43,9 @@ st.markdown("""
 .warn-card {
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 8px 8px 10px 8px;
-    margin-bottom: 9px;
+    border-radius: 12px;
+    padding: 12px 12px 14px 12px;
+    margin-bottom: 14px;
 }
 
 .result-card {
@@ -64,271 +64,370 @@ st.markdown("""
 }
 
 .input-title {
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 1px;
+    font-weight: 650;
+    font-size: 0.96rem;
+    margin-bottom: 4px;
     color: #0f172a;
-    line-height: 1.3;
+    line-height: 1.45;
     word-break: keep-all;
 }
 
 .input-meta {
-    font-size: 0.8rem;
+    font-size: 0.84rem;
     color: #64748b;
-    margin-bottom: 4px;
-    line-height: 1.33;
+    margin-bottom: 8px;
+    line-height: 1.52;
 }
 
 .big-section-title {
-    font-size: 0.92rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: #0f172a;
     background: #f8fafc;
     border: 1px solid #dbeafe;
-    border-left: 3px solid #3b82f6;
-    border-radius: 8px;
-    padding: 7px 8px;
-    margin-top: 8px;
-    margin-bottom: 6px;
-    line-height: 1.28;
+    border-left: 4px solid #3b82f6;
+    border-radius: 10px;
+    padding: 9px 10px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    line-height: 1.4;
 }
 
 .section-hint {
-    font-size: 0.86rem;
+    font-size: 0.9rem;
     color: #334155;
     background: #f8fafc;
-    border-left: 3px solid #22c55e;
-    padding: 7px 8px;
-    border-radius: 8px;
-    margin-top: 5px;
-    margin-bottom: 8px;
-    line-height: 1.42;
+    border-left: 4px solid #22c55e;
+    padding: 10px 11px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    line-height: 1.62;
 }
 
 .item-divider {
     border: none;
     border-top: 1px solid #eef2f7;
-    margin: 4px 0 6px 0;
+    margin: 10px 0 12px 0;
 }
 
 .section-divider {
     border: none;
     border-top: 1px solid #e2e8f0;
-    margin: 7px 0 9px 0;
+    margin: 14px 0 16px 0;
 }
 
 .soft-divider {
     border: none;
     border-top: 1px solid #f1f5f9;
-    margin: 4px 0 6px 0;
+    margin: 8px 0 10px 0;
 }
 
 .strong-divider {
     border: none;
     border-top: 1px solid #cbd5e1;
-    margin: 10px 0 12px 0;
+    margin: 16px 0 18px 0;
 }
 
 .case-title-mobile {
-    font-size: 0.98rem;
-    font-weight: 650;
-    line-height: 1.22;
+    font-size: 1.02rem;
+    font-weight: 700;
+    line-height: 1.4;
     color: #0f172a;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     word-break: keep-all;
 }
 
 .case-subtitle-mobile {
-    font-size: 0.83rem;
+    font-size: 0.86rem;
     color: #475569;
-    margin-bottom: 6px;
-    line-height: 1.38;
+    margin-bottom: 10px;
+    line-height: 1.58;
 }
 
 .case-section-label {
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: #0f172a;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-left: 3px solid #60a5fa;
-    border-radius: 8px;
-    padding: 6px 8px;
-    margin-top: 9px;
-    margin-bottom: 7px;
-    line-height: 1.28;
+    border-left: 4px solid #60a5fa;
+    border-radius: 10px;
+    padding: 9px 10px;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    line-height: 1.42;
+}
+
+.case-subheading {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    line-height: 1.45;
 }
 
 .case-bullet {
-    font-size: 0.86rem;
-    line-height: 1.44;
+    font-size: 0.9rem;
+    line-height: 1.68;
     color: #1f2937;
-    margin-bottom: 2px;
+    margin-bottom: 7px;
+    word-break: keep-all;
+}
+
+.case-bullet-strong {
+    font-size: 0.9rem;
+    line-height: 1.68;
+    color: #1f2937;
+    margin-bottom: 8px;
+    word-break: keep-all;
+}
+
+.case-bullet-strong b {
+    font-weight: 700;
+    color: #0f172a;
 }
 
 .case-text-block {
     background: #fcfcfd;
-    border-left: 3px solid #e2e8f0;
-    border-radius: 7px;
-    padding: 4px 7px;
+    border-left: 4px solid #e2e8f0;
+    border-radius: 9px;
+    padding: 10px 11px;
     margin-top: 0;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .finding-item-title {
-    font-size: 0.86rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #0f172a;
     margin-top: 0;
-    margin-bottom: 1px;
-    line-height: 1.28;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    word-break: keep-all;
 }
 
 .finding-subtext {
-    font-size: 0.83rem;
+    font-size: 0.88rem;
     color: #334155;
-    line-height: 1.38;
-    margin-bottom: 1px;
+    line-height: 1.68;
+    margin-bottom: 7px;
+    word-break: keep-all;
+}
+
+.finding-subtext b {
+    font-weight: 700;
+    color: #0f172a;
 }
 
 .mobile-note {
-    font-size: 0.84rem;
+    font-size: 0.86rem;
     color: #475569;
-    line-height: 1.42;
+    line-height: 1.58;
+    margin-bottom: 6px;
 }
 
 .result-title {
-    font-size: 0.95rem;
-    font-weight: 650;
+    font-size: 0.98rem;
+    font-weight: 700;
     color: #065f46;
-    line-height: 1.28;
-    margin-bottom: 4px;
+    line-height: 1.4;
+    margin-bottom: 6px;
 }
 
 .result-label {
-    font-size: 0.88rem;
-    font-weight: 600;
+    font-size: 0.9rem;
+    font-weight: 700;
     color: #0f172a;
     background: #f8fafc;
-    border-left: 3px solid #86efac;
-    border-radius: 7px;
-    padding: 6px 7px;
-    margin-top: 10px;
-    margin-bottom: 7px;
-    line-height: 1.28;
+    border-left: 4px solid #86efac;
+    border-radius: 8px;
+    padding: 8px 9px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    line-height: 1.42;
 }
 
 .result-text {
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: #1f2937;
-    line-height: 1.42;
-    margin-bottom: 2px;
+    line-height: 1.64;
+    margin-bottom: 7px;
 }
 
 .result-small {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     color: #475569;
-    line-height: 1.38;
+    line-height: 1.58;
 }
 
 .group-check-box {
-    padding: 4px 6px;
+    padding: 6px 8px;
     border: 1px solid #e5e7eb;
-    border-radius: 7px;
+    border-radius: 8px;
     background: #fafafa;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+}
+
+.compact-item {
+    padding: 2px 0;
+    margin-bottom: 8px;
+}
+
+.compact-block {
+    margin-bottom: 10px;
+}
+
+.compact-divider {
+    margin: 10px 0 12px 0 !important;
+}
+
+.top-bottom-nav-space {
+    height: 4px;
 }
 
 div[role="radiogroup"] label p,
 div[data-testid="stRadio"] label p,
 div[data-testid="stCheckbox"] label p {
-    font-size: 0.88rem !important;
-    font-weight: 500 !important;
-    line-height: 1.28 !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    line-height: 1.45 !important;
     color: #0f172a !important;
     word-break: keep-all !important;
 }
 
 label[data-testid="stWidgetLabel"] p {
-    font-size: 0.84rem !important;
-    font-weight: 500 !important;
+    font-size: 0.86rem !important;
+    font-weight: 600 !important;
     color: #334155 !important;
+    line-height: 1.45 !important;
 }
 
 div[data-testid="stButton"] button {
-    font-weight: 600 !important;
-    border-radius: 8px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
 }
 
 @media (max-width: 768px) {
     .block-container {
-        padding-top: 2.7rem;
-        padding-bottom: 0.75rem;
+        padding-top: 2.4rem;
+        padding-bottom: 0.85rem;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
     }
 
     .main-title {
-        font-size: 1.2rem;
-        font-weight: 600;
-        line-height: 1.18;
-        margin-bottom: 0.18rem;
+        font-size: 1.18rem;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-bottom: 0.28rem;
+    }
+
+    .subtle {
+        font-size: 0.86rem;
+        line-height: 1.64;
+        margin-bottom: 0.85rem;
     }
 
     .section-card,
     .result-card,
     .warn-card {
-        padding: 7px 7px 8px 7px;
-        border-radius: 9px;
+        padding: 10px 10px 12px 10px;
+        border-radius: 11px;
+        margin-bottom: 12px;
     }
 
     .case-title-mobile {
-        font-size: 0.92rem;
-        margin-bottom: 4px;
+        font-size: 0.98rem;
+        line-height: 1.42;
+        margin-bottom: 7px;
     }
 
     .case-subtitle-mobile {
-        font-size: 0.8rem;
-        margin-bottom: 5px;
+        font-size: 0.82rem;
+        line-height: 1.56;
+        margin-bottom: 9px;
     }
 
     .case-section-label,
     .big-section-title {
-        font-size: 0.86rem;
-        padding: 6px 7px;
-        margin-top: 8px;
-        margin-bottom: 6px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        padding: 8px 9px;
+        margin-top: 12px;
+        margin-bottom: 10px;
+        line-height: 1.42;
+    }
+
+    .case-subheading {
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin-top: 12px;
+        margin-bottom: 7px;
+        line-height: 1.46;
     }
 
     .case-bullet,
+    .case-bullet-strong,
     .finding-subtext,
     .mobile-note,
     .result-text,
     .result-small {
-        font-size: 0.81rem;
-        line-height: 1.38;
+        font-size: 0.84rem;
+        line-height: 1.72;
+        margin-bottom: 8px;
     }
 
     .finding-item-title {
-        font-size: 0.84rem;
+        font-size: 0.86rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+        line-height: 1.48;
+    }
+
+    .input-title {
+        font-size: 0.9rem;
+        line-height: 1.48;
+        margin-bottom: 4px;
+    }
+
+    .input-meta {
+        font-size: 0.8rem;
+        line-height: 1.56;
+        margin-bottom: 8px;
     }
 
     .item-divider {
-        margin: 4px 0 5px 0;
+        margin: 10px 0 12px 0;
     }
 
     .section-divider {
-        margin: 6px 0 8px 0;
+        margin: 14px 0 16px 0;
     }
 
     .case-text-block {
-        padding: 4px 6px;
-        margin-bottom: 4px;
+        padding: 10px 9px;
+        margin-bottom: 10px;
+        border-radius: 9px;
+    }
+
+    .compact-item {
+        margin-bottom: 10px;
     }
 
     div[role="radiogroup"] label p,
     div[data-testid="stRadio"] label p,
     div[data-testid="stCheckbox"] label p {
-        font-size: 0.85rem !important;
-        font-weight: 500 !important;
+        font-size: 0.86rem !important;
+        font-weight: 600 !important;
+        line-height: 1.46 !important;
+    }
+
+    label[data-testid="stWidgetLabel"] p {
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        line-height: 1.42 !important;
     }
 }
 </style>
@@ -548,7 +647,7 @@ CASE_LIBRARY = {
             "summary": "이 사례는 목 신경뿌리병증(cervical radiculopathy), 특히 C6 중심 병변 가능성을 우선 생각하는 패턴입니다.",
             "ncs_reason": [
                 "감각신경활동전위(sensory nerve action potential, SNAP)가 보존되어 있습니다. 신경뿌리병증(radiculopathy)에서는 병변이 뒤뿌리신경절(dorsal root ganglion)보다 근위부(proximal)에 있으면 말초 감각신경전도는 정상으로 남을 수 있습니다.",
-                "노신경 표재감각분지(superficial radial)와 가쪽아래팔피부신경(lateral antebrachial cutaneous nerve)의 SNAP가 정상이라는 점은 감각저하가 있더라도 말초 감각신경 자체의 축삭 손상보다는 신경뿌리(root) 수준 병변 가능성을 높입니다.",
+                "노신경 표재감각분지(superficial radial)와 가쪽아래팔피부신경(lateral antebrachial cutaneous nerve)의 감각신경전도검사가 정상이라는 점은 감각저하가 있더라도 말초 감각신경 자체의 축삭 손상보다는 신경뿌리(root) 수준 병변 가능성을 높입니다.",
                 "근피신경(musculocutaneous nerve) 및 노신경(radial nerve)의 말단 운동신경전도검사가 정상이라는 점도 단일신경병증(mononeuropathy)보다는 신경뿌리병증(radiculopathy) 해석에 더 잘 맞습니다."
             ],
             "emg_reason": [
@@ -565,14 +664,14 @@ CASE_LIBRARY = {
             {
                 "name": "노신경병증 (Radial Neuropathy)",
                 "why_consider": "손목 폄 약화와 아래팔 노측 불편감이 있어 처음에는 노신경병증을 떠올릴 수 있습니다.",
-                "how_to_differentiate": "노신경병증이면 노신경 표재감각신경활동전위(superficial radial SNAP) 감소나 노신경 복합근육활동전위(radial CMAP) 감소 같은 말초신경전도 이상이 더 잘 나타날 수 있습니다. 이 사례에서는 감각신경활동전위(SNAP)와 복합근육활동전위(CMAP)가 보존되고 목 척추주위근 이상이 있어 노신경병증보다 신경뿌리병증이 더 적절합니다.",
-                "practical_tip": "학생은 노신경 분포(radial nerve distribution) 증상과 C6 피부분절(C6 dermatome) 증상이 비슷해 보일 수 있다는 점을 기억해야 합니다."
+                "how_to_differentiate": "노신경병증이면 감각신경전도나 운동신경전도 이상과 같은 말초신경전도 이상이 더 잘 나타날 수 있습니다. 이 사례에서는 감각신경전도와 운동신경전도가 보존되고 목 척추주위근 이상이 있어 노신경병증보다 신경뿌리병증이 더 적절합니다.",
+                "practical_tip": "노신경 감각지배 분포(radial nerve distribution) 증상과 C6 피부분절(C6 dermatome) 증상이 비슷해 보일 수 있다는 점을 기억해야 합니다."
             },
             {
-                "name": "위가쪽신경얼기병증 / 팔신경얼기 상부병증 (Upper Brachial Plexopathy)",
-                "why_consider": "어깨 주변부터 아래팔까지 증상이 있고 근피신경·노신경 관련 근육이 함께 약화되면 팔신경얼기(brachial plexus) 상부 병변도 생각할 수 있습니다.",
-                "how_to_differentiate": "팔신경얼기병증이면 가쪽아래팔피부신경(lateral antebrachial cutaneous nerve) SNAP 등 감각신경전도 이상이 나타날 가능성이 크고, 척추주위근은 보통 정상입니다. 이 사례는 SNAP가 보존되고 척추주위근 이상이 있어 신경얼기병증보다는 신경뿌리병증이 적절합니다.",
-                "practical_tip": "감각신경전도(SNAP) 이상 유무와 척추주위근(paraspinal muscle) 침범 여부를 항상 같이 묶어서 비교해 보세요."
+                "name": "위팔신경얼기병증 (Upper Brachial Plexopathy)",
+                "why_consider": "어깨 주변부터 아래팔까지 증상이 있고 근피신경·노신경 관련 근육이 함께 약화되면 위팔신경얼기(Upper brachial plexus) 병변도 생각할 수 있습니다.",
+                "how_to_differentiate": "위팔신경얼기병증이면 가쪽아래팔피부신경(lateral antebrachial cutaneous nerve) 등 감각신경전도 이상이 나타날 가능성이 크고, 척추주위근은 보통 정상입니다. 이 사례는 감각신경전도가 보존되고 척추주위근 이상이 있어 신경얼기병증보다는 신경뿌리병증(radiculopathy)이 적절합니다.",
+                "practical_tip": "감각신경전도 이상 유무와 척추주위근(paraspinal muscle) 침범 여부를 항상 같이 묶어서 비교해 보세요."
             }
         ]
     },
@@ -615,14 +714,14 @@ CASE_LIBRARY = {
             {
                 "name": "C6-C7 목 신경뿌리병증 (C6-C7 Cervical Radiculopathy)",
                 "why_consider": "손 저림과 엄지 쪽 증상 때문에 목 신경뿌리병증도 감별해야 합니다.",
-                "how_to_differentiate": "목 신경뿌리병증이면 정중신경 감각신경활동전위(SNAP)가 정상일 수 있고, 목 척추주위근이나 몸쪽 근육(proximal muscle)의 침근전도 이상이 동반됩니다. 반면 이 사례는 정중신경 자체의 전도 지연이 분명하여 말초 포착병증 해석이 적절합니다.",
-                "practical_tip": "손 저림만 보고 바로 손목굴증후군으로 단정하지 말고, 감각신경활동전위(SNAP)가 실제로 비정상인지 반드시 확인하세요."
+                "how_to_differentiate": "목 신경뿌리병증이면 정중신경 감각신경전도가 정상일 수 있고, 목 척추주위근이나 근위부(proximal)의 침근전도 이상이 동반됩니다. 반면 이 사례는 정중신경 자체의 전도 지연이 분명하여 말초 포착병증 해석이 적절합니다.",
+                "practical_tip": "손 저림만 보고 바로 손목굴증후군으로 단정하지 말고, 감각신경전도가 실제로 비정상인지 반드시 확인하세요."
             },
             {
                 "name": "앞뼈사이신경증후군(Anterior Interosseous Syndrome) / 근위부 정중신경병증(Proximal Median Neuropathy)",
-                "why_consider": "정중신경 병변이라는 점에서는 공통점이 있습니다.",
-                "how_to_differentiate": "앞뼈사이신경(anterior interosseous nerve)은 정중신경의 깊은 운동 가지(deep motor branch)이며, 순수 운동신경이므로 감각저하가 나타나지 않습니다. 이 사례는 감각저하와 감각신경활동전위(SNAP) 이상이 있어 손목굴증후군이 적절합니다.",
-                "practical_tip": "감각 증상이 뚜렷하면 순수 운동가지(pure motor branch) 병변 가능성은 낮아집니다."
+                "why_consider": "두 질환 모두 정중신경 관련 병변으로 임상 및 근전도 소견이 겹칠 수 있습니다.",
+                "how_to_differentiate": "앞뼈사이신경증후군은 정중신경의 깊은 운동가지로 순수 운동성 병변이므로 보통 감각저하나 감각신경전도 이상이 없습니다. 근전도에서 앞팔(forearm)의 특정 운동근만 이상이 나오면 앞뼈사이신경증후군을 의심합니다. 근위부 정중신경병증은 팔꿈치나 앞팔 수준에서 운동(손목 굽힘근)과 감각이 모두 침범될 수 있어 감각증상과 감각신경전도 이상이 동반될 수 있습니다. 손목굴증후군은 손목에서의 원위부 정중신경병증으로 감각신경전도 지연과 엄지 벌림근의 운동신경전도 이상 또는 근전도 탈신경 소견이 흔합니다. 이 사례는 감각저하와 감각신경전도 이상이 있어 앞뼈사이신경증후군보다는 근위부 정중신경병증 또는 원위부 손목굴증후군이 더 적절합니다.",
+                "practical_tip": "간단 규칙: 감각신경전도 이상이 있으면 앞뼈사이신경증후군 가능성은 낮고 근위부 정중신경병증 또는 손목굴증후군을 먼저 고려하세요. 손목굴증후군은 원위부 정중신경병증에 포함됩니다."
             }
         ]
     },
@@ -652,15 +751,15 @@ CASE_LIBRARY = {
         "teaching_diagnosis": {
             "summary": "이 사례는 위팔뼈 몸통 골절 뒤 발생한 노신경병증(radial neuropathy)에 전형적으로 맞습니다.",
             "ncs_reason": [
-                "노신경 표재감각신경활동전위(superficial radial SNAP) 감소는 병변이 신경뿌리보다 원위부(distal) 말초 노신경에 있음을 의미합니다.",
-                "노신경 복합근육활동전위(radial CMAP) 감소는 운동축삭(motor axon) 손상 또는 의미 있는 전도차단(conduction block) 가능성을 의미합니다."
+                "노신경 감각신경전도검사 이상은 병변이 신경뿌리보다 원위부(distal) 말초 노신경에 있음을 의미합니다.",
+                "노신경 운동신경전도검사 이상은 운동축삭(motor axon) 손상 또는 의미 있는 전도차단(conduction block) 가능성을 의미합니다."
             ],
             "emg_reason": [
                 "손목폄근(extensor carpi radialis)과 집게폄근(extensor indicis proprius)에서 비정상 자발전위가 보이는 것은 노신경 지배 근육의 탈신경 변화를 의미합니다.",
-                "목 척추주위근(cervical paraspinal muscle)이 정상이라는 점은 목 신경뿌리병증보다 말초 노신경병증 해석에 더 잘 맞습니다."
+                "목 척추주위근(cervical paraspinal muscle)이 정상이라는 점은 목 신경뿌리병증(cervical radiculopathy)보다 말초 노신경병증(radial neuropathy) 해석에 더 잘 맞습니다."
             ],
             "integration": [
-                "위팔뼈 골절 병력, 손목처짐, 노신경 감각영역 저하, 노신경 감각신경활동전위/복합근육활동전위(SNAP/CMAP) 감소, 노신경 지배 근육 침범이 함께 있어 노신경병증(radial neuropathy)이 가장 적절합니다."
+                "위팔뼈 골절 병력, 손목처짐, 노신경 감각영역 저하, 노신경 감각신경활동전위/복합근육활동전위(SNAP/CMAP) 진폭 감소, 노신경 지배 근육 침범이 함께 있어 노신경병증(radial neuropathy)이 가장 적절합니다."
             ]
         },
         "differential_diagnosis": [
@@ -673,17 +772,17 @@ CASE_LIBRARY = {
             {
                 "name": "C7 목 신경뿌리병증 (C7 Cervical Radiculopathy)",
                 "why_consider": "손목 및 손가락 폄 약화 때문에 C7 신경뿌리병증을 생각할 수 있습니다.",
-                "how_to_differentiate": "신경뿌리병증이면 말초 감각신경활동전위(SNAP)가 보존되는 경우가 많고, 목 척추주위근 이상이 동반될 수 있습니다. 이 사례는 SNAP가 감소하고 척추주위근이 정상이라 말초 노신경병증이 더 적절합니다.",
-                "practical_tip": "감각신경활동전위(SNAP) 감소 여부와 척추주위근(paraspinal muscle) 침범 여부를 항상 함께 보세요."
+                "how_to_differentiate": "신경뿌리병증이면 말초 감각신경전도가 보존되는 경우가 많고, 목 척추주위근 이상이 동반될 수 있습니다. 이 사례는 SNAP가 감소하고 척추주위근이 정상이라 말초 노신경병증이 더 적절합니다.",
+                "practical_tip": "감각신경전도 감소 여부와 척추주위근(paraspinal muscle) 침범 여부를 항상 함께 보세요."
             }
         ]
     },
 
-    "4. 4번째, 5번째 손가락 저림과 손가락 근력 약화": {
+    "4. 4, 5번째 손가락 저림과 손가락 근력 약화": {
         "patient": {
             "age": 42, "sex": "남", "side": "우",
             "symptoms": [
-                "오른쪽 4번째, 5번째 손가락 저림과 손의 자측(ulnar side) 불편감이 있음",
+                "오른쪽 4, 5번째 손가락 저림과 손의 자측(ulnar side) 불편감이 있음",
                 "최근 세밀한 손동작과 손가락 벌림/모음에서 힘이 빠지는 느낌이 생김"
             ],
             "physical_exam": {
@@ -719,8 +818,8 @@ CASE_LIBRARY = {
             {
                 "name": "C8-T1 목 신경뿌리병증 (C8-T1 Cervical Radiculopathy)",
                 "why_consider": "손 자체기원근육(intrinsic muscle) 약화는 C8-T1 신경뿌리병증에서도 나타날 수 있습니다.",
-                "how_to_differentiate": "목 신경뿌리병증이면 자신경 감각신경활동전위(ulnar SNAP)는 정상일 수 있고, 척추주위근 이상이나 자신경 이외의 C8-T1 지배 근육 침범이 중요합니다. 이 사례는 자신경 전도 이상이 명확하여 말초 자신경병증이 적절합니다.",
-                "practical_tip": "감각신경활동전위(SNAP)가 정상인지 비정상인지 확인하는 것이 감별의 핵심입니다."
+                "how_to_differentiate": "목 신경뿌리병증이면 자신경 감각신경전도검사는 정상일 수 있고, 척추주위근 이상이나 자신경 이외의 C8-T1 지배 근육 침범이 중요합니다. 이 사례는 자신경 전도 이상이 명확하여 말초 자신경병증이 적절합니다.",
+                "practical_tip": "감각신경전도가 정상인지 비정상인지 확인하는 것이 감별의 핵심입니다."
             },
             {
                 "name": "가이온굴 증후군(Guyon's Canal Syndrome) / 손목 수준 자신경병증(Ulnar Neuropathy at Wrist)",
@@ -757,7 +856,7 @@ CASE_LIBRARY = {
         "teaching_diagnosis": {
             "summary": "이 사례는 L5 허리 신경뿌리병증(lumbar radiculopathy, especially L5)을 우선 생각하는 패턴입니다.",
             "ncs_reason": [
-                "얕은종아리신경 감각신경활동전위(superficial peroneal SNAP)와 종아리신경 복합근육활동전위(peroneal CMAP)가 보존되어 있습니다.",
+                "얕은종아리신경 감각신경전도검사와 종아리신경 운동신경전도검사에서 정상으로 관찰되었습니다.",
                 "신경뿌리병증에서는 말초 감각신경전도검사와 원위부 운동신경전도검사가 비교적 정상일 수 있습니다."
             ],
             "emg_reason": [
@@ -765,21 +864,21 @@ CASE_LIBRARY = {
                 "앞정강근(tibialis anterior), 긴엄지폄근(extensor hallucis longus), 중간볼기근(gluteus medius)은 L5 신경뿌리의 지배를 받는 근육으로, 이들에서 비정상 자발전위가 보이면 L5 분절 침범을 의미합니다."
             ],
             "integration": [
-                "L5 피부분절에 맞는 방사통(radiating pain), 감각신경활동전위(SNAP) 보존, 척추주위근 및 L5 관련 근육 침범이 함께 있어 L5 신경뿌리병증(L5 radiculopathy) 해석이 가장 적절합니다."
+                "L5 피부분절에 맞는 방사통(radiating pain), 감각신경전도 보존, 척추주위근 및 L5 관련 근육 침범이 함께 있어 L5 신경뿌리병증(L5 radiculopathy) 해석이 가장 적절합니다."
             ]
         },
         "differential_diagnosis": [
             {
                 "name": "종아리신경병증 (Peroneal Neuropathy)",
                 "why_consider": "발처짐(foot drop)과 발등 감각저하는 종아리신경병증에서도 가장 흔한 증상입니다.",
-                "how_to_differentiate": "종아리신경병증이면 얕은종아리신경(superficial peroneal) SNAP 감소, 종아리신경(peroneal) 복합근육활동전위(CMAP) 감소가 보이며, 허리 척추주위근과 중간볼기근(gluteus medius)은 정상입니다. 이 사례는 감각신경활동전위/복합근육활동전위(SNAP/CMAP)가 보존되고 척추주위근/중간볼기근 이상이 있어 신경뿌리병증이 더 적절합니다.",
+                "how_to_differentiate": "종아리신경병증이면 얕은종아리신경(감각신경) 전도 이상, 종아리신경(운동신경) 전도 이상이 보이며, 허리 척추주위근과 중간볼기근(gluteus medius)은 정상입니다. 이 사례는 감각신경활동전위/복합근육활동전위(SNAP/CMAP)가 보존되고 척추주위근/중간볼기근 이상이 있어 신경뿌리병증이 더 적절합니다.",
                 "practical_tip": "발처짐 환자에서는 L5 신경뿌리병증(L5 radiculopathy)과 말초 종아리신경병증을 항상 감별(differentiation)해야 합니다."
             },
             {
                 "name": "허리엉치신경얼기병증 (Lumbosacral Plexopathy)",
-                "why_consider": "하지 여러 근육이 침범되면 신경얼기(plexus) 병변도 생각할 수 있습니다.",
-                "how_to_differentiate": "신경얼기병증이면 말초 감각신경활동전위(SNAP) 감소가 나타날 수 있고, 척추주위근은 대체로 정상입니다. 이 사례는 감각신경활동전위(SNAP) 보존과 척추주위근 침범 때문에 신경뿌리병증이 더 적절합니다.",
-                "practical_tip": "감각신경활동전위(SNAP)가 보존되고 척추주위근(paraspinal muscle)에 이상이 있으면 신경뿌리병증(radiculopathy) 가능성이 큽니다."
+                "why_consider": "다리 여러 근육이 침범되면 신경얼기(plexus) 병변도 생각할 수 있습니다.",
+                "how_to_differentiate": "신경얼기병증이면 말초 감각신경전도 감소가 나타날 수 있고, 척추주위근은 대체로 정상입니다. 이 사례는 감각신경전도 보존과 척추주위근 침범 때문에 신경뿌리병증이 더 적절합니다.",
+                "practical_tip": "감각신경전도가 보존되고 척추주위근(paraspinal muscle)에 이상이 있으면 신경뿌리병증(radiculopathy) 가능성이 큽니다."
             }
         ]
     },
@@ -810,23 +909,23 @@ CASE_LIBRARY = {
         "teaching_diagnosis": {
             "summary": "이 사례는 종아리뼈머리(fibular head) 부위 압박과 연관된 종아리신경병증(peroneal neuropathy)을 우선 생각하는 패턴입니다.",
             "ncs_reason": [
-                "얕은종아리신경 감각신경활동전위(superficial peroneal SNAP) 감소는 병변이 신경뿌리보다 원위부 말초 감각신경을 침범했음을 의미합니다.",
-                "종아리신경 복합근육활동전위(peroneal CMAP) 감소는 종아리신경 운동축삭(motor axon) 손상 또는 전도장애를 의미합니다."
+                "얕은종아리신경(감각신경) 전도 이상은 병변이 신경뿌리보다 원위부 말초 감각신경을 침범했음을 의미합니다.",
+                "종아리신경(운동신경) 전도 이상은 종아리신경 운동축삭(motor axon) 손상 또는 전도장애를 의미합니다."
             ],
             "emg_reason": [
                 "앞정강근(tibialis anterior)과 긴종아리근(peroneus longus)에서 비정상 자발전위가 보여 종아리신경 지배 근육의 탈신경 변화를 의미합니다.",
                 "허리 척추주위근(lumbar paraspinal muscle)이 정상이라는 점은 L5 신경뿌리병증보다 종아리신경병증 해석에 더 잘 맞습니다."
             ],
             "integration": [
-                "석고붕대 압박 병력, 급성 발처짐, 얕은종아리신경 감각신경활동전위(SNAP) 감소, 종아리신경 복합근육활동전위(CMAP) 감소, 척추주위근 정상 소견이 함께 있어 종아리신경병증(peroneal neuropathy)이 가장 적절합니다."
+                "석고붕대 압박 병력, 급성 발처짐, 얕은종아리신경 감각신경전도검사 및 종아리신경 운동신경전도검사 이상, 척추주위근 정상 소견이 함께 있어 종아리신경병증(peroneal neuropathy)이 가장 적절합니다."
             ]
         },
         "differential_diagnosis": [
             {
                 "name": "L5 허리 신경뿌리병증 (L5 Lumbar Radiculopathy)",
                 "why_consider": "발처짐(foot drop)은 L5 신경뿌리병증에서도 흔히 나타납니다.",
-                "how_to_differentiate": "L5 신경뿌리병증이면 감각신경활동전위(SNAP)가 보존되는 경우가 많고, 허리 척추주위근과 중간볼기근(gluteus medius) 등 다른 L5 지배 근육의 이상이 동반됩니다. 이 사례는 SNAP 감소와 척추주위근 정상 소견이 있어 말초 종아리신경병증이 더 적절합니다.",
-                "practical_tip": "발처짐 감별의 핵심은 감각신경활동전위(SNAP) 감소 여부와 척추주위근(paraspinal muscle) 침범 여부입니다."
+                "how_to_differentiate": "L5 신경뿌리병증이면 감각신경전도가 보존되는 경우가 많고, 허리 척추주위근과 중간볼기근(gluteus medius) 등 다른 L5 지배 근육의 이상이 동반됩니다. 이 사례는 SNAP 감소와 척추주위근 정상 소견이 있어 말초 종아리신경병증이 더 적절합니다.",
+                "practical_tip": "발처짐 감별의 핵심은 감각신경전도 감소 여부와 척추주위근(paraspinal muscle) 침범 여부입니다."
             }
         ]
     },
@@ -857,23 +956,23 @@ CASE_LIBRARY = {
         "teaching_diagnosis": {
             "summary": "이 사례는 허리엉치신경얼기병증(lumbosacral plexopathy)을 생각하기 좋은 교육용 패턴입니다.",
             "ncs_reason": [
-                "장딴지신경 감각신경활동전위(sural SNAP) 감소는 감각신경 자체 침범을 시사하므로, 단순 신경뿌리병증(radiculopathy)보다 말초신경 또는 신경얼기(plexus) 수준 병변 가능성을 높입니다.",
-                "종아리신경 복합근육활동전위(peroneal CMAP)와 넓적다리신경 복합근육활동전위(femoral CMAP)가 함께 감소하는 것은 하나의 단일 말초신경 손상만으로 설명하기 어렵습니다."
+                "장딴지신경(감각신경) 전도 이상은 감각신경 자체 침범을 시사하므로, 단순 신경뿌리병증(radiculopathy)보다 말초신경 또는 신경얼기(plexus) 수준 병변 가능성을 높입니다.",
+                "종아리신경(운동신경) 전도 이상과 넓적다리신경(운동신경) 전도 이상이 함께 감소하는 것은 하나의 단일 말초신경 손상만으로 설명하기 어렵습니다."
             ],
             "emg_reason": [
                 "가쪽넓은근(vastus lateralis)과 앞정강근(tibialis anterior)은 서로 다른 말초신경의 지배를 받지만, 이 사례에서는 함께 침범되어 있습니다.",
                 "허리 척추주위근(lumbar paraspinal muscle)이 정상이라는 점은 신경뿌리병증보다는 신경얼기병증 해석에 더 잘 맞습니다."
             ],
             "integration": [
-                "골반 외상 병력, 넓은 감각저하, 여러 말초신경에 걸친 운동 이상, 감각신경활동전위(SNAP) 감소, 척추주위근 정상 소견이 함께 있어 허리엉치신경얼기병증(lumbosacral plexopathy) 해석이 가장 적절합니다."
+                "골반 외상 병력, 넓은 감각저하, 여러 말초신경에 걸친 운동 이상, 감각신경전도 감소, 척추주위근 정상 소견이 함께 있어 허리엉치신경얼기병증(lumbosacral plexopathy) 해석이 가장 적절합니다."
             ]
         },
         "differential_diagnosis": [
             {
                 "name": "다발 허리 신경뿌리병증 (Multiple Lumbar Radiculopathies)",
                 "why_consider": "다리 여러 분절에 걸친 약화와 감각 이상이 있으면 여러 신경뿌리가 동시에 침범된 다중 신경뿌리병증도 생각할 수 있습니다.",
-                "how_to_differentiate": "다중 신경뿌리병증이면 말초 감각신경활동전위(SNAP)는 비교적 보존될 수 있고, 허리 척추주위근 이상이 나타날 가능성이 있습니다. 이 사례는 SNAP가 감소하고 척추주위근이 정상이라 신경얼기병증이 더 적절합니다.",
-                "practical_tip": "감각신경활동전위(SNAP) 감소와 척추주위근(paraspinal muscle) 정상 소견이 함께 있으면 신경얼기병증(plexopathy)을 더 강하게 고려하세요."
+                "how_to_differentiate": "다중 신경뿌리병증이면 말초 감각신경전도는 비교적 보존될 수 있고, 허리 척추주위근 이상이 나타날 가능성이 있습니다. 이 사례는 SNAP가 감소하고 척추주위근이 정상이라 신경얼기병증이 더 적절합니다.",
+                "practical_tip": "감각신경전도 감소와 척추주위근(paraspinal muscle) 정상 소견이 함께 있으면 신경얼기병증(plexopathy)을 더 강하게 고려하세요."
             },
             {
                 "name": "복합 다발단일신경병증 (Mononeuropathy Multiplex)",
@@ -907,8 +1006,8 @@ CASE_LIBRARY = {
         "teaching_diagnosis": {
             "summary": "이 사례는 축삭성 다발신경병증(axonal polyneuropathy), 특히 당뇨병성 다발신경병증 패턴을 이해하기 좋은 예입니다.",
             "ncs_reason": [
-                "양측 장딴지신경(sural) 및 얕은종아리신경(superficial peroneal) 감각신경활동전위(SNAP) 감소는 원위부 감각축삭(sensory axon) 손상을 의미합니다.",
-                "양측 정강신경(tibial) 복합근육활동전위(CMAP) 감소는 운동축삭(motor axon)도 함께 침범되었을 가능성을 의미합니다.",
+                "양측 장딴지신경(sural) 및 얕은종아리신경(superficial peroneal) 감각신경전도 감소는 원위부 감각축삭(sensory axon) 손상을 의미합니다.",
+                "양측 정강신경(tibial) 운동신경전도 감소는 운동축삭(motor axon)도 함께 침범되었을 가능성을 의미합니다.",
                 "여러 신경에서 대칭적으로 양측성 진폭 감소(amplitude reduction)가 반복된다는 점이 핵심입니다."
             ],
             "emg_reason": [
@@ -928,7 +1027,7 @@ CASE_LIBRARY = {
             {
                 "name": "양측 허리 신경뿌리병증 (Bilateral Lumbar Radiculopathy)",
                 "why_consider": "발의 감각저하와 근력 약화 양상 때문에 신경뿌리병증을 떠올릴 수 있습니다.",
-                "how_to_differentiate": "신경뿌리병증은 대개 비대칭적이며, 양측 다발성으로 감각신경활동전위(SNAP) 감소가 동반되는 패턴으로 나타나기 어렵습니다.",
+                "how_to_differentiate": "신경뿌리병증은 대개 비대칭적이며, 양측 다발성으로 감각신경전도 감소가 동반되는 패턴으로 나타나기 어렵습니다.",
                 "practical_tip": "증상이 '양측성 대칭성'이고 '원위부(glove-stocking 분포)' 패턴이라면 말초 다발신경병증(polyneuropathy)을 먼저 생각하세요."
             }
         ]
@@ -982,7 +1081,7 @@ CASE_LIBRARY = {
                 "name": "근육병증 (Myopathy)",
                 "why_consider": "근위부를 포함한 대칭성 근력저하 때문에 일부 학생은 근육병증(myopathy)을 떠올릴 수 있습니다.",
                 "how_to_differentiate": "근병증은 일차적으로 근육 자체의 병변이므로 감각신경전도 이상이나 심한 신경전도 지연, F파 이상으로 설명되지 않는 경우가 많습니다. 이 사례는 뚜렷한 신경전도 지연과 감각 이상이 있어 신경병증이 적절합니다.",
-                "practical_tip": "감각 증상과 감각신경활동전위(SNAP) 이상이 동반되면 근병증(myopathy) 단독으로는 설명하기 어렵습니다."
+                "practical_tip": "감각 증상과 감각신경전도 이상이 동반되면 근병증(myopathy) 단독으로는 설명하기 어렵습니다."
             }
         ]
     },
@@ -1333,7 +1432,7 @@ def render_selected_item_detail_input(section, item, side, disabled=False):
 
     rv = st.session_state.get("input_reset_version", 0)
 
-    st.markdown(f'<div class="input-title">{item}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="input-title">{get_compact_item_label(item)}</div>', unsafe_allow_html=True)
     st.markdown(
         f'<div class="input-meta">관련 신경: {a["nerve"]} | 관련 레벨: {simplify_level_text(a["level"])}</div>',
         unsafe_allow_html=True
@@ -2085,7 +2184,7 @@ def render_direct_entry_start():
     st.markdown("""
     <div class="section-hint">
     <b>입력 전 추천 해석 순서</b><br>
-    1) 감각신경전도검사에서 감각신경활동전위(SNAP) 이상이 있는지 본다.<br>
+    1) 감각신경전도검사에서 감각신경전도 이상이 있는지 본다.<br>
     2) 운동신경전도검사에서 진폭 감소인지 잠복기 지연인지 구분한다.<br>
     3) 침근전도검사에서 비정상 자발전위가 어떤 근육에 있는지 본다.<br>
     4) 척추주위근 이상 여부를 통해 신경뿌리병증 가능성을 생각한다.
@@ -2140,10 +2239,10 @@ def render_case_learning_info(case_name):
     st.markdown("""
     <div class="warn-card">
         <div class="finding-item-title">학생용 사고 프레임</div>
-        <div class="case-bullet">• 증상이 피부분절(dermatome) 분포인지, 말초신경(peripheral nerve) 분포인지 먼저 구분합니다.</div>
-        <div class="case-bullet">• 감각신경전도검사(SNAP)가 보존되는지 감소하는지에 따라 신경뿌리병증(radiculopathy)과 말초신경병증(neuropathy)의 가능성이 달라집니다.</div>
-        <div class="case-bullet">• 침근전도검사에서 어느 근육이 침범되었는지 보면 병변 수준(localization) 추론에 도움이 됩니다.</div>
-        <div class="case-bullet">• 척추주위근(paraspinal muscle) 침범 여부는 신경뿌리병증 감별에 중요합니다.</div>
+        <div class="case-bullet">• 증상이 피부분절 분포인지, 말초신경 분포인지 먼저 구분합니다.</div>
+        <div class="case-bullet">• 감각신경전도검사가 보존되는지 감소하는지에 따라 신경뿌리병증과 말초신경병증 가능성이 달라집니다.</div>
+        <div class="case-bullet">• 침근전도검사에서 어느 근육이 침범되었는지 보면 병변 수준 추론에 도움이 됩니다.</div>
+        <div class="case-bullet">• 척추주위근 침범 여부는 신경뿌리병증 감별에 중요합니다.</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -2153,15 +2252,15 @@ def render_case_learning_info(case_name):
     symptoms_html = "".join(
         [f'<div class="case-bullet">• {s}</div>' for s in patient.get("symptoms", [])]
     )
-    st.markdown(f'<div class="case-block compact-block">{symptoms_html}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="case-block compact-block"><div class="case-text-block">{symptoms_html}</div></div>', unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🧪 이학적 검사결과</div>', unsafe_allow_html=True)
 
     exam_blocks = []
     for _, exam_items in physical_exam.items():
-        items_html = "".join([f'<div class="case-bullet">- {item}</div>' for item in exam_items])
-        exam_blocks.append(f'<div class="case-text-block compact-block">{items_html}</div>')
+        items_html = "".join([f'<div class="case-bullet">• {item}</div>' for item in exam_items])
+        exam_blocks.append(f'<div class="case-text-block">{items_html}</div>')
     st.markdown(f'<div class="case-block compact-block">{"".join(exam_blocks)}</div>', unsafe_allow_html=True)
 
     sensory_ncs_items, motor_ncs_items, needle_items, reflex_items = [], [], [], []
@@ -2190,25 +2289,25 @@ def render_case_learning_info(case_name):
             left_val = values[0] if len(values) > 0 else ""
             right_val = values[1] if len(values) > 1 else ""
 
-            lines = [f'<div class="finding-item-title">{item_name}</div>']
+            lines = [f'<div class="finding-item-title">{get_compact_item_label(item_name)}</div>']
 
             if patient.get("side") == "양측":
-                lines.append(f'<div class="finding-subtext">좌측: {normalize_result_text(left_val)}</div>')
+                lines.append(f'<div class="finding-subtext">• 좌측: {normalize_result_text(left_val)}</div>')
                 if str(right_val).strip() != "":
-                    lines.append(f'<div class="finding-subtext">우측: {normalize_result_text(right_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 우측: {normalize_result_text(right_val)}</div>')
             elif str(right_val).strip() != "":
                 side = patient.get("side", "병변")
                 if side == "우":
-                    lines.append(f'<div class="finding-subtext">좌측(정상측): {normalize_result_text(left_val)}</div>')
-                    lines.append(f'<div class="finding-subtext">우측(병변측): {normalize_result_text(right_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 좌측(정상측): {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 우측(병변측): {normalize_result_text(right_val)}</div>')
                 elif side == "좌":
-                    lines.append(f'<div class="finding-subtext">좌측(병변측): {normalize_result_text(left_val)}</div>')
-                    lines.append(f'<div class="finding-subtext">우측(정상측): {normalize_result_text(right_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 좌측(병변측): {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 우측(정상측): {normalize_result_text(right_val)}</div>')
                 else:
-                    lines.append(f'<div class="finding-subtext">반대측: {normalize_result_text(left_val)}</div>')
-                    lines.append(f'<div class="finding-subtext">병변측: {normalize_result_text(right_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 반대측: {normalize_result_text(left_val)}</div>')
+                    lines.append(f'<div class="finding-subtext">• 병변측: {normalize_result_text(right_val)}</div>')
             else:
-                lines.append(f'<div class="finding-subtext">결과: {normalize_result_text(left_val)}</div>')
+                lines.append(f'<div class="finding-subtext">• 결과: {normalize_result_text(left_val)}</div>')
 
             item_html = f'<div class="compact-item">{"".join(lines)}</div>'
             block_parts.append(item_html)
@@ -2217,7 +2316,7 @@ def render_case_learning_info(case_name):
                 block_parts.append('<hr class="item-divider compact-divider">')
 
         st.markdown(
-            f'<div class="case-block compact-block">{"".join(block_parts)}</div>',
+            f'<div class="case-block compact-block"><div class="case-text-block">{"".join(block_parts)}</div></div>',
             unsafe_allow_html=True
         )
 
@@ -2237,25 +2336,25 @@ def render_case_learning_info(case_name):
 
         if teaching_dx.get("summary"):
             teaching_parts.append(
-                f'<div class="case-text-block compact-block"><div class="case-bullet">• {teaching_dx["summary"]}</div></div>'
+                f'<div class="case-text-block"><div class="case-bullet">• <b>핵심 요약:</b> {teaching_dx["summary"]}</div></div>'
             )
 
         if teaching_dx.get("ncs_reason"):
-            ncs_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["ncs_reason"]])
+            ncs_html = "".join([f'<div class="case-bullet">• {line}</div>' for line in teaching_dx["ncs_reason"]])
             teaching_parts.append(
-                f'<div class="case-subheading">신경전도검사 해석</div><div class="case-text-block compact-block">{ncs_html}</div>'
+                f'<div class="case-subheading">신경전도검사 해석</div><div class="case-text-block">{ncs_html}</div>'
             )
 
         if teaching_dx.get("emg_reason"):
-            emg_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["emg_reason"]])
+            emg_html = "".join([f'<div class="case-bullet">• {line}</div>' for line in teaching_dx["emg_reason"]])
             teaching_parts.append(
-                f'<div class="case-subheading">침근전도검사 해석</div><div class="case-text-block compact-block">{emg_html}</div>'
+                f'<div class="case-subheading">침근전도검사 해석</div><div class="case-text-block">{emg_html}</div>'
             )
 
         if teaching_dx.get("integration"):
-            integration_html = "".join([f'<div class="case-bullet">- {line}</div>' for line in teaching_dx["integration"]])
+            integration_html = "".join([f'<div class="case-bullet">• {line}</div>' for line in teaching_dx["integration"]])
             teaching_parts.append(
-                f'<div class="case-subheading">종합 해석</div><div class="case-text-block compact-block">{integration_html}</div>'
+                f'<div class="case-subheading">종합 해석</div><div class="case-text-block">{integration_html}</div>'
             )
 
         st.markdown(f'<div class="case-block compact-block">{"".join(teaching_parts)}</div>', unsafe_allow_html=True)
@@ -2268,16 +2367,26 @@ def render_case_learning_info(case_name):
         for idx, dx_item in enumerate(diff_dx, 1):
             inner = [f'<div class="finding-item-title">{idx}. {dx_item.get("name", "")}</div>']
             if dx_item.get("why_consider"):
-                inner.append(f'<div class="finding-subtext"><b>왜 감별이 필요한가:</b> {dx_item["why_consider"]}</div>')
+                inner.append(
+                    f'<div class="finding-subtext">• <b>왜 감별이 필요한가:</b> {dx_item["why_consider"]}</div>'
+                )
             if dx_item.get("how_to_differentiate"):
-                inner.append(f'<div class="finding-subtext"><b>구체적 감별 포인트:</b> {dx_item["how_to_differentiate"]}</div>')
+                inner.append(
+                    f'<div class="finding-subtext">• <b>구체적 감별 포인트:</b> {dx_item["how_to_differentiate"]}</div>'
+                )
             if dx_item.get("practical_tip"):
-                inner.append(f'<div class="finding-subtext"><b>학생용 팁:</b> {dx_item["practical_tip"]}</div>')
+                inner.append(
+                    f'<div class="finding-subtext">• <b>학생용 팁:</b> {dx_item["practical_tip"]}</div>'
+                )
+
             diff_parts.append(f'<div class="compact-item">{"".join(inner)}</div>')
             if idx < len(diff_dx):
                 diff_parts.append('<hr class="item-divider compact-divider">')
 
-        st.markdown(f'<div class="case-block compact-block">{"".join(diff_parts)}</div>', unsafe_allow_html=True)
+        st.markdown(
+            f'<div class="case-block compact-block"><div class="case-text-block">{"".join(diff_parts)}</div></div>',
+            unsafe_allow_html=True
+        )
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -2778,7 +2887,7 @@ def render_result_view(result):
         for idx, item in enumerate(result["abnormal_items"]):
             inner = [
                 f'<div class="finding-item-title">{item["항목"]}</div>',
-                f'<div class="finding-subtext"><b>결과:</b> {item["결과"]}</div>'
+                f'<div class="finding-subtext">• <b>결과:</b> {item["결과"]}</div>'
             ]
             if item.get("신경"):
                 inner.append(f'<div class="finding-subtext"><b>관련 신경:</b> {item["신경"]}</div>')
