@@ -528,8 +528,8 @@ CASE_LIBRARY = {
             ],
             "physical_exam": {
                 "이학적 검사결과": [
-                    "팔꿉관절 굽힘 약화: 관련근육=위팔두갈래근(biceps brachii), 관련신경=근피신경(musculocutaneous nerve), 주로 C5-C6 수준",
-                    "손목 폄 약화: 관련근육=긴노쪽손목폄근/짧은노쪽손목폄근(extensor carpi radialis longus/brevis), 관련신경=노신경(radial nerve), 주로 C6-C7 수준",
+                    "팔꿉관절 굽힘 약화: 위팔두갈래근(biceps brachii), 근피신경(musculocutaneous nerve), 주로 C5-C6 수준",
+                    "손목 폄 약화: 긴노쪽손목폄근/짧은노쪽손목폄근(extensor carpi radialis longus/brevis), 노신경(radial nerve), 주로 C6-C7 수준",
                     "아래팔 노측과 엄지 쪽 감각저하: 주로 C6 피부분절(dermatome)과 연관",
                     "위팔두갈래근힘줄반사(biceps tendon reflex) 감소, 위팔노근힘줄반사(brachioradialis reflex) 감소"
                 ]
