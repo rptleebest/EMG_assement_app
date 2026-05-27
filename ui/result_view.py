@@ -34,11 +34,22 @@ def render_result_view(result):
         )
 
     st.markdown('<div class="result-label">감별 포인트</div>', unsafe_allow_html=True)
-    for idx, item in enumerate(result.get("top3_details", []), 1):
+    
+    # [추가된 로직] 결과의 감별 포인트 개수를 먼저 셉니다.
+    top3_details = result.get("top3_details", [])
+    total_details_count = len(top3_details)
+
+    for idx, item in enumerate(top3_details, 1):
+        # 개수가 1개면 번호 생략, 2개 이상이면 번호 표기
+        if total_details_count == 1:
+            detail_title = item.get("name", "")
+        else:
+            detail_title = f'{idx}. {item.get("name", "")}'
+
         st.markdown(
             f"""
             <div class="case-text-block">
-                <div class="finding-item-title">{idx}. {item.get("name", "")}</div>
+                <div class="finding-item-title">{detail_title}</div>
                 <div class="finding-subtext">{item.get("how_to_differentiate", "")}</div>
             </div>
             """,
