@@ -45,7 +45,7 @@ def render_case_learning_info(case_name):
     for s in patient.get("symptoms", []):
         st.markdown(f'<div class="case-bullet">• {s}</div>', unsafe_allow_html=True)
 
-    st.markdown('<div class="case-section-label">🧪 이학적 검사결과</div>', unsafe_allow_html=True)
+    st.markdown('<div class="case-section-label">🔨 이학적 검사결과</div>', unsafe_allow_html=True)
     # 이학적 검사를 카테고리별로 예쁘게 출력
     for exam_category, exam_items in physical_exam.items():
         st.markdown(f'<div class="finding-item-title" style="margin-top:12px; color:#2563eb;">■ {exam_category}</div>', unsafe_allow_html=True)
