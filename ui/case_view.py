@@ -109,11 +109,22 @@ def render_case_learning_info(case_name):
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<div class="case-section-label">🔍 감별진단 가이드</div>', unsafe_allow_html=True)
-    for idx, dx_item in enumerate(case.get("differential_diagnosis", []), 1):
+    
+    # [추가된 로직] 감별진단 개수를 먼저 셉니다.
+    differential_diagnoses = case.get("differential_diagnosis", [])
+    total_dx_count = len(differential_diagnoses)
+
+    for idx, dx_item in enumerate(differential_diagnoses, 1):
+        # 개수가 1개면 번호 생략, 2개 이상이면 번호 표기
+        if total_dx_count == 1:
+            title_text = dx_item.get("name", "")
+        else:
+            title_text = f'{idx}. {dx_item.get("name", "")}'
+
         st.markdown(
             f"""
             <div class="case-text-block" style="background:#fffaf3; border-left:4px solid #f59e0b;">
-                <div class="finding-item-title" style="color:#b45309;">{idx}. {dx_item.get("name", "")}</div>
+                <div class="finding-item-title" style="color:#b45309;">{title_text}</div>
                 <div class="finding-subtext"><b>고려 이유:</b> {dx_item.get("why_consider", "")}</div>
                 <div class="finding-subtext"><b>감별 포인트:</b> {dx_item.get("how_to_differentiate", "")}</div>
                 <div class="finding-subtext" style="color:#0f172a; font-weight:600;"><b>💡 학생 팁:</b> {dx_item.get("practical_tip", "")}</div>
