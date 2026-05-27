@@ -72,31 +72,40 @@ try:
             )
             st.markdown("</div>", unsafe_allow_html=True)
 
-            selected_sections = render_section_selector()
-            rows = render_input_sections_for_side(side, selected_sections)
-
-            c1, c2 = st.columns(2)
-            with c1:
-                if st.button("분석 실행", type="primary", use_container_width=True):
-                    st.session_state["last_result"] = analyze_case(age, sex, side, rows)
+            # 🚨 [수정된 부분] 필수 정보 누락 시 차단 및 경고 로직
+            if sex == "미선택" or side == "미선택":
+                st.error("🚨 필수 입력 항목 누락")
+                st.warning("성별과 병변측을 정확히 선택해야 기준에 맞는 좌/우측 검사 화면이 생성됩니다. 아래 버튼을 눌러 이전 화면에서 선택을 완료해 주세요.")
+                if st.button("⬅️ 프로필 입력 화면으로 돌아가기", type="primary", use_container_width=True):
+                    st.session_state["current_screen"] = "mode"
                     st.rerun()
+            else:
+                # 정상적으로 입력되었을 때만 검사 세트 선택창을 렌더링
+                selected_sections = render_section_selector()
+                rows = render_input_sections_for_side(side, selected_sections)
 
-            with c2:
-                if st.button("입력 초기화", use_container_width=True):
-                    reset_all_inputs()
-                    st.rerun()
+                c1, c2 = st.columns(2)
+                with c1:
+                    if st.button("분석 실행", type="primary", use_container_width=True):
+                        st.session_state["last_result"] = analyze_case(age, sex, side, rows)
+                        st.rerun()
 
-            if st.session_state.get("last_result"):
-                result = st.session_state["last_result"]
-                render_result_view(result)
+                with c2:
+                    if st.button("입력 초기화", use_container_width=True):
+                        reset_all_inputs()
+                        st.rerun()
 
-                st.download_button(
-                    label="📝 텍스트 보고서 다운로드",
-                    data=make_report_text(result).encode("utf-8"),
-                    file_name=f"EMG_Analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
-                    mime="text/plain",
-                    use_container_width=True
-                )
+                if st.session_state.get("last_result"):
+                    result = st.session_state["last_result"]
+                    render_result_view(result)
+
+                    st.download_button(
+                        label="📝 텍스트 보고서 다운로드",
+                        data=make_report_text(result).encode("utf-8"),
+                        file_name=f"EMG_Analysis_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt",
+                        mime="text/plain",
+                        use_container_width=True
+                    )
 
         render_navigation_controls(position="bottom")
 
@@ -104,7 +113,5 @@ try:
         main()
 
 except Exception as e:
-    # 3. 안전망: 만약 특정 파일이 누락되었더라도 서버가 죽지 않고 원인을 화면에 표시합니다.
     st.error("🚨 앱 초기화 중 일부 파일이 누락되었습니다.")
-    st.warning("아래의 에러 메시지(ModuleNotFoundError 등)를 복사해서 알려주시면 즉시 누락된 파일을 채워드립니다!")
     st.code(traceback.format_exc(), language="python")
