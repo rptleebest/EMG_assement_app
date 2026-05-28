@@ -58,7 +58,7 @@ def render_home_screen():
     )
 
     # 4. 모드 선택 섹션
-    st.markdown('<div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; color: #0f172a;">🎯 학습 모드 선택</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 10px; color: #0f172a;"> 학습 모드 선택</div>', unsafe_allow_html=True)
     selected_mode = st.radio(
         "진행할 학습 모드를 선택하세요",
         [MODE_CASE, MODE_DIRECT],
