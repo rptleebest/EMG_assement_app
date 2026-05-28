@@ -7,8 +7,22 @@ from utils.helpers import get_case_names_for_selection, normalize_case_item_name
 def render_case_selector_only():
     case_options = get_case_names_for_selection()
 
-    st.markdown('<div class="section-card" style="padding: 1rem;">', unsafe_allow_html=True)
-    st.markdown('<div style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">📖 대표 사례 선택</div>', unsafe_allow_html=True)
+    # [UI 개선] 앱 이름(서브)과 화면 이름(메인)의 시각적 계층 분리
+    st.markdown(
+        """
+        <div style="margin-bottom: 1.2rem; padding-top: 0.5rem;">
+            <div style="font-size: 0.95rem; font-weight: 700; color: #64748b; margin-bottom: 0.2rem; letter-spacing: -0.5px;">
+                🧠 교육용 근전도 판독 보조 앱
+            </div>
+            <div style="font-size: 1.65rem; font-weight: 900; color: #1e3a8a; letter-spacing: -1px; line-height: 1.3;">
+                📖 대표 사례 선택
+            </div>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    st.markdown('<div class="section-card" style="padding: 1rem; border-top: 3px solid #1e3a8a;">', unsafe_allow_html=True)
     
     selected_case = st.radio(
         "대표 사례 선택",
