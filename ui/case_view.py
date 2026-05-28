@@ -16,7 +16,7 @@ def render_case_selector_only():
         label_visibility="collapsed"
     )
 
-    st.write("") # 버튼 위 여백
+    st.write("") 
     if st.button("🚀 사례 학습 시작", type="primary", use_container_width=True):
         st.session_state["confirmed_case"] = selected_case
         st.session_state["current_screen"] = "case_detail"
@@ -36,7 +36,7 @@ def render_case_learning_info(case_name):
     findings = case.get("findings", {})
     physical_exam = patient.get("physical_exam", {})
 
-    # 1. 환자 기본 정보 (모바일에서 눈에 띄는 뱃지 스타일 적용)
+    # 1. 환자 기본 정보
     st.markdown('<div class="section-card" style="padding: 1.2rem; margin-bottom: 1rem;">', unsafe_allow_html=True)
     st.markdown(f'<div style="font-size: 1.4rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.5rem; word-break: keep-all;">📘 {case_name}</div>', unsafe_allow_html=True)
     st.markdown(
@@ -55,7 +55,7 @@ def render_case_learning_info(case_name):
     for s in patient.get("symptoms", []):
         st.markdown(f'<div style="font-size: 1rem; color: #334155; margin-bottom: 6px; padding-left: 10px; border-left: 3px solid #cbd5e1; word-break: keep-all;">{s}</div>', unsafe_allow_html=True)
 
-    # 3. 이학적 검사 결과 (모바일 가독성을 위해 박스형 디자인 적용)
+    # 3. 이학적 검사 결과
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 1.8rem; margin-bottom: 0.8rem;">🔨 이학적 검사결과</div>', unsafe_allow_html=True)
     for exam_category, exam_items in physical_exam.items():
         st.markdown(f'<div style="font-weight: 700; color: #2563eb; font-size: 1.05rem; margin-top: 10px; margin-bottom: 4px;">■ {exam_category}</div>', unsafe_allow_html=True)
@@ -64,10 +64,12 @@ def render_case_learning_info(case_name):
 
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     
-    # 4. 주요 검사 소견
+    # 4. 주요 검사 소견 (특수검사 세분화 로직 추가)
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">⚡ 주요 검사 소견</div>', unsafe_allow_html=True)
 
-    sensory_items, motor_items, needle_items, reflex_items = [], [], [], []
+    sensory_items, motor_items, needle_items = [], [], []
+    blink_items, fwave_items, hreflex_items, other_reflex_items = [], [], [], []
+
     for item_name, values in findings.items():
         normalized_name = normalize_case_item_name(item_name)
         anatomy = ANATOMY.get(normalized_name, {})
@@ -80,38 +82,63 @@ def render_case_learning_info(case_name):
         elif domain == "muscle":
             needle_items.append((normalized_name, values))
         else: 
-            reflex_items.append((normalized_name, values))
+            # 특수검사 이름을 분석하여 카테고리 자동 분류
+            if "R1" in normalized_name or "R2" in normalized_name or "자극" in normalized_name:
+                blink_items.append((normalized_name, values))
+            elif "F파" in normalized_name or "F-wave" in normalized_name or "F wave" in normalized_name:
+                fwave_items.append((normalized_name, values))
+            elif "H 반사" in normalized_name or "H/M" in normalized_name or "H-reflex" in normalized_name:
+                hreflex_items.append((normalized_name, values))
+            else:
+                other_reflex_items.append((normalized_name, values))
 
     def render_finding_group(title, items, color_hex):
         if not items:
             return
         st.markdown(f'<div style="font-weight: 700; color: {color_hex}; font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem;">✔ {title}</div>', unsafe_allow_html=True)
+        
         for name, values in items:
-            left_val = values[0] if len(values) > 0 else "-"
-            right_val = values[1] if len(values) > 1 else "-"
+            left_val = values[0] if len(values) > 0 else ""
+            right_val = values[1] if len(values) > 1 else ""
             
-            # 모바일에서 정상측/병변측 비교가 한눈에 들어오도록 분리형 디자인 적용
-            st.markdown(
-                f"""
-                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
-                    <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; word-break: keep-all;">{get_compact_item_label(name)}</div>
-                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem;">
-                        <div style="color: #475569; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#64748b;">정상측:</span> {normalize_result_text(left_val)}</div>
-                        <div style="color: #b91c1c; font-weight: 500; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#ef4444;">병변측:</span> {normalize_result_text(right_val)}</div>
+            # [UI 개선] 두 번째 값이 없는 경우 (눈깜빡반사, H/M 비율 등) ➔ 1줄짜리 UI 출력
+            if right_val == "" or right_val == "-":
+                st.markdown(
+                    f"""
+                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                        <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; word-break: keep-all;">{get_compact_item_label(name)}</div>
+                        <div style="color: #b91c1c; font-weight: 600; font-size: 0.95rem; word-break: keep-all;">결과: {normalize_result_text(left_val)}</div>
                     </div>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+                    """,
+                    unsafe_allow_html=True
+                )
+            # 좌/우측 결과가 모두 있는 일반적인 경우 ➔ 2줄짜리 비교 UI 출력
+            else:
+                st.markdown(
+                    f"""
+                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                        <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; word-break: keep-all;">{get_compact_item_label(name)}</div>
+                        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem;">
+                            <div style="color: #475569; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#64748b;">정상측:</span> {normalize_result_text(left_val)}</div>
+                            <div style="color: #b91c1c; font-weight: 500; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#ef4444;">병변측:</span> {normalize_result_text(right_val)}</div>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-    render_finding_group("감각신경전도검사", sensory_items, "#059669") # 초록
-    render_finding_group("운동신경전도검사", motor_items, "#2563eb") # 파랑
-    render_finding_group("침근전도검사", needle_items, "#d97706") # 주황
-    render_finding_group("특수 및 반사검사", reflex_items, "#7c3aed") # 보라
+    # 분류된 항목들을 각기 다른 제목과 색상으로 출력
+    render_finding_group("감각신경전도검사", sensory_items, "#059669")
+    render_finding_group("운동신경전도검사", motor_items, "#2563eb")
+    render_finding_group("침근전도검사", needle_items, "#d97706")
+    render_finding_group("눈깜빡반사(Blink Reflex) 검사", blink_items, "#7c3aed")
+    render_finding_group("F파(F-wave) 검사", fwave_items, "#9333ea")
+    render_finding_group("H-반사(H-reflex) 검사", hreflex_items, "#8b5cf6")
+    render_finding_group("기타 특수검사", other_reflex_items, "#a855f7")
 
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     
-    # 5. 진단 추론 과정 (핵심 요약을 파란 박스로 강조)
+    # 5. 진단 추론 과정
     teaching_dx = case.get("teaching_diagnosis", {})
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">💡 왜 이 질환을 진단하는가?</div>', unsafe_allow_html=True)
 
@@ -133,7 +160,7 @@ def render_case_learning_info(case_name):
 
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     
-    # 6. 감별진단 가이드 (이전 로직 유지 및 모바일 디자인 강화)
+    # 6. 감별진단 가이드
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">🔍 감별진단 가이드</div>', unsafe_allow_html=True)
     
     differential_diagnoses = case.get("differential_diagnosis", [])
