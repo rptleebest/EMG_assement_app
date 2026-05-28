@@ -5,8 +5,10 @@ from core.formatters import normalize_result_text
 from utils.helpers import get_case_names_for_selection, normalize_case_item_name, get_compact_item_label
 
 def render_case_selector_only():
+    """사례 선택 화면: 앱 제목과 사례 리스트 출력"""
     case_options = get_case_names_for_selection()
 
+    # [UI 개선] 상단 타이틀 계층화 (모바일 가독성)
     st.markdown(
         """
         <div style="margin-bottom: 1.2rem; padding-top: 0.5rem;">
@@ -32,7 +34,9 @@ def render_case_selector_only():
         st.rerun()
     st.markdown("</div>", unsafe_allow_html=True)
 
+
 def render_case_learning_info(case_name):
+    """사례 상세 정보 화면: 환자 정보, MMT, 검사 소견 출력"""
     case = CASE_LIBRARY.get(case_name)
     if not case:
         st.warning("선택한 사례 정보를 찾을 수 없습니다.")
@@ -42,19 +46,22 @@ def render_case_learning_info(case_name):
     findings = case.get("findings", {})
     physical_exam = patient.get("physical_exam", {})
 
-    # [중복 방지] 서브타이틀만 출력 (메인타이틀은 카드 내부에 존재)
+    # [중복 방지] 서브타이틀과 케이스 제목 출력
     st.markdown(
-        """
-        <div style="margin-bottom: 0.5rem; padding-top: 0.5rem;">
+        f"""
+        <div style="margin-bottom: 1rem; padding-top: 0.5rem;">
             <div style="font-size: 0.9rem; font-weight: 700; color: #64748b; letter-spacing: -0.5px;">
                 🧠 교육용 근전도 판독 보조 앱
+            </div>
+            <div style="font-size: 1.5rem; font-weight: 900; color: #1e3a8a; letter-spacing: -1px; margin-top: 0.2rem;">
+                📘 {case_name}
             </div>
         </div>
         """, unsafe_allow_html=True
     )
 
+    # 1. 환자 기본 정보 카드
     st.markdown('<div class="section-card" style="padding: 1.2rem; margin-bottom: 1rem;">', unsafe_allow_html=True)
-    st.markdown(f'<div style="font-size: 1.4rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.8rem; word-break: keep-all;">📘 {case_name}</div>', unsafe_allow_html=True)
     st.markdown(
         f"""
         <div style="background-color: #f1f5f9; padding: 10px; border-radius: 8px; color: #334155; font-size: 0.95rem; font-weight: 600; display: flex; flex-wrap: wrap; gap: 10px;">
@@ -64,13 +71,14 @@ def render_case_learning_info(case_name):
         </div>
         """, unsafe_allow_html=True
     )
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # 주요 증상
+    # 2. 주요 증상
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 1.5rem; margin-bottom: 0.8rem;">🗣️ 주요 증상</div>', unsafe_allow_html=True)
     for s in patient.get("symptoms", []):
         st.markdown(f'<div style="font-size: 1rem; color: #334155; margin-bottom: 6px; padding-left: 10px; border-left: 3px solid #cbd5e1; word-break: keep-all;">{s}</div>', unsafe_allow_html=True)
 
-    # 이학적 검사 결과 (2층 계층 구조 적용)
+    # 3. 이학적 검사 결과 (요청하신 2층 계층 구조 적용)
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 1.8rem; margin-bottom: 0.8rem;">🔨 이학적 검사결과</div>', unsafe_allow_html=True)
     
     for exam_category, exam_items in physical_exam.items():
@@ -82,10 +90,10 @@ def render_case_learning_info(case_name):
                 action = parts[0].strip()
                 rest = parts[1].split(" - ", 1)
                 result = rest[0].strip()
-                anatomy = rest[1].strip() if len(rest) > 1 else ""
+                anatomy_text = rest[1].strip() if len(rest) > 1 else ""
                 
                 # 결과값 강조 색상 설정 (이상 소견 시 빨간색)
-                res_color = "#b91c1c" if any(x in result for x in ["Fair", "Poor", "Trace", "감소", "소실", "1+", "0"]) else "#059669"
+                res_color = "#b91c1c" if any(x in result for x in ["Fair", "Poor", "Trace", "감소", "소실", "1+", "0", "Areflexia", "지연"]) else "#059669"
 
                 st.markdown(
                     f"""
@@ -95,7 +103,7 @@ def render_case_learning_info(case_name):
                             <span style="color: #64748b;"> : </span>
                             <span style="font-weight: 800; color: {res_color};">{result}</span>
                         </div>
-                        {f'<div style="font-size: 0.88rem; color: #64748b; margin-top: 2px; padding-left: 12px; border-left: 2px solid #f1f5f9; font-style: italic; word-break: keep-all;">{anatomy}</div>' if anatomy else ""}
+                        {f'<div style="font-size: 0.88rem; color: #64748b; margin-top: 2px; padding-left: 12px; border-left: 2px solid #f1f5f9; font-style: italic; word-break: keep-all;">{anatomy_text}</div>' if anatomy_text else ""}
                     </div>
                     """, unsafe_allow_html=True
                 )
@@ -104,7 +112,7 @@ def render_case_learning_info(case_name):
 
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     
-    # 주요 검사 소견
+    # 4. 주요 검사 소견 (분류 로직 개선)
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">⚡ 주요 검사 소견</div>', unsafe_allow_html=True)
 
     sensory_items, motor_items, needle_items = [], [], []
@@ -115,13 +123,20 @@ def render_case_learning_info(case_name):
         anatomy = ANATOMY.get(normalized_name, {})
         domain = anatomy.get("domain")
         
+        # 1차 분류: anatomy.py의 domain 정보 우선
         if domain == "sensory": sensory_items.append((normalized_name, values))
         elif domain == "motor": motor_items.append((normalized_name, values))
         elif domain == "muscle": needle_items.append((normalized_name, values))
+        elif domain == "f_wave": fwave_items.append((normalized_name, values))
+        elif domain == "h_reflex" or domain == "h_ratio": hreflex_items.append((normalized_name, values))
+        elif domain == "blink": blink_items.append((normalized_name, values))
+        # 2차 분류: 키워드 기반 (사전 매칭 실패 대비)
         else: 
             if any(x in normalized_name for x in ["R1", "R2", "자극"]): blink_items.append((normalized_name, values))
             elif any(x in normalized_name for x in ["F파", "F-wave"]): fwave_items.append((normalized_name, values))
-            elif any(x in normalized_name for x in ["H 반사", "H/M"]): hreflex_items.append((normalized_name, values))
+            elif any(x in normalized_name for x in ["H 반사", "H/M", "H-reflex"]): hreflex_items.append((normalized_name, values))
+            elif any(x in normalized_name for x in ["SNAP", "감각"]): sensory_items.append((normalized_name, values))
+            elif any(x in normalized_name for x in ["CMAP", "운동"]): motor_items.append((normalized_name, values))
             else: other_reflex_items.append((normalized_name, values))
 
     def render_finding_group(title, items, color_hex):
@@ -130,6 +145,7 @@ def render_case_learning_info(case_name):
         for name, values in items:
             left_val = values[0] if len(values) > 0 else ""
             right_val = values[1] if len(values) > 1 else ""
+            
             if right_val == "" or right_val == "-":
                 html = f'<div style="color: #b91c1c; font-weight: 800; font-size: 0.95rem;">결과: {normalize_result_text(left_val)}</div>'
             else:
@@ -150,18 +166,18 @@ def render_case_learning_info(case_name):
                 """, unsafe_allow_html=True
             )
 
-    render_finding_group("감각신경전도검사", sensory_items, "#059669")
-    render_finding_group("운동신경전도검사", motor_items, "#2563eb")
-    render_finding_group("침근전도검사", needle_items, "#d97706")
-    render_finding_group("눈깜빡반사(Blink Reflex) 검사", blink_items, "#7c3aed")
-    render_finding_group("F파(F-wave) 검사", fwave_items, "#9333ea")
-    render_finding_group("H-반사(H-reflex) 검사", hreflex_items, "#8b5cf6")
-    render_finding_group("기타 특수검사", other_reflex_items, "#a855f7")
+    render_finding_group("감각신경전도검사 (SNAP)", sensory_items, "#059669")
+    render_finding_group("운동신경전도검사 (CMAP)", motor_items, "#2563eb")
+    render_finding_group("침근전도검사 (Needle EMG)", needle_items, "#d97706")
+    render_finding_group("F파 (F-wave) 검사", fwave_items, "#9333ea")
+    render_finding_group("H-반사 및 눈깜빡반사", hreflex_items + blink_items, "#7c3aed")
+    render_finding_group("기타 특수검사", other_reflex_items, "#64748b")
 
-    # 진단 추론 및 감별 진단
+    # 5. 진단 추론 및 감별 진단 가이드
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     teaching_dx = case.get("teaching_diagnosis", {})
     st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">💡 왜 이 질환을 진단하는가?</div>', unsafe_allow_html=True)
+    
     if teaching_dx.get("summary"):
         st.markdown(f'<div style="background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 4px; margin-bottom: 1.2rem;"><b style="color: #1d4ed8; font-size:1rem;">🎯 핵심 요약</b><br><span style="font-size: 0.95rem; color: #1e3a8a; line-height:1.5;">{teaching_dx["summary"]}</span></div>', unsafe_allow_html=True)
 
