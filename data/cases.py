@@ -18,9 +18,9 @@ CASE_LIBRARY = {
                     "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), C7 우세 보존"
                 ],
                 "반사 검사": [
-                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (1+)",
-                    "위팔두갈래근 반사 (Biceps reflex, C5 지배): 정상 (2+) 또는 경미한 감소",
-                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (2+)"
+                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (DRT 1+)",
+                    "위팔두갈래근 반사 (Biceps reflex, C5 지배): 정상 (DRT 2+) 또는 경미한 감소",
+                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (DRT 2+)"
                 ]
             }
         },
@@ -73,7 +73,7 @@ CASE_LIBRARY = {
                     "엄지손가락 벌림 (Thumb abduction): Good (4/5) - 짧은엄지벌림근(Abductor pollicis brevis), 정중신경(Median nerve), T1 우세"
                 ],
                 "반사 검사": [
-                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - 목 척수 분절 이상 없음",
+                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (DRT 2+) - 목 척수 분절 이상 없음",
                     "특수 검사: 팔렌 검사(Phalen's test), 손목 티넬 징후(Tinel's sign) 양성"
                 ]
             }
@@ -123,8 +123,8 @@ CASE_LIBRARY = {
                     "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), C7 우세 보존"
                 ],
                 "반사 검사": [
-                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (2+) - 병변이 나선홈 이하(세갈래근 지배 분지 아래)임을 시사",
-                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (1+) - 병변 이하의 반사 저하"
+                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (DRT 2+) - 병변이 나선홈 이하(세갈래근 지배 분지 아래)임을 시사",
+                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (DRT 1+) - 병변 이하의 반사 저하"
                 ]
             }
         },
@@ -174,7 +174,7 @@ CASE_LIBRARY = {
                     "손가락 벌림/모음 (Finger abduction/adduction): Fair (3/5) - 뼈사이근(Interossei), 자신경(Ulnar nerve), T1 우세"
                 ],
                 "반사 검사": [
-                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - 목 척수 분절 보존 확인",
+                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (DRT 2+) - 목 척수 분절 보존 확인",
                     "특수 검사: 팔꿉관절 굽힘 검사 양성, 팔꿈치 자측 티넬 징후 양성"
                 ]
             }
@@ -225,8 +225,8 @@ CASE_LIBRARY = {
                     "엉덩관절 벌림 (Hip abduction): Good (4/5) - 중간볼기근(Gluteus medius), 위볼기신경(Superior gluteal nerve), L5 우세"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, L4 지배): 정상 (2+) - L4 병변 배제",
-                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 정상 (2+) - S1 병변 배제"
+                    "무릎 반사 (Patellar reflex, L4 지배): 정상 (DRT 2+) - L4 병변 배제",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 정상 (DRT 2+) - S1 병변 배제"
                 ]
             }
         },
@@ -280,8 +280,8 @@ CASE_LIBRARY = {
                     "발목관절 안쪽번짐 (Ankle inversion): Normal (5/5) - 뒤정강근(Tibialis posterior), 정강신경(Tibial nerve), L5 지배 보존 (중요)"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, L4 지배): 대칭적 정상 (2+)",
-                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 대칭적 정상 (2+)"
+                    "무릎 반사 (Patellar reflex, L4 지배): 대칭적 정상 (DRT 2+)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 대칭적 정상 (DRT 2+)"
                 ]
             }
         },
@@ -333,8 +333,8 @@ CASE_LIBRARY = {
                     "발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), S1 우세"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, L4 지배): 좌측 완전 소실 (0)",
-                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 좌측 완전 소실 (0)"
+                    "무릎 반사 (Patellar reflex, L4 지배): 좌측 완전 소실 (DRT 0)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 좌측 완전 소실 (DRT 0)"
                 ]
             }
         },
@@ -388,8 +388,8 @@ CASE_LIBRARY = {
                     "양측 엉덩관절 굽힘 (Hip flexion): Normal (5/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 대칭적 보존"
                 ],
                 "반사 검사": [
-                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 양측 소실 (0) - 원위부 긴 신경 침범 시사",
-                    "무릎 반사 (Patellar reflex, L4 지배): 양측 보존 (1+ ~ 2+) - 상대적 근위부 신경 보존"
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 양측 소실 (DRT 0) - 원위부 긴 신경 침범 시사",
+                    "무릎 반사 (Patellar reflex, L4 지배): 양측 보존 (DRT 1+ ~ 2+) - 상대적 근위부 신경 보존"
                 ]
             }
         },
@@ -439,7 +439,7 @@ CASE_LIBRARY = {
                     "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5 (원위부 동시 약화)"
                 ],
                 "반사 검사": [
-                    "팔/다리 깊은힘줄반사 (C5, C6, C7, L4, S1 전체): 완전 소실 (0)"
+                    "팔/다리 깊은힘줄반사 (C5, C6, C7, L4, S1 전체): 완전 소실 (DRT 0)"
                 ]
             }
         },
@@ -542,7 +542,7 @@ CASE_LIBRARY = {
                     "근육 긴장도 (Muscle tone): 발목 바닥굽힘근 수정된 애쉬워스 척도(Modified Ashworth Scale, MAS) 3등급 (심한 경직)"
                 ],
                 "반사 검사": [
-                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 우측 비정상적 항진 (4+)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 우측 비정상적 항진 (DRT 4+)",
                     "우측 발목간대경련(Ankle clonus) 3~5회 뚜렷하게 관찰됨"
                 ]
             }
@@ -592,7 +592,7 @@ CASE_LIBRARY = {
                     "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5"
                 ],
                 "반사 검사": [
-                    "무릎 반사(L4 지배) 및 아킬레스힘줄 반사(S1 지배): 양측 완전 소실 (0) (Areflexia)"
+                    "무릎 반사(L4 지배) 및 아킬레스힘줄 반사(S1 지배): 양측 완전 소실 (DRT 0)"
                 ]
             }
         },
@@ -610,7 +610,7 @@ CASE_LIBRARY = {
                 "급성기에는 탈신경(Wallerian degeneration)이 진행되지 않아 침근전도 비정상 자발전위가 보이지 않습니다."
             ],
             "integration": [
-                "선행 감염력, 급성 상행성 이완성 마비, 하지 전체 깊은힘줄 반사 소실, F파 조기 이상을 종합하여 초기 기얭-바레증후군(Guillain-Barre syndrome, GBS)을 진단합니다."
+                "선행 감염력, 급성 상행성 이완성 마비, 다리 전체 깊은힘줄 반사 소실, F파 조기 이상을 종합하여 초기 기얭-바레증후군(Guillain-Barre syndrome, GBS)을 진단합니다."
             ]
         },
         "differential_diagnosis": [
