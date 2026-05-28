@@ -21,6 +21,7 @@ ANATOMY = {
     "위팔두갈래근 (Biceps Brachii)": {"nerve": "근육피부신경 (Musculocutaneous nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
     "위팔노근 (Brachioradialis)": {"nerve": "노신경 (Radial nerve)", "level": "C5-C6", "domain": "muscle", "region": "arm"},
     "긴노쪽손목폄근/짧은노쪽손목폄근 (Extensor Carpi Radialis Longus/Brevis)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C7", "domain": "muscle", "region": "arm"},
+    "노쪽손목폄근 (Extensor Carpi Radialis)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C7", "domain": "muscle", "region": "arm"},
     "원엎침근 (Pronator Teres)": {"nerve": "정중신경 (Median nerve)", "level": "C6-C7", "domain": "muscle", "region": "arm"},
     "위팔세갈래근 (Triceps Brachii)": {"nerve": "노신경 (Radial nerve)", "level": "C6-C8 (C7 우세)", "domain": "muscle", "region": "arm"},
     "목 척추주위근 (Cervical Paraspinal)": {"nerve": "척수뒤가지 (Posterior primary ramus)", "level": "목 신경뿌리 수준", "domain": "muscle", "region": "arm"},
