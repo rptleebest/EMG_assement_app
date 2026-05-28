@@ -7,15 +7,17 @@ from utils.helpers import get_case_names_for_selection, normalize_case_item_name
 def render_case_selector_only():
     case_options = get_case_names_for_selection()
 
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown('<div class="case-section-label">📖 대표 사례 선택</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-card" style="padding: 1rem;">', unsafe_allow_html=True)
+    st.markdown('<div style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;">📖 대표 사례 선택</div>', unsafe_allow_html=True)
+    
     selected_case = st.radio(
         "대표 사례 선택",
         case_options,
         label_visibility="collapsed"
     )
 
-    if st.button("사례 학습 시작", type="primary", use_container_width=True):
+    st.write("") # 버튼 위 여백
+    if st.button("🚀 사례 학습 시작", type="primary", use_container_width=True):
         st.session_state["confirmed_case"] = selected_case
         st.session_state["current_screen"] = "case_detail"
         st.session_state["last_result"] = None
@@ -34,28 +36,37 @@ def render_case_learning_info(case_name):
     findings = case.get("findings", {})
     physical_exam = patient.get("physical_exam", {})
 
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown(f'<div class="case-title-mobile">📘 {case_name}</div>', unsafe_allow_html=True)
+    # 1. 환자 기본 정보 (모바일에서 눈에 띄는 뱃지 스타일 적용)
+    st.markdown('<div class="section-card" style="padding: 1.2rem; margin-bottom: 1rem;">', unsafe_allow_html=True)
+    st.markdown(f'<div style="font-size: 1.4rem; font-weight: 800; color: #1e3a8a; margin-bottom: 0.5rem; word-break: keep-all;">📘 {case_name}</div>', unsafe_allow_html=True)
     st.markdown(
-        f'<div class="case-subtitle-mobile">연령: {patient.get("age", "-")}세 | 성별: {patient.get("sex", "-")} | 병변측: {patient.get("side", "-")}</div>',
+        f"""
+        <div style="background-color: #f1f5f9; padding: 10px; border-radius: 8px; color: #334155; font-size: 0.95rem; font-weight: 600; display: flex; flex-wrap: wrap; gap: 10px;">
+            <span>👤 {patient.get("age", "-")}세</span>
+            <span>| ⚧️ {patient.get("sex", "-")}</span>
+            <span>| 🎯 병변측: <span style="color:#b91c1c;">{patient.get("side", "-")}</span></span>
+        </div>
+        """,
         unsafe_allow_html=True
     )
 
-    st.markdown('<div class="case-section-label">🗣️ 주요 증상</div>', unsafe_allow_html=True)
+    # 2. 주요 증상
+    st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 1.5rem; margin-bottom: 0.8rem;">🗣️ 주요 증상</div>', unsafe_allow_html=True)
     for s in patient.get("symptoms", []):
-        st.markdown(f'<div class="case-bullet">• {s}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 1rem; color: #334155; margin-bottom: 6px; padding-left: 10px; border-left: 3px solid #cbd5e1; word-break: keep-all;">{s}</div>', unsafe_allow_html=True)
 
-    st.markdown('<div class="case-section-label">🔨 이학적 검사결과</div>', unsafe_allow_html=True)
-    # 이학적 검사를 카테고리별로 예쁘게 출력
+    # 3. 이학적 검사 결과 (모바일 가독성을 위해 박스형 디자인 적용)
+    st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 1.8rem; margin-bottom: 0.8rem;">🔨 이학적 검사결과</div>', unsafe_allow_html=True)
     for exam_category, exam_items in physical_exam.items():
-        st.markdown(f'<div class="finding-item-title" style="margin-top:12px; color:#2563eb;">■ {exam_category}</div>', unsafe_allow_html=True)
-        items_html = "".join([f'<div class="case-bullet" style="margin-left: 10px;">• {item}</div>' for item in exam_items])
-        st.markdown(f'<div class="case-text-block">{items_html}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-weight: 700; color: #2563eb; font-size: 1.05rem; margin-top: 10px; margin-bottom: 4px;">■ {exam_category}</div>', unsafe_allow_html=True)
+        items_html = "".join([f'<div style="font-size: 0.95rem; color: #475569; margin-bottom: 4px; word-break: keep-all;">• {item}</div>' for item in exam_items])
+        st.markdown(f'<div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px; margin-bottom: 10px;">{items_html}</div>', unsafe_allow_html=True)
 
-    st.markdown('<hr class="strong-divider">', unsafe_allow_html=True)
-    st.markdown('<div class="case-section-label">⚡ 주요 검사 소견</div>', unsafe_allow_html=True)
+    st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
+    
+    # 4. 주요 검사 소견
+    st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">⚡ 주요 검사 소견</div>', unsafe_allow_html=True)
 
-    # 결과를 도메인별로 그룹화
     sensory_items, motor_items, needle_items, reflex_items = [], [], [], []
     for item_name, values in findings.items():
         normalized_name = normalize_case_item_name(item_name)
@@ -68,54 +79,67 @@ def render_case_learning_info(case_name):
             motor_items.append((normalized_name, values))
         elif domain == "muscle":
             needle_items.append((normalized_name, values))
-        else: # h_reflex, h_ratio, f_wave, blink 등
+        else: 
             reflex_items.append((normalized_name, values))
 
-    def render_finding_group(title, items):
+    def render_finding_group(title, items, color_hex):
         if not items:
             return
-        st.markdown(f'<div class="finding-item-title" style="margin-top:16px; color:#065f46;">✔ {title}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-weight: 700; color: {color_hex}; font-size: 1.1rem; margin-top: 1.5rem; margin-bottom: 0.5rem;">✔ {title}</div>', unsafe_allow_html=True)
         for name, values in items:
-            left_val = values[0] if len(values) > 0 else ""
-            right_val = values[1] if len(values) > 1 else ""
+            left_val = values[0] if len(values) > 0 else "-"
+            right_val = values[1] if len(values) > 1 else "-"
+            
+            # 모바일에서 정상측/병변측 비교가 한눈에 들어오도록 분리형 디자인 적용
             st.markdown(
                 f"""
-                <div class="case-text-block" style="padding: 8px 11px;">
-                    <div style="font-weight: 600; font-size: 0.88rem; color: #0f172a;">{get_compact_item_label(name)}</div>
-                    <div class="finding-subtext" style="margin-bottom:0;">좌측/정상측: {normalize_result_text(left_val)}</div>
-                    <div class="finding-subtext" style="margin-bottom:0;">우측/병변측: {normalize_result_text(right_val)}</div>
+                <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                    <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 8px; word-break: keep-all;">{get_compact_item_label(name)}</div>
+                    <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem;">
+                        <div style="color: #475569; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#64748b;">정상측:</span> {normalize_result_text(left_val)}</div>
+                        <div style="color: #b91c1c; font-weight: 500; word-break: keep-all;"><span style="display:inline-block; width: 65px; color:#ef4444;">병변측:</span> {normalize_result_text(right_val)}</div>
+                    </div>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
 
-    render_finding_group("감각신경전도검사", sensory_items)
-    render_finding_group("운동신경전도검사", motor_items)
-    render_finding_group("침근전도검사", needle_items)
-    render_finding_group("특수 및 반사검사", reflex_items)
+    render_finding_group("감각신경전도검사", sensory_items, "#059669") # 초록
+    render_finding_group("운동신경전도검사", motor_items, "#2563eb") # 파랑
+    render_finding_group("침근전도검사", needle_items, "#d97706") # 주황
+    render_finding_group("특수 및 반사검사", reflex_items, "#7c3aed") # 보라
 
+    st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
+    
+    # 5. 진단 추론 과정 (핵심 요약을 파란 박스로 강조)
     teaching_dx = case.get("teaching_diagnosis", {})
-    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<div class="case-section-label">💡 왜 이 질환을 진단하는가?</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">💡 왜 이 질환을 진단하는가?</div>', unsafe_allow_html=True)
 
     if teaching_dx.get("summary"):
-        st.markdown(f'<div class="case-bullet" style="font-weight:600; color:#1d4ed8;">• 핵심 요약: {teaching_dx["summary"]}</div>', unsafe_allow_html=True)
+        st.markdown(
+            f"""
+            <div style="background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 12px; border-radius: 4px; margin-bottom: 1.2rem;">
+                <b style="color: #1d4ed8; font-size: 1rem;">🎯 핵심 요약</b><br>
+                <span style="font-size: 0.95rem; color: #1e3a8a; word-break: keep-all; line-height: 1.5;">{teaching_dx["summary"]}</span>
+            </div>
+            """, unsafe_allow_html=True
+        )
 
-    for key, label in [("ncs_reason", "신경전도검사 기반 추론"), ("emg_reason", "침근전도 및 기타검사 기반 추론"), ("integration", "종합 해석")]:
+    for key, label in [("ncs_reason", "신경전도검사 기반 추론"), ("emg_reason", "침근전도 및 기타검사 추론"), ("integration", "종합 해석")]:
         if teaching_dx.get(key):
-            st.markdown(f'<div class="case-subheading">{label}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-weight: 700; color: #334155; font-size: 1.05rem; margin-top: 1rem; margin-bottom: 0.5rem;">{label}</div>', unsafe_allow_html=True)
             for line in teaching_dx[key]:
-                st.markdown(f'<div class="case-bullet">• {line}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="font-size: 0.95rem; color: #475569; margin-bottom: 6px; padding-left: 12px; position: relative; word-break: keep-all;"><span style="position: absolute; left: 0; color: #94a3b8;">•</span>{line}</div>', unsafe_allow_html=True)
 
-    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<div class="case-section-label">🔍 감별진단 가이드</div>', unsafe_allow_html=True)
+    st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
     
-    # [추가된 로직] 감별진단 개수를 먼저 셉니다.
+    # 6. 감별진단 가이드 (이전 로직 유지 및 모바일 디자인 강화)
+    st.markdown('<div style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">🔍 감별진단 가이드</div>', unsafe_allow_html=True)
+    
     differential_diagnoses = case.get("differential_diagnosis", [])
     total_dx_count = len(differential_diagnoses)
 
     for idx, dx_item in enumerate(differential_diagnoses, 1):
-        # 개수가 1개면 번호 생략, 2개 이상이면 번호 표기
         if total_dx_count == 1:
             title_text = dx_item.get("name", "")
         else:
@@ -123,11 +147,13 @@ def render_case_learning_info(case_name):
 
         st.markdown(
             f"""
-            <div class="case-text-block" style="background:#fffaf3; border-left:4px solid #f59e0b;">
-                <div class="finding-item-title" style="color:#b45309;">{title_text}</div>
-                <div class="finding-subtext"><b>고려 이유:</b> {dx_item.get("why_consider", "")}</div>
-                <div class="finding-subtext"><b>감별 포인트:</b> {dx_item.get("how_to_differentiate", "")}</div>
-                <div class="finding-subtext" style="color:#0f172a; font-weight:600;"><b>💡 학생 팁:</b> {dx_item.get("practical_tip", "")}</div>
+            <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 15px; margin-bottom: 12px;">
+                <div style="font-weight: 800; color: #b45309; font-size: 1.05rem; margin-bottom: 10px;">{title_text}</div>
+                <div style="font-size: 0.95rem; margin-bottom: 6px; color: #451a03; word-break: keep-all;"><b style="color: #92400e;">고려 이유:</b> {dx_item.get("why_consider", "")}</div>
+                <div style="font-size: 0.95rem; margin-bottom: 8px; color: #451a03; word-break: keep-all;"><b style="color: #92400e;">감별 포인트:</b> {dx_item.get("how_to_differentiate", "")}</div>
+                <div style="background-color: #fef3c7; padding: 8px; border-radius: 6px; font-size: 0.9rem; color: #0f172a; word-break: keep-all;">
+                    <b style="color: #d97706;">💡 학생 팁:</b> {dx_item.get("practical_tip", "")}
+                </div>
             </div>
             """,
             unsafe_allow_html=True
