@@ -13,14 +13,14 @@ CASE_LIBRARY = {
                     "아래팔 노측 및 엄지/검지 쪽 감각 저하 (C6 피부분절 지배 영역)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "팔꿉관절 굽힘 (Elbow flexion): Fair (3/5) - 위팔두갈래근(Biceps brachii), 근육피부신경(Musculocutaneous nerve), **C5-C6 우세**",
-                    "손목관절 폄 (Wrist extension): Fair (3/5) - 긴/짧은노쪽손목폄근(Extensor carpi radialis longus/brevis), 노신경(Radial nerve), **C6 우세 포함**",
-                    "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), **C7 우세 보존**"
+                    "팔꿉관절 굽힘 (Elbow flexion): Fair (3/5) - 위팔두갈래근(Biceps brachii), 근육피부신경(Musculocutaneous nerve), C5-C6 우세",
+                    "손목관절 폄 (Wrist extension): Fair (3/5) - 긴/짧은노쪽손목폄근(Extensor carpi radialis longus/brevis), 노신경(Radial nerve), C6 우세 포함",
+                    "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), C7 우세 보존"
                 ],
                 "반사 검사": [
-                    "위팔노근 반사 (Brachioradialis reflex, **C6 지배**): 감소 (1+)",
-                    "위팔두갈래근 반사 (Biceps reflex, **C5 지배**): 정상 (2+) 또는 경미한 감소",
-                    "세갈래근 반사 (Triceps reflex, **C7 지배**): 정상 (2+)"
+                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (1+)",
+                    "위팔두갈래근 반사 (Biceps reflex, C5 지배): 정상 (2+) 또는 경미한 감소",
+                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (2+)"
                 ]
             }
         },
@@ -70,10 +70,10 @@ CASE_LIBRARY = {
                     "엄지, 검지, 중지 및 반지손가락 노측 절반의 손바닥 측 감각 둔화 (정중신경 분포)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "엄지손가락 벌림 (Thumb abduction): Good (4/5) - 짧은엄지벌림근(Abductor pollicis brevis), 정중신경(Median nerve), **T1 우세**"
+                    "엄지손가락 벌림 (Thumb abduction): Good (4/5) - 짧은엄지벌림근(Abductor pollicis brevis), 정중신경(Median nerve), T1 우세"
                 ],
                 "반사 검사": [
-                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - **목 척수 분절 이상 없음**",
+                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - 목 척수 분절 이상 없음",
                     "특수 검사: 팔렌 검사(Phalen's test), 손목 티넬 징후(Tinel's sign) 양성"
                 ]
             }
@@ -118,13 +118,13 @@ CASE_LIBRARY = {
                     "손등 노측(Radial dorsum) 부위 감각 소실 (표재 노신경 지배 영역)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "손목관절 폄 (Wrist extension): Poor (2/5) - 노쪽손목폄근(Extensor carpi radialis), 노신경(Radial nerve), **C6 우세**",
-                    "손가락 폄 (Finger extension): Poor (2/5) - 손가락폄근(Extensor digitorum), 노신경(Radial nerve), **C7 우세**",
-                    "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), **C7 우세 보존**"
+                    "손목관절 폄 (Wrist extension): Poor (2/5) - 노쪽손목폄근(Extensor carpi radialis), 노신경(Radial nerve), C6 우세",
+                    "손가락 폄 (Finger extension): Poor (2/5) - 손가락폄근(Extensor digitorum), 노신경(Radial nerve), C7 우세",
+                    "팔꿉관절 폄 (Elbow extension): Normal (5/5) - 위팔세갈래근(Triceps brachii), 노신경(Radial nerve), C7 우세 보존"
                 ],
                 "반사 검사": [
-                    "세갈래근 반사 (Triceps reflex, **C7 지배**): 정상 (2+) - 병변이 나선홈 이하(세갈래근 지배 분지 아래)임을 시사",
-                    "위팔노근 반사 (Brachioradialis reflex, **C6 지배**): 감소 (1+) - 병변 이하의 반사 저하"
+                    "세갈래근 반사 (Triceps reflex, C7 지배): 정상 (2+) - 병변이 나선홈 이하(세갈래근 지배 분지 아래)임을 시사",
+                    "위팔노근 반사 (Brachioradialis reflex, C6 지배): 감소 (1+) - 병변 이하의 반사 저하"
                 ]
             }
         },
@@ -170,11 +170,11 @@ CASE_LIBRARY = {
                     "4번째 손가락 자측 절반 및 5번째 손가락 감각 저하 (자신경 영역)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "새끼손가락 벌림 (Little finger abduction): Fair (3/5) - 새끼벌림근(Abductor digiti minimi), 자신경(Ulnar nerve), **T1 우세**",
-                    "손가락 벌림/모음 (Finger abduction/adduction): Fair (3/5) - 뼈사이근(Interossei), 자신경(Ulnar nerve), **T1 우세**"
+                    "새끼손가락 벌림 (Little finger abduction): Fair (3/5) - 새끼벌림근(Abductor digiti minimi), 자신경(Ulnar nerve), T1 우세",
+                    "손가락 벌림/모음 (Finger abduction/adduction): Fair (3/5) - 뼈사이근(Interossei), 자신경(Ulnar nerve), T1 우세"
                 ],
                 "반사 검사": [
-                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - **목 척수 분절 보존 확인**",
+                    "위팔두갈래근(C5), 위팔노근(C6), 세갈래근(C7) 반사: 모두 대칭적 정상 (2+) - 목 척수 분절 보존 확인",
                     "특수 검사: 팔꿉관절 굽힘 검사 양성, 팔꿈치 자측 티넬 징후 양성"
                 ]
             }
@@ -220,13 +220,13 @@ CASE_LIBRARY = {
                     "종아리 가쪽 및 발등 중앙 부위 감각 둔화 (L5 피부분절)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5**",
-                    "엄지발가락 폄 (Great toe extension): Poor (2/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), **L5 우세**",
-                    "엉덩관절 벌림 (Hip abduction): Good (4/5) - 중간볼기근(Gluteus medius), 위볼기신경(Superior gluteal nerve), **L5 우세**"
+                    "발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
+                    "엄지발가락 폄 (Great toe extension): Poor (2/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), L5 우세",
+                    "엉덩관절 벌림 (Hip abduction): Good (4/5) - 중간볼기근(Gluteus medius), 위볼기신경(Superior gluteal nerve), L5 우세"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, **L4 지배**): 정상 (2+) - **L4 병변 배제**",
-                    "아킬레스힘줄 반사 (Achilles reflex, **S1 지배**): 정상 (2+) - **S1 병변 배제**"
+                    "무릎 반사 (Patellar reflex, L4 지배): 정상 (2+) - L4 병변 배제",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 정상 (2+) - S1 병변 배제"
                 ]
             }
         },
@@ -274,14 +274,14 @@ CASE_LIBRARY = {
                     "종아리 가쪽 및 발등 부위 감각 소실 (얕은/깊은 종아리신경 분포 영역)"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "발목관절 등굽힘 (Ankle dorsiflexion): Poor (2/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5**",
-                    "엄지발가락 폄 (Great toe extension): Trace (1/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), **L5 우세**",
-                    "발목관절 가쪽번짐 (Ankle eversion): Poor (2/5) - 긴종아리근(Peroneus longus), 얕은종아리신경(Superficial peroneal nerve), **L5 우세**",
-                    "발목관절 안쪽번짐 (Ankle inversion): Normal (5/5) - 뒤정강근(Tibialis posterior), 정강신경(Tibial nerve), **L5 지배 보존 (중요)**"
+                    "발목관절 등굽힘 (Ankle dorsiflexion): Poor (2/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
+                    "엄지발가락 폄 (Great toe extension): Trace (1/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), L5 우세",
+                    "발목관절 가쪽번짐 (Ankle eversion): Poor (2/5) - 긴종아리근(Peroneus longus), 얕은종아리신경(Superficial peroneal nerve), L5 우세",
+                    "발목관절 안쪽번짐 (Ankle inversion): Normal (5/5) - 뒤정강근(Tibialis posterior), 정강신경(Tibial nerve), L5 지배 보존 (중요)"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, **L4 지배**): 대칭적 정상 (2+)",
-                    "아킬레스힘줄 반사 (Achilles reflex, **S1 지배**): 대칭적 정상 (2+)"
+                    "무릎 반사 (Patellar reflex, L4 지배): 대칭적 정상 (2+)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 대칭적 정상 (2+)"
                 ]
             }
         },
@@ -327,14 +327,14 @@ CASE_LIBRARY = {
                     "허벅지, 종아리, 발등 등 여러 피부분절을 넘나드는 광범위 감각 소실"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), **L2 우세**",
-                    "무릎관절 폄 (Knee extension): Poor (2/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), **L3-L4**",
-                    "발목관절 등굽힘 (Ankle dorsiflexion): Trace (1/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5**",
-                    "발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), **S1 우세**"
+                    "엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세",
+                    "무릎관절 폄 (Knee extension): Poor (2/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4",
+                    "발목관절 등굽힘 (Ankle dorsiflexion): Trace (1/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
+                    "발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), S1 우세"
                 ],
                 "반사 검사": [
-                    "무릎 반사 (Patellar reflex, **L4 지배**): 좌측 완전 소실 (0)",
-                    "아킬레스힘줄 반사 (Achilles reflex, **S1 지배**): 좌측 완전 소실 (0)"
+                    "무릎 반사 (Patellar reflex, L4 지배): 좌측 완전 소실 (0)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 좌측 완전 소실 (0)"
                 ]
             }
         },
@@ -381,15 +381,15 @@ CASE_LIBRARY = {
                     "양측 발가락 끝부터 발목 상부까지 장갑-양말형(Glove-stocking distribution) 대칭적 감각 저하"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "양측 엄지발가락 폄 (Great toe extension): Good (4/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), **L5 우세 (원위부 약화)**",
-                    "양측 발가락 굽힘 (Toe flexion): Good (4/5) - 긴발가락굽힘근(Flexor digitorum longus), 정강신경(Tibial nerve), **S1 우세 (원위부 약화)**",
-                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Normal (5/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5**",
-                    "양측 무릎관절 폄 (Knee extension): Normal (5/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), **L3-L4 대칭적 보존**",
-                    "양측 엉덩관절 굽힘 (Hip flexion): Normal (5/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), **L2 우세 대칭적 보존**"
+                    "양측 엄지발가락 폄 (Great toe extension): Good (4/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), L5 우세 (원위부 약화)",
+                    "양측 발가락 굽힘 (Toe flexion): Good (4/5) - 긴발가락굽힘근(Flexor digitorum longus), 정강신경(Tibial nerve), S1 우세 (원위부 약화)",
+                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Normal (5/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
+                    "양측 무릎관절 폄 (Knee extension): Normal (5/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4 대칭적 보존",
+                    "양측 엉덩관절 굽힘 (Hip flexion): Normal (5/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 대칭적 보존"
                 ],
                 "반사 검사": [
-                    "아킬레스힘줄 반사 (Achilles reflex, **S1 지배**): 양측 소실 (0) - **원위부 긴 신경 침범 시사**",
-                    "무릎 반사 (Patellar reflex, **L4 지배**): 양측 보존 (1+ ~ 2+) - **상대적 근위부 신경 보존**"
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 양측 소실 (0) - 원위부 긴 신경 침범 시사",
+                    "무릎 반사 (Patellar reflex, L4 지배): 양측 보존 (1+ ~ 2+) - 상대적 근위부 신경 보존"
                 ]
             }
         },
@@ -433,13 +433,13 @@ CASE_LIBRARY = {
                     "양측 상/하지 원위부 대칭적 감각 저하"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "양측 어깨관절 벌림 (Shoulder abduction): Fair (3/5) - 어깨세모근(Deltoid), 겨드랑신경(Axillary nerve), **C5 우세 (근위부 약화 뚜렷)**",
-                    "양측 엉덩관절 굽힘 (Hip flexion): Fair (3/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), **L2 우세 (근위부 약화 뚜렷)**",
-                    "양측 손목관절 폄 (Wrist extension): Fair (3/5) - 노쪽손목폄근(Extensor carpi radialis), 노신경(Radial nerve), **C6 우세 (원위부 동시 약화)**",
-                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5 (원위부 동시 약화)**"
+                    "양측 어깨관절 벌림 (Shoulder abduction): Fair (3/5) - 어깨세모근(Deltoid), 겨드랑신경(Axillary nerve), C5 우세 (근위부 약화 뚜렷)",
+                    "양측 엉덩관절 굽힘 (Hip flexion): Fair (3/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 (근위부 약화 뚜렷)",
+                    "양측 손목관절 폄 (Wrist extension): Fair (3/5) - 노쪽손목폄근(Extensor carpi radialis), 노신경(Radial nerve), C6 우세 (원위부 동시 약화)",
+                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5 (원위부 동시 약화)"
                 ],
                 "반사 검사": [
-                    "팔/다리 깊은힘줄반사 (**C5, C6, C7, L4, S1 전체**): 완전 소실 (0)"
+                    "팔/다리 깊은힘줄반사 (C5, C6, C7, L4, S1 전체): 완전 소실 (0)"
                 ]
             }
         },
@@ -477,19 +477,19 @@ CASE_LIBRARY = {
             "side": "우",
             "symptoms": [
                 "우측 눈꺼풀 떨림과 얼굴의 둔한 느낌이 발생하여 지속됨",
-                "뇌신경(삼차신경-얼굴신경) 반사 경로 평가를 위해 의뢰됨"
+                "뇌신경(삼차신경-뇌줄기-얼굴신경) 반사 경로 평가를 위해 의뢰됨"
             ],
             "physical_exam": {
                 "감각 검사": [
                     "우측 이마 및 눈 주위(삼차신경 V1 영역) 가벼운 터치 감각 둔화"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "우측 눈 꽉 감기 (Eye closure): Good (4/5) - 눈둘레근(Orbicularis oculi), 얼굴신경(Facial nerve), **뇌신경 7번 (미세 약화)**",
-                    "이마 주름잡기 (Eyebrow elevation): Normal (5/5) - 이마근(Frontalis), 얼굴신경(Facial nerve), **뇌신경 7번 대칭적 정상**",
-                    "입꼬리 올리기 (Smiling): Normal (5/5) - 큰광대근(Zygomaticus major), 얼굴신경(Facial nerve), **뇌신경 7번 대칭적 정상**"
+                    "우측 눈 꽉 감기 (Eye closure): Good (4/5) - 눈둘레근(Orbicularis oculi), 얼굴신경(Facial nerve), 뇌신경 7번 (미세 약화)",
+                    "이마 주름잡기 (Eyebrow elevation): Normal (5/5) - 이마근(Frontalis), 얼굴신경(Facial nerve), 뇌신경 7번 대칭적 정상",
+                    "입꼬리 올리기 (Smiling): Normal (5/5) - 큰광대근(Zygomaticus major), 얼굴신경(Facial nerve), 뇌신경 7번 대칭적 정상"
                 ],
                 "반사 검사": [
-                    "우측 각막반사(Corneal reflex) 지연 의심"
+                    "우측 각막반사(Corneal reflex) 저하 의심"
                 ]
             }
         },
@@ -537,12 +537,12 @@ CASE_LIBRARY = {
                     "우측 편마비에 동반된 전반적인 고유수용성 감각 및 표재감각 둔화"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "우측 발목관절 등굽힘 (Ankle dorsiflexion): Poor (2/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5 (위운동신경세포 연관 수의적 조절력 저하)**",
-                    "우측 발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), **S1 우세**",
+                    "우측 발목관절 등굽힘 (Ankle dorsiflexion): Poor (2/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5 (위운동신경세포 연관 수의적 조절력 저하)",
+                    "우측 발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), S1 우세",
                     "근육 긴장도 (Muscle tone): 발목 바닥굽힘근 수정된 애쉬워스 척도(Modified Ashworth Scale, MAS) 3등급 (심한 경직)"
                 ],
                 "반사 검사": [
-                    "아킬레스힘줄 반사 (Achilles reflex, **S1 지배**): 우측 비정상적 항진 (4+)",
+                    "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 우측 비정상적 항진 (4+)",
                     "우측 발목간대경련(Ankle clonus) 3~5회 뚜렷하게 관찰됨"
                 ]
             }
@@ -587,12 +587,12 @@ CASE_LIBRARY = {
                     "발끝 부위 경미한 이상감각, 뚜렷한 감각 소실은 아직 불분명함"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "양측 엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), **L2 우세 (상행성 근력 약화 뚜렷)**",
-                    "양측 무릎관절 폄 (Knee extension): Fair (3/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), **L3-L4**",
-                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), **L4-L5**"
+                    "양측 엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 (상행성 근력 약화 뚜렷)",
+                    "양측 무릎관절 폄 (Knee extension): Fair (3/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4",
+                    "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5"
                 ],
                 "반사 검사": [
-                    "무릎 반사(**L4 지배**) 및 아킬레스힘줄 반사(**S1 지배**): 양측 완전 소실 (0) (Areflexia)"
+                    "무릎 반사(L4 지배) 및 아킬레스힘줄 반사(S1 지배): 양측 완전 소실 (0) (Areflexia)"
                 ]
             }
         },
