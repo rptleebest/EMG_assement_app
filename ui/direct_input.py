@@ -118,21 +118,22 @@ def render_direct_entry_start():
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-
 def render_section_selector():
     all_sections = list(SECTIONS.keys())
 
     if "selected_sections" not in st.session_state:
         set_selected_sections([])
 
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 🔎 검사 영역 선택")
+    # [UI 개선] 답답했던 section-card 박스를 제거하고 폰트 크기와 굵기를 대폭 키움
+    st.markdown('<div style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin-top: 1rem; margin-bottom: 0.5rem;">⚙️ 검사 영역 선택</div>', unsafe_allow_html=True)
     st.markdown(
-        '<div class="mobile-note">상단의 빠른 선택 버튼을 누르거나, 아래 드롭다운에서 원하는 검사만 개별적으로 구성하세요.</div>',
+        '<div style="font-size: 0.95rem; color: #475569; margin-bottom: 1.5rem; word-break: keep-all;">'
+        '상단의 빠른 선택 버튼을 누르거나, 아래 드롭다운에서 원하는 검사만 개별적으로 구성하세요.</div>',
         unsafe_allow_html=True
     )
 
-    st.markdown("#### 1) 부위별 빠른 선택")
+    # 1. 부위별 빠른 선택 (파란색 테마)
+    st.markdown('<div style="font-weight: 700; color: #2563eb; font-size: 1.1rem; margin-bottom: 8px;">1) 부위별 빠른 선택</div>', unsafe_allow_html=True)
     r1c1, r1c2, r1c3, r1c4 = st.columns(4)
     with r1c1:
         if st.button("팔 검사 세트", use_container_width=True):
@@ -151,7 +152,10 @@ def render_section_selector():
             set_selected_sections([])
             st.rerun()
 
-    st.markdown("#### 2) 특수검사 빠른 선택")
+    st.write("") # 모바일 가독성을 위한 간격 추가
+
+    # 2. 특수검사 빠른 선택 (보라색 테마)
+    st.markdown('<div style="font-weight: 700; color: #7c3aed; font-size: 1.1rem; margin-top: 10px; margin-bottom: 8px;">2) 특수검사 빠른 선택</div>', unsafe_allow_html=True)
     s1, s2, s3, s4 = st.columns(4)
     with s1:
         if st.button("H반사 단독", use_container_width=True):
@@ -170,14 +174,18 @@ def render_section_selector():
             set_selected_sections(DEFAULT_SPECIAL_SET)
             st.rerun()
 
-    st.markdown("#### 3) 개별 검사 직접 구성")
+    st.write("") # 간격 추가
+
+    # 3. 개별 검사 직접 구성 (초록색 테마)
+    st.markdown('<div style="font-weight: 700; color: #059669; font-size: 1.1rem; margin-top: 10px; margin-bottom: 5px;">3) 개별 검사 직접 구성</div>', unsafe_allow_html=True)
     selected_sections = st.multiselect(
         "아래 창을 눌러 원하는 검사 영역을 직접 조합하세요.",
         options=all_sections,
         default=st.session_state.get("selected_sections", []),
         format_func=get_display_section_name,
         placeholder="여기를 클릭하여 필요한 검사 영역을 추가하세요.",
-        key="selected_sections_multiselect"
+        key="selected_sections_multiselect",
+        label_visibility="collapsed" # 기본 라벨을 숨겨서 깔끔하게 만듦
     )
 
     st.session_state["selected_sections"] = selected_sections
@@ -185,9 +193,10 @@ def render_section_selector():
     if not selected_sections:
         st.info("선택된 검사 영역이 없습니다. 위에서 검사를 선택해주세요.")
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    # 하단 구분을 위한 예쁜 점선 추가
+    st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
+    
     return selected_sections
-
 
 def render_input_sections_for_side(side, selected_sections):
     selected_rows = []
