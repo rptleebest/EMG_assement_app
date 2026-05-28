@@ -60,25 +60,23 @@ def set_selected_sections(section_list):
     st.session_state["selected_sections_multiselect"] = section_list.copy()
 
 def render_direct_entry_start():
-    # [UI 개선] 답답한 박스를 없애고 크고 시원한 메인 타이틀 적용
+    # [UI 개선] 앱 이름(서브)과 화면 이름(메인)의 시각적 계층 분리 및 여백 최적화
     st.markdown(
         """
-        <div style="
-            font-size: 1.8rem; 
-            font-weight: 900; 
-            color: #1e3a8a; 
-            letter-spacing: -1.5px;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        ">
-        🧾 검사 입력 학습 시작
+        <div style="margin-bottom: 1.5rem; padding-top: 0.5rem;">
+            <div style="font-size: 0.95rem; font-weight: 700; color: #64748b; margin-bottom: 0.2rem; letter-spacing: -0.5px;">
+                🧠 교육용 근전도 판독 보조 앱
+            </div>
+            <div style="font-size: 1.65rem; font-weight: 900; color: #1e3a8a; letter-spacing: -1px; line-height: 1.3;">
+                🧾 검사 입력 학습 시작
+            </div>
         </div>
         """, 
         unsafe_allow_html=True
     )
     
     st.markdown(
-        '<div style="font-size: 1.05rem; color: #475569; font-weight: 500; margin-bottom: 1.5rem; word-break: keep-all;">'
+        '<div style="font-size: 1.0rem; color: #334155; font-weight: 500; margin-bottom: 1.5rem; word-break: keep-all; line-height: 1.5;">'
         '실제 임상 현장처럼 수치를 직접 입력하거나, 판독 결과를 선택하여 진단을 추론하는 모드입니다.</div>',
         unsafe_allow_html=True
     )
