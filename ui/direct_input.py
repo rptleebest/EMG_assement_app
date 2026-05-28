@@ -60,23 +60,43 @@ def set_selected_sections(section_list):
     st.session_state["selected_sections_multiselect"] = section_list.copy()
 
 def render_direct_entry_start():
-    st.markdown('<div class="section-card">', unsafe_allow_html=True)
-    st.markdown("### 🧾 검사 입력 학습 시작")
+    # [UI 개선] 답답한 박스를 없애고 크고 시원한 메인 타이틀 적용
     st.markdown(
-        '<div class="mobile-note">실제 임상 현장처럼 수치를 직접 입력하거나, 판독 결과를 선택하여 진단을 추론하는 모드입니다.</div>',
+        """
+        <div style="
+            font-size: 1.8rem; 
+            font-weight: 900; 
+            color: #1e3a8a; 
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        ">
+        🧾 검사 입력 학습 시작
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+    
+    st.markdown(
+        '<div style="font-size: 1.05rem; color: #475569; font-weight: 500; margin-bottom: 1.5rem; word-break: keep-all;">'
+        '실제 임상 현장처럼 수치를 직접 입력하거나, 판독 결과를 선택하여 진단을 추론하는 모드입니다.</div>',
         unsafe_allow_html=True
     )
 
+    # [UI 개선] 모바일 가독성을 위한 안내 가이드 뱃지 스타일
     st.markdown("""
-    <div class="section-hint" style="margin-top:10px; margin-bottom:20px;">
-    <b>💡 입력 가이드</b><br>
-    • 아래에서 환자 정보와 입력 방식을 설정하고 다음 화면으로 이동하세요.<br>
-    • 다음 화면에서 이상 소견이 있는 검사 항목만 체크박스(☑)를 눌러 활성화하면 됩니다.<br>
-    • 체크하지 않은 항목은 자동으로 '정상' 처리됩니다.
+    <div style="background-color: #f0fdfa; border-left: 4px solid #0d9488; padding: 15px; border-radius: 8px; margin-bottom: 2rem;">
+        <b style="color: #115e59; font-size: 1.05rem;">💡 입력 가이드</b><br>
+        <div style="font-size: 0.95rem; color: #334155; margin-top: 8px; line-height: 1.5; word-break: keep-all;">
+        • 아래에서 <b>환자 정보</b>와 <b>입력 방식</b>을 설정하고 이동하세요.<br>
+        • 다음 화면에서 이상 소견이 있는 검사 항목만 <b>체크(☑)</b>하세요.<br>
+        • 체크하지 않은 항목은 <b>자동으로 '정상' 처리</b>됩니다.
+        </div>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("#### 1. 환자 정보 설정")
+    # 1. 환자 정보 설정
+    st.markdown('<div style="font-weight: 800; font-size: 1.2rem; color: #0f172a; margin-bottom: 10px;">1. 환자 정보 설정</div>', unsafe_allow_html=True)
     c_age, c_sex, c_side = st.columns(3)
     with c_age:
         age = st.number_input("나이", min_value=1, max_value=120, value=st.session_state.get("age", 50), step=1)
@@ -87,19 +107,21 @@ def render_direct_entry_start():
     
     st.markdown("<br>", unsafe_allow_html=True)
 
-    st.markdown("#### 2. 데이터 입력 방식 설정")
+    # 2. 데이터 입력 방식 설정
+    st.markdown('<div style="font-weight: 800; font-size: 1.2rem; color: #0f172a; margin-bottom: 10px;">2. 데이터 입력 방식 설정</div>', unsafe_allow_html=True)
     input_mode = st.radio(
         "어떤 방식으로 입력하시겠습니까?",
         ["판독 결과 직접 선택 (기본)", "실제 수치 입력 (자동 판독)"],
-        help="수치 입력을 선택하면 진폭과 잠복기를 숫자로 입력하여 앱이 자동으로 정상 여부를 판독합니다."
+        help="수치 입력을 선택하면 진폭과 잠복기를 숫자로 입력하여 앱이 자동으로 정상 여부를 판독합니다.",
+        label_visibility="collapsed"
     )
     st.session_state["ncs_input_mode"] = input_mode
 
-    st.markdown('<hr class="soft-divider">', unsafe_allow_html=True)
+    st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
 
     c3, c4 = st.columns(2)
     with c3:
-        if st.button("👉 입력 화면으로 이동", type="primary", use_container_width=True):
+        if st.button("🚀 입력 화면으로 이동", type="primary", use_container_width=True):
             st.session_state["age"] = age
             st.session_state["sex"] = sex
             st.session_state["side"] = side
@@ -112,11 +134,10 @@ def render_direct_entry_start():
             st.rerun()
 
     with c4:
-        if st.button("설정 초기화", use_container_width=True):
+        if st.button("🔄 설정 초기화", use_container_width=True):
             clear_result()
             st.rerun()
 
-    st.markdown("</div>", unsafe_allow_html=True)
 
 def render_section_selector():
     all_sections = list(SECTIONS.keys())
@@ -124,7 +145,7 @@ def render_section_selector():
     if "selected_sections" not in st.session_state:
         set_selected_sections([])
 
-    # [UI 개선] 답답했던 section-card 박스를 제거하고 폰트 크기와 굵기를 대폭 키움
+    # [UI 개선] 답답했던 박스 제거, 글자 크기/굵기 대폭 상향
     st.markdown('<div style="font-size: 1.3rem; font-weight: 800; color: #0f172a; margin-top: 1rem; margin-bottom: 0.5rem;">⚙️ 검사 영역 선택</div>', unsafe_allow_html=True)
     st.markdown(
         '<div style="font-size: 0.95rem; color: #475569; margin-bottom: 1.5rem; word-break: keep-all;">'
@@ -132,15 +153,15 @@ def render_section_selector():
         unsafe_allow_html=True
     )
 
-    # 1. 부위별 빠른 선택 (파란색 테마)
-    st.markdown('<div style="font-weight: 700; color: #2563eb; font-size: 1.1rem; margin-bottom: 8px;">1) 부위별 빠른 선택</div>', unsafe_allow_html=True)
+    # 1. 부위별 빠른 선택
+    st.markdown('<div style="font-weight: 800; color: #2563eb; font-size: 1.1rem; margin-bottom: 8px;">1) 부위별 빠른 선택</div>', unsafe_allow_html=True)
     r1c1, r1c2, r1c3, r1c4 = st.columns(4)
     with r1c1:
-        if st.button("팔 검사 세트", use_container_width=True):
+        if st.button("팔 검사", use_container_width=True):
             set_selected_sections(DEFAULT_ARM_SET)
             st.rerun()
     with r1c2:
-        if st.button("다리 검사 세트", use_container_width=True):
+        if st.button("다리 검사", use_container_width=True):
             set_selected_sections(DEFAULT_LEG_SET)
             st.rerun()
     with r1c3:
@@ -148,14 +169,14 @@ def render_section_selector():
             set_selected_sections(all_sections)
             st.rerun()
     with r1c4:
-        if st.button("선택 모두 해제", use_container_width=True):
+        if st.button("모두 해제", use_container_width=True):
             set_selected_sections([])
             st.rerun()
 
-    st.write("") # 모바일 가독성을 위한 간격 추가
+    st.write("") 
 
-    # 2. 특수검사 빠른 선택 (보라색 테마)
-    st.markdown('<div style="font-weight: 700; color: #7c3aed; font-size: 1.1rem; margin-top: 10px; margin-bottom: 8px;">2) 특수검사 빠른 선택</div>', unsafe_allow_html=True)
+    # 2. 특수검사 빠른 선택
+    st.markdown('<div style="font-weight: 800; color: #7c3aed; font-size: 1.1rem; margin-top: 10px; margin-bottom: 8px;">2) 특수검사 빠른 선택</div>', unsafe_allow_html=True)
     s1, s2, s3, s4 = st.columns(4)
     with s1:
         if st.button("H반사 단독", use_container_width=True):
@@ -170,22 +191,22 @@ def render_section_selector():
             set_selected_sections(["눈깜빡반사검사 (Blink reflex)"])
             st.rerun()
     with s4:
-        if st.button("특수검사 전체", use_container_width=True):
+        if st.button("특수 전체", use_container_width=True):
             set_selected_sections(DEFAULT_SPECIAL_SET)
             st.rerun()
 
-    st.write("") # 간격 추가
+    st.write("") 
 
-    # 3. 개별 검사 직접 구성 (초록색 테마)
-    st.markdown('<div style="font-weight: 700; color: #059669; font-size: 1.1rem; margin-top: 10px; margin-bottom: 5px;">3) 개별 검사 직접 구성</div>', unsafe_allow_html=True)
+    # 3. 개별 검사 직접 구성
+    st.markdown('<div style="font-weight: 800; color: #059669; font-size: 1.1rem; margin-top: 10px; margin-bottom: 5px;">3) 개별 검사 직접 구성</div>', unsafe_allow_html=True)
     selected_sections = st.multiselect(
         "아래 창을 눌러 원하는 검사 영역을 직접 조합하세요.",
         options=all_sections,
         default=st.session_state.get("selected_sections", []),
         format_func=get_display_section_name,
-        placeholder="여기를 클릭하여 필요한 검사 영역을 추가하세요.",
+        placeholder="👉 여기를 클릭하여 필요한 검사를 추가하세요",
         key="selected_sections_multiselect",
-        label_visibility="collapsed" # 기본 라벨을 숨겨서 깔끔하게 만듦
+        label_visibility="collapsed"
     )
 
     st.session_state["selected_sections"] = selected_sections
@@ -193,10 +214,9 @@ def render_section_selector():
     if not selected_sections:
         st.info("선택된 검사 영역이 없습니다. 위에서 검사를 선택해주세요.")
 
-    # 하단 구분을 위한 예쁜 점선 추가
     st.markdown('<hr style="margin: 2rem 0; border: none; border-top: 2px dashed #cbd5e1;">', unsafe_allow_html=True)
-    
     return selected_sections
+
 
 def render_input_sections_for_side(side, selected_sections):
     selected_rows = []
@@ -209,7 +229,7 @@ def render_input_sections_for_side(side, selected_sections):
             continue
 
         with st.expander(get_display_section_name(section_name), expanded=True):
-            st.markdown('<div class="mobile-note" style="margin-bottom:12px;">✅ 이상 소견이 있는 개별 신경/항목만 체크박스를 눌러 활성화하세요.</div>', unsafe_allow_html=True)
+            st.markdown('<div style="font-size:0.9rem; color:#475569; margin-bottom:12px; word-break:keep-all;">✅ 이상 소견이 있는 개별 신경/항목만 체크박스를 눌러 활성화하세요.</div>', unsafe_allow_html=True)
             
             for item in items:
                 anatomy = ANATOMY.get(item, {})
@@ -221,9 +241,9 @@ def render_input_sections_for_side(side, selected_sections):
                 is_active = st.checkbox(f"**{get_compact_item_label(item)}**", key=chk_key)
                 
                 if is_active:
-                    st.markdown('<div class="section-card" style="margin-top: 5px; background-color:#f8fafc;">', unsafe_allow_html=True)
+                    st.markdown('<div style="background-color:#f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-top: 5px; margin-bottom: 10px;">', unsafe_allow_html=True)
                     st.markdown(
-                        f'<div class="input-meta">↳ <b>신경:</b> {nerve} | <b>레벨/분절:</b> {level}</div>',
+                        f'<div style="font-size: 0.85rem; color: #64748b; margin-bottom: 10px;">↳ <b>신경:</b> {nerve} | <b>레벨:</b> {level}</div>',
                         unsafe_allow_html=True
                     )
 
@@ -245,7 +265,7 @@ def render_input_sections_for_side(side, selected_sections):
                     selected_rows.append(row_payload)
                     st.markdown("</div>", unsafe_allow_html=True)
                 
-                st.markdown('<hr style="margin:4px 0; border-top:1px dashed #e2e8f0;">', unsafe_allow_html=True)
+                st.markdown('<hr style="margin:4px 0; border: none; border-top:1px dashed #e2e8f0;">', unsafe_allow_html=True)
 
     return selected_rows
 
@@ -258,7 +278,7 @@ def render_ncs_input(item, domain, side):
     
     if input_mode == "실제 수치 입력 (자동 판독)":
         cutoff = NCS_CUTOFFS.get(item, (10.0, 3.5) if domain=="sensory" else (3.0, 5.0))
-        st.markdown(f'<div class="mobile-note" style="color:#2563eb;">💡 교육용 정상 참고치: 진폭 ≥ {cutoff[0]}{unit_amp}, 잠복기 ≤ {cutoff[1]}ms</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="font-size: 0.85rem; color:#2563eb; margin-bottom: 8px;">💡 교육용 정상 참고치: 진폭 ≥ {cutoff[0]}{unit_amp}, 잠복기 ≤ {cutoff[1]}ms</div>', unsafe_allow_html=True)
 
         if side == "양측":
             c1, c2 = st.columns(2)
@@ -274,8 +294,8 @@ def render_ncs_input(item, domain, side):
             l_amp_stat, l_lat_stat = evaluate_ncs_numeric(item, domain, l_amp, l_lat)
             r_amp_stat, r_lat_stat = evaluate_ncs_numeric(item, domain, r_amp, r_lat)
             
-            st.markdown(f'<div class="finding-subtext"><b>자동 판독 (좌측):</b> {l_amp_stat}, {l_lat_stat}</div>', unsafe_allow_html=True)
-            st.markdown(f'<div class="finding-subtext"><b>자동 판독 (우측):</b> {r_amp_stat}, {r_lat_stat}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.9rem; color: #334155; margin-top: 5px;"><b>자동 판독 (좌측):</b> {l_amp_stat}, {l_lat_stat}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.9rem; color: #334155;"><b>자동 판독 (우측):</b> {r_amp_stat}, {r_lat_stat}</div>', unsafe_allow_html=True)
 
             return {
                 "item": item,
@@ -299,8 +319,8 @@ def render_ncs_input(item, domain, side):
             n_amp_stat, n_lat_stat = evaluate_ncs_numeric(item, domain, n_amp, n_lat)
             les_amp_stat, les_lat_stat = evaluate_ncs_numeric(item, domain, les_amp, les_lat)
 
-            st.markdown(f'<div class="finding-subtext"><b>자동 판독 (정상측):</b> {n_amp_stat}, {n_lat_stat}</div>', unsafe_allow_html=True)
-            st.markdown(f'<div class="finding-subtext" style="color:#b91c1c;"><b>자동 판독 (병변측):</b> {les_amp_stat}, {les_lat_stat}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.9rem; color: #334155; margin-top: 5px;"><b>자동 판독 (정상측):</b> {n_amp_stat}, {n_lat_stat}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="font-size: 0.9rem; color: #b91c1c;"><b>자동 판독 (병변측):</b> {les_amp_stat}, {les_lat_stat}</div>', unsafe_allow_html=True)
 
             normal_result = compose_ncs_result(n_amp_stat, n_lat_stat)
             lesion_result = compose_ncs_result(les_amp_stat, les_lat_stat)
@@ -325,11 +345,11 @@ def render_ncs_input(item, domain, side):
 
         c1, c2 = st.columns(2)
         with c1:
-            normal_amp = st.selectbox(f"{normal_side_label} {stim_labels['distal']} 진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"{item}_normal_amp")
-            normal_lat = st.selectbox(f"{normal_side_label} {stim_labels['distal']} 잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"{item}_normal_lat")
+            normal_amp = st.selectbox(f"{normal_side_label} 진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"{item}_normal_amp")
+            normal_lat = st.selectbox(f"{normal_side_label} 잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"{item}_normal_lat")
         with c2:
-            lesion_amp = st.selectbox(f"{lesion_side_label} {stim_labels['distal']} 진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"{item}_lesion_amp")
-            lesion_lat = st.selectbox(f"{lesion_side_label} {stim_labels['distal']} 잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"{item}_lesion_lat")
+            lesion_amp = st.selectbox(f"{lesion_side_label} 진폭", ["정상 (Normal)", "감소 (Reduced)", "무반응 (No response)"], key=f"{item}_lesion_amp")
+            lesion_lat = st.selectbox(f"{lesion_side_label} 잠복기", ["정상 (Normal)", "잠복기 지연 (Delayed latency)"], key=f"{item}_lesion_lat")
 
         normal_result = compose_ncs_result(normal_amp, normal_lat)
         lesion_result = compose_ncs_result(lesion_amp, lesion_lat)
@@ -395,7 +415,7 @@ def render_h_reflex_input(item):
 
 
 def render_h_ratio_input(item):
-    st.markdown('<div class="mobile-note" style="color:#065f46;">💡 Hmax와 Mmax를 입력하면 H/M 비율이 자동 계산됩니다.</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size: 0.85rem; color:#065f46; margin-bottom: 8px;">💡 Hmax와 Mmax를 입력하면 H/M 비율이 자동 계산됩니다.</div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
     with c1:
         hmax = st.number_input("Hmax (mV)", min_value=0.0, value=0.0, step=0.1, key=f"{item}_hmax")
@@ -407,10 +427,10 @@ def render_h_ratio_input(item):
 
     st.markdown(
         f"""
-        <div style="background:#fff; border:1px solid #d1fae5; padding:8px; border-radius:8px; margin-top:8px;">
-            <div style="font-size:0.85rem;"><b>계산된 H/M 비율:</b> {ratio_text}</div>
-            <div style="font-size:0.85rem;"><b>해석:</b> {interp["label"]}</div>
-            <div style="font-size:0.8rem; color:#475569;">{interp["warning"]}</div>
+        <div style="background:#f8fafc; border:1px solid #d1fae5; padding:10px; border-radius:8px; margin-top:8px;">
+            <div style="font-size:0.9rem; color:#0f172a;"><b>계산된 H/M 비율:</b> {ratio_text}</div>
+            <div style="font-size:0.9rem; color:#0f172a; margin-top: 2px;"><b>해석:</b> {interp["label"]}</div>
+            <div style="font-size:0.85rem; color:#475569; margin-top: 4px;">{interp["warning"]}</div>
         </div>
         """,
         unsafe_allow_html=True
