@@ -327,8 +327,8 @@ CASE_LIBRARY = {
                     "허벅지, 종아리, 발등 등 여러 피부분절을 넘나드는 광범위 감각 소실"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세",
-                    "무릎관절 폄 (Knee extension): Poor (2/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4",
+                    "엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넓적다리신경(Femoral nerve), L2 우세",
+                    "무릎관절 폄 (Knee extension): Poor (2/5) - 넓적다리네갈래근(Quadriceps femoris), 넓적다리신경(Femoral nerve), L3-L4",
                     "발목관절 등굽힘 (Ankle dorsiflexion): Trace (1/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
                     "발목관절 발바닥굽힘 (Ankle plantarflexion): Poor (2/5) - 장딴지근(Gastrocnemius), 정강신경(Tibial nerve), S1 우세"
                 ],
@@ -342,7 +342,7 @@ CASE_LIBRARY = {
             "허리 척추주위근 (Lumbar Paraspinal)": ("정상 (Normal)", "정상 (Normal)"),
             "장딴지신경 감각신경활동전위 (Sural SNAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "종아리신경 복합근육활동전위 (Peroneal CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
-            "넙다리신경 복합근육활동전위 (Femoral CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
+            "넓적다리신경 복합근육활동전위 (Femoral CMAP)": ("정상 (Normal)", "감소 (Reduced)"),
             "가쪽넓은근 (Vastus Lateralis)": ("정상 (Normal)", "비정상 자발전위 출현 (Fibrillation Potential, Positive Sharp Wave 등)"),
             "앞정강근 (Tibialis Anterior, TA)": ("정상 (Normal)", "비정상 자발전위 출현 (Fibrillation Potential, Positive Sharp Wave 등)")
         },
@@ -384,8 +384,8 @@ CASE_LIBRARY = {
                     "양측 엄지발가락 폄 (Great toe extension): Good (4/5) - 긴엄지폄근(Extensor hallucis longus), 깊은종아리신경(Deep peroneal nerve), L5 우세 (원위부 약화)",
                     "양측 발가락 굽힘 (Toe flexion): Good (4/5) - 긴발가락굽힘근(Flexor digitorum longus), 정강신경(Tibial nerve), S1 우세 (원위부 약화)",
                     "양측 발목관절 등굽힘 (Ankle dorsiflexion): Normal (5/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5",
-                    "양측 무릎관절 폄 (Knee extension): Normal (5/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4 대칭적 보존",
-                    "양측 엉덩관절 굽힘 (Hip flexion): Normal (5/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 대칭적 보존"
+                    "양측 무릎관절 폄 (Knee extension): Normal (5/5) - 넓적다리네갈래근(Quadriceps femoris), 넓적다리신경(Femoral nerve), L3-L4 대칭적 보존",
+                    "양측 엉덩관절 굽힘 (Hip flexion): Normal (5/5) - 엉덩허리근(Iliopsoas), 넓적다리신경(Femoral nerve), L2 우세 대칭적 보존"
                 ],
                 "반사 검사": [
                     "아킬레스힘줄 반사 (Achilles reflex, S1 지배): 양측 소실 (DRT 0) - 원위부 긴 신경 침범 시사",
@@ -434,7 +434,7 @@ CASE_LIBRARY = {
                 ],
                 "맨손 근력검사 (MMT)": [
                     "양측 어깨관절 벌림 (Shoulder abduction): Fair (3/5) - 어깨세모근(Deltoid), 겨드랑신경(Axillary nerve), C5 우세 (근위부 약화 뚜렷)",
-                    "양측 엉덩관절 굽힘 (Hip flexion): Fair (3/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 (근위부 약화 뚜렷)",
+                    "양측 엉덩관절 굽힘 (Hip flexion): Fair (3/5) - 엉덩허리근(Iliopsoas), 넓적다리신경(Femoral nerve), L2 우세 (근위부 약화 뚜렷)",
                     "양측 손목관절 폄 (Wrist extension): Fair (3/5) - 노쪽손목폄근(Extensor carpi radialis), 노신경(Radial nerve), C6 우세 (원위부 동시 약화)",
                     "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5 (원위부 동시 약화)"
                 ],
@@ -587,8 +587,8 @@ CASE_LIBRARY = {
                     "발끝 부위 경미한 이상감각, 뚜렷한 감각 소실은 아직 불분명함"
                 ],
                 "맨손 근력검사 (MMT)": [
-                    "양측 엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넙다리신경(Femoral nerve), L2 우세 (상행성 근력 약화 뚜렷)",
-                    "양측 무릎관절 폄 (Knee extension): Fair (3/5) - 넙다리네갈래근(Quadriceps femoris), 넙다리신경(Femoral nerve), L3-L4",
+                    "양측 엉덩관절 굽힘 (Hip flexion): Poor (2/5) - 엉덩허리근(Iliopsoas), 넓적다리신경(Femoral nerve), L2 우세 (상행성 근력 약화 뚜렷)",
+                    "양측 무릎관절 폄 (Knee extension): Fair (3/5) - 넓적다리네갈래근(Quadriceps femoris), 넓적다리신경(Femoral nerve), L3-L4",
                     "양측 발목관절 등굽힘 (Ankle dorsiflexion): Fair (3/5) - 앞정강근(Tibialis anterior), 깊은종아리신경(Deep peroneal nerve), L4-L5"
                 ],
                 "반사 검사": [
