@@ -8,12 +8,15 @@ def score_rule(rule, selected_codes, selected_region=None):
     matched_positive = []
     matched_negative = []
 
-    for code in rule.get("positive", []):
+    positive_codes = rule.get("positive", [])
+    negative_codes = rule.get("negative", [])
+
+    for code in positive_codes:
         if code in selected_codes:
             score += 2
             matched_positive.append(code)
 
-    for code in rule.get("negative", []):
+    for code in negative_codes:
         if code in selected_codes:
             score -= 2
             matched_negative.append(code)
@@ -21,14 +24,14 @@ def score_rule(rule, selected_codes, selected_region=None):
     if selected_region and rule.get("region") == selected_region:
         score += 2
 
-    max_score = max(1, len(rule.get("positive", [])) * 2 + 2)
+    max_score = max(2, len(positive_codes) * 2 + (2 if selected_region else 0))
     confidence = int(max(0, min(100, (score / max_score) * 100)))
 
     return {
-        "id": rule["id"],
-        "name": rule["name"],
-        "lesion": rule["lesion"],
-        "region": rule["region"],
+        "id": rule.get("id", ""),
+        "name": rule.get("name", ""),
+        "lesion": rule.get("lesion", ""),
+        "region": rule.get("region", ""),
         "score": score,
         "confidence": confidence,
         "matched_positive": matched_positive,
@@ -40,6 +43,9 @@ def score_rule(rule, selected_codes, selected_region=None):
 
 
 def interpret_findings(selected_codes, selected_region=None):
+    if not selected_codes:
+        return []
+
     results = []
 
     for rule in DIAGNOSTIC_RULES:
@@ -47,7 +53,15 @@ def interpret_findings(selected_codes, selected_region=None):
         if result["score"] > 0:
             results.append(result)
 
-    results.sort(key=lambda x: (x["confidence"], x["score"]), reverse=True)
+    results.sort(
+        key=lambda x: (
+            x["confidence"],
+            x["score"],
+            len(x["matched_positive"]),
+            -len(x["matched_negative"]),
+        ),
+        reverse=True,
+    )
 
     return results[:5]
 
@@ -57,9 +71,13 @@ def summarize_pattern(selected_codes):
     comments = []
 
     if "snap_preserved" in selected_codes and "paraspinal_abnormal" in selected_codes:
-        comments.append("감각신경활동전위 보존과 척추주위근 이상이 함께 있어 신경뿌리병증 가능성을 올립니다.")
+        comments.append("감각신경활동전위 보존과 척추주위근 이상이 함께 있어 신경뿌리병증 가능성을 높입니다.")
 
-    if "snap_reduced" in selected_codes and "paraspinal_normal" in selected_codes and "multiple_peripheral_nerves" in selected_codes:
+    if (
+        "snap_reduced" in selected_codes
+        and "paraspinal_normal" in selected_codes
+        and "multiple_peripheral_nerves" in selected_codes
+    ):
         comments.append("감각신경활동전위 감소, 여러 말초신경 분포 침범, 척추주위근 보존은 신경얼기병증을 시사합니다.")
 
     if "distal_symmetric_pattern" in selected_codes:
@@ -71,7 +89,16 @@ def summarize_pattern(selected_codes):
     if "conduction_velocity_slow" in selected_codes or "f_wave_delayed_absent" in selected_codes:
         comments.append("전도속도 저하 또는 F파 이상은 말이집탈락성 변화나 근위부 전도 이상을 고려하게 합니다.")
 
+    if "h_reflex_delayed_absent" in selected_codes:
+        comments.append("H반사 지연 또는 소실은 S1 신경뿌리 경로 이상 평가에 도움이 됩니다.")
+
     if "h_reflex_hyperactive" in selected_codes:
         comments.append("H반사 항진 또는 H/M 비율 증가는 중추성 경직 증가와 관련될 수 있습니다.")
+
+    if "blink_afferent_pattern" in selected_codes:
+        comments.append("눈깜빡반사에서 자극측 들신경 경로 이상 패턴은 삼차신경 감각 입력 경로 문제를 시사합니다.")
+
+    if "blink_efferent_pattern" in selected_codes:
+        comments.append("눈깜빡반사에서 반응측 날신경 경로 이상 패턴은 얼굴신경 운동 출력 경로 문제를 시사합니다.")
 
     return comments
