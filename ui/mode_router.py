@@ -7,42 +7,31 @@ from ui.abnormal_check_input import render_abnormal_check_learning
 
 def _render_direct_input_safely():
     try:
-        from ui.direct_input import render_direct_entry_start, render_section_selector, render_input_sections_for_side
+        from ui.direct_input import (
+            render_direct_entry_start,
+            render_section_selector,
+            render_input_sections_for_side,
+        )
 
-        if st.session_state.get("current_screen") != "direct_input":
+        current_screen = st.session_state.get("current_screen")
+
+        if current_screen == "direct_input_start":
             render_direct_entry_start()
             return
 
-        st.markdown(
-            """
-            <div style="margin-bottom:1rem;">
-                <div style="font-size:1.35rem; font-weight:900; color:#1e3a8a; word-break:keep-all;">
-                    수치 직접 입력 학습
-                </div>
-                <div style="font-size:0.95rem; color:#475569; margin-top:0.4rem; line-height:1.5; word-break:keep-all;">
-                    진폭, 잠복기, 전도속도 등 세부 수치를 직접 입력하는 심화 학습 모드입니다.
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        if current_screen == "direct_input":
+            render_input_sections_for_side(
+                st.session_state.get("side", "미선택"),
+                render_section_selector(),
+            )
+            return
 
-        side = st.session_state.get("side", "미선택")
-        selected_sections = render_section_selector()
-        rows = render_input_sections_for_side(side, selected_sections)
-
-        if rows:
-            st.success(f"입력된 검사 항목: {len(rows)}개")
-            with st.expander("입력 요약 보기", expanded=False):
-                for row in rows:
-                    st.markdown(f"- **{row.get('item', '')}**: 좌측 `{row.get('left', '')}`, 우측 `{row.get('right', '')}`")
-
-        st.caption("수치 직접 입력 결과의 자동 해석은 검사실 기준에 따라 달라질 수 있으므로 교육용으로만 사용하세요.")
+        render_direct_entry_start()
 
     except Exception as exc:
-        st.error("수치 직접 입력 학습 화면을 불러오는 중 문제가 발생했습니다.")
+        st.error("검사결과표 판독 학습 화면을 불러오는 중 문제가 발생했습니다.")
         st.caption(f"오류 내용: {exc}")
-        st.info("기존 `ui/direct_input.py` 파일의 함수 이름과 구조를 확인해 주세요.")
+        st.info("`ui/direct_input.py` 파일과 관련 데이터 파일 구성을 확인해 주세요.")
 
 
 def render_mode_selection_screen():
@@ -79,7 +68,7 @@ def render_mode_selection_screen():
             st.rerun()
 
     elif selected_mode == MODE_DIRECT:
-        if st.button("수치 직접 입력 학습 시작", type="primary", use_container_width=True):
+        if st.button("검사결과표 판독 학습 시작", type="primary", use_container_width=True):
             st.session_state["current_screen"] = "direct_input_start"
             st.rerun()
 
