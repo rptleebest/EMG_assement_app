@@ -4,7 +4,7 @@ ANATOMY = {
     "자신경 감각신경활동전위 (Ulnar SNAP)": {"nerve": "자신경", "level": "C8-T1", "domain": "sensory", "region": "arm"},
     "노신경 감각신경활동전위 (Radial SNAP)": {"nerve": "노신경", "level": "C5-C8", "domain": "sensory", "region": "arm"},
     "노신경 표재감각신경활동전위 (Superficial Radial SNAP)": {"nerve": "노신경 표재분지", "level": "C6-C8", "domain": "sensory", "region": "arm"},
-    "가쪽아래팔피부신경 감각신경활동전위 (Lateral antebrachial cutaneous SNAP)": {"nerve": "가쪽아래팔피부신경", "level": "C5-C6", "domain": "sensory", "region": "arm"},
+    "가쪽아래팔피부신경 감각신경활동전위 (Lateral Antebrachial Cutaneous SNAP)": {"nerve": "가쪽아래팔피부신경", "level": "C5-C6", "domain": "sensory", "region": "arm"},
     # [추가] 다발신경병증 사례용 복합 항목
     "정중/자신경 감각신경활동전위 (SNAP)": {"nerve": "정중/자신경", "level": "상지 전반", "domain": "sensory", "region": "arm"},
     
