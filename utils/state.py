@@ -1,38 +1,41 @@
 import streamlit as st
 
 
-def init_app_state():
-    defaults = {
-        "current_screen": "home",
-        "app_mode": None,
-        "confirmed_case": None,
-        "last_result": None,
-        "age": 50,
-        "sex": "미선택",
-        "side": "미선택",
-    }
+DEFAULT_SESSION_STATE = {
+    "current_screen": "home",
+    "app_mode": None,
+    "confirmed_case": None,
+    "selected_case_name": None,
+    "result": None,
+    "abnormal_region": None,
+    "abnormal_side": None,
+    "abnormal_symptoms": [],
+    "abnormal_selected_codes": [],
+}
 
-    for key, value in defaults.items():
+
+def init_session_state():
+    for key, value in DEFAULT_SESSION_STATE.items():
         if key not in st.session_state:
             st.session_state[key] = value
 
 
 def clear_result():
-    st.session_state["last_result"] = None
+    st.session_state["result"] = None
 
 
-def reset_all_inputs():
-    keep_keys = {
-        "current_screen",
-        "app_mode",
-        "confirmed_case",
-        "age",
-        "sex",
-        "side",
-    }
+def reset_to_home():
+    for key, value in DEFAULT_SESSION_STATE.items():
+        st.session_state[key] = value
 
-    removable_keys = [k for k in list(st.session_state.keys()) if k not in keep_keys]
-    for key in removable_keys:
-        del st.session_state[key]
 
-    st.session_state["last_result"] = None
+def clear_abnormal_check_state():
+    st.session_state["abnormal_region"] = None
+    st.session_state["abnormal_side"] = None
+    st.session_state["abnormal_symptoms"] = []
+    st.session_state["abnormal_selected_codes"] = []
+
+
+def clear_case_state():
+    st.session_state["confirmed_case"] = None
+    st.session_state["selected_case_name"] = None
