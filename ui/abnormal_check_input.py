@@ -12,26 +12,49 @@ def _checkbox_key(code):
     return f"abn_{code}"
 
 
-def _set_codes_checked(codes, checked=True):
+def _ensure_checkbox_state_initialized():
+    for group_items in ABNORMAL_CHECK_GROUPS.values():
+        for item in group_items:
+            key = _checkbox_key(item["code"])
+            if key not in st.session_state:
+                st.session_state[key] = False
+
+
+def _set_codes_checked(codes, checked=True, clear_others=False):
+    _ensure_checkbox_state_initialized()
+
+    if clear_others:
+        for group_items in ABNORMAL_CHECK_GROUPS.values():
+            for item in group_items:
+                st.session_state[_checkbox_key(item["code"])] = False
+
+    valid_codes = {
+        item["code"]
+        for group_items in ABNORMAL_CHECK_GROUPS.values()
+        for item in group_items
+    }
+
     for code in codes:
-        st.session_state[_checkbox_key(code)] = checked
+        if code in valid_codes:
+            st.session_state[_checkbox_key(code)] = checked
 
 
 def _clear_all_checked_codes():
+    _ensure_checkbox_state_initialized()
     for group_items in ABNORMAL_CHECK_GROUPS.values():
         for item in group_items:
             st.session_state[_checkbox_key(item["code"])] = False
 
 
 def _get_all_selected_codes_from_state():
-    selected_codes = []
+    _ensure_checkbox_state_initialized()
 
+    selected_codes = []
     for group_items in ABNORMAL_CHECK_GROUPS.values():
         for item in group_items:
             code = item["code"]
             if st.session_state.get(_checkbox_key(code), False):
                 selected_codes.append(code)
-
     return selected_codes
 
 
@@ -133,14 +156,29 @@ def render_quick_check_presets(region):
                 unsafe_allow_html=True,
             )
 
-            if st.button(
-                f"이 패턴 적용하기",
-                key=f"apply_preset_{region}_{idx}",
-                use_container_width=True,
-            ):
-                _set_codes_checked(preset["codes"], True)
-                st.success(f"'{ko(preset['name'])}' 관련 소견을 체크했습니다.")
-                st.rerun()
+            c1, c2 = st.columns(2)
+
+            with c1:
+                if st.button(
+                    "이 패턴만 적용",
+                    key=f"apply_only_preset_{region}_{idx}",
+                    use_container_width=True,
+                ):
+                    _set_codes_checked(preset["codes"], checked=True, clear_others=True)
+                    st.session_state["abnormal_selected_codes"] = _get_all_selected_codes_from_state()
+                    st.success(f"'{ko(preset['name'])}' 패턴만 적용했습니다.")
+                    st.rerun()
+
+            with c2:
+                if st.button(
+                    "현재 체크에 추가",
+                    key=f"add_preset_{region}_{idx}",
+                    use_container_width=True,
+                ):
+                    _set_codes_checked(preset["codes"], checked=True, clear_others=False)
+                    st.session_state["abnormal_selected_codes"] = _get_all_selected_codes_from_state()
+                    st.success(f"'{ko(preset['name'])}' 패턴을 현재 체크에 추가했습니다.")
+                    st.rerun()
 
     c1, c2 = st.columns(2)
 
@@ -157,19 +195,15 @@ def render_quick_check_presets(region):
 
 def render_abnormal_checklist():
     st.markdown("### 3단계. 상세 체크")
+    _ensure_checkbox_state_initialized()
 
     selected_codes = []
 
     for group_name, items in ABNORMAL_CHECK_GROUPS.items():
-        display_group_name = ko(group_name)
-
-        with st.expander(display_group_name, expanded=False):
+        with st.expander(ko(group_name), expanded=False):
             for item in items:
                 code = item["code"]
                 key = _checkbox_key(code)
-
-                if key not in st.session_state:
-                    st.session_state[key] = False
 
                 checked = st.checkbox(
                     ko(item["label"]),
@@ -191,12 +225,14 @@ def render_selected_summary(region, side, symptoms, selected_codes):
         st.info("아직 체크한 이상 소견이 없습니다.")
         return
 
+    symptom_text = ", ".join(symptoms) if symptoms else "선택 없음"
+
     st.markdown(
         f"""
         <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:12px; margin-bottom:12px;">
             <div><b>주요 부위:</b> {ko(region)}</div>
             <div><b>병변측:</b> {ko(side)}</div>
-            <div><b>증상:</b> {ko(", ".join(symptoms)) if symptoms else "선택 없음"}</div>
+            <div><b>증상:</b> {ko(symptom_text)}</div>
             <div><b>체크한 이상 소견 수:</b> {len(selected_codes)}개</div>
         </div>
         """,
@@ -240,16 +276,22 @@ def render_result_card(result, rank):
     )
 
     with st.expander("왜 이렇게 해석하나요?", expanded=True):
-        for line in result["teaching"]:
+        for line in result.get("teaching", []):
             st.markdown(f"- {ko(line)}")
 
     with st.expander("물리치료 평가 포인트", expanded=False):
-        for line in result["pt_points"]:
-            st.markdown(f"- {ko(line)}")
+        if result.get("pt_points"):
+            for line in result["pt_points"]:
+                st.markdown(f"- {ko(line)}")
+        else:
+            st.markdown("- 없음")
 
     with st.expander("함께 감별할 질환", expanded=False):
-        for item in result["differentials"]:
-            st.markdown(f"- {ko(item)}")
+        if result.get("differentials"):
+            for item in result["differentials"]:
+                st.markdown(f"- {ko(item)}")
+        else:
+            st.markdown("- 없음")
 
 
 def render_interpretation_results(region, selected_codes):
@@ -265,7 +307,6 @@ def render_interpretation_results(region, selected_codes):
     used_terms = set()
 
     st.markdown("#### 핵심 패턴 요약")
-
     if pattern_comments:
         for comment in pattern_comments:
             st.markdown(f"- {ko(comment)}")
@@ -273,7 +314,6 @@ def render_interpretation_results(region, selected_codes):
         st.markdown("- 아직 특정 패턴이 뚜렷하지 않습니다. 추가 소견을 체크해 보세요.")
 
     st.markdown("#### 가능성 순위")
-
     if not results:
         st.warning("현재 체크 조합만으로는 뚜렷한 질환군을 추론하기 어렵습니다.")
         return
@@ -306,17 +346,15 @@ def render_abnormal_check_learning():
         unsafe_allow_html=True,
     )
 
+    _ensure_checkbox_state_initialized()
+
     render_criteria_guide()
-
     region, side, symptoms = render_region_and_context()
-
     render_quick_check_presets(region)
 
-    selected_codes = render_abnormal_checklist()
+    render_abnormal_checklist()
 
-    # 체크박스 상태를 기준으로 최종 selected_codes를 한 번 더 동기화
     selected_codes = _get_all_selected_codes_from_state()
-
     render_selected_summary(region, side, symptoms, selected_codes)
 
     if st.button("결과 해석하기", type="primary", use_container_width=True):
