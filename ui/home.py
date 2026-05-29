@@ -12,7 +12,7 @@ def render_home_screen():
                 교육용 근전도·신경전도검사 학습 앱
             </div>
             <div style="font-size: 0.98rem; color: #475569; margin-top: 0.5rem; line-height: 1.55; word-break: keep-all;">
-                물리치료학과 학생과 임상물리치료사를 위한 
+                물리치료학과 학생과 임상물리치료사를 위한
                 <b>전기진단검사 결과 해석 학습 도구</b>입니다.
             </div>
         </div>
@@ -27,7 +27,7 @@ def render_home_screen():
             <div style="font-size:0.95rem; color:#334155; line-height:1.55; word-break:keep-all;">
                 <b>1. 사례 학습</b>: 대표 환자 사례를 통해 증상, 이학적 검사, 근전도 소견을 연결합니다.<br>
                 <b>2. 이상 소견 체크 학습</b>: 검사결과표에서 비정상 소견만 체크하고 병변 위치와 질환군을 추론합니다.<br>
-                <b>3. 수치 직접 입력 학습</b>: 진폭, 잠복기, 전도속도 등을 직접 입력하는 심화 학습 모드입니다.
+                <b>3. 검사결과표 판독 학습</b>: 실제 검사결과표 형식의 예제를 보고 패턴 중심으로 판독을 연습합니다.
             </div>
         </div>
         """,
@@ -49,7 +49,7 @@ def render_home_screen():
     elif selected_mode == MODE_ABNORMAL_CHECK:
         st.info("검사결과표에서 이상 소견만 체크하여 자동 추론 결과를 확인합니다.")
     else:
-        st.info("세부 수치를 직접 입력하여 심화 해석을 연습합니다.")
+        st.info("대표 검사결과표 예제를 보고 직접 판독한 뒤 정답과 해설을 확인합니다.")
 
     if st.button("학습 시작", type="primary", use_container_width=True):
         st.session_state["app_mode"] = selected_mode
