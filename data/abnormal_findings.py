@@ -165,7 +165,7 @@ ABNORMAL_CHECK_GROUPS = {
             "hint": "탈수초성 다발신경병증 또는 염증성 신경병증을 고려합니다.",
         },
     ],
-    "상지 특이 패턴": [
+    "팔 특이 패턴": [
         {
             "code": "median_wrist_pattern",
             "label": "정중신경 손목 부위 포착 패턴",
@@ -197,7 +197,7 @@ ABNORMAL_CHECK_GROUPS = {
             "hint": "짧은엄지벌림근, 첫째등쪽뼈사이근, 새끼벌림근을 봅니다.",
         },
     ],
-    "하지 특이 패턴": [
+    "다리 특이 패턴": [
         {
             "code": "l4_pattern",
             "label": "L4 분절 패턴",
