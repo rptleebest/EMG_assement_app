@@ -1,6 +1,6 @@
 MODE_CASE = "사례 학습"
 MODE_ABNORMAL_CHECK = "이상 소견 체크 학습"
-MODE_DIRECT = "수치 직접 입력 학습"
+MODE_DIRECT = "검사결과표 판독 학습"
 
 SEX_OPTIONS = ["미선택", "남", "여"]
 SIDE_OPTIONS = ["미선택", "좌", "우", "양측"]
