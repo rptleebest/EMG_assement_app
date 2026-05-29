@@ -1,4 +1,4 @@
-from core.formatters import normalize_result_text, educational_result_text
+from core.formatters import normalize_result_text
 
 
 def make_report_text(result):
@@ -54,13 +54,13 @@ def make_report_text(result):
 
     lines.append("")
     lines.append("[학생용 해석 가이드]")
-    lines.append("- 신경전도검사에서 '정상'은 절대값이 아니라 해당 검사실 정상범위 내라는 뜻입니다.")
-    lines.append("- SNAP 진폭 감소는 말초 감각신경 또는 신경얼기 이후 병변을 시사할 수 있습니다.")
-    lines.append("- 신경뿌리병증에서는 뒤뿌리신경절이 보존되어 감각신경활동전위(SNAP)가 정상 범위일 수 있습니다.")
-    lines.append("- CMAP 진폭 감소는 운동축삭 손상 또는 심한 전도차단을 시사할 수 있습니다.")
+    lines.append("- 신경전도검사(NCS)에서 '정상 범위'는 절대값이 아니라 해당 검사실 기준 내라는 뜻입니다.")
+    lines.append("- 감각신경활동전위(SNAP) 진폭 감소는 말초 감각신경 또는 신경얼기 이후 병변을 시사할 수 있습니다.")
+    lines.append("- 신경뿌리병증(radiculopathy)에서는 뒤뿌리신경절(dorsal root ganglion, DRG)이 보존되어 SNAP가 정상 범위일 수 있습니다.")
+    lines.append("- 복합근육활동전위(CMAP) 진폭 감소는 운동축삭 손상 또는 심한 전도차단을 시사할 수 있습니다.")
     lines.append("- 잠복기 지연과 전도속도 저하는 말이집탈락성 변화 또는 포착성 병변에서 중요합니다.")
-    lines.append("- 침근전도에서 섬유자발전위와 양성예파는 비정상 자발전위이며, 탈신경근 및 축삭 손상을 시사합니다.")
-    lines.append("- F파는 근위부 운동신경, 신경뿌리, 다발신경병증 평가에 유용합니다.")
+    lines.append("- 침근전도검사(Needle EMG)에서 섬유자발전위(fibrillation potential)와 양성예파(positive sharp wave)는 비정상 자발전위입니다.")
+    lines.append("- F파(F-wave)는 근위부 운동신경, 신경뿌리, 다발신경병증 평가에 유용합니다.")
 
     lines.append("")
     lines.append("[주의]")
