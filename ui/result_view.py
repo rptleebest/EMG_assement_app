@@ -1,9 +1,16 @@
 import streamlit as st
+from core.formatters import normalize_result_text
 
 
 def render_result_view(result):
-    st.markdown('<div class="result-card">', unsafe_allow_html=True)
-    st.markdown('<div class="result-title">✅ 자동 해석 결과</div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="result-card">
+            <div class="result-title">✅ 자동 해석 결과</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     st.markdown(
         f'<div class="result-text"><b>최종 유력 진단:</b> {result.get("final_dx", "")}</div>',
@@ -29,18 +36,16 @@ def render_result_view(result):
     st.markdown('<div class="result-label">Top 3 감별진단</div>', unsafe_allow_html=True)
     for idx, (dx, score) in enumerate(result.get("top3", []), 1):
         st.markdown(
-            f'<div class="result-text">{idx}. <b>{dx}</b> <span style="color:#64748b;">(score: {score})</span></div>',
+            f'<div class="result-text">{idx}. <b>{dx}</b> <span style="color:#64748b;">(점수: {score})</span></div>',
             unsafe_allow_html=True
         )
 
     st.markdown('<div class="result-label">감별 포인트</div>', unsafe_allow_html=True)
-    
-    # [추가된 로직] 결과의 감별 포인트 개수를 먼저 셉니다.
+
     top3_details = result.get("top3_details", [])
     total_details_count = len(top3_details)
 
     for idx, item in enumerate(top3_details, 1):
-        # 개수가 1개면 번호 생략, 2개 이상이면 번호 표기
         if total_details_count == 1:
             detail_title = item.get("name", "")
         else:
@@ -62,13 +67,14 @@ def render_result_view(result):
 
     st.markdown('<div class="result-label">이상 항목 요약</div>', unsafe_allow_html=True)
     for item in result.get("abnormal_items", []):
+        result_text = normalize_result_text(item.get("결과", ""))
         st.markdown(
             f"""
             <div class="case-text-block">
                 <div class="finding-item-title">{item.get("항목", "")}</div>
                 <div class="finding-subtext"><b>신경:</b> {item.get("신경", "")}</div>
                 <div class="finding-subtext"><b>레벨:</b> {item.get("레벨", "")}</div>
-                <div class="finding-subtext"><b>결과:</b> {item.get("결과", "")}</div>
+                <div class="finding-subtext"><b>결과:</b> {result_text}</div>
             </div>
             """,
             unsafe_allow_html=True
@@ -83,4 +89,3 @@ def render_result_view(result):
         '<div class="result-small">※ 본 결과는 학생 교육용 참고 자료이며 실제 임상 진단을 대체하지 않습니다.</div>',
         unsafe_allow_html=True
     )
-    st.markdown("</div>", unsafe_allow_html=True)
